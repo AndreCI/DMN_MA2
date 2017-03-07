@@ -1,7 +1,9 @@
 save/
 logs/
 data/
+tensorflow/
 data
+tensorflow
 .idea/
 .ipynb_checkpoints/
 sandbox
