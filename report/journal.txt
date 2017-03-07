@@ -1,0 +1,36 @@
+Commencé le 04/03
+
+Début du semestre lundi 20/02
+Projet de semestre MA2
+Author : André Cibils
+Name : Extending Dynamic Structure in Memory Network for Response Generation
+Misc : 12 Crédits
+Supervisor : Mi Fei & Boi Faltings
+
+Du 20/02 au 28/02
+lecture d'articles divers sur les DMN et DMN+ 
+("Ask Me Anything- Dynamic Memory Networks for Natural Language Processing"
+"DMN+ Dynamic Memory Networks for Visual and Textual Question Answering")
+, suivi de tutorials sur les RNN, GRU, BPTT.
+(http://www.wildml.com/2015/10/recurrent-neural-network-tutorial-part-4-implementing-a-grulstm-rnn-with-python-and-theano/)
+
+28/02
+Premier rdv avec Mi Fei
+Discussion sur les articles et sur les questions d'implémentations
+-Tensorflow
+-Goal fixed : Enhance DMN to produce sentences rather than just 1 word
+-Questions about server & GPU for training
+-Reception de la clé de l'INR238
+
+03/03
+Premier group meeting. Présentation du travail qu'on devra fournir lors de nos présentations. Ma presentation est le 17/03.
+Self fixed goal : arriver a présenter le state of the art en terme de DMN simple (AMA : DMN for NLP)
+
+02/03->04/03
+Tentative de faire marcher therne DMN with tensorflow
+(https://github.com/therne/dmn-tensorflow)
+Enorme problemes d'installation de tensorflow sur windows avec Anaconda (6h+).
+Impossible de run le code, il semble que Therne utilise des morceaux de tensorflow qui n'existent plus.
+Effectivement, Therne utilise la version 0.8 de tensorflow. La version 1.0 a apparement bougé/renommer bcp de files, tel que 
+tensorflow.python.ops.rnn_cell ou tensorflow.ops.seq2seq qui existaient en v0.8 mais qui manquent en v1.0
+(https://github.com/therne/dmn-tensorflow/issues/9)

@@ -1,0 +1,8 @@
+save/
+logs/
+data/
+data
+.idea/
+.ipynb_checkpoints/
+sandbox
+__pycache__
