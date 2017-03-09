@@ -99,11 +99,14 @@ def read_babi(data_dir, task_id, type, batch_size, word_table):
 
 
 def get_max_sizes(*data_sets):
-    max_sent_size = max_ques_size = max_fact_count = 0
+    max_sent_size = 0
+    max_ques_size = 0
+    max_fact_count = 0
     for data in data_sets:
         for x, q, fc in zip(data.xs, data.qs, data.fact_counts):
-            for fact in x: max_sent_size = max(max_sent_size, len(fact))
+            temp_sent_size=0
+            for fact in x: temp_sent_size = temp_sent_size + len(fact)
+            max_sent_size = max(max_sent_size, temp_sent_size)
             max_ques_size = max(max_ques_size, len(q))
             max_fact_count = max(max_fact_count, fc)
-
     return max_sent_size, max_ques_size, max_fact_count

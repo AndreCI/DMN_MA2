@@ -1,6 +1,8 @@
 import numpy as np
 import tensorflow as tf
-from tensorflow.python.ops import seq2seq, rnn_cell
+from tensorflow.contrib import rnn as rnn_cell
+from tensorflow.contrib import legacy_seq2seq as seq2seq
+#from tensorflow.python.ops import seq2seq, rnn_cell
 
 from models.base_model import BaseModel
 from models.old.episode_module import EpisodeModule
@@ -41,15 +43,15 @@ class DMN(BaseModel):
             question_vec = questions[-1]  # use final state
 
         # Masking: to extract fact vectors at end of sentence. (details in paper)
-        input_states = tf.transpose(tf.pack(input_states), [1, 0, 2])  # [N, L, D]
+        input_states = tf.transpose(tf.stack(input_states), [1, 0, 2])  # [N, L, D]
         facts = []
         for n in range(N):
             filtered = tf.boolean_mask(input_states[n, :, :], input_mask[n, :])  # [?, D]
-            padding = tf.zeros(tf.pack([F - tf.shape(filtered)[0], d]))
-            facts.append(tf.concat(0, [filtered, padding]))  # [F, D]
+            padding = tf.zeros(tf.stack([F - tf.shape(filtered)[0], d]))
+            facts.append(tf.concat([filtered, padding],0))  # [F, D]
 
-        facked = tf.pack(facts)  # packing for transpose... I hate TF so much
-        facts = tf.unpack(tf.transpose(facked, [1, 0, 2]), num=F)  # F x [N, D]
+        facked = tf.stack(facts)  # packing for transpose... I hate TF so much
+        facts = tf.unstack(tf.transpose(facked, [1, 0, 2]), num=F)  # F x [N, D]
 
         # Episodic Memory
         with tf.variable_scope('episodic') as scope:
@@ -72,13 +74,13 @@ class DMN(BaseModel):
 
         with tf.name_scope('Loss'):
             # Cross-Entropy loss
-            cross_entropy = tf.nn.sparse_softmax_cross_entropy_with_logits(logits, answer)
+            cross_entropy = tf.nn.sparse_softmax_cross_entropy_with_logits(labels=answer,logits=logits)
             loss = tf.reduce_mean(cross_entropy)
             total_loss = loss + params.weight_decay * tf.add_n(tf.get_collection('l2'))
 
         with tf.variable_scope('Accuracy'):
             # Accuracy
-            predicts = tf.cast(tf.argmax(logits, 1), 'int32')
+            predicts = tf.cast(tf.argmax(logits, 1), 'int64')
             corrects = tf.equal(predicts, answer)
             num_corrects = tf.reduce_sum(tf.cast(corrects, tf.float32))
             accuracy = tf.reduce_mean(tf.cast(corrects, tf.float32))
@@ -106,24 +108,24 @@ class DMN(BaseModel):
         :return: list of 2D tensor that has shape [num_batch, wordvec_dim]
         """
         input_transposed = tf.transpose(input, [1, 0, 2])  # [L, N, V]
-        return tf.unpack(input_transposed)
+        return tf.unstack(input_transposed)
 
     def preprocess_batch(self, batches):
         """ Vectorizes padding and masks last word of sentence. (EOS token)
-        :param batches: A tuple (input, question, label, mask)
+        :param batches: A tuple (input, question, label)
         :return A tuple (input, question, label, mask)
         """
         params = self.params
         input, question, label = batches
-        N, Q, F, V = params.batch_size, params.max_ques_size, params.max_fact_count, params.embed_size
-
+        N, Q, F, V = params.batch_size, params.max_ques_size, params.max_fact_count, params.glove_size
         # calculate max sentence size
-        L = 0
-        for n in range(N):
-            sent_len = np.sum([len(sentence) for sentence in input[n]])
-            L = max(L, sent_len)
-        params.max_sent_size = L
-
+        
+        #L = 0
+        #for n in range(N):
+            #sent_len = np.sum([len(sentence) for sentence in input[n]])
+            #L = max(L, sent_len)
+        #params.max_sent_size = L
+        L = params.max_sent_size
         # make input and question fixed size
         new_input = np.zeros([N, L, V])  # zero padding
         new_question = np.zeros([N, Q, V])
@@ -131,10 +133,15 @@ class DMN(BaseModel):
         new_labels = []
 
         for n in range(N):
-            sentence = np.array(input[n]).flatten()  # concat all sentences
+            sentence = np.hstack(np.array(input[n]))#.flatten()  # concat all sentences
             sentence_len = len(sentence)
-
-            input_mask = [index for index, w in enumerate(sentence) if w == '.']
+            #print("  ")
+            #print("sentence:",sentence)
+            #print("input[n]:",input[n])
+            input_mask = [index for index, w in enumerate(sentence) if w == '.'] #create an array containing the index of the '.'
+            #print(" [self.words.vectorize(w) for w in sentence]", [self.words.vectorize(w) for w in sentence])
+            #print("SHAPE",np.shape([self.words.vectorize(w) for w in sentence]))
+            #print(sentence_len)
             new_input[n, :sentence_len] = [self.words.vectorize(w) for w in sentence]
 
             sentence_len = len(question[n])

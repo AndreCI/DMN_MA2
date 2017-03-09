@@ -9,13 +9,13 @@ from utils.data_utils import load_glove, WordTable
 flags = tf.app.flags
 
 # directories
-flags.DEFINE_string('model', 'dmn', 'Model type - DMN [Default: DMN]')
+flags.DEFINE_string('model', 'dmn', 'Model type - dmn+, dmn, dmn_embed [Default: DMN+]')
 flags.DEFINE_boolean('test', False, 'true for testing, false for training [False]')
 flags.DEFINE_string('data_dir', 'data/tasks_1-20_v1-2/en-10k', 'Data directory [data/tasks_1-20_v1-2/en-10k]')
 flags.DEFINE_string('save_dir', 'save', 'Save path [save]')
 
 # training options
-flags.DEFINE_bool('gpu', False, 'Use GPU? [False]')
+flags.DEFINE_bool('gpu', True, 'Use GPU? [True]')
 flags.DEFINE_integer('batch_size', 128, 'Batch size during training and testing [128]')
 flags.DEFINE_integer('num_epochs', 256, 'Number of epochs for training [256]')
 flags.DEFINE_float('learning_rate', 0.002, 'Learning rate [0.002]')
@@ -25,8 +25,8 @@ flags.DEFINE_integer('val_period', 40, 'Validation period (for display purpose) 
 flags.DEFINE_integer('save_period', 80, 'Save period [80]')
 
 # model params
-#flags.DEFINE_integer('memory_step', 3, 'Episodic Memory steps [3]')
-#flags.DEFINE_string('memory_update', 'relu', 'Episodic meory update method - relu or gru [relu]')
+flags.DEFINE_integer('memory_step', 3, 'Episodic Memory steps [3]')
+flags.DEFINE_string('memory_update', 'relu', 'Episodic meory update method - relu or gru [relu]')
 # flags.DEFINE_bool('memory_tied', False, 'Share memory update weights among the layers? [False]')
 flags.DEFINE_integer('glove_size', 50, 'GloVe size - Only used in dmn [50]')
 flags.DEFINE_integer('embed_size', 80, 'Word embedding size - Used in dmn+, dmn_embed [80]')
@@ -48,7 +48,15 @@ def main(_):
     if FLAGS.model == 'dmn':
         word2vec = load_glove(FLAGS.glove_size)
         words = WordTable(word2vec, FLAGS.glove_size)
-        from models.classic_dmn.dmn import DMN
+        from models.old.dmn import DMN
+
+    elif FLAGS.model == 'dmn+':
+        words = WordTable()
+        from models.new.dmn_plus import DMN
+
+    elif FLAGS.model == 'dmn_embed':
+        words = WordTable()
+        from models.old.dmn_embedding import DMN
     else:
         print('Unknown model type: %s' % FLAGS.model)
         return

@@ -67,7 +67,7 @@ class WordTable:
 
     def add_vocab(self, *words):
         """ Add vocabularies to dictionary. """
-        for word in words:
+        for word in words: 
             if self.word2vec and word not in self.word2vec:
                 self._create_vector(word)
 
@@ -81,7 +81,6 @@ class WordTable:
         :param word: string
         :return: 1-D array (vector)
         """
-        self.add_vocab(word)
         return self.word2vec[word]
 
     def _create_vector(self, word):
