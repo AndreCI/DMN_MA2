@@ -34,3 +34,8 @@ Impossible de run le code, il semble que Therne utilise des morceaux de tensorfl
 Effectivement, Therne utilise la version 0.8 de tensorflow. La version 1.0 a apparement bougé/renommer bcp de files, tel que 
 tensorflow.python.ops.rnn_cell ou tensorflow.ops.seq2seq qui existaient en v0.8 mais qui manquent en v1.0
 (https://github.com/therne/dmn-tensorflow/issues/9)
+
+07/03
+En cours de recodage du DMN de Therne. RDV avec Mi Fei.
+Discussion sur comment transformer la single word response en phrases.
+Deadline fixée pour le 14: Arriver a un DMN fonctionnel.
