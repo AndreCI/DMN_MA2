@@ -1,6 +1,5 @@
 """ a neat code from https://github.com/YerevaNN/Dynamic-memory-networks-in-Theano/ """
 import os
-import numpy as np
 
 from utils.data_utils import DataSet
 from copy import deepcopy
@@ -99,12 +98,17 @@ def read_babi(data_dir, task_id, type, batch_size, word_table):
 
 
 def get_max_sizes(*data_sets):
+    """ Produces metadata on the data_sets.
+    :param *data_sets: One or more DataSet objects
+    :return: A tupple consisting of the maximum size of the sentences in a sample, the maximum size of a question, and the maximum number of sentences in a sample (in words)
+    """
     max_sent_size = 0
     max_ques_size = 0
     max_fact_count = 0
     for data in data_sets:
         for x, q, fc in zip(data.xs, data.qs, data.fact_counts):
             temp_sent_size=0
+            #Using temp leads to count all words in a sample. Could be improved?
             for fact in x: temp_sent_size = temp_sent_size + len(fact)
             max_sent_size = max(max_sent_size, temp_sent_size)
             max_ques_size = max(max_ques_size, len(q))
