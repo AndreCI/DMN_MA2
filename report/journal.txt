@@ -39,3 +39,17 @@ tensorflow.python.ops.rnn_cell ou tensorflow.ops.seq2seq qui existaient en v0.8 
 En cours de recodage du DMN de Therne. RDV avec Mi Fei.
 Discussion sur comment transformer la single word response en phrases.
 Deadline fixée pour le 14: Arriver a un DMN fonctionnel.
+
+9/03
+Le DMN fonctionne. Sur la task 2, il arrive apres une session d'entrainement a une accuracy de ~20%. L'entrainement a prit 11h40.
+
+10/03
+Réunion avec le groupe. GAN a l'air assez incroyable, peut etre que ca peut etre utilie pour faire la sentence génération?
+Ma présentation est dans 7 jours.
+La task 3 tourne toujours. So far, 21% d'accuracy et 20h30 de training. Il en reste 2h30.
+Modification legere du code pour virer tout ce qui ne sert a rien.
+Pour le futur, le but est de tout recoder pour s'approprier le travail et utiliser les versions non deprecated de tensorflow.
+Je ne comprend pas pourquoi l'accuracy est si basse. Je relancerai le training sur la task 2 des que la task 3 sera fini,
+dans le but d'améliorer l'accuracy sur plusieurs sessions d'entrainement.
+
+
