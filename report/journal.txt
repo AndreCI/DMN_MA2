@@ -42,6 +42,8 @@ Deadline fixée pour le 14: Arriver a un DMN fonctionnel.
 
 9/03
 Le DMN fonctionne. Sur la task 2, il arrive apres une session d'entrainement a une accuracy de ~20%. L'entrainement a prit 11h40.
+J'ai basiquement utilisé les versions deprecated de tensorflow (tensorflow.python.ops.rnn_cell->tensorflow.contrib/rnn_cell)
+Quelques corrections de bugs également, dans la partie dmn.py/preprocess_batch notamment.
 
 10/03
 Réunion avec le groupe. GAN a l'air assez incroyable, peut etre que ca peut etre utilie pour faire la sentence génération?
