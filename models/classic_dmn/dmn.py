@@ -17,7 +17,6 @@ class DMN(BaseModel):
     def build(self):
         params = self.params
         N, L, Q, F = params.batch_size, params.max_sent_size, params.max_ques_size, params.max_fact_count
-        V, d, A = params.glove_size, params.hidden_size, self.words.vocab_size
 
         # initialize self
         # placeholders
