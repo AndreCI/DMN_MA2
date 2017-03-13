@@ -78,8 +78,6 @@ class DMN(BaseModel):
             # Answer module : feed-forward version (for it is one word answer)
             w_a = weight('w_a', [d, A])
             logits = tf.matmul(memory, w_a)  # [N, A]
-            print(logits)
-            print(np.shape(logits))
 
         with tf.name_scope('Loss'):
             # Cross-Entropy loss
@@ -102,7 +100,7 @@ class DMN(BaseModel):
         self.x = input
         self.q = question
         self.y = answer
-        self.mask = input_mask
+        #self.mask = input_mask
         self.is_training = is_training
 
         # tensors
