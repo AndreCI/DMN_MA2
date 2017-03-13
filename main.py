@@ -26,7 +26,7 @@ flags.DEFINE_integer('save_period', 80, 'Save period [80]')
 
 # model params
 flags.DEFINE_integer('memory_step', 3, 'Episodic Memory steps [3]')
-flags.DEFINE_string('memory_update', 'relu', 'Episodic meory update method - relu or gru [relu]')
+#flags.DEFINE_string('memory_update', 'relu', 'Episodic meory update method - relu or gru [relu]')
 # flags.DEFINE_bool('memory_tied', False, 'Share memory update weights among the layers? [False]')
 flags.DEFINE_integer('glove_size', 50, 'GloVe size - Only used in dmn [50]')
 #flags.DEFINE_integer('embed_size', 80, 'Word embedding size - Used in dmn+, dmn_embed [80]')
