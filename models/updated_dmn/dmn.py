@@ -100,7 +100,7 @@ class DMN(BaseModel):
         self.x = input
         self.q = question
         self.y = answer
-        #self.mask = input_mask
+        self.mask = input_mask
         self.is_training = is_training
 
         # tensors
