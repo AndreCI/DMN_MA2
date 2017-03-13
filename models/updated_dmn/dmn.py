@@ -16,6 +16,13 @@ class DMN(BaseModel):
     """
     def build(self):
         params = self.params
+        #N = batch_size
+        #L = max_sent_size
+        #Q = max_ques_size
+        #F = max_fact_count
+        #V = glove_size
+        #d = hidden_size
+        #A = vocav_size
         N, L, Q, F = params.batch_size, params.max_sent_size, params.max_ques_size, params.max_fact_count
         V, d, A = params.glove_size, params.hidden_size, self.words.vocab_size
 
@@ -34,12 +41,12 @@ class DMN(BaseModel):
         with tf.variable_scope('input') as scope:
             input_list = self.make_decoder_batch_input(input)
             input_states, _ = seq2seq.rnn_decoder(input_list, gru.zero_state(N, tf.float32), gru)
-
+            
             # Question module
             scope.reuse_variables()
 
             ques_list = self.make_decoder_batch_input(question)
-            questions, _ = seq2seq.rnn_decoder(ques_list, gru.zero_state(N, tf.float32), gru)
+            questions, t_s = seq2seq.rnn_decoder(ques_list, gru.zero_state(N, tf.float32), gru)
             question_vec = questions[-1]  # use final state
 
         # Masking: to extract fact vectors at end of sentence. (details in paper)
@@ -51,7 +58,7 @@ class DMN(BaseModel):
             facts.append(tf.concat(values=[filtered, padding],axis=0))  # [F, D]
 
         facked = tf.stack(facts)  # packing for transpose... I hate TF so much
-        facts = tf.unstack(tf.transpose(facked, [1, 0, 2]), num=F)  # F x [N, D]
+        facts = tf.unstack(tf.transpose(facked, [1, 0, 2]), num=F)  # F x [N, D] 
 
         # Episodic Memory
         with tf.variable_scope('episodic') as scope:
@@ -59,7 +66,7 @@ class DMN(BaseModel):
 
             memory = tf.identity(question_vec)
             for t in range(params.memory_step):
-                memory = gru(episode.new(memory), memory)[0]
+                memory = gru(episode.new(memory), memory)[0] #NDA:always same gru?
                 scope.reuse_variables()
 
         # Regularizations
@@ -120,7 +127,7 @@ class DMN(BaseModel):
         N, Q, F, V = params.batch_size, params.max_ques_size, params.max_fact_count, params.glove_size
         # calculate max sentence size
         
-        #L = 0
+        #L = 0 <- old code vvv
         #for n in range(N):
             #sent_len = np.sum([len(sentence) for sentence in input[n]])
             #L = max(L, sent_len)

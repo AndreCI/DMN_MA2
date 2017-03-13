@@ -14,7 +14,7 @@ class EpisodeModule:
         self.facts_transposed = [tf.transpose(c) for c in facts]
 
         # parameters
-        self.w1 = weight('w1', [num_hidden, 7 * num_hidden])
+        self.w1 = weight('w1', [num_hidden, 7 * num_hidden]) #see Attention_mechanism
         self.b1 = bias('b1', [num_hidden, 1])
         self.w2 = weight('w2', [1, num_hidden])
         self.b2 = bias('b2', [1, 1])
@@ -39,7 +39,7 @@ class EpisodeModule:
         return state
 
     def attention(self, c, m):
-        """ Attention mechanism. For details, see paper.
+        """ Attention mechanism. For details, see paper. 
         :param c: A fact vector [N, D] at timestep
         :param m: Previous memory vector [N, D]
         :return: attention vector at timestep
