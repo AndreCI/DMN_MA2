@@ -1,0 +1,17 @@
+--------------------------------------------------------------------------------
+Processing file 'models/updated_dmn/dmn.py'
+ outputting to 'newdmn.py'
+--------------------------------------------------------------------------------
+
+'models/updated_dmn/dmn.py' Line 52
+--------------------------------------------------------------------------------
+
+Added keyword 'concat_dim' to reordered function 'tf.concat'
+Added keyword 'values' to reordered function 'tf.concat'
+
+    Old:             facts.append(tf.concat([filtered, padding],0))  # [F, D]
+                                                                              
+    New:             facts.append(tf.concat(axis=[filtered, padding],values=0))  # [F, D]
+                                            ~~~~~                    ~~~~~~~              
+
+
