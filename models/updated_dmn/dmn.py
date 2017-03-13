@@ -1,6 +1,6 @@
 import numpy as np
 import tensorflow as tf
-from tensorflow.contrib import rnn as rnn_cell
+from tensorflow.nn import rnn_cell
 from tensorflow.contrib import legacy_seq2seq as seq2seq
 #from tensorflow.python.ops import seq2seq, rnn_cell
 
