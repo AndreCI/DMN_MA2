@@ -46,10 +46,12 @@ FLAGS = flags.FLAGS
 
 def main(_):
     if FLAGS.model == 'dmn_t':
+        print("Using Therne's DMN model.")
         word2vec = load_glove(FLAGS.glove_size)
         words = WordTable(word2vec, FLAGS.glove_size)
         from models.classic_dmn.dmn import DMN
     elif FLAGS.model == "dmn_a":
+        print("Using Andre's DMN model.")
         word2vec = load_glove(FLAGS.glove_size)
         words = WordTable(word2vec, FLAGS.glove_size)
         from models.updated_dmn.dmn import DMN

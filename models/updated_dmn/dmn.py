@@ -46,7 +46,7 @@ class DMN(BaseModel):
             scope.reuse_variables()
 
             ques_list = self.make_decoder_batch_input(question)
-            questions, t_s = seq2seq.rnn_decoder(ques_list, gru.zero_state(N, tf.float32), gru)
+            questions, _ = seq2seq.rnn_decoder(ques_list, gru.zero_state(N, tf.float32), gru)
             question_vec = questions[-1]  # use final state
 
         # Masking: to extract fact vectors at end of sentence. (details in paper)
