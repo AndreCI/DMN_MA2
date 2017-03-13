@@ -54,4 +54,6 @@ Pour le futur, le but est de tout recoder pour s'approprier le travail et utilis
 Je ne comprend pas pourquoi l'accuracy est si basse. Je relancerai le training sur la task 2 des que la task 3 sera fini,
 dans le but d'améliorer l'accuracy sur plusieurs sessions d'entrainement.
 
-
+11->14/03
+Recodage de Therne. Je cherche encore a comprendre comment marche son code.
+L'accuracy ne monte pas :(

@@ -9,7 +9,7 @@ from utils.data_utils import load_glove, WordTable
 flags = tf.app.flags
 
 # directories
-flags.DEFINE_string('model', 'dmn', 'Model type - dmn [Default: DMN]')
+flags.DEFINE_string('model', 'dmn', 'Model type - dmn - dmn_1 (with tensorflow v1.0+) [Default: DMN]')
 flags.DEFINE_boolean('test', False, 'true for testing, false for training [False]')
 flags.DEFINE_string('data_dir', 'data/tasks_1-20_v1-2/en-10k', 'Data directory [data/tasks_1-20_v1-2/en-10k]')
 flags.DEFINE_string('save_dir', 'save', 'Save path [save]')
@@ -49,6 +49,10 @@ def main(_):
         word2vec = load_glove(FLAGS.glove_size)
         words = WordTable(word2vec, FLAGS.glove_size)
         from models.classic_dmn.dmn import DMN
+    elif FLAGS.model == "dmn_1":
+        word2vec = load_glove(FLAGS.glove_size)
+        words = WordTable(word2vec, FLAGS.glove_size)
+        from models.updated_dmn.dmn import DMN
     else:
         print('Unknown model type: %s' % FLAGS.model)
         return
