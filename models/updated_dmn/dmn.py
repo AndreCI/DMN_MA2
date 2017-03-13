@@ -1,12 +1,11 @@
 import numpy as np
 import tensorflow as tf
 from tensorflow.contrib import rnn as rnn_cell
-import tensorflow.image as test
 from tensorflow.contrib import legacy_seq2seq as seq2seq
 #from tensorflow.python.ops import seq2seq, rnn_cell
 
 from models.base_model import BaseModel
-from models.updated_dmn.episode_module import EpisodeModule
+from models.classic_dmn.episode_module import EpisodeModule
 from utils.nn import weight, batch_norm, dropout
 
 
@@ -49,7 +48,7 @@ class DMN(BaseModel):
         for n in range(N):
             filtered = tf.boolean_mask(input_states[n, :, :], input_mask[n, :])  # [?, D]
             padding = tf.zeros(tf.stack([F - tf.shape(filtered)[0], d]))
-            facts.append(tf.concat([filtered, padding],0))  # [F, D]
+            facts.append(tf.concat(values=[filtered, padding],axis=0))  # [F, D]
 
         facked = tf.stack(facts)  # packing for transpose... I hate TF so much
         facts = tf.unstack(tf.transpose(facked, [1, 0, 2]), num=F)  # F x [N, D]

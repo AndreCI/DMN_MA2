@@ -72,7 +72,7 @@ def main(_):
 
     with tf.Session() as sess:
         model = DMN(FLAGS, words)
-        sess.run(tf.initialize_all_variables())
+        sess.run(tf.global_variables_initializer())
 
         if FLAGS.test:
             model.load(sess)
