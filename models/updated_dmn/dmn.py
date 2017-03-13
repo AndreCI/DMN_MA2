@@ -72,12 +72,14 @@ class DMN(BaseModel):
         # Regularizations
         if params.batch_norm:
             memory = batch_norm(memory, is_training=is_training)
-        memory = dropout(memory, params.keep_prob, is_training)
+        memory = dropout(memory, params.keep_prob, is_training) #NDA:why dropout?
 
-        with tf.name_scope('Answer'):
+        with tf.name_scope('Answer'):#NDA:Change here!
             # Answer module : feed-forward version (for it is one word answer)
             w_a = weight('w_a', [d, A])
             logits = tf.matmul(memory, w_a)  # [N, A]
+            print(logits)
+            print(np.shape(logits))
 
         with tf.name_scope('Loss'):
             # Cross-Entropy loss

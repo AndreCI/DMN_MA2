@@ -82,7 +82,7 @@ def batch_norm(x, is_training):
 
 
 def dropout(x, keep_prob, is_training):
-    """ Apply dropout.
+    """ Apply dropout (i.e. if training, has a keep_prob chance to return x scaled by 1/keep_prob)
     :param x: Tensor
     :param keep_prob: float, Dropout rate.
     :param is_training: boolean tf.Varialbe, true indicates training phase
