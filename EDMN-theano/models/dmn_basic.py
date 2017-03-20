@@ -88,6 +88,7 @@ class DMN_basic:
         
         self.inp_c = inp_c_history.take(self.input_mask_var, axis=0)
         
+        #This seems to be the memory.
         self.q_q, _ = theano.scan(fn=self.input_gru_step, 
                     sequences=self.q_var,
                     outputs_info=T.zeros_like(self.b_inp_hid))
@@ -108,6 +109,7 @@ class DMN_basic:
         self.W_mem_hid_hid = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim))
         self.b_mem_hid = nn_utils.constant_param(value=0.0, shape=(self.dim,))
         
+        #Attnetion mechanisms 2 layer FFNN weights & bias
         self.W_b = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim))
         self.W_1 = nn_utils.normal_param(std=0.1, shape=(self.dim, 7 * self.dim + 2))
         self.W_2 = nn_utils.normal_param(std=0.1, shape=(1, self.dim))
@@ -116,7 +118,7 @@ class DMN_basic:
         
 
         print("==> building episodic memory module (fixed number of steps: %d)" % self.memory_hops)
-        memory = [self.q_q.copy()]
+        memory = [self.q_q.copy()] #So q_q is memory initialization
         for iter in range(1, self.memory_hops + 1):
             current_episode = self.new_episode(memory[iter - 1])
             memory.append(self.GRU_update(memory[iter - 1], current_episode,
@@ -165,7 +167,7 @@ class DMN_basic:
             raise Exception("invalid answer_module")
         
         
-        print "==> collecting all parameters"
+        print("==> collecting all parameters")
         self.params = [self.W_inp_res_in, self.W_inp_res_hid, self.b_inp_res, 
                   self.W_inp_upd_in, self.W_inp_upd_hid, self.b_inp_upd,
                   self.W_inp_hid_in, self.W_inp_hid_hid, self.b_inp_hid,
@@ -180,7 +182,7 @@ class DMN_basic:
                               self.W_ans_hid_in, self.W_ans_hid_hid, self.b_ans_hid]
         
         
-        print "==> building loss layer and computing updates"
+        print("==> building loss layer and computing updates")
         self.loss_ce = T.nnet.categorical_crossentropy(self.prediction.dimshuffle('x', 0), T.stack([self.answer_var]))[0]
         if self.l2 > 0:
             self.loss_l2 = self.l2 * nn_utils.l2_reg(self.params)
@@ -192,7 +194,7 @@ class DMN_basic:
         updates = lasagne.updates.adadelta(self.loss, self.params)
         
         if self.mode == 'train':
-            print "==> compiling train_fn"
+            print("==> compiling train_fn")
             self.train_fn = theano.function(inputs=[self.input_var, self.q_var, self.answer_var, self.input_mask_var], 
                                        outputs=[self.prediction, self.loss],
                                        updates=updates)
@@ -257,6 +259,9 @@ class DMN_basic:
        
     
     def new_episode(self, mem):
+        '''
+        Create a new episode
+        '''
         g, g_updates = theano.scan(fn=self.new_attention_step,
             sequences=self.inp_c,
             non_sequences=[mem, self.q_q],
