@@ -61,29 +61,29 @@ args_dict['word2vec'] = word2vec
 
 # init class
 if args.network == 'dmn_batch':
-    import dmn_batch
-    dmn = models.dmn_batch.DMN_batch(**args_dict)
+    from models import dmn_batch
+    dmn = dmn_batch.DMN_batch(**args_dict)
 
 elif args.network == 'dmn_basic':
-    import dmn_basic
+    from models import dmn_basic
     if (args.batch_size != 1):
         print "==> no minibatch training, argument batch_size is useless"
         args.batch_size = 1
-    dmn = models.dmn_basic.DMN_basic(**args_dict)
+    dmn = dmn_basic.DMN_basic(**args_dict)
 
 elif args.network == 'dmn_smooth':
-    import dmn_smooth
+    from models import dmn_smooth
     if (args.batch_size != 1):
         print "==> no minibatch training, argument batch_size is useless"
         args.batch_size = 1
-    dmn = models.dmn_smooth.DMN_smooth(**args_dict)
+    dmn = dmn_smooth.DMN_smooth(**args_dict)
 
 elif args.network == 'dmn_qa':
-    import dmn_qa_draft
+    from models import dmn_qa_draft
     if (args.batch_size != 1):
         print "==> no minibatch training, argument batch_size is useless"
         args.batch_size = 1
-    dmn = models.dmn_qa_draft.DMN_qa(**args_dict)
+    dmn = dmn_qa_draft.DMN_qa(**args_dict)
 
 else: 
     raise Exception("No such network known: " + args.network)

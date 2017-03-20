@@ -10,8 +10,8 @@ from lasagne import layers
 from lasagne import nonlinearities
 import cPickle as pickle
 
-import utils.utils
-import utils.nn_utils
+from utils import utils
+from utils import nn_utils
 
 import copy
 
