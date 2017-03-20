@@ -60,3 +60,5 @@ L'accuracy ne monte pas :(
 
 13/03
 Recherche sur Adadelta algo http://sebastianruder.com/optimizing-gradient-descent/index.html#adadelta
+Plus de recherche sur le code de Therne
+Suivi de tuto tensorflow sur youtube 
