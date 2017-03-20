@@ -21,11 +21,27 @@ class DMN_basic:
     def __init__(self, babi_train_raw, babi_test_raw, word2vec, word_vector_size, 
                 dim, mode, answer_module, input_mask_mode, memory_hops, l2, 
                 normalize_attention, **kwargs):
+        '''
+        Build the DMN
+        :param babi_train_raw: train dataset
+        :param babi_test_raw: test dataset
+        :param word2vec: a dictionary containing the word embeddings TODO: Check if right
+        :param word_vector_size: dimension of the word embeddings (50,100,200,300)
+        :param dim: number of hidden units in input module GRU
+        :param mode: train or test mode
+        :param answer_module: answer module type: feedforward or recurrent
+        :param input_mask_mode: input_mask_mode: word or sentence
+        :param memory_hops: memory GRU steps
+        :param l2: L2 regularization
+        :param normalize_attention: enable softmax on attention vector
+        :param **kwargs:
+        '''
 
-        print "==> not used params in DMN class:", kwargs.keys()
+        print("==> not used params in DMN class:", kwargs.keys())
         self.vocab = {}
         self.ivocab = {}
         
+        #save params
         self.word2vec = word2vec
         self.word_vector_size = word_vector_size
         self.dim = dim
@@ -46,9 +62,14 @@ class DMN_basic:
         self.input_mask_var = T.ivector('input_mask_var')
         
             
-        print "==> building input module"
+        print("==> building input module")
+        #Input weights for first layer 
+        #TODO why is there an input layer??
         self.W_inp_res_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.word_vector_size))
+        #Input weights for hidden layer
         self.W_inp_res_hid = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim))
+        #Input bias
+        #TODO why constant?
         self.b_inp_res = nn_utils.constant_param(value=0.0, shape=(self.dim,))
         
         self.W_inp_upd_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.word_vector_size))
@@ -58,7 +79,9 @@ class DMN_basic:
         self.W_inp_hid_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.word_vector_size))
         self.W_inp_hid_hid = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim))
         self.b_inp_hid = nn_utils.constant_param(value=0.0, shape=(self.dim,))
+        #TODO why 3 different set of weights & bias?
         
+        #This does some loop
         inp_c_history, _ = theano.scan(fn=self.input_gru_step, 
                     sequences=self.input_var,
                     outputs_info=T.zeros_like(self.b_inp_hid))
@@ -69,10 +92,10 @@ class DMN_basic:
                     sequences=self.q_var,
                     outputs_info=T.zeros_like(self.b_inp_hid))
 
-        self.q_q = self.q_q[-1]
+        self.q_q = self.q_q[-1] #take only last elem
         
         
-        print "==> creating parameters for memory module"
+        print("==> creating parameters for memory module")
         self.W_mem_res_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim))
         self.W_mem_res_hid = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim))
         self.b_mem_res = nn_utils.constant_param(value=0.0, shape=(self.dim,))
@@ -92,7 +115,7 @@ class DMN_basic:
         self.b_2 = nn_utils.constant_param(value=0.0, shape=(1,))
         
 
-        print "==> building episodic memory module (fixed number of steps: %d)" % self.memory_hops
+        print("==> building episodic memory module (fixed number of steps: %d)" % self.memory_hops)
         memory = [self.q_q.copy()]
         for iter in range(1, self.memory_hops + 1):
             current_episode = self.new_episode(memory[iter - 1])
@@ -103,7 +126,7 @@ class DMN_basic:
         
         last_mem = memory[-1]
         
-        print "==> building answer module"
+        print("==> building answer module")
         self.W_a = nn_utils.normal_param(std=0.1, shape=(self.vocab_size, self.dim))
         
         if self.answer_module == 'feedforward':
@@ -272,6 +295,13 @@ class DMN_basic:
 
     
     def _process_input(self, data_raw):
+        '''
+        :param data_raw: raw data (train or test set) from outils.get_babi_raw
+        :return inputs: all the inputs, as a list of word vector representation. 
+        :return questions: all the questions, as a list of word vector repre.
+        :return answers: all the answers, as a list of word vec repre
+        :return input_masks:
+        '''
         questions = []
         inputs = []
         answers = []
@@ -287,7 +317,7 @@ class DMN_basic:
                                         vocab = self.vocab, 
                                         ivocab = self.ivocab, 
                                         word_vector_size = self.word_vector_size, 
-                                        to_return = "word2vec") for w in inp]
+                                        to_return = "word2vec") for w in inp] #for each word, get the word vec rpz
                                         
             q_vector = [utils.process_word(word = w, 
                                         word2vec = self.word2vec, 
@@ -304,13 +334,14 @@ class DMN_basic:
                                             ivocab = self.ivocab, 
                                             word_vector_size = self.word_vector_size, 
                                             to_return = "index"))
-            # NOTE: here we assume the answer is one word! 
+            # NOTE: here we assume the answer is one word!
+            #TODO check what the heck input_masks is made of.
             if self.input_mask_mode == 'word':
                 input_masks.append(np.array([index for index, w in enumerate(inp)], dtype=np.int32)) 
             elif self.input_mask_mode == 'sentence': 
                 input_masks.append(np.array([index for index, w in enumerate(inp) if w == '.'], dtype=np.int32)) 
             else:
-                raise Exception("invalid input_mask_mode")
+                raise Exception("invalid input_mask_mode") #TODO this should probably not be raised here... 
         
         return inputs, questions, answers, input_masks
 

@@ -81,6 +81,11 @@ def get_babi_raw(id, test_id):
 
             
 def load_glove(dim):
+    '''
+    Load GloVe from google.
+    :param dim: Word embedding dimension. Must be 50, 100, 150, 200.
+    :return word2vec: a dictionary containing the word embedding. TODO: Check it this is right?
+    '''
     word2vec = {}
     
     print "==> loading glove"
@@ -95,15 +100,36 @@ def load_glove(dim):
 
 
 def create_vector(word, word2vec, word_vector_size, silent=False):
-    # if the word is missing from Glove, create some fake vector and store in glove!
+    '''
+    Create a word embedding for given word. Really not perfect.
+    if the word is missing from Glove, create some fake vector and store in glove!
+    :param word: a word in raw text
+    :param word2vec: the word embedding matrix
+    :param word_vector_size: size of word embedding (50,100,200,300)
+    :param silent: if False, this function will print a warning to tell the user that the word is not in word2vec.
+    :return vector: the vector created for the given word
+    '''
+    
     vector = np.random.uniform(0.0,1.0,(word_vector_size,))
     word2vec[word] = vector
     if (not silent):
-        print "utils.py::create_vector => %s is missing" % word
+        print("utils/utils.py::create_vector => Warning: %s is missing" % word)
     return vector
 
 
 def process_word(word, word2vec, vocab, ivocab, word_vector_size, to_return="word2vec", silent=False):
+    '''
+    Check if the word is in word2vec & vocab, and if not, add it.
+    Return the word representation depending on to_return option
+    :param word: a word, in raw text
+    :param word2vec: embedding matrix containing all the words known
+    :param vocab: list of all words known
+    :param ivocab: ???
+    :param word_vector_size: size of word embedding (50, 100, 200, 300)
+    :param to_return: option to choose what the function should return.
+    :param silent: used in case word is not in word2vec. If False, will print a warning
+    :return: word2vec[word] or vocab[word]
+    '''
     if not word in word2vec:
         create_vector(word, word2vec, word_vector_size, silent)
     if not word in vocab: 

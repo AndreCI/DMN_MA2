@@ -8,11 +8,15 @@ import json
 from utils import utils
 from utils import nn_utils
 
-print "==> parsing input arguments"
-parser = argparse.ArgumentParser()
 
-parser.add_argument('--network', type=str, default="dmn_batch", help='network type: dmn_basic, dmn_smooth, or dmn_batch')
-parser.add_argument('--word_vector_size', type=int, default=50, help='embeding size (50, 100, 200, 300 only)')
+
+#Getting, parsing and printing input arguments.
+
+print("==> parsing input arguments")
+parser = argparse.ArgumentParser(prog="ExtDMN",description="Andre s code ExtDMN. Use for Q&A, master semester project @EPFL-LIA, 2017")
+
+parser.add_argument('--network', type=str, default="dmn_batch", choices=['dmn_basic','dmn_smooth','dmn_batch'], help='network type: dmn_basic, dmn_smooth, or dmn_batch')
+parser.add_argument('--word_vector_size', type=int, default=50, choices=['50','100','200','300'], help='embeding size (50, 100, 200, 300 only)')
 parser.add_argument('--dim', type=int, default=40, help='number of hidden units in input module GRU')
 parser.add_argument('--epochs', type=int, default=500, help='number of epochs')
 parser.add_argument('--load_state', type=str, default="", help='state file path')
@@ -34,10 +38,13 @@ parser.add_argument('--batch_norm', type=bool, default=False, help='batch normal
 parser.set_defaults(shuffle=True)
 args = parser.parse_args()
 
-print args
+print(args)
 
+#Checking if the vector size is valid (using GloVe here, so no fancy size allowed)
 assert args.word_vector_size in [50, 100, 200, 300]
 
+#Getting the network_name and parameters
+#TODO: should probably recode this, this isn't only the network name but much more
 network_name = args.prefix + '%s.mh%d.n%d.bs%d%s%s%s.babi%s' % (
     args.network, 
     args.memory_hops, 
@@ -48,18 +55,20 @@ network_name = args.prefix + '%s.mh%d.n%d.bs%d%s%s%s.babi%s' % (
     (".d" + str(args.dropout)) if args.dropout>0 else "",
     args.babi_id)
 
-
+#Getting dataset(train & test)
 babi_train_raw, babi_test_raw = utils.get_babi_raw(args.babi_id, args.babi_test_id)
 
+#Getting GloVe, i.e. embedding matrix
 word2vec = utils.load_glove(args.word_vector_size)
 
+#Wrapping everything into args_dict
 args_dict = dict(args._get_kwargs())
 args_dict['babi_train_raw'] = babi_train_raw
 args_dict['babi_test_raw'] = babi_test_raw
 args_dict['word2vec'] = word2vec
     
 
-# init class
+# init class, choose network depending on arguments
 if args.network == 'dmn_batch':
     from models import dmn_batch
     dmn = dmn_batch.DMN_batch(**args_dict)
@@ -67,21 +76,21 @@ if args.network == 'dmn_batch':
 elif args.network == 'dmn_basic':
     from models import dmn_basic
     if (args.batch_size != 1):
-        print "==> no minibatch training, argument batch_size is useless"
+        print("==> no minibatch training, argument batch_size is useless")
         args.batch_size = 1
     dmn = dmn_basic.DMN_basic(**args_dict)
 
 elif args.network == 'dmn_smooth':
     from models import dmn_smooth
     if (args.batch_size != 1):
-        print "==> no minibatch training, argument batch_size is useless"
+        print("==> no minibatch training, argument batch_size is useless")
         args.batch_size = 1
     dmn = dmn_smooth.DMN_smooth(**args_dict)
 
 elif args.network == 'dmn_qa':
     from models import dmn_qa_draft
     if (args.batch_size != 1):
-        print "==> no minibatch training, argument batch_size is useless"
+        print("==> no minibatch training, argument batch_size is useless")
         args.batch_size = 1
     dmn = dmn_qa_draft.DMN_qa(**args_dict)
 
@@ -89,16 +98,22 @@ else:
     raise Exception("No such network known: " + args.network)
     
 
+#Try to load a pretrained network
 if args.load_state != "":
     dmn.load_state(args.load_state)
 
-
+#TODO: Recode this, why is it here? Must go elsewhere for good practice.
 def do_epoch(mode, epoch, skipped=0):
-    # mode is 'train' or 'test'
+    '''
+    :param mode: train or test mode are available
+    :param epoch: number of epoch. Useful only for display and metadata purposes
+    :param skipped: number of skipped epochs. Useful only for display and metadata purposes
+    :Return avg_loss, skipped: Average loss for the epochs, and current number of skipped epochs
+    '''
     y_true = []
     y_pred = []
     avg_loss = 0.0
-    prev_time = time.time()
+    prev_time = time.time() 
     
     batches_per_epoch = dmn.get_batches_per_epoch(mode)
     
