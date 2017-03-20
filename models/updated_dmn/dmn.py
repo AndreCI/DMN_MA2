@@ -17,11 +17,11 @@ class DMN(BaseModel):
     def build(self):
         params = self.params
         #N = batch_size
-        #L = max_sent_size
+        #L = max_sent_size  
         #Q = max_ques_size
         #F = max_fact_count
         #V = glove_size
-        #d = hidden_size
+        #d/D = hidden_size
         #A = vocav_size
         N, L, Q, F = params.batch_size, params.max_sent_size, params.max_ques_size, params.max_fact_count
         V, d, A = params.glove_size, params.hidden_size, self.words.vocab_size
@@ -51,9 +51,10 @@ class DMN(BaseModel):
 
         # Masking: to extract fact vectors at end of sentence. (details in paper)
         input_states = tf.transpose(tf.stack(input_states), [1, 0, 2])  # [N, L, D]
+
         facts = []
         for n in range(N):
-            filtered = tf.boolean_mask(input_states[n, :, :], input_mask[n, :])  # [?, D]
+            filtered = tf.boolean_mask(input_states[n, :, :], input_mask[n, :])  # [?, D], 0<?<=F
             padding = tf.zeros(tf.stack([F - tf.shape(filtered)[0], d]))
             facts.append(tf.concat(values=[filtered, padding],axis=0))  # [F, D]
 
