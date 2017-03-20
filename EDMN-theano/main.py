@@ -5,8 +5,8 @@ import argparse
 import time
 import json
 
-import utils.utils
-import utils.nn_utils
+from utils import utils
+from utils import nn_utils
 
 print "==> parsing input arguments"
 parser = argparse.ArgumentParser()
