@@ -2,7 +2,12 @@ import os as os
 import numpy as np
 
 def init_babi(fname):
-    print "==> Loading test from %s" % fname
+    '''
+    Load data from fname
+    :param fname: the path where the data are
+    :return tasks: raw data from fname.
+    '''
+    print("==> Loading data from %s" % fname)
     tasks = []
     task = None
     for i, line in enumerate(open(fname)):
@@ -26,6 +31,12 @@ def init_babi(fname):
 
 
 def get_babi_raw(id, test_id):
+    '''
+    Basic getter function to load the data set.
+    :param id: the number the task to train or test
+    :param test_id: Not sure why it is useful. If test_id="", takes the value id
+    :return babi_train_raw, babi_test_raw: the data loaded
+    '''
     babi_map = {
         "1": "qa1_single-supporting-fact",
         "2": "qa2_two-supporting-facts",
@@ -84,8 +95,9 @@ def load_glove(dim):
     '''
     Load GloVe from google.
     :param dim: Word embedding dimension. Must be 50, 100, 150, 200.
-    :return word2vec: a dictionary containing the word embedding. TODO: Check it this is right?
+    :return word2vec: a dictionary containing the word embedding. 
     '''
+    #TODO: Check it this is right?
     word2vec = {}
     
     print "==> loading glove"

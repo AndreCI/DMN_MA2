@@ -199,21 +199,33 @@ class DMN_basic:
                                        outputs=[self.prediction, self.loss],
                                        updates=updates)
         
-        print "==> compiling test_fn"
+        print("==> compiling test_fn")
         self.test_fn = theano.function(inputs=[self.input_var, self.q_var, self.answer_var, self.input_mask_var],
                                   outputs=[self.prediction, self.loss, self.inp_c, self.q_q, last_mem])
         
         
         if self.mode == 'train':
-            print "==> computing gradients (for debugging)"
+            print("==> computing gradients (for debugging)")
             gradient = T.grad(self.loss, self.params)
             self.get_gradient_fn = theano.function(inputs=[self.input_var, self.q_var, self.answer_var, self.input_mask_var], outputs=gradient)
 
     
+    #TODO: this shouldn't be here. This has nothing to do with dmn_basic, as it describe some basic GRU implementation.
+    #Maybe move it to nn_utils? Or a distinct class, something like GRU>Vanilla_GRU?
+    #There is some slight modification done to GRU for some modules (see AttnGRU), so maybe do distinct class is the right way to go
     def GRU_update(self, h, x, W_res_in, W_res_hid, b_res,
                          W_upd_in, W_upd_hid, b_upd,
                          W_hid_in, W_hid_hid, b_hid):
-        """ mapping of our variables to symbols in DMN paper: 
+        """ Function who does the computation for any classical GRU
+        In short, compute h_t = GRU(x_t, h_t-1)
+        :variable z: update gate
+        :variable r: reset gate
+        :variable _h: potential state
+        :param h: previous state
+        :param x: current input
+        :param params: different weights for GRU (3 W, 3 U, 3 b)
+        :return h: updated state
+        mapping of the variables to symbols in AMA:DMN for QA paper: 
         W_res_in = W^r
         W_res_hid = U^r
         b_res = b^r
@@ -230,16 +242,34 @@ class DMN_basic:
         return z * h + (1 - z) * _h
     
     
+    #This is some twisted implementations. I don't like it AT ALL.
+    #TODO move or remove this shit
     def input_gru_step(self, x, prev_h):
+        '''
+        Call GRU_update with self parameters
+        :param x: input for the GRU update
+        :param prev_h: previous state
+        :return next step for the input GRU
+        '''
         return self.GRU_update(prev_h, x, self.W_inp_res_in, self.W_inp_res_hid, self.b_inp_res, 
                                      self.W_inp_upd_in, self.W_inp_upd_hid, self.b_inp_upd,
                                      self.W_inp_hid_in, self.W_inp_hid_hid, self.b_inp_hid)
     
     
+    #TODO Called only in new_episode. Move/remove it?
+    #TODO prev_g seems useless.
     def new_attention_step(self, ct, prev_g, mem, q_q):
+        '''
+        Compute next g_t^i given c_t, m^i-1, q
+        :param ct: facts representation
+        :param prev_g: is useless??
+        :param mem: memory representation
+        :param q_q: question represention
+        :return G: the output of the simple FFNN
+        '''
         cWq = T.stack([T.dot(T.dot(ct, self.W_b), q_q)])
         cWm = T.stack([T.dot(T.dot(ct, self.W_b), mem)])
-        z = T.concatenate([ct, mem, q_q, ct * q_q, ct * mem, T.abs_(ct - q_q), T.abs_(ct - mem), cWq, cWm])
+        z = T.concatenate([ct, mem, q_q, ct * q_q, ct * mem, T.abs_(ct - q_q), T.abs_(ct - mem), cWq, cWm]) #direct from paper AMA:DMN for QA
         
         l_1 = T.dot(self.W_1, z) + self.b_1
         l_1 = T.tanh(l_1)
@@ -248,7 +278,16 @@ class DMN_basic:
         return G
         
         
+    #TODO this is the modified GRU of the MemUpdate Mechanism.
+    #Maybe move it elsewhere (as a child of a GRU class?)
     def new_episode_step(self, ct, g, prev_h):
+        '''
+        Compute the h_t^i for the MemUpdate Mechanism
+        :param ct: facts representation
+        :param g: weights of the gates g^i (given by the attention mechanism)
+        :param prev_h: previous state of the Mem GRU (h_t-1^i)
+        :return h_t^i: next state
+        '''
         gru = self.GRU_update(prev_h, ct,
                              self.W_mem_res_in, self.W_mem_res_hid, self.b_mem_res, 
                              self.W_mem_upd_in, self.W_mem_upd_hid, self.b_mem_upd,
@@ -261,23 +300,35 @@ class DMN_basic:
     def new_episode(self, mem):
         '''
         Create a new episode
+        Compute the g using the attention mechanism
+        Compute the new state h_t^i of the mem update mechanism
+        Use it to compute e^i = h_T_C^i (see paper AMA:DMN for QA)
+        :param mem: current memory
+        :return e[-1]: latest episode
         '''
+        #g_updates seems useless.
         g, g_updates = theano.scan(fn=self.new_attention_step,
             sequences=self.inp_c,
             non_sequences=[mem, self.q_q],
             outputs_info=T.zeros_like(self.inp_c[0][0])) 
         
+        #Softmax if normalize_attention?
         if (self.normalize_attention):
             g = nn_utils.softmax(g)
         
+        #e_updates seems useless.
         e, e_updates = theano.scan(fn=self.new_episode_step,
             sequences=[self.inp_c, g],
             outputs_info=T.zeros_like(self.inp_c[0]))
         
         return e[-1]
 
-    
+
+    #TODO add documentation (later because it isn't really useful)    
     def save_params(self, file_name, epoch, **kwargs):
+        '''
+        Basic function to save current state.
+        '''
         with open(file_name, 'w') as save_file:
             pickle.dump(
                 obj = {
@@ -289,9 +340,12 @@ class DMN_basic:
                 protocol = -1
             )
     
-    
+    #TODO add documentation (later because it isn't really useful)    
     def load_state(self, file_name):
-        print "==> loading state %s" % file_name
+        '''
+        Basic function to load an old state
+        '''
+        print("==> loading state %s" % file_name)
         with open(file_name, 'r') as load_file:
             dict = pickle.load(load_file)
             loaded_params = dict['params']
@@ -361,13 +415,24 @@ class DMN_basic:
     
     
     def shuffle_train_set(self):
-        print "==> Shuffling the train set"
+        print("==> Shuffling the train set")
         combined = zip(self.train_input, self.train_q, self.train_answer, self.train_input_mask)
         random.shuffle(combined)
         self.train_input, self.train_q, self.train_answer, self.train_input_mask = zip(*combined)
         
     
     def step(self, batch_index, mode):
+        '''
+        
+        :param batch_index:
+        :param mode: train or test
+        :return a directory containing:
+            :prediction:
+            :answers:
+            :current_loss:
+            :skipped:
+            :log:
+        '''
         if mode == "train" and self.mode == "test":
             raise Exception("Cannot train during test mode")
         
@@ -399,8 +464,8 @@ class DMN_basic:
             grad_norm = np.max([utils.get_norm(x) for x in gradient_value])
             
             if (np.isnan(grad_norm)):
-                print "==> gradient is nan at index %d." % batch_index
-                print "==> skipping"
+                print("==> gradient is nan at index %d." % batch_index)
+                print("==> skipping")
                 skipped = 1
         
         if skipped == 0:

@@ -145,22 +145,22 @@ def do_epoch(mode, epoch, skipped=0):
                 prev_time = cur_time
         
         if np.isnan(current_loss):
-            print "==> current loss IS NaN. This should never happen :) " 
+            print("==> current loss IS NaN. This should never happen :) ")
             exit()
 
     avg_loss /= batches_per_epoch
-    print "\n  %s loss = %.5f" % (mode, avg_loss)
-    print "confusion matrix:"
-    print metrics.confusion_matrix(y_true, y_pred)
+    print("\n  %s loss = %.5f" % (mode, avg_loss))
+    print("confusion matrix:")
+    print(metrics.confusion_matrix(y_true, y_pred))
     
     accuracy = sum([1 if t == p else 0 for t, p in zip(y_true, y_pred)])
-    print "accuracy: %.2f percent" % (accuracy * 100.0 / batches_per_epoch / args.batch_size)
+    print("accuracy: %.2f percent" % (accuracy * 100.0 / batches_per_epoch / args.batch_size))
     
     return avg_loss, skipped
 
 
 if args.mode == 'train':
-    print "==> training"   	
+    print("==> training")
     skipped = 0
     for epoch in range(args.epochs):
         start_time = time.time()
@@ -175,10 +175,10 @@ if args.mode == 'train':
         state_name = 'states/%s.epoch%d.test%.5f.state' % (network_name, epoch, epoch_loss)
 
         if (epoch % args.save_every == 0):    
-            print "==> saving ... %s" % state_name
+            print("==> saving ... %s" % state_name)
             dmn.save_params(state_name, epoch)
         
-        print "epoch %d took %.3fs" % (epoch, float(time.time()) - start_time)
+        print("epoch %d took %.3fs" % (epoch, float(time.time()) - start_time)
 
 elif args.mode == 'test':
     file = open('last_tested_model.json', 'w+')

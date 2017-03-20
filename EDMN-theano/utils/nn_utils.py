@@ -2,6 +2,10 @@ import theano
 import theano.tensor as T
 import lasagne
 
+'''
+Utils methods to create neural networks easily.
+'''
+
 def softmax(x):
     e_x = T.exp(x - x.max(axis=0, keepdims=True))
     out = e_x / e_x.sum(axis=0, keepdims=True)
