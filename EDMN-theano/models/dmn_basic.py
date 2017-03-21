@@ -121,7 +121,7 @@ class DMN_basic:
         memory = [self.q_q.copy()] #So q_q is memory initialization
         for iter in range(1, self.memory_hops + 1):
             current_episode = self.new_episode(memory[iter - 1])
-            memory.append(self.nn_utils.GRU_update(memory[iter - 1], current_episode,
+            memory.append(nn_utils.GRU_update(memory[iter - 1], current_episode,
                                           self.W_mem_res_in, self.W_mem_res_hid, self.b_mem_res, 
                                           self.W_mem_upd_in, self.W_mem_upd_hid, self.b_mem_upd,
                                           self.W_mem_hid_in, self.W_mem_hid_hid, self.b_mem_hid))
@@ -148,7 +148,7 @@ class DMN_basic:
             self.b_ans_hid = nn_utils.constant_param(value=0.0, shape=(self.dim,))
         
             def answer_step(prev_a, prev_y):
-                a = self.nn_utils.GRU_update(prev_a, T.concatenate([prev_y, self.q_q]),
+                a = nn_utils.GRU_update(prev_a, T.concatenate([prev_y, self.q_q]),
                                   self.W_ans_res_in, self.W_ans_res_hid, self.b_ans_res, 
                                   self.W_ans_upd_in, self.W_ans_upd_hid, self.b_ans_upd,
                                   self.W_ans_hid_in, self.W_ans_hid_hid, self.b_ans_hid)
