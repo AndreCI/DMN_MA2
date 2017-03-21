@@ -121,7 +121,7 @@ class DMN_basic:
         memory = [self.q_q.copy()] #So q_q is memory initialization
         for iter in range(1, self.memory_hops + 1):
             current_episode = self.new_episode(memory[iter - 1])
-            memory.append(self.GRU_update(memory[iter - 1], current_episode,
+            memory.append(self.nn_utils.GRU_update(memory[iter - 1], current_episode,
                                           self.W_mem_res_in, self.W_mem_res_hid, self.b_mem_res, 
                                           self.W_mem_upd_in, self.W_mem_upd_hid, self.b_mem_upd,
                                           self.W_mem_hid_in, self.W_mem_hid_hid, self.b_mem_hid))
@@ -148,7 +148,7 @@ class DMN_basic:
             self.b_ans_hid = nn_utils.constant_param(value=0.0, shape=(self.dim,))
         
             def answer_step(prev_a, prev_y):
-                a = self.GRU_update(prev_a, T.concatenate([prev_y, self.q_q]),
+                a = self.nn_utils.GRU_update(prev_a, T.concatenate([prev_y, self.q_q]),
                                   self.W_ans_res_in, self.W_ans_res_hid, self.b_ans_res, 
                                   self.W_ans_upd_in, self.W_ans_upd_hid, self.b_ans_upd,
                                   self.W_ans_hid_in, self.W_ans_hid_hid, self.b_ans_hid)
@@ -210,36 +210,7 @@ class DMN_basic:
             self.get_gradient_fn = theano.function(inputs=[self.input_var, self.q_var, self.answer_var, self.input_mask_var], outputs=gradient)
 
     
-    #TODO: this shouldn't be here. This has nothing to do with dmn_basic, as it describe some basic GRU implementation.
-    #Maybe move it to nn_utils? Or a distinct class, something like GRU>Vanilla_GRU?
-    #There is some slight modification done to GRU for some modules (see AttnGRU), so maybe do distinct class is the right way to go
-    def GRU_update(self, h, x, W_res_in, W_res_hid, b_res,
-                         W_upd_in, W_upd_hid, b_upd,
-                         W_hid_in, W_hid_hid, b_hid):
-        """ Function who does the computation for any classical GRU
-        In short, compute h_t = GRU(x_t, h_t-1)
-        :variable z: update gate
-        :variable r: reset gate
-        :variable _h: potential state
-        :param h: previous state
-        :param x: current input
-        :param params: different weights for GRU (3 W, 3 U, 3 b)
-        :return h: updated state
-        mapping of the variables to symbols in AMA:DMN for QA paper: 
-        W_res_in = W^r
-        W_res_hid = U^r
-        b_res = b^r
-        W_upd_in = W^z
-        W_upd_hid = U^z
-        b_upd = b^z
-        W_hid_in = W
-        W_hid_hid = U
-        b_hid = b^h
-        """
-        z = T.nnet.sigmoid(T.dot(W_upd_in, x) + T.dot(W_upd_hid, h) + b_upd)
-        r = T.nnet.sigmoid(T.dot(W_res_in, x) + T.dot(W_res_hid, h) + b_res)
-        _h = T.tanh(T.dot(W_hid_in, x) + r * T.dot(W_hid_hid, h) + b_hid)
-        return z * h + (1 - z) * _h
+
     
     
     #This is some twisted implementations. I don't like it AT ALL.
@@ -251,7 +222,7 @@ class DMN_basic:
         :param prev_h: previous state
         :return next step for the input GRU
         '''
-        return self.GRU_update(prev_h, x, self.W_inp_res_in, self.W_inp_res_hid, self.b_inp_res, 
+        return nn_utils.GRU_update(prev_h, x, self.W_inp_res_in, self.W_inp_res_hid, self.b_inp_res, 
                                      self.W_inp_upd_in, self.W_inp_upd_hid, self.b_inp_upd,
                                      self.W_inp_hid_in, self.W_inp_hid_hid, self.b_inp_hid)
     
@@ -288,7 +259,7 @@ class DMN_basic:
         :param prev_h: previous state of the Mem GRU (h_t-1^i)
         :return h_t^i: next state
         '''
-        gru = self.GRU_update(prev_h, ct,
+        gru = nn_utils.GRU_update(prev_h, ct,
                              self.W_mem_res_in, self.W_mem_res_hid, self.b_mem_res, 
                              self.W_mem_upd_in, self.W_mem_upd_hid, self.b_mem_upd,
                              self.W_mem_hid_in, self.W_mem_hid_hid, self.b_mem_hid)
