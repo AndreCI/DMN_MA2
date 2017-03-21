@@ -179,7 +179,8 @@ if args.mode == 'train':
             dmn.save_params(state_name, epoch)
         
         print("epoch %d took %.3fs" % (epoch, float(time.time()) - start_time)
-
+        
+    
 elif args.mode == 'test':
     file = open('last_tested_model.json', 'w+')
     data = dict(args._get_kwargs())
