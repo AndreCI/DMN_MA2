@@ -158,6 +158,7 @@ def do_epoch(mode, epoch, skipped=0):
     
     return avg_loss, skipped
 
+    
 
 if args.mode == 'train':
     print("==> training")
@@ -177,10 +178,8 @@ if args.mode == 'train':
         if (epoch % args.save_every == 0):    
             print("==> saving ... %s" % state_name)
             dmn.save_params(state_name, epoch)
+        print("epoch %d took %.3fs" % (epoch, float(time.time()) - start_time))
         
-        print("epoch %d took %.3fs" % (epoch, float(time.time()) - start_time)
-        
-    
 elif args.mode == 'test':
     file = open('last_tested_model.json', 'w+')
     data = dict(args._get_kwargs())
