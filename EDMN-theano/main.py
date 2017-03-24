@@ -201,6 +201,8 @@ elif args.mode == 'minitest':
     from utils import minitest
     minitest.do_minitest(dmn)
     
+    
+    
 
 else:
     raise Exception("unknown mode")
