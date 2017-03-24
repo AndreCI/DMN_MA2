@@ -33,6 +33,7 @@ def do_minitest(dmn, vocab):
     for x in prediction.argmax(axis=1):
         y_pred.append(x)
         print(ivocab[x])
+
     
 
 
