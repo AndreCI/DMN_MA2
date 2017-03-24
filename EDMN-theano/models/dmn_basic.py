@@ -419,6 +419,12 @@ class DMN_basic:
             qs = self.test_q
             answers = self.test_answer
             input_masks = self.test_input_mask
+        elif mode == "minitest":    
+            theano_fn = self.test_fn 
+            inputs = self.test_input
+            qs = self.test_q
+            answers = self.test_answer
+            input_masks = self.test_input_mask
         else:
             raise Exception("Invalid mode")
             
@@ -446,7 +452,9 @@ class DMN_basic:
         
         param_norm = np.max([utils.get_norm(x.get_value()) for x in self.params])
         
-        return {"prediction": np.array([ret[0]]),
+        return {"inputs":inp,
+                "question":q,
+                "prediction": np.array([ret[0]]),
                 "answers": np.array([ans]),
                 "current_loss": ret[1],
                 "skipped": skipped,

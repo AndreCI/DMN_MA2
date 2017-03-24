@@ -199,7 +199,7 @@ elif args.mode == 'minitest':
     data["vocab"] = dmn.vocab.keys()
     #json.dump(data, file, indent=2)
     from utils import minitest
-    minitest.do_minitest(dmn)
+    minitest.do_minitest(dmn, data["vocab"])
     
     
     

@@ -1,25 +1,38 @@
+import numpy as np
+import utils
 
-def load_minitest(path):
-    data = utils.init_babi(fname)
-    
-
-def do_minitest(dmn):
+def do_minitest(dmn, vocab):
     #data = load_minitest(fname)
     
     y_true = []
     y_pred = []
     loss = 0.0
-    step_data = dmn.step(0,'test')
+    ivocab = dmn.ivocab
+    step_data = dmn.step(1,'test')
     prediction = step_data["prediction"]
     answers = step_data["answers"]
+    inputs = step_data["inputs"]
+    question = step_data["question"]
+    
+    w_input = []
+    w_q = []
+    print("==> reconstruction of input and question")
+    for i in range(0, np.shape(inputs)[0]):
+        w_input.append(utils.get_word(dmn.word2vec, inputs[i]))
+    for i in range(0, np.shape(question)[0]):
+        w_q.append(utils.get_word(dmn.word2vec, question[i]))
+
+    print("Facts:")
+    print( ' '.join(w_input))
+    print( ' '.join(w_q) + "?")
+    print("==>Right answer is:")
     for x in answers:
         y_true.append(x)
-        print(x)
-    print("HERE")
+        print(ivocab[x])
+    print("==>Answer found by the model is:")
     for x in prediction.argmax(axis=1):
         y_pred.append(x)
-        print(x)
-    print("END")
+        print(ivocab[x])
     
 
 

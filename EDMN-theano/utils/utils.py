@@ -135,8 +135,8 @@ def process_word(word, word2vec, vocab, ivocab, word_vector_size, to_return="wor
     Return the word representation depending on to_return option
     :param word: a word, in raw text
     :param word2vec: embedding matrix containing all the words known
-    :param vocab: list of all words known
-    :param ivocab: ???
+    :param vocab: list of all words known. Given a word, return the index
+    :param ivocab: inverse of vocab, i.e. list of all word, given an index, return a word
     :param word_vector_size: size of word embedding (50, 100, 200, 300)
     :param to_return: option to choose what the function should return.
     :param silent: used in case word is not in word2vec. If False, will print a warning
@@ -154,8 +154,15 @@ def process_word(word, word2vec, vocab, ivocab, word_vector_size, to_return="wor
     elif to_return == "index":
         return vocab[word]
     elif to_return == "onehot":
-        raise Exception("to_return = 'onehot' is not implemented yet")
+        raise Exception("to_return = 'onehot' is not implemented yet.")
+    else:
+        raise Exception("to_return =",to_return,"is unknow. Please change to word2vec or index.")
 
+def get_word(word2vec, emb):
+    for (k,v) in word2vec.iteritems():
+        if((v==emb).all()):
+            return k
+    return "<wnf>"
 
 def get_norm(x):
     x = np.array(x)
