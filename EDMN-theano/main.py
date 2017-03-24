@@ -21,7 +21,7 @@ parser.add_argument('--dim', type=int, default=40, help='number of hidden units 
 parser.add_argument('--epochs', type=int, default=500, help='number of epochs')
 parser.add_argument('--load_state', type=str, default="", help='state file path')
 parser.add_argument('--answer_module', type=str, default="feedforward", help='answer module type: feedforward or recurrent')
-parser.add_argument('--mode', type=str, default="train", help='mode: train or test. Test mode required load_state')
+parser.add_argument('--mode', type=str, default="train", help='mode: train, test or minitest. Test and minitest mode required load_state')
 parser.add_argument('--input_mask_mode', type=str, default="sentence", help='input_mask_mode: word or sentence')
 parser.add_argument('--memory_hops', type=int, default=5, help='memory GRU steps')
 parser.add_argument('--batch_size', type=int, default=10, help='no commment')
@@ -189,6 +189,18 @@ elif args.mode == 'test':
     data["vocab"] = dmn.vocab.keys()
     json.dump(data, file, indent=2)
     do_epoch('test', 0)
+
+elif args.mode == 'minitest':
+    file = open('last_tested_model.json','w+')
+    data = dict(args._get_kwargs())
+    data["id"] = network_name
+    data["name"] = network_name
+    data["description"] = ""
+    data["vocab"] = dmn.vocab.keys()
+    #json.dump(data, file, indent=2)
+    from utils import minitest
+    minitest.do_minitest(dmn)
+    
 
 else:
     raise Exception("unknown mode")

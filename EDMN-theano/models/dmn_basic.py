@@ -233,7 +233,7 @@ class DMN_basic:
         '''
         Compute next g_t^i given c_t, m^i-1, q
         :param ct: facts representation
-        :param prev_g: is useless??
+        :param prev_g: is useless
         :param mem: memory representation
         :param q_q: question represention
         :return G: the output of the simple FFNN
