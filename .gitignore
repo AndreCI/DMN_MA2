@@ -1,8 +1,6 @@
-save/
-logs/
-data/
+EDMN-theano/utils/data
+EDMN-theano/utils/data/
 tensorflow/
-data
 tensorflow
 .idea/
 .ipynb_checkpoints/

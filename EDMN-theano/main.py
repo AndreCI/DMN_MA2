@@ -6,6 +6,7 @@ import time
 import json
 
 from utils import utils
+from utils import run
 from utils import nn_utils
 
 
@@ -15,12 +16,13 @@ from utils import nn_utils
 print("==> parsing input arguments")
 parser = argparse.ArgumentParser(prog="ExtDMN",description="Andre s code ExtDMN. Use for Q&A, master semester project @EPFL-LIA, 2017")
 
-parser.add_argument('--network', type=str, default="dmn_batch", choices=['dmn_basic','dmn_smooth','dmn_batch'], help='network type: dmn_basic, dmn_smooth, or dmn_batch')
+parser.add_argument('--network', type=str, default="dmn_batch", choices=['dmn_basic', 'dmn_multiple','dmn_smooth','dmn_batch'], help='network type: dmn_basic, dmn_multiple, dmn_smooth, or dmn_batch')
 parser.add_argument('--word_vector_size', type=int, default=50, choices=['50','100','200','300'], help='embeding size (50, 100, 200, 300 only)')
 parser.add_argument('--dim', type=int, default=40, help='number of hidden units in input module GRU')
 parser.add_argument('--epochs', type=int, default=500, help='number of epochs')
 parser.add_argument('--load_state', type=str, default="", help='state file path')
 parser.add_argument('--answer_module', type=str, default="feedforward", help='answer module type: feedforward or recurrent')
+parser.add_argument('--answer_step_nbr',type=int,default=1, help='Number of step done by the answer module (>0)')
 parser.add_argument('--mode', type=str, default="train", help='mode: train, test or minitest. Test and minitest mode required load_state')
 parser.add_argument('--input_mask_mode', type=str, default="sentence", help='input_mask_mode: word or sentence')
 parser.add_argument('--memory_hops', type=int, default=5, help='memory GRU steps')
@@ -73,6 +75,13 @@ if args.network == 'dmn_batch':
     from models import dmn_batch
     dmn = dmn_batch.DMN_batch(**args_dict)
 
+elif args.network == 'dmn_multiple':
+    from models import dmn_multiple
+    if (args.batch_size != 1):
+        print("==> no minibatch training, argument batch_size is useless")
+        args.batch_size = 1
+    dmn = dmn_multiple.DMN_multiple(**args_dict)
+
 elif args.network == 'dmn_basic':
     from models import dmn_basic
     if (args.batch_size != 1):
@@ -101,63 +110,6 @@ else:
 #Try to load a pretrained network
 if args.load_state != "":
     dmn.load_state(args.load_state)
-
-#TODO: Recode this, why is it here? Must go elsewhere for good practice.
-def do_epoch(mode, epoch, skipped=0):
-    '''
-    :param mode: train or test mode are available
-    :param epoch: number of epoch. Useful only for display and metadata purposes
-    :param skipped: number of skipped epochs. Useful only for display and metadata purposes
-    :Return avg_loss, skipped: Average loss for the epochs, and current number of skipped epochs
-    '''
-    y_true = []
-    y_pred = []
-    avg_loss = 0.0
-    prev_time = time.time() 
-    
-    batches_per_epoch = dmn.get_batches_per_epoch(mode)
-    
-    for i in range(0, batches_per_epoch):
-        step_data = dmn.step(i, mode)
-        prediction = step_data["prediction"]
-        answers = step_data["answers"]
-        current_loss = step_data["current_loss"]
-        current_skip = (step_data["skipped"] if "skipped" in step_data else 0)
-        log = step_data["log"]
-        
-        skipped += current_skip
-        
-        if current_skip == 0:
-            avg_loss += current_loss
-            
-            for x in answers:
-                y_true.append(x)
-            
-            for x in prediction.argmax(axis=1):
-                y_pred.append(x)
-            
-            # TODO: save the state sometimes
-            if (i % args.log_every == 0):
-                cur_time = time.time()
-                print ("  %sing: %d.%d / %d \t loss: %.3f \t avg_loss: %.3f \t skipped: %d \t %s \t time: %.2fs" % 
-                    (mode, epoch, i * args.batch_size, batches_per_epoch * args.batch_size, 
-                     current_loss, avg_loss / (i + 1), skipped, log, cur_time - prev_time))
-                prev_time = cur_time
-        
-        if np.isnan(current_loss):
-            print("==> current loss IS NaN. This should never happen :) ")
-            exit()
-
-    avg_loss /= batches_per_epoch
-    print("\n  %s loss = %.5f" % (mode, avg_loss))
-    print("confusion matrix:")
-    print(metrics.confusion_matrix(y_true, y_pred))
-    
-    accuracy = sum([1 if t == p else 0 for t, p in zip(y_true, y_pred)])
-    print("accuracy: %.2f percent" % (accuracy * 100.0 / batches_per_epoch / args.batch_size))
-    
-    return avg_loss, skipped
-
     
 
 if args.mode == 'train':
@@ -169,9 +121,9 @@ if args.mode == 'train':
         if args.shuffle:
             dmn.shuffle_train_set()
         
-        _, skipped = do_epoch('train', epoch, skipped)
+        _, skipped = run.do_epoch('train', epoch, skipped)
         
-        epoch_loss, skipped = do_epoch('test', epoch, skipped)
+        epoch_loss, skipped = run.do_epoch('test', epoch, skipped)
         
         state_name = 'states/%s.epoch%d.test%.5f.state' % (network_name, epoch, epoch_loss)
 
@@ -188,7 +140,7 @@ elif args.mode == 'test':
     data["description"] = ""
     data["vocab"] = dmn.vocab.keys()
     json.dump(data, file, indent=2)
-    do_epoch('test', 0)
+    run.do_epoch('test', 0)
 
 elif args.mode == 'minitest':
     file = open('last_tested_model.json','w+')
@@ -198,8 +150,7 @@ elif args.mode == 'minitest':
     data["description"] = ""
     data["vocab"] = dmn.vocab.keys()
     #json.dump(data, file, indent=2)
-    from utils import minitest
-    minitest.do_minitest(dmn, data["vocab"])
+    run.do_minitest(dmn, data["vocab"],1)
     
     
     

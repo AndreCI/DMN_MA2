@@ -1,38 +1,47 @@
 import numpy as np
 import utils
 
-def do_minitest(dmn, vocab):
+def do_minitest(dmn, vocab, nbr_test=0):
     #data = load_minitest(fname)
     
     y_true = []
     y_pred = []
-    loss = 0.0
     ivocab = dmn.ivocab
-    step_data = dmn.step(1,'test')
-    prediction = step_data["prediction"]
-    answers = step_data["answers"]
-    inputs = step_data["inputs"]
-    question = step_data["question"]
     
-    w_input = []
-    w_q = []
-    print("==> reconstruction of input and question")
-    for i in range(0, np.shape(inputs)[0]):
-        w_input.append(utils.get_word(dmn.word2vec, inputs[i]))
-    for i in range(0, np.shape(question)[0]):
-        w_q.append(utils.get_word(dmn.word2vec, question[i]))
-
-    print("Facts:")
-    print( ' '.join(w_input))
-    print( ' '.join(w_q) + "?")
-    print("==>Right answer is:")
-    for x in answers:
-        y_true.append(x)
-        print(ivocab[x])
-    print("==>Answer found by the model is:")
-    for x in prediction.argmax(axis=1):
-        y_pred.append(x)
-        print(ivocab[x])
+    for j in range(0, nbr_test):
+        step_data = dmn.step(j,'minitest')
+        prediction = step_data["prediction"]
+        answers = step_data["answers"]
+        inputs = step_data["inputs"]
+        question = step_data["question"]
+        ret_multiple = step_data["multiple_prediction"]
+        
+        w_input = []
+        w_q = []
+        print("==> reconstruction of input and question")
+        for i in range(0, np.shape(inputs)[0]):
+            w_input.append(utils.get_word(dmn.word2vec, inputs[i]))
+        for i in range(0, np.shape(question)[0]):
+            w_q.append(utils.get_word(dmn.word2vec, question[i]))           
+        print("Facts:")
+        print( ' '.join(w_input))
+        print( ' '.join(w_q) + "?")
+        print("==>Right answer is:")
+        for x in answers:
+            y_true.append(x)
+            print(ivocab[x])
+        print("==>Answer found by the model is:")
+        for x in prediction.argmax(axis=1):
+            y_pred.append(x)
+            print(ivocab[x])
+            
+        print("==>Multiple answer found are:")
+        list_pred = []
+        for i in range(0,np.shape(ret_multiple)[1]):
+            pred_temp = ret_multiple[:,i,:]
+            for x in pred_temp.argmax(axis=1):
+                list_pred.append(ivocab[x])
+        print(', '.join(list_pred))
 
     
 
