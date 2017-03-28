@@ -1,29 +1,7 @@
 import os as os
+import numpy as np
 
-def init_babi(fname):
-    tasks = []
-    task = None
-    for i, line in enumerate(open(fname)):
-        id = int(line[0:line.find(' ')])
-        if id == 1:
-            task = {"Q": "", "A": ""} 
-            
-        line = line.strip()
-        line = line.replace('.', ' . ')
-        line = line[line.find(' ')+1:]
-        if line.find('?') == -1:
-            pass
-        else:
-            idx = line.find('?')
-            tmp = line[idx+1:].split('\t')
-            task["Q"] = line[:idx]
-            task["A"] = tmp[1].strip()
-            tasks.append(task.copy())
-    return tasks
-
-
-def get_babi_raw_qa(id, test_id):
-    babi_map = {
+babi_map = {
         "1": "qa1_single-supporting-fact",
         "2": "qa2_two-supporting-facts",
         "3": "qa3_three-supporting-facts",
@@ -68,6 +46,63 @@ def get_babi_raw_qa(id, test_id):
         "sh19": "../shuffled/qa19_path-finding",
         "sh20": "../shuffled/qa20_agents-motivations",
     }
+
+def write_babi(fname,data):
+    file_obj = open(fname, "w")
+    line_count = 1
+    for i in range(0,np.shape(data)[0]):             
+        episode = data.pop()
+        facts = episode["C"].split(".")
+        question = episode["Q"]
+        answer = episode["A"]
+        j=0
+        for j in range(0, np.shape(facts)[0]-1):
+            line = ""
+            if j==0:
+                line = str(line_count) + " "
+            else:
+                line = str(line_count)
+            line = line + facts[j] + "."
+            line = line.replace(' .', '.')
+            line = line + "\n"
+            file_obj.write(line)
+            line_count = line_count+1
+        line = ""
+        line = str(line_count) + " "+question + "? \t" + answer
+        line = line + "\n"
+        file_obj.write(line)
+        line_count = line_count + 1
+        if line_count>15:
+            line_count=1
+    print("writing finished.")
+    
+def init_write_babi(id,data):
+    babi_name = babi_map[id]
+    write_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/en/%s_train.txt' % babi_name), data)
+
+def init_babi(fname):
+    tasks = []
+    task = None
+    for i, line in enumerate(open(fname)):
+        id = int(line[0:line.find(' ')])
+        if id == 1:
+            task = {"C":"","Q": "", "A": ""} 
+            
+        line = line.strip()
+        line = line.replace('.', ' . ')
+        line = line[line.find(' ')+1:]
+        if line.find('?') == -1:
+            task["C"] += line
+        else:
+            idx = line.find('?')
+            tmp = line[idx+1:].split('\t')
+            task["Q"] = line[:idx]
+            task["A"] = tmp[1].strip()
+            tasks.append(task.copy())
+    return tasks
+
+
+def get_babi_raw_qa(id, test_id):
     if (test_id == ""):
         test_id = id 
     babi_name = babi_map[id]

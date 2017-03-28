@@ -1,6 +1,6 @@
 import argparse
 import load_and_store as las
-
+import os
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--babi_id', type=str, default="1", help='babi task ID')
@@ -10,6 +10,9 @@ args = parser.parse_args()
 
 
 babi_train_raw, _ = las.get_babi_raw_qa(args.babi_id, args.babi_test_id)
+
+#babi_name = "1"
+#jack = open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/en/%s_train.txt' % babi_name), 'a')
 
 
 def generate_sentence(episode):
@@ -32,8 +35,10 @@ def reconstruct_sentence(dic):
     sentence.append(dic['location'])
     return (' '.join(sentence)+'.')
 
+babi_train_raw_new = []
 while len(babi_train_raw)!=0:
-    a = babi_train_raw.pop()
-    dic = generate_sentence(a)
-    print(reconstruct_sentence(dic))
-    
+    episode = babi_train_raw.pop()
+    dic = generate_sentence(episode)
+    episode["A"] = reconstruct_sentence(dic)
+    babi_train_raw_new.append(episode)
+las.init_write_babi("1",babi_train_raw_new)
