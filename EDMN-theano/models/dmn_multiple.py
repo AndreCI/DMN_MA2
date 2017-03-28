@@ -67,13 +67,8 @@ class DMN_multiple:
         
             
         print("==> building input module")
-        #Input weights for first layer 
-        #TODO why is there an input layer??
         self.W_inp_res_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.word_vector_size))
-        #Input weights for hidden layer
         self.W_inp_res_hid = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim))
-        #Input bias
-        #TODO why constant?
         self.b_inp_res = nn_utils.constant_param(value=0.0, shape=(self.dim,))
         
         self.W_inp_upd_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.word_vector_size))

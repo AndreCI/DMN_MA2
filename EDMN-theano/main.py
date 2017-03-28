@@ -152,8 +152,5 @@ elif args.mode == 'minitest':
     #json.dump(data, file, indent=2)
     run.do_minitest(dmn, data["vocab"],1)
     
-    
-    
-
 else:
     raise Exception("unknown mode")
