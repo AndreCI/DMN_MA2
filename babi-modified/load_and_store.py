@@ -76,6 +76,7 @@ def write_babi(fname,data):
             line_count=1
     print("writing finished.")
     
+    
 def init_write_babi(id,data):
     babi_name = babi_map[id]
     write_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/en/%s_train.txt' % babi_name), data)
