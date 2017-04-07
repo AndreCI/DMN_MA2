@@ -1,8 +1,7 @@
 EDMN-theano/utils/data
 EDMN-theano/utils/data/
-tensorflow/
-tensorflow
-.idea/
-.ipynb_checkpoints/
-sandbox
-__pycache__
+save/
+logs/
+data/
+babi-modified/original_data/
+babi-modified/original_data
