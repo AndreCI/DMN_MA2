@@ -428,6 +428,8 @@ class DMN_basic:
         else:
             raise Exception("Invalid mode")
             
+        
+            
         inp = inputs[batch_index]
         q = qs[batch_index]
         ans = answers[batch_index]

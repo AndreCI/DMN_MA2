@@ -58,7 +58,11 @@ network_name = args.prefix + '%s.mh%d.n%d.bs%d%s%s%s.babi%s' % (
     args.babi_id)
 
 #Getting dataset(train & test)
-babi_train_raw, babi_test_raw = utils.get_babi_raw(args.babi_id, args.babi_test_id)
+if args.network == 'dmn_multiple':
+    print("using multiple")
+    babi_train_raw, babi_test_raw = utils.get_babi_raw(args.babi_id, args.babi_test_id, multiple=True)
+else:
+    babi_train_raw, babi_test_raw = utils.get_babi_raw(args.babi_id, args.babi_test_id)
 
 #Getting GloVe, i.e. embedding matrix
 word2vec = utils.load_glove(args.word_vector_size)
@@ -121,7 +125,7 @@ if args.mode == 'train':
         if args.shuffle:
             dmn.shuffle_train_set()
         
-        _, skipped = run.do_epoch('train', epoch, skipped)
+        _, skipped = run.do_epoch(args, dmn,'train', epoch, skipped)
         
         epoch_loss, skipped = run.do_epoch('test', epoch, skipped)
         

@@ -1,5 +1,8 @@
 import numpy as np
 import utils
+import time
+import sklearn.metrics as metrics
+
 
 def do_minitest(dmn, vocab, nbr_test=0):
     #data = load_minitest(fname)
@@ -46,7 +49,7 @@ def do_minitest(dmn, vocab, nbr_test=0):
     
 
 
-def do_epoch(mode, epoch, skipped=0):
+def do_epoch(args, dmn, mode, epoch, skipped=0):
     '''
     :param mode: train or test mode are available
     :param epoch: number of epoch. Useful only for display and metadata purposes
