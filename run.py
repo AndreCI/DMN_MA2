@@ -31,17 +31,17 @@ def do_minitest(dmn, vocab, multiple_ans=False,nbr_test=0):
                
                
         
-#        if(multiple_ans==True):
-#            print("==>Right answer is:")
-#            answers = ret_multiple[0]
-#            print(np.shape(answers))
-#            print(answers)
-#            for i in range(0,np.shape(answers)[0]):
-#                ans = (utils.get_word(dmn.word2vec, answers[i]))
-#                y_true.append(ans)
-#            print(' '.join(y_true) + "?")
-#        print("CUTTING NOW--------------")
-#        assert 1==0
+        if(multiple_ans==True):
+            print("==>Right answer is:")
+            answers = ret_multiple[0]
+            print(np.shape(answers))
+            print(answers)
+            for i in range(0,np.shape(answers)[0]):
+                ans = (utils.get_word(dmn.word2vec, answers[i]))
+                y_true.append(ans)
+            print(' '.join(y_true) + "?")
+        print("CUTTING NOW--------------")
+        assert 1==0
         
         w_input = []
         w_q = []
@@ -77,7 +77,7 @@ def do_minitest(dmn, vocab, multiple_ans=False,nbr_test=0):
                 pred_temp = ret_multiple[:,i,:]
                 for x in pred_temp.argmax(axis=1):
                     list_pred.append(ivocab[x])
-                print(', '.join(list_pred) + ' :('+str(np.shape(ret_multiple)[1])+' answers)')
+                    print(', '.join(list_pred) + ' :('+str(np.shape(ret_multiple)[1])+' answers)')
 
     
 

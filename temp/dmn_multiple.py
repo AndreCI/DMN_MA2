@@ -62,7 +62,7 @@ class DMN_multiple:
 
         self.input_var = T.matrix('input_var')
         self.q_var = T.matrix('question_var')
-        self.answer_var = T.matrix('answer_var')
+        self.answer_var = T.iscalar('answer_var')
         self.input_mask_var = T.ivector('input_mask_var')
         
             
@@ -159,7 +159,7 @@ class DMN_multiple:
                 n_steps=self.answer_step_nbr)
                 
             self.prediction = results[1][-1]
-            self.multiple_predictions = results[1] #don't get the memory (i.e. a)
+            self.multiple_predictions = results[1] #don't get the dummy (i.e. the y(?))
             
         
         else:
@@ -182,18 +182,7 @@ class DMN_multiple:
         
         
         print("==> building loss layer and computing updates")
-        #TODO: modify the loss
-        def temp_loss(pred, ans, loss):
-            return loss + T.nnet.categorical_crossentropy(pred,ans)
-            
-        loss_ce, updates = theano.scan(fn=temp_loss,
-                                            sequences=[self.multiple_predictions,self.answer_var],
-                                            n_steps=self.answer_step_nbr,
-                                            outputs_info = [np.float64(0)])        
-        
-        #self.multiple_predictions = self.multiple_predictions.dimshuffle(1, 0)
-        #self.loss_ce = T.nnet.categorical_crossentropy(self.multiple_predictions, self.answer_var).mean()
-        self.loss_ce = loss_ce[0]
+        self.loss_ce = T.nnet.categorical_crossentropy(self.prediction.dimshuffle('x', 0), T.stack([self.answer_var]))[0]
         if self.l2 > 0:
             self.loss_l2 = self.l2 * nn_utils.l2_reg(self.params)
         else:
@@ -205,13 +194,9 @@ class DMN_multiple:
         
         if self.mode == 'train':
             print("==> compiling train_fn")
-            #TODO check if train funtcion is ok
             self.train_fn = theano.function(inputs=[self.input_var, self.q_var, self.answer_var, self.input_mask_var], 
-                                       outputs=[self.multiple_predictions], 
-                                                #self.loss], 
-                                       #updates=updates, 
-                                       allow_input_downcast = True,
-                                       on_unused_input="warn")
+                                       outputs=[self.prediction, self.loss],
+                                       updates=updates)
         
         print("==> compiling test_fn")
         self.test_fn = theano.function(inputs=[self.input_var, self.q_var, self.answer_var, self.input_mask_var],
@@ -220,14 +205,14 @@ class DMN_multiple:
         print("==> compiling minitest_fn")
         self.minitest_fn = theano.function(inputs=[self.input_var, self.q_var,
                                                    self.input_mask_var],
-                                                   outputs=[self.multiple_predictions])
+                                                   outputs=[self.multiple_predictions],)
                                   
         
         
-       # if self.mode == 'train':
-        #    print("==> computing gradients (for debugging)")
-         #   gradient = T.grad(self.loss, self.params)
-          #  self.get_gradient_fn = theano.function(inputs=[self.input_var, self.q_var, self.answer_var, self.input_mask_var], outputs=gradient)
+        if self.mode == 'train':
+            print("==> computing gradients (for debugging)")
+            gradient = T.grad(self.loss, self.params)
+            self.get_gradient_fn = theano.function(inputs=[self.input_var, self.q_var, self.answer_var, self.input_mask_var], outputs=gradient)
 
     
 
@@ -361,8 +346,6 @@ class DMN_multiple:
             inp = [w for w in inp if len(w) > 0]
             q = x["Q"].lower().split(' ')
             q = [w for w in q if len(w) > 0]
-            ans = x["A"].lower().split(' ')
-            ans = [w for w in ans if len(w) > 0]
             
             inp_vector = [utils.process_word(word = w, 
                                         word2vec = self.word2vec, 
@@ -380,22 +363,12 @@ class DMN_multiple:
             
             inputs.append(np.vstack(inp_vector).astype(floatX))
             questions.append(np.vstack(q_vector).astype(floatX))
-            
-            ans_vector = [utils.process_word(word = w,
-                                             word2vec = self.word2vec,
-                                             vocab = self.vocab,
-                                             ivocab = self.ivocab,
-                                             word_vector_size = self.word_vector_size,
-                                             to_return = "word2vec") for w in ans]
-            ans_vector = ans_vector[0:len(ans_vector)-1]
-            answers.append(np.vstack(ans_vector).astype(floatX))                                 
-                                             
-#            answers.append(utils.process_word(word = x["A"], 
-#                                            word2vec = self.word2vec, 
-#                                            vocab = self.vocab, 
-#                                            ivocab = self.ivocab, 
-#                                            word_vector_size = self.word_vector_size, 
-#                                            to_return = "index"))
+            answers.append(utils.process_word(word = x["A"], 
+                                            word2vec = self.word2vec, 
+                                            vocab = self.vocab, 
+                                            ivocab = self.ivocab, 
+                                            word_vector_size = self.word_vector_size, 
+                                            to_return = "index"))
             # NOTE: here we assume the answer is one word!
             #TODO check what the heck input_masks is made of.
             if self.input_mask_mode == 'word':
@@ -440,7 +413,6 @@ class DMN_multiple:
             raise Exception("Cannot train during test mode")
         
         if mode == "train":
-            print("TRAIN (431)")
             theano_fn = self.train_fn 
             inputs = self.train_input
             qs = self.train_q
@@ -470,32 +442,21 @@ class DMN_multiple:
         skipped = 0
         grad_norm = float('NaN')
         
-      #  if mode == 'train':
-       #     gradient_value = self.get_gradient_fn(inp, q, ans, input_mask)
-        #    grad_norm = np.max([utils.get_norm(x) for x in gradient_value])
+        if mode == 'train':
+            gradient_value = self.get_gradient_fn(inp, q, ans, input_mask)
+            grad_norm = np.max([utils.get_norm(x) for x in gradient_value])
             
-          #   if (np.isnan(grad_norm)):
-           #     print("==> gradient is nan at index %d." % batch_index)
-            #    print("==> skipping")
-             #   skipped = 1
+            if (np.isnan(grad_norm)):
+                print("==> gradient is nan at index %d." % batch_index)
+                print("==> skipping")
+                skipped = 1
         
-        if skipped == 0:      
-            print(np.shape(ans))
-            ret = [0]
-            #ret = theano_fn(inp, q, ans, input_mask)
-            print(np.shape(ret[0]))
-            print(np.shape(ret))
-            
-            
-            print("------------------------")
-            print("COMPILATION SUCCESSFUL")
-            print("Stopping now to gain computation time.")
-            #return exit()
+        if skipped == 0:
+            ret = theano_fn(inp, q, ans, input_mask)
             ret_multiple = theano_fn2(inp,q,input_mask)
-            print(np.shape(ret_multiple))
         else:
             ret = [-1, -1]
-        #ret = ret_multiple
+        
         param_norm = np.max([utils.get_norm(x.get_value()) for x in self.params])
         
         return {"inputs":inp,
@@ -503,7 +464,7 @@ class DMN_multiple:
                 "prediction": np.array([ret[0]]),
                 "multiple_prediction": np.array(ret_multiple),
                 "answers": np.array([ans]),
-                "current_loss": ret[0],
+                "current_loss": ret[1],
                 "skipped": skipped,
                 "log": "pn: %.3f \t gn: %.3f" % (param_norm, grad_norm)
                 }

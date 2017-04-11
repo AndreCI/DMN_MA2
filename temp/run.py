@@ -1,10 +1,7 @@
 import numpy as np
 import utils
-import time
-import sklearn.metrics as metrics
 
-
-def do_minitest(dmn, vocab, multiple_ans=False,nbr_test=0):
+def do_minitest(dmn, vocab, nbr_test=0):
     #data = load_minitest(fname)
     
     y_true = []
@@ -17,31 +14,7 @@ def do_minitest(dmn, vocab, multiple_ans=False,nbr_test=0):
         answers = step_data["answers"]
         inputs = step_data["inputs"]
         question = step_data["question"]
-        if(multiple_ans):
-            ret_multiple = step_data["multiple_prediction"]
-            
-            
-        print(np.shape(ret_multiple))
-        print(np.shape(answers))
-        
-        printer = answers[0]
-        print(printer)
-        print("here",np.shape(printer))
-        
-               
-               
-        
-#        if(multiple_ans==True):
-#            print("==>Right answer is:")
-#            answers = ret_multiple[0]
-#            print(np.shape(answers))
-#            print(answers)
-#            for i in range(0,np.shape(answers)[0]):
-#                ans = (utils.get_word(dmn.word2vec, answers[i]))
-#                y_true.append(ans)
-#            print(' '.join(y_true) + "?")
-#        print("CUTTING NOW--------------")
-#        assert 1==0
+        ret_multiple = step_data["multiple_prediction"]
         
         w_input = []
         w_q = []
@@ -52,37 +25,28 @@ def do_minitest(dmn, vocab, multiple_ans=False,nbr_test=0):
             w_q.append(utils.get_word(dmn.word2vec, question[i]))           
         print("Facts:")
         print( ' '.join(w_input))
-        print( ' '.join(w_q) + ".")
-        
-        if(multiple_ans==False):
-            print("==>Right answer is:")
-            for x in answers:
-                y_true.append(x)
-                print(ivocab[x])
-            print("==>Answer found by the model is:")
-            for x in prediction.argmax(axis=1):
-                y_pred.append(x)
-                print(ivocab[x])
-        else:
-            print("==>Right answer is:")
-            answers = answers[0]
-            for i in range(0,np.shape(answers)[0]):
-                ans = (utils.get_word(dmn.word2vec, answers[i]))
-                y_true.append(ans)
-            print(' '.join(y_true) + ".")
+        print( ' '.join(w_q) + "?")
+        print("==>Right answer is:")
+        for x in answers:
+            y_true.append(x)
+            print(ivocab[x])
+        print("==>Answer found by the model is:")
+        for x in prediction.argmax(axis=1):
+            y_pred.append(x)
+            print(ivocab[x])
             
-            print("==>Multiple answer found are:")
-            list_pred = []
-            for i in range(0,np.shape(ret_multiple)[1]):
-                pred_temp = ret_multiple[:,i,:]
-                for x in pred_temp.argmax(axis=1):
-                    list_pred.append(ivocab[x])
-                print(', '.join(list_pred) + ' :('+str(np.shape(ret_multiple)[1])+' answers)')
+        print("==>Multiple answer found are:")
+        list_pred = []
+        for i in range(0,np.shape(ret_multiple)[1]):
+            pred_temp = ret_multiple[:,i,:]
+            for x in pred_temp.argmax(axis=1):
+                list_pred.append(ivocab[x])
+        print(', '.join(list_pred) + ' :('+str(np.shape(ret_multiple)[1])+' answers)')
 
     
 
 
-def do_epoch(args, dmn, mode, epoch, skipped=0):
+def do_epoch(mode, epoch, skipped=0):
     '''
     :param mode: train or test mode are available
     :param epoch: number of epoch. Useful only for display and metadata purposes
@@ -136,5 +100,3 @@ def do_epoch(args, dmn, mode, epoch, skipped=0):
     print("accuracy: %.2f percent" % (accuracy * 100.0 / batches_per_epoch / args.batch_size))
     
     return avg_loss, skipped
-0
-

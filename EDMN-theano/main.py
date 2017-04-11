@@ -154,7 +154,8 @@ elif args.mode == 'minitest':
     data["description"] = ""
     data["vocab"] = dmn.vocab.keys()
     #json.dump(data, file, indent=2)
-    run.do_minitest(dmn, data["vocab"],1)
+    multiple_ans = args.network == 'dmn_multiple'
+    run.do_minitest(dmn, data["vocab"], multiple_ans=multiple_ans, nbr_test=1)
     
 else:
     raise Exception("unknown mode")

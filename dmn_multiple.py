@@ -485,7 +485,7 @@ class DMN_multiple:
             #ret = theano_fn(inp, q, ans, input_mask)
             print(np.shape(ret[0]))
             print(np.shape(ret))
-            
+        
             
             print("------------------------")
             print("COMPILATION SUCCESSFUL")
