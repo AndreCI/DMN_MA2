@@ -184,7 +184,7 @@ class DMN_multiple:
         print("==> building loss layer and computing updates")
         #TODO: modify the loss
         def temp_loss(pred, ans, loss):
-            return loss + T.nnet.categorical_crossentropy(pred,ans)
+            return loss + T.nnet.categorical_crossentropy(pred.dimshuffle("x",0),T.stack([ans]))[0]
             
         loss_ce, updates = theano.scan(fn=temp_loss,
                                             sequences=[self.multiple_predictions,self.answer_var],
@@ -193,7 +193,7 @@ class DMN_multiple:
         
         #self.multiple_predictions = self.multiple_predictions.dimshuffle(1, 0)
         #self.loss_ce = T.nnet.categorical_crossentropy(self.multiple_predictions, self.answer_var).mean()
-        self.loss_ce = loss_ce[0]
+        self.loss_ce = loss_ce[-1]
         if self.l2 > 0:
             self.loss_l2 = self.l2 * nn_utils.l2_reg(self.params)
         else:
@@ -207,8 +207,8 @@ class DMN_multiple:
             print("==> compiling train_fn")
             #TODO check if train funtcion is ok
             self.train_fn = theano.function(inputs=[self.input_var, self.q_var, self.answer_var, self.input_mask_var], 
-                                       outputs=[self.multiple_predictions], 
-                                                #self.loss], 
+                                       outputs=[self.multiple_predictions,
+                                                self.loss], 
                                        #updates=updates, 
                                        allow_input_downcast = True,
                                        on_unused_input="warn")
@@ -386,7 +386,8 @@ class DMN_multiple:
                                              vocab = self.vocab,
                                              ivocab = self.ivocab,
                                              word_vector_size = self.word_vector_size,
-                                             to_return = "word2vec") for w in ans]
+                                             to_return = "index") for w in ans]
+                                   
             ans_vector = ans_vector[0:len(ans_vector)-1]
             answers.append(np.vstack(ans_vector).astype(floatX))                                 
                                              
@@ -397,7 +398,7 @@ class DMN_multiple:
 #                                            word_vector_size = self.word_vector_size, 
 #                                            to_return = "index"))
             # NOTE: here we assume the answer is one word!
-            #TODO check what the heck input_masks is made of.
+            #TODO check what the heck input_masks is made of.                      
             if self.input_mask_mode == 'word':
                 input_masks.append(np.array([index for index, w in enumerate(inp)], dtype=np.int32)) 
             elif self.input_mask_mode == 'sentence': 
@@ -462,6 +463,7 @@ class DMN_multiple:
         else:
             raise Exception("Invalid mode")
             
+
         inp = inputs[batch_index]
         q = qs[batch_index]
         ans = answers[batch_index]
@@ -480,19 +482,28 @@ class DMN_multiple:
              #   skipped = 1
         
         if skipped == 0:      
-            print(np.shape(ans))
+            
+            #Answer MUST(?) be a vector containing number corresponding to the words in ivocab. i.e. [1, 8, 3, 9, 14] (=[5])
+            #MulPread must be a vector containing probabilities for each words in vocab, i.e. [5*dic_size] (=[5*20] usually)
+            
             ret = [0]
-            #ret = theano_fn(inp, q, ans, input_mask)
+            ret = theano_fn(inp, q, ans, input_mask)
+
+            print(ans)
+            print(np.shape(ans))
+            print(np.stack([ans[0]])) 
+            print(np.stack([ans[1]]))           
+            
             print(np.shape(ret[0]))
             print(np.shape(ret))
-            
-            
+           
+            ret_multiple = theano_fn2(inp,q,input_mask)
+            print(ret_multiple)
+            print(np.shape(ret_multiple))
             print("------------------------")
             print("COMPILATION SUCCESSFUL")
             print("Stopping now to gain computation time.")
-            #return exit()
-            ret_multiple = theano_fn2(inp,q,input_mask)
-            print(np.shape(ret_multiple))
+            return exit()
         else:
             ret = [-1, -1]
         #ret = ret_multiple

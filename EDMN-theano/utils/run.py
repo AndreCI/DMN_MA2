@@ -77,7 +77,7 @@ def do_minitest(dmn, vocab, multiple_ans=False,nbr_test=0):
                 pred_temp = ret_multiple[:,i,:]
                 for x in pred_temp.argmax(axis=1):
                     list_pred.append(ivocab[x])
-                print(', '.join(list_pred) + ' :('+str(np.shape(ret_multiple)[1])+' answers)')
+            print(', '.join(list_pred) + ' :('+str(np.shape(ret_multiple)[1])+' answers)')
 
     
 

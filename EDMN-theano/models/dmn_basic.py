@@ -184,7 +184,7 @@ class DMN_basic:
         
         print("==> building loss layer and computing updates")
         self.loss_ce = T.nnet.categorical_crossentropy(self.prediction.dimshuffle('x', 0), T.stack([self.answer_var]))[0]
-        if self.l2 > 0:
+        if self.l2 > 0:  
             self.loss_l2 = self.l2 * nn_utils.l2_reg(self.params)
         else:
             self.loss_l2 = 0
@@ -429,6 +429,7 @@ class DMN_basic:
             raise Exception("Invalid mode")
             
         
+       
             
         inp = inputs[batch_index]
         q = qs[batch_index]
@@ -451,7 +452,8 @@ class DMN_basic:
             ret = theano_fn(inp, q, ans, input_mask)
         else:
             ret = [-1, -1]
-        
+            
+
         param_norm = np.max([utils.get_norm(x.get_value()) for x in self.params])
         
         return {"inputs":inp,
