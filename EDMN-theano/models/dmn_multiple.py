@@ -62,6 +62,7 @@ class DMN_multiple:
 
         self.input_var = T.matrix('input_var')
         self.q_var = T.matrix('question_var')
+        #GOD NO
         self.answer_var = T.matrix('answer_var')
         self.input_mask_var = T.ivector('input_mask_var')
         
@@ -207,8 +208,8 @@ class DMN_multiple:
             print("==> compiling train_fn")
             #TODO check if train funtcion is ok
             self.train_fn = theano.function(inputs=[self.input_var, self.q_var, self.answer_var, self.input_mask_var], 
-                                       outputs=[self.multiple_predictions,
-                                                self.loss], 
+                                       outputs=[self.multiple_predictions],
+                                                #self.loss], 
                                        #updates=updates, 
                                        allow_input_downcast = True,
                                        on_unused_input="warn")
@@ -488,7 +489,10 @@ class DMN_multiple:
             
             ret = [0]
             ret = theano_fn(inp, q, ans, input_mask)
-
+            
+            print(np.shape(ans))
+            print(np.shape(ret))
+            print("--------------------")
             print(ans)
             print(np.shape(ans))
             print(np.stack([ans[0]])) 
