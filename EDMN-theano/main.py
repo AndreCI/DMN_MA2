@@ -127,7 +127,7 @@ if args.mode == 'train':
         
         _, skipped = run.do_epoch(args, dmn,'train', epoch, skipped)
         
-        epoch_loss, skipped = run.do_epoch('test', epoch, skipped)
+        epoch_loss, skipped = run.do_epoch(args, dmn, 'test', epoch, skipped)
         
         state_name = 'states/%s.epoch%d.test%.5f.state' % (network_name, epoch, epoch_loss)
 

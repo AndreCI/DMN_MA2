@@ -9,7 +9,7 @@ args = parser.parse_args()
 
 
 
-babi_train_raw, _ = las.get_babi_raw_qa(args.babi_id, args.babi_test_id)
+babi_train_raw, babi_test_raw = las.get_babi_raw_qa(args.babi_id, args.babi_test_id)
 
 #babi_name = "1"
 #jack = open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/en/%s_train.txt' % babi_name), 'a')
@@ -69,8 +69,13 @@ def reconstruct_sentence_simple(dic):
     return (' '.join(sentence)+'.')
 
 babi_train_raw_new = []
+babi_test_raw_new = []
 while len(babi_train_raw)!=0:
     episode = babi_train_raw.pop()
     episode["A"] = generate_sentence(episode)
     babi_train_raw_new.append(episode)
-las.init_write_babi("1",babi_train_raw_new)
+    episode = babi_test_raw.pop()
+    episode["A"] = generate_sentence(episode)
+    babi_test_raw_new.append(episode)
+las.init_write_babi("1",babi_train_raw_new, "train")
+las.init_write_babi("1", babi_test_raw_new, "test")

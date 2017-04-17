@@ -41,6 +41,8 @@ class DMN_basic:
         self.vocab = {}
         self.ivocab = {}
         
+        self.type = "basic"
+        
         #save params
         self.word2vec = word2vec
         self.word_vector_size = word_vector_size

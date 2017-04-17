@@ -38,6 +38,7 @@ class DMN_multiple:
         '''
 
         print("==> not used params in DMN class:", kwargs.keys())
+        self.type = "multiple"
         self.vocab = {}
         self.ivocab = {}
         
@@ -62,8 +63,7 @@ class DMN_multiple:
 
         self.input_var = T.matrix('input_var')
         self.q_var = T.matrix('question_var')
-        #GOD NO
-        self.answer_var = T.matrix('answer_var')
+        self.answer_var = T.ivector('answer_var')
         self.input_mask_var = T.ivector('input_mask_var')
         
             
@@ -161,6 +161,7 @@ class DMN_multiple:
                 
             self.prediction = results[1][-1]
             self.multiple_predictions = results[1] #don't get the memory (i.e. a)
+            #self.multiple_predictions = self.multiple_predictions[0] #from (1, 5, 20) to (5, 20)?
             
         
         else:
@@ -184,17 +185,18 @@ class DMN_multiple:
         
         print("==> building loss layer and computing updates")
         #TODO: modify the loss
-        def temp_loss(pred, ans, loss):
-            return loss + T.nnet.categorical_crossentropy(pred.dimshuffle("x",0),T.stack([ans]))[0]
+        def temp_loss(curr_pred, curr_ans, loss):
+            temp = T.nnet.categorical_crossentropy(curr_pred.dimshuffle("x",0),T.stack([curr_ans]))[0]
+            return loss + temp
             
-        loss_ce, updates = theano.scan(fn=temp_loss,
-                                            sequences=[self.multiple_predictions,self.answer_var],
-                                            n_steps=self.answer_step_nbr,
-                                            outputs_info = [np.float64(0)])        
+        outputs, updates = theano.scan(fn=temp_loss,
+                                            sequences=[self.multiple_predictions, self.answer_var],
+                                            outputs_info = [np.float64(0.0)],
+                                            n_steps=self.answer_step_nbr)        
         
         #self.multiple_predictions = self.multiple_predictions.dimshuffle(1, 0)
         #self.loss_ce = T.nnet.categorical_crossentropy(self.multiple_predictions, self.answer_var).mean()
-        self.loss_ce = loss_ce[-1]
+        self.loss_ce = outputs[-1]
         if self.l2 > 0:
             self.loss_l2 = self.l2 * nn_utils.l2_reg(self.params)
         else:
@@ -208,11 +210,10 @@ class DMN_multiple:
             print("==> compiling train_fn")
             #TODO check if train funtcion is ok
             self.train_fn = theano.function(inputs=[self.input_var, self.q_var, self.answer_var, self.input_mask_var], 
-                                       outputs=[self.multiple_predictions],
-                                                #self.loss], 
-                                       #updates=updates, 
-                                       allow_input_downcast = True,
-                                       on_unused_input="warn")
+                                       outputs=[self.multiple_predictions,
+                                                self.loss], 
+                                       updates=updates,
+                                       allow_input_downcast = True)
         
         print("==> compiling test_fn")
         self.test_fn = theano.function(inputs=[self.input_var, self.q_var, self.answer_var, self.input_mask_var],
@@ -442,7 +443,6 @@ class DMN_multiple:
             raise Exception("Cannot train during test mode")
         
         if mode == "train":
-            print("TRAIN (431)")
             theano_fn = self.train_fn 
             inputs = self.train_input
             qs = self.train_q
@@ -468,6 +468,7 @@ class DMN_multiple:
         inp = inputs[batch_index]
         q = qs[batch_index]
         ans = answers[batch_index]
+        ans = ans[:,0] #reshape from (5,1) to (5,)
         input_mask = input_masks[batch_index]
 
         skipped = 0
@@ -487,30 +488,55 @@ class DMN_multiple:
             #Answer MUST(?) be a vector containing number corresponding to the words in ivocab. i.e. [1, 8, 3, 9, 14] (=[5])
             #MulPread must be a vector containing probabilities for each words in vocab, i.e. [5*dic_size] (=[5*20] usually)
             
-            ret = [0]
             ret = theano_fn(inp, q, ans, input_mask)
             
-            print(np.shape(ans))
-            print(np.shape(ret))
-            print("--------------------")
-            print(ans)
-            print(np.shape(ans))
-            print(np.stack([ans[0]])) 
-            print(np.stack([ans[1]]))           
-            
-            print(np.shape(ret[0]))
-            print(np.shape(ret))
-           
-            ret_multiple = theano_fn2(inp,q,input_mask)
-            print(ret_multiple)
-            print(np.shape(ret_multiple))
-            print("------------------------")
-            print("COMPILATION SUCCESSFUL")
-            print("Stopping now to gain computation time.")
-            return exit()
+#            print(ret)
+#            print(np.shape(ret))
+#            print(type(ret))
+#            
+#            ans = ret[0]
+#            print(ans)
+#            print(np.shape(ans))
+#            print(type(ans))
+#            
+#            ans = np.array([ans])
+#            print(np.shape(ans))
+#            print(ans)
+#            print(type(ans))
+#            
+#            exit()
+#            
+            if(mode == "minitest"):
+                ret_multiple = theano_fn2(inp, q, input_mask)
+            else:
+                ret_multiple = ret
+#            print(ret)
+#            
+#            
+#            
+#                        
+#            
+#            
+#            print("ans", np.shape(ans))
+#            print("ret, i.e. predictions", np.shape(ret))
+#            print(type(ans))
+#            print(type(ret))
+#            print("--------------------")
+#            print("Testing new stuff")
+#            ret_new= ret[0]
+#            print(np.shape(ret_new))            
+#            
+#            
+#           
+#            ret_multiple = theano_fn2(inp,q,input_mask)
+#            print(ret_multiple)
+#            print(np.shape(ret_multiple))
+#            print("------------------------")
+#            print("COMPILATION SUCCESSFUL")
+#            print("Stopping now to gain computation time.")
+#            return exit()
         else:
             ret = [-1, -1]
-        #ret = ret_multiple
         param_norm = np.max([utils.get_norm(x.get_value()) for x in self.params])
         
         return {"inputs":inp,
@@ -518,7 +544,7 @@ class DMN_multiple:
                 "prediction": np.array([ret[0]]),
                 "multiple_prediction": np.array(ret_multiple),
                 "answers": np.array([ans]),
-                "current_loss": ret[0],
+                "current_loss": ret[1],
                 "skipped": skipped,
                 "log": "pn: %.3f \t gn: %.3f" % (param_norm, grad_norm)
                 }

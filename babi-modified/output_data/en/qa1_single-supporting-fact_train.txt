@@ -1,18 +1,18 @@
 1 Mary moved to the bathroom.
 2 John went to the hallway.
-3 Where is Mary? 	Mary moved to the bathroom.
+3 Where is Mary? 	Mary went to the bathroom.
 4 Mary moved to the bathroom.
 5 John went to the hallway.
 6 Daniel went back to the hallway.
 7 Sandra moved to the garden.
-8 Where is Daniel? 	Daniel moved to the hallway.
+8 Where is Daniel? 	Daniel went to the hallway.
 9 Mary moved to the bathroom.
 10 John went to the hallway.
 11 Daniel went back to the hallway.
 12 Sandra moved to the garden.
 13 John moved to the office.
 14 Sandra journeyed to the bathroom.
-15 Where is Daniel? 	Daniel went to the hallway.
+15 Where is Daniel? 	Daniel journeyed to the hallway.
 1 Mary moved to the bathroom.
 2 John went to the hallway.
 3 Daniel went back to the hallway.
@@ -21,7 +21,7 @@
 6 Sandra journeyed to the bathroom.
 7 Mary moved to the hallway.
 8 Daniel travelled to the office.
-9 Where is Daniel? 	Daniel journeyed to the office.
+9 Where is Daniel? 	Daniel moved to the office.
 10 Mary moved to the bathroom.
 11 John went to the hallway.
 12 Daniel went back to the hallway.
@@ -32,7 +32,7 @@
 17 Daniel travelled to the office.
 18 John went back to the garden.
 19 John moved to the bedroom.
-20 Where is Sandra? 	Sandra travelled to the bathroom.
+20 Where is Sandra? 	Sandra journeyed to the bathroom.
 1 Sandra travelled to the office.
 2 Sandra went to the bathroom.
 3 Where is Sandra? 	Sandra travelled to the bathroom.
@@ -56,7 +56,7 @@
 6 John travelled to the office.
 7 Daniel journeyed to the bedroom.
 8 Daniel travelled to the hallway.
-9 Where is John? 	John moved to the office.
+9 Where is John? 	John went to the office.
 10 Sandra travelled to the office.
 11 Sandra went to the bathroom.
 12 Mary went to the bedroom.
@@ -67,15 +67,15 @@
 17 Daniel travelled to the hallway.
 18 John went to the bedroom.
 19 John travelled to the office.
-20 Where is Daniel? 	Daniel travelled to the hallway.
+20 Where is Daniel? 	Daniel moved to the hallway.
 1 Mary went to the bedroom.
 2 John journeyed to the bathroom.
-3 Where is John? 	John journeyed to the bathroom.
+3 Where is John? 	John went to the bathroom.
 4 Mary went to the bedroom.
 5 John journeyed to the bathroom.
 6 Sandra journeyed to the hallway.
 7 John journeyed to the garden.
-8 Where is Mary? 	Mary journeyed to the bedroom.
+8 Where is Mary? 	Mary went to the bedroom.
 9 Mary went to the bedroom.
 10 John journeyed to the bathroom.
 11 Sandra journeyed to the hallway.
@@ -91,7 +91,7 @@
 6 Sandra journeyed to the garden.
 7 Sandra went back to the bedroom.
 8 Daniel travelled to the bathroom.
-9 Where is John? 	John went to the bathroom.
+9 Where is John? 	John travelled to the bathroom.
 10 Mary went to the bedroom.
 11 John journeyed to the bathroom.
 12 Sandra journeyed to the hallway.
@@ -102,7 +102,7 @@
 17 Daniel travelled to the bathroom.
 18 John went to the office.
 19 Mary moved to the office.
-20 Where is Sandra? 	Sandra journeyed to the bedroom.
+20 Where is Sandra? 	Sandra went to the bedroom.
 1 Daniel journeyed to the kitchen.
 2 Daniel journeyed to the bedroom.
 3 Where is Daniel? 	Daniel journeyed to the bedroom.
@@ -117,7 +117,7 @@
 12 Sandra went back to the kitchen.
 13 Daniel travelled to the office.
 14 Sandra went back to the hallway.
-15 Where is Sandra? 	Sandra went to the hallway.
+15 Where is Sandra? 	Sandra moved to the hallway.
 1 Daniel journeyed to the kitchen.
 2 Daniel journeyed to the bedroom.
 3 Sandra moved to the garden.
@@ -126,7 +126,7 @@
 6 Sandra went back to the hallway.
 7 Daniel journeyed to the hallway.
 8 Daniel went to the bathroom.
-9 Where is Sandra? 	Sandra journeyed to the hallway.
+9 Where is Sandra? 	Sandra travelled to the hallway.
 10 Daniel journeyed to the kitchen.
 11 Daniel journeyed to the bedroom.
 12 Sandra moved to the garden.
@@ -137,22 +137,22 @@
 17 Daniel went to the bathroom.
 18 John travelled to the garden.
 19 Daniel moved to the hallway.
-20 Where is Daniel? 	Daniel moved to the hallway.
+20 Where is Daniel? 	Daniel journeyed to the hallway.
 1 Mary moved to the garden.
 2 John journeyed to the bathroom.
-3 Where is John? 	John journeyed to the bathroom.
+3 Where is John? 	John moved to the bathroom.
 4 Mary moved to the garden.
 5 John journeyed to the bathroom.
 6 Sandra moved to the office.
 7 John moved to the kitchen.
-8 Where is Mary? 	Mary moved to the garden.
+8 Where is Mary? 	Mary journeyed to the garden.
 9 Mary moved to the garden.
 10 John journeyed to the bathroom.
 11 Sandra moved to the office.
 12 John moved to the kitchen.
 13 Sandra went to the hallway.
 14 Mary travelled to the bedroom.
-15 Where is John? 	John went to the kitchen.
+15 Where is John? 	John moved to the kitchen.
 1 Mary moved to the garden.
 2 John journeyed to the bathroom.
 3 Sandra moved to the office.
@@ -161,7 +161,7 @@
 6 Mary travelled to the bedroom.
 7 Mary moved to the office.
 8 John moved to the garden.
-9 Where is Sandra? 	Sandra journeyed to the hallway.
+9 Where is Sandra? 	Sandra went to the hallway.
 10 Mary moved to the garden.
 11 John journeyed to the bathroom.
 12 Sandra moved to the office.
@@ -172,7 +172,7 @@
 17 John moved to the garden.
 18 John journeyed to the office.
 19 Sandra went to the office.
-20 Where is John? 	John moved to the office.
+20 Where is John? 	John journeyed to the office.
 1 Mary moved to the garden.
 2 Daniel journeyed to the bathroom.
 3 Where is Daniel? 	Daniel journeyed to the bathroom.
@@ -180,14 +180,14 @@
 5 Daniel journeyed to the bathroom.
 6 John travelled to the kitchen.
 7 John went back to the bedroom.
-8 Where is John? 	John went to the bedroom.
+8 Where is John? 	John travelled to the bedroom.
 9 Mary moved to the garden.
 10 Daniel journeyed to the bathroom.
 11 John travelled to the kitchen.
 12 John went back to the bedroom.
 13 John moved to the office.
 14 Daniel went back to the garden.
-15 Where is Daniel? 	Daniel travelled to the garden.
+15 Where is Daniel? 	Daniel journeyed to the garden.
 1 Mary moved to the garden.
 2 Daniel journeyed to the bathroom.
 3 John travelled to the kitchen.
@@ -196,7 +196,7 @@
 6 Daniel went back to the garden.
 7 John went back to the hallway.
 8 Mary went to the office.
-9 Where is John? 	John moved to the hallway.
+9 Where is John? 	John journeyed to the hallway.
 10 Mary moved to the garden.
 11 Daniel journeyed to the bathroom.
 12 John travelled to the kitchen.
@@ -207,7 +207,7 @@
 17 Mary went to the office.
 18 Sandra travelled to the bedroom.
 19 John travelled to the garden.
-20 Where is Daniel? 	Daniel went to the garden.
+20 Where is Daniel? 	Daniel travelled to the garden.
 1 John moved to the bedroom.
 2 Mary moved to the hallway.
 3 Where is Mary? 	Mary moved to the hallway.
@@ -215,14 +215,14 @@
 5 Mary moved to the hallway.
 6 Sandra moved to the bedroom.
 7 Sandra travelled to the kitchen.
-8 Where is Sandra? 	Sandra travelled to the kitchen.
+8 Where is Sandra? 	Sandra moved to the kitchen.
 9 John moved to the bedroom.
 10 Mary moved to the hallway.
 11 Sandra moved to the bedroom.
 12 Sandra travelled to the kitchen.
 13 Daniel journeyed to the bathroom.
 14 Sandra moved to the bathroom.
-15 Where is Daniel? 	Daniel moved to the bathroom.
+15 Where is Daniel? 	Daniel travelled to the bathroom.
 1 John moved to the bedroom.
 2 Mary moved to the hallway.
 3 Sandra moved to the bedroom.
@@ -231,7 +231,7 @@
 6 Sandra moved to the bathroom.
 7 Daniel went back to the garden.
 8 John moved to the kitchen.
-9 Where is John? 	John went to the kitchen.
+9 Where is John? 	John journeyed to the kitchen.
 10 John moved to the bedroom.
 11 Mary moved to the hallway.
 12 Sandra moved to the bedroom.
@@ -242,7 +242,7 @@
 17 John moved to the kitchen.
 18 Daniel journeyed to the kitchen.
 19 Daniel journeyed to the garden.
-20 Where is Daniel? 	Daniel journeyed to the garden.
+20 Where is Daniel? 	Daniel travelled to the garden.
 1 Mary went to the kitchen.
 2 John went back to the bedroom.
 3 Where is Mary? 	Mary went to the kitchen.
@@ -257,7 +257,7 @@
 12 Mary moved to the hallway.
 13 John went to the kitchen.
 14 Daniel travelled to the bedroom.
-15 Where is Daniel? 	Daniel travelled to the bedroom.
+15 Where is Daniel? 	Daniel went to the bedroom.
 1 Mary went to the kitchen.
 2 John went back to the bedroom.
 3 Mary went back to the bathroom.
@@ -266,7 +266,7 @@
 6 Daniel travelled to the bedroom.
 7 Mary travelled to the office.
 8 Sandra moved to the bedroom.
-9 Where is John? 	John went to the kitchen.
+9 Where is John? 	John travelled to the kitchen.
 10 Mary went to the kitchen.
 11 John went back to the bedroom.
 12 Mary went back to the bathroom.
@@ -277,22 +277,22 @@
 17 Sandra moved to the bedroom.
 18 John moved to the bedroom.
 19 Sandra journeyed to the kitchen.
-20 Where is Sandra? 	Sandra journeyed to the kitchen.
+20 Where is Sandra? 	Sandra travelled to the kitchen.
 1 Daniel moved to the hallway.
 2 Daniel travelled to the office.
-3 Where is Daniel? 	Daniel travelled to the office.
+3 Where is Daniel? 	Daniel moved to the office.
 4 Daniel moved to the hallway.
 5 Daniel travelled to the office.
 6 Daniel went to the bedroom.
 7 Daniel journeyed to the office.
-8 Where is Daniel? 	Daniel travelled to the office.
+8 Where is Daniel? 	Daniel went to the office.
 9 Daniel moved to the hallway.
 10 Daniel travelled to the office.
 11 Daniel went to the bedroom.
 12 Daniel journeyed to the office.
 13 Sandra went back to the bathroom.
 14 Sandra journeyed to the kitchen.
-15 Where is Daniel? 	Daniel journeyed to the office.
+15 Where is Daniel? 	Daniel travelled to the office.
 1 Daniel moved to the hallway.
 2 Daniel travelled to the office.
 3 Daniel went to the bedroom.
@@ -301,7 +301,7 @@
 6 Sandra journeyed to the kitchen.
 7 Daniel moved to the bedroom.
 8 Daniel journeyed to the hallway.
-9 Where is Sandra? 	Sandra travelled to the kitchen.
+9 Where is Sandra? 	Sandra journeyed to the kitchen.
 10 Daniel moved to the hallway.
 11 Daniel travelled to the office.
 12 Daniel went to the bedroom.
@@ -312,22 +312,22 @@
 17 Daniel journeyed to the hallway.
 18 Sandra travelled to the garden.
 19 Sandra went back to the bathroom.
-20 Where is Daniel? 	Daniel travelled to the hallway.
+20 Where is Daniel? 	Daniel went to the hallway.
 1 Sandra went to the garden.
 2 Sandra journeyed to the bedroom.
-3 Where is Sandra? 	Sandra went to the bedroom.
+3 Where is Sandra? 	Sandra journeyed to the bedroom.
 4 Sandra went to the garden.
 5 Sandra journeyed to the bedroom.
 6 Mary travelled to the bathroom.
 7 John journeyed to the bedroom.
-8 Where is Sandra? 	Sandra went to the bedroom.
+8 Where is Sandra? 	Sandra journeyed to the bedroom.
 9 Sandra went to the garden.
 10 Sandra journeyed to the bedroom.
 11 Mary travelled to the bathroom.
 12 John journeyed to the bedroom.
 13 Mary went back to the kitchen.
 14 John went to the kitchen.
-15 Where is John? 	John went to the kitchen.
+15 Where is John? 	John journeyed to the kitchen.
 1 Sandra went to the garden.
 2 Sandra journeyed to the bedroom.
 3 Mary travelled to the bathroom.
@@ -347,7 +347,7 @@
 17 Sandra travelled to the bathroom.
 18 Sandra went back to the garden.
 19 John went back to the garden.
-20 Where is Daniel? 	Daniel journeyed to the kitchen.
+20 Where is Daniel? 	Daniel went to the kitchen.
 1 Sandra went back to the bathroom.
 2 Mary moved to the garden.
 3 Where is Mary? 	Mary moved to the garden.
@@ -355,14 +355,14 @@
 5 Mary moved to the garden.
 6 Mary went back to the hallway.
 7 Sandra went to the office.
-8 Where is Sandra? 	Sandra moved to the office.
+8 Where is Sandra? 	Sandra went to the office.
 9 Sandra went back to the bathroom.
 10 Mary moved to the garden.
 11 Mary went back to the hallway.
 12 Sandra went to the office.
 13 John went back to the hallway.
 14 John travelled to the office.
-15 Where is Sandra? 	Sandra travelled to the office.
+15 Where is Sandra? 	Sandra moved to the office.
 1 Sandra went back to the bathroom.
 2 Mary moved to the garden.
 3 Mary went back to the hallway.
@@ -382,7 +382,7 @@
 17 Daniel moved to the office.
 18 Mary went to the office.
 19 Sandra went to the office.
-20 Where is John? 	John travelled to the office.
+20 Where is John? 	John journeyed to the office.
 1 Mary went back to the office.
 2 John went back to the bathroom.
 3 Where is Mary? 	Mary went to the office.
@@ -390,7 +390,7 @@
 5 John went back to the bathroom.
 6 John went to the hallway.
 7 Mary journeyed to the hallway.
-8 Where is Mary? 	Mary went to the hallway.
+8 Where is Mary? 	Mary journeyed to the hallway.
 9 Mary went back to the office.
 10 John went back to the bathroom.
 11 John went to the hallway.
@@ -406,7 +406,7 @@
 6 Mary travelled to the office.
 7 Mary went back to the hallway.
 8 Sandra travelled to the office.
-9 Where is Sandra? 	Sandra travelled to the office.
+9 Where is Sandra? 	Sandra went to the office.
 10 Mary went back to the office.
 11 John went back to the bathroom.
 12 John went to the hallway.
@@ -417,7 +417,7 @@
 17 Sandra travelled to the office.
 18 John went to the kitchen.
 19 Sandra went to the hallway.
-20 Where is Mary? 	Mary went to the hallway.
+20 Where is Mary? 	Mary journeyed to the hallway.
 1 Sandra moved to the hallway.
 2 John moved to the hallway.
 3 Where is John? 	John moved to the hallway.
@@ -425,14 +425,14 @@
 5 John moved to the hallway.
 6 John journeyed to the bathroom.
 7 Daniel went back to the bedroom.
-8 Where is John? 	John moved to the bathroom.
+8 Where is John? 	John went to the bathroom.
 9 Sandra moved to the hallway.
 10 John moved to the hallway.
 11 John journeyed to the bathroom.
 12 Daniel went back to the bedroom.
 13 Mary travelled to the bedroom.
 14 Mary journeyed to the garden.
-15 Where is Daniel? 	Daniel went to the bedroom.
+15 Where is Daniel? 	Daniel moved to the bedroom.
 1 Sandra moved to the hallway.
 2 John moved to the hallway.
 3 John journeyed to the bathroom.
@@ -441,7 +441,7 @@
 6 Mary journeyed to the garden.
 7 John travelled to the bedroom.
 8 Sandra journeyed to the garden.
-9 Where is Daniel? 	Daniel went to the bedroom.
+9 Where is Daniel? 	Daniel travelled to the bedroom.
 10 Sandra moved to the hallway.
 11 John moved to the hallway.
 12 John journeyed to the bathroom.
@@ -467,7 +467,7 @@
 12 Mary went back to the bathroom.
 13 Sandra moved to the hallway.
 14 John moved to the garden.
-15 Where is Daniel? 	Daniel went to the garden.
+15 Where is Daniel? 	Daniel moved to the garden.
 1 Daniel went to the kitchen.
 2 Mary travelled to the hallway.
 3 Daniel went back to the garden.
@@ -476,7 +476,7 @@
 6 John moved to the garden.
 7 Daniel moved to the kitchen.
 8 Mary travelled to the office.
-9 Where is Daniel? 	Daniel went to the kitchen.
+9 Where is Daniel? 	Daniel moved to the kitchen.
 10 Daniel went to the kitchen.
 11 Mary travelled to the hallway.
 12 Daniel went back to the garden.
@@ -487,7 +487,7 @@
 17 Mary travelled to the office.
 18 Daniel travelled to the hallway.
 19 Sandra travelled to the bathroom.
-20 Where is Sandra? 	Sandra moved to the bathroom.
+20 Where is Sandra? 	Sandra travelled to the bathroom.
 1 Sandra moved to the kitchen.
 2 Sandra went back to the garden.
 3 Where is Sandra? 	Sandra went to the garden.
@@ -495,14 +495,14 @@
 5 Sandra went back to the garden.
 6 Sandra journeyed to the office.
 7 Mary moved to the office.
-8 Where is Mary? 	Mary journeyed to the office.
+8 Where is Mary? 	Mary went to the office.
 9 Sandra moved to the kitchen.
 10 Sandra went back to the garden.
 11 Sandra journeyed to the office.
 12 Mary moved to the office.
 13 Sandra journeyed to the bathroom.
 14 Daniel moved to the office.
-15 Where is Sandra? 	Sandra journeyed to the bathroom.
+15 Where is Sandra? 	Sandra moved to the bathroom.
 1 Sandra moved to the kitchen.
 2 Sandra went back to the garden.
 3 Sandra journeyed to the office.
@@ -522,22 +522,22 @@
 17 Mary moved to the hallway.
 18 John went to the office.
 19 Sandra went to the office.
-20 Where is John? 	John journeyed to the office.
+20 Where is John? 	John went to the office.
 1 Sandra went to the garden.
 2 Mary travelled to the bathroom.
-3 Where is Sandra? 	Sandra travelled to the garden.
+3 Where is Sandra? 	Sandra went to the garden.
 4 Sandra went to the garden.
 5 Mary travelled to the bathroom.
 6 Sandra moved to the bathroom.
 7 Mary travelled to the hallway.
-8 Where is Mary? 	Mary went to the hallway.
+8 Where is Mary? 	Mary travelled to the hallway.
 9 Sandra went to the garden.
 10 Mary travelled to the bathroom.
 11 Sandra moved to the bathroom.
 12 Mary travelled to the hallway.
 13 Mary went back to the kitchen.
 14 Daniel travelled to the bedroom.
-15 Where is Mary? 	Mary went to the kitchen.
+15 Where is Mary? 	Mary travelled to the kitchen.
 1 Sandra went to the garden.
 2 Mary travelled to the bathroom.
 3 Sandra moved to the bathroom.
@@ -546,7 +546,7 @@
 6 Daniel travelled to the bedroom.
 7 Mary journeyed to the bedroom.
 8 Mary journeyed to the office.
-9 Where is Daniel? 	Daniel moved to the bedroom.
+9 Where is Daniel? 	Daniel went to the bedroom.
 10 Sandra went to the garden.
 11 Mary travelled to the bathroom.
 12 Sandra moved to the bathroom.
@@ -557,22 +557,22 @@
 17 Mary journeyed to the office.
 18 Mary went back to the bedroom.
 19 Daniel went to the garden.
-20 Where is Mary? 	Mary went to the bedroom.
+20 Where is Mary? 	Mary travelled to the bedroom.
 1 Mary journeyed to the garden.
 2 Sandra went back to the office.
-3 Where is Sandra? 	Sandra journeyed to the office.
+3 Where is Sandra? 	Sandra went to the office.
 4 Mary journeyed to the garden.
 5 Sandra went back to the office.
 6 Sandra went to the bathroom.
 7 John travelled to the bathroom.
-8 Where is Sandra? 	Sandra journeyed to the bathroom.
+8 Where is Sandra? 	Sandra went to the bathroom.
 9 Mary journeyed to the garden.
 10 Sandra went back to the office.
 11 Sandra went to the bathroom.
 12 John travelled to the bathroom.
 13 Sandra moved to the bedroom.
 14 Sandra travelled to the hallway.
-15 Where is Sandra? 	Sandra moved to the hallway.
+15 Where is Sandra? 	Sandra journeyed to the hallway.
 1 Mary journeyed to the garden.
 2 Sandra went back to the office.
 3 Sandra went to the bathroom.
@@ -595,12 +595,12 @@
 20 Where is John? 	John went to the kitchen.
 1 Mary moved to the office.
 2 Daniel went to the kitchen.
-3 Where is Mary? 	Mary moved to the office.
+3 Where is Mary? 	Mary went to the office.
 4 Mary moved to the office.
 5 Daniel went to the kitchen.
 6 Sandra went to the bathroom.
 7 Daniel moved to the office.
-8 Where is Daniel? 	Daniel moved to the office.
+8 Where is Daniel? 	Daniel went to the office.
 9 Mary moved to the office.
 10 Daniel went to the kitchen.
 11 Sandra went to the bathroom.
@@ -630,19 +630,19 @@
 20 Where is Mary? 	Mary moved to the kitchen.
 1 John went back to the bathroom.
 2 Mary travelled to the bathroom.
-3 Where is John? 	John went to the bathroom.
+3 Where is John? 	John travelled to the bathroom.
 4 John went back to the bathroom.
 5 Mary travelled to the bathroom.
 6 Mary went to the garden.
 7 Sandra moved to the garden.
-8 Where is John? 	John travelled to the bathroom.
+8 Where is John? 	John moved to the bathroom.
 9 John went back to the bathroom.
 10 Mary travelled to the bathroom.
 11 Mary went to the garden.
 12 Sandra moved to the garden.
 13 John went to the kitchen.
 14 Daniel moved to the bathroom.
-15 Where is John? 	John travelled to the kitchen.
+15 Where is John? 	John went to the kitchen.
 1 John went back to the bathroom.
 2 Mary travelled to the bathroom.
 3 Mary went to the garden.
@@ -651,7 +651,7 @@
 6 Daniel moved to the bathroom.
 7 Daniel went back to the hallway.
 8 Mary went to the kitchen.
-9 Where is Mary? 	Mary travelled to the kitchen.
+9 Where is Mary? 	Mary moved to the kitchen.
 10 John went back to the bathroom.
 11 Mary travelled to the bathroom.
 12 Mary went to the garden.
@@ -662,22 +662,22 @@
 17 Mary went to the kitchen.
 18 Daniel went to the garden.
 19 Daniel travelled to the hallway.
-20 Where is Daniel? 	Daniel travelled to the hallway.
+20 Where is Daniel? 	Daniel moved to the hallway.
 1 Mary went back to the bedroom.
 2 Mary travelled to the bathroom.
-3 Where is Mary? 	Mary travelled to the bathroom.
+3 Where is Mary? 	Mary went to the bathroom.
 4 Mary went back to the bedroom.
 5 Mary travelled to the bathroom.
 6 John travelled to the office.
 7 Mary travelled to the bedroom.
-8 Where is Mary? 	Mary travelled to the bedroom.
+8 Where is Mary? 	Mary went to the bedroom.
 9 Mary went back to the bedroom.
 10 Mary travelled to the bathroom.
 11 John travelled to the office.
 12 Mary travelled to the bedroom.
 13 John journeyed to the kitchen.
 14 John moved to the hallway.
-15 Where is Mary? 	Mary went to the bedroom.
+15 Where is Mary? 	Mary moved to the bedroom.
 1 Mary went back to the bedroom.
 2 Mary travelled to the bathroom.
 3 John travelled to the office.
@@ -686,7 +686,7 @@
 6 John moved to the hallway.
 7 Daniel moved to the hallway.
 8 Mary went back to the garden.
-9 Where is Mary? 	Mary moved to the garden.
+9 Where is Mary? 	Mary journeyed to the garden.
 10 Mary went back to the bedroom.
 11 Mary travelled to the bathroom.
 12 John travelled to the office.
@@ -697,22 +697,22 @@
 17 Mary went back to the garden.
 18 Daniel went back to the office.
 19 Daniel travelled to the kitchen.
-20 Where is Daniel? 	Daniel went to the kitchen.
+20 Where is Daniel? 	Daniel travelled to the kitchen.
 1 Daniel moved to the garden.
 2 Mary went back to the bathroom.
-3 Where is Daniel? 	Daniel went to the garden.
+3 Where is Daniel? 	Daniel moved to the garden.
 4 Daniel moved to the garden.
 5 Mary went back to the bathroom.
 6 Daniel travelled to the kitchen.
 7 Sandra went to the kitchen.
-8 Where is Sandra? 	Sandra moved to the kitchen.
+8 Where is Sandra? 	Sandra travelled to the kitchen.
 9 Daniel moved to the garden.
 10 Mary went back to the bathroom.
 11 Daniel travelled to the kitchen.
 12 Sandra went to the kitchen.
 13 Daniel journeyed to the garden.
 14 Mary journeyed to the kitchen.
-15 Where is Mary? 	Mary journeyed to the kitchen.
+15 Where is Mary? 	Mary travelled to the kitchen.
 1 Daniel moved to the garden.
 2 Mary went back to the bathroom.
 3 Daniel travelled to the kitchen.
@@ -732,15 +732,15 @@
 17 John went back to the bedroom.
 18 John moved to the office.
 19 John travelled to the bathroom.
-20 Where is Mary? 	Mary went to the hallway.
+20 Where is Mary? 	Mary moved to the hallway.
 1 Mary went back to the hallway.
 2 Sandra journeyed to the garden.
-3 Where is Sandra? 	Sandra went to the garden.
+3 Where is Sandra? 	Sandra journeyed to the garden.
 4 Mary went back to the hallway.
 5 Sandra journeyed to the garden.
 6 Sandra travelled to the bathroom.
 7 John travelled to the hallway.
-8 Where is Sandra? 	Sandra travelled to the bathroom.
+8 Where is Sandra? 	Sandra went to the bathroom.
 9 Mary went back to the hallway.
 10 Sandra journeyed to the garden.
 11 Sandra travelled to the bathroom.
@@ -756,7 +756,7 @@
 6 Mary journeyed to the bedroom.
 7 Sandra journeyed to the office.
 8 Daniel journeyed to the hallway.
-9 Where is John? 	John journeyed to the garden.
+9 Where is John? 	John travelled to the garden.
 10 Mary went back to the hallway.
 11 Sandra journeyed to the garden.
 12 Sandra travelled to the bathroom.
@@ -767,7 +767,7 @@
 17 Daniel journeyed to the hallway.
 18 Mary journeyed to the hallway.
 19 Mary moved to the bedroom.
-20 Where is Mary? 	Mary journeyed to the bedroom.
+20 Where is Mary? 	Mary travelled to the bedroom.
 1 Sandra journeyed to the kitchen.
 2 Sandra journeyed to the garden.
 3 Where is Sandra? 	Sandra journeyed to the garden.
@@ -802,7 +802,7 @@
 17 John journeyed to the bedroom.
 18 Daniel went back to the bathroom.
 19 Sandra journeyed to the bedroom.
-20 Where is Daniel? 	Daniel moved to the bathroom.
+20 Where is Daniel? 	Daniel went to the bathroom.
 1 Mary went back to the hallway.
 2 Daniel went back to the bedroom.
 3 Where is Mary? 	Mary went to the hallway.
@@ -810,14 +810,14 @@
 5 Daniel went back to the bedroom.
 6 Sandra moved to the bathroom.
 7 Sandra journeyed to the hallway.
-8 Where is Sandra? 	Sandra went to the hallway.
+8 Where is Sandra? 	Sandra moved to the hallway.
 9 Mary went back to the hallway.
 10 Daniel went back to the bedroom.
 11 Sandra moved to the bathroom.
 12 Sandra journeyed to the hallway.
 13 Mary went back to the bedroom.
 14 Mary went back to the garden.
-15 Where is Mary? 	Mary moved to the garden.
+15 Where is Mary? 	Mary journeyed to the garden.
 1 Mary went back to the hallway.
 2 Daniel went back to the bedroom.
 3 Sandra moved to the bathroom.
@@ -826,7 +826,7 @@
 6 Mary went back to the garden.
 7 Sandra went back to the bathroom.
 8 John went to the office.
-9 Where is John? 	John went to the office.
+9 Where is John? 	John journeyed to the office.
 10 Mary went back to the hallway.
 11 Daniel went back to the bedroom.
 12 Sandra moved to the bathroom.
@@ -837,22 +837,22 @@
 17 John went to the office.
 18 Daniel travelled to the garden.
 19 Sandra travelled to the hallway.
-20 Where is John? 	John journeyed to the office.
+20 Where is John? 	John moved to the office.
 1 John went back to the hallway.
 2 Sandra journeyed to the kitchen.
-3 Where is John? 	John went to the hallway.
+3 Where is John? 	John journeyed to the hallway.
 4 John went back to the hallway.
 5 Sandra journeyed to the kitchen.
 6 Daniel journeyed to the office.
 7 John went to the kitchen.
-8 Where is John? 	John journeyed to the kitchen.
+8 Where is John? 	John went to the kitchen.
 9 John went back to the hallway.
 10 Sandra journeyed to the kitchen.
 11 Daniel journeyed to the office.
 12 John went to the kitchen.
 13 Daniel journeyed to the garden.
 14 John travelled to the bedroom.
-15 Where is John? 	John travelled to the bedroom.
+15 Where is John? 	John went to the bedroom.
 1 John went back to the hallway.
 2 Sandra journeyed to the kitchen.
 3 Daniel journeyed to the office.
@@ -872,10 +872,10 @@
 17 Daniel went to the bedroom.
 18 Sandra travelled to the hallway.
 19 Sandra journeyed to the bedroom.
-20 Where is Daniel? 	Daniel journeyed to the bedroom.
+20 Where is Daniel? 	Daniel travelled to the bedroom.
 1 John moved to the kitchen.
 2 Daniel travelled to the garden.
-3 Where is John? 	John moved to the kitchen.
+3 Where is John? 	John travelled to the kitchen.
 4 John moved to the kitchen.
 5 Daniel travelled to the garden.
 6 Daniel went to the kitchen.
@@ -907,7 +907,7 @@
 17 Daniel journeyed to the garden.
 18 Daniel went to the kitchen.
 19 John went to the hallway.
-20 Where is Daniel? 	Daniel travelled to the kitchen.
+20 Where is Daniel? 	Daniel moved to the kitchen.
 1 Sandra went back to the kitchen.
 2 Sandra travelled to the bathroom.
 3 Where is Sandra? 	Sandra travelled to the bathroom.
@@ -915,14 +915,14 @@
 5 Sandra travelled to the bathroom.
 6 John travelled to the garden.
 7 Daniel moved to the hallway.
-8 Where is Daniel? 	Daniel travelled to the hallway.
+8 Where is Daniel? 	Daniel moved to the hallway.
 9 Sandra went back to the kitchen.
 10 Sandra travelled to the bathroom.
 11 John travelled to the garden.
 12 Daniel moved to the hallway.
 13 John went to the kitchen.
 14 Daniel journeyed to the garden.
-15 Where is Sandra? 	Sandra travelled to the bathroom.
+15 Where is Sandra? 	Sandra went to the bathroom.
 1 Sandra went back to the kitchen.
 2 Sandra travelled to the bathroom.
 3 John travelled to the garden.
@@ -931,7 +931,7 @@
 6 Daniel journeyed to the garden.
 7 Daniel journeyed to the hallway.
 8 Sandra journeyed to the garden.
-9 Where is Daniel? 	Daniel travelled to the hallway.
+9 Where is Daniel? 	Daniel went to the hallway.
 10 Sandra went back to the kitchen.
 11 Sandra travelled to the bathroom.
 12 John travelled to the garden.
@@ -942,7 +942,7 @@
 17 Sandra journeyed to the garden.
 18 John went back to the hallway.
 19 Mary travelled to the office.
-20 Where is John? 	John travelled to the hallway.
+20 Where is John? 	John moved to the hallway.
 1 Daniel moved to the bedroom.
 2 John went back to the garden.
 3 Where is Daniel? 	Daniel moved to the bedroom.
@@ -966,7 +966,7 @@
 6 Daniel journeyed to the garden.
 7 John went back to the garden.
 8 Sandra went back to the kitchen.
-9 Where is John? 	John travelled to the garden.
+9 Where is John? 	John moved to the garden.
 10 Daniel moved to the bedroom.
 11 John went back to the garden.
 12 John travelled to the bathroom.
@@ -1001,7 +1001,7 @@
 6 John went back to the office.
 7 Mary went back to the office.
 8 Mary went to the bathroom.
-9 Where is Mary? 	Mary moved to the bathroom.
+9 Where is Mary? 	Mary went to the bathroom.
 10 Mary travelled to the hallway.
 11 Mary moved to the garden.
 12 Sandra went to the kitchen.
@@ -1020,14 +1020,14 @@
 5 John journeyed to the garden.
 6 John travelled to the bathroom.
 7 Daniel moved to the bedroom.
-8 Where is John? 	John moved to the bathroom.
+8 Where is John? 	John journeyed to the bathroom.
 9 Daniel went to the office.
 10 John journeyed to the garden.
 11 John travelled to the bathroom.
 12 Daniel moved to the bedroom.
 13 Mary travelled to the kitchen.
 14 John journeyed to the kitchen.
-15 Where is John? 	John went to the kitchen.
+15 Where is John? 	John moved to the kitchen.
 1 Daniel went to the office.
 2 John journeyed to the garden.
 3 John travelled to the bathroom.
@@ -1047,10 +1047,10 @@
 17 Sandra moved to the office.
 18 John moved to the garden.
 19 Mary journeyed to the bedroom.
-20 Where is Sandra? 	Sandra went to the office.
+20 Where is Sandra? 	Sandra travelled to the office.
 1 Sandra journeyed to the hallway.
 2 Daniel travelled to the hallway.
-3 Where is Sandra? 	Sandra journeyed to the hallway.
+3 Where is Sandra? 	Sandra travelled to the hallway.
 4 Sandra journeyed to the hallway.
 5 Daniel travelled to the hallway.
 6 John travelled to the hallway.
@@ -1062,7 +1062,7 @@
 12 Sandra went to the bedroom.
 13 John travelled to the office.
 14 Sandra went to the kitchen.
-15 Where is Sandra? 	Sandra journeyed to the kitchen.
+15 Where is Sandra? 	Sandra went to the kitchen.
 1 Sandra journeyed to the hallway.
 2 Daniel travelled to the hallway.
 3 John travelled to the hallway.
@@ -1071,7 +1071,7 @@
 6 Sandra went to the kitchen.
 7 Mary moved to the office.
 8 Daniel moved to the office.
-9 Where is Sandra? 	Sandra travelled to the kitchen.
+9 Where is Sandra? 	Sandra journeyed to the kitchen.
 10 Sandra journeyed to the hallway.
 11 Daniel travelled to the hallway.
 12 John travelled to the hallway.
@@ -1082,22 +1082,22 @@
 17 Daniel moved to the office.
 18 Daniel went back to the bathroom.
 19 Daniel travelled to the office.
-20 Where is Daniel? 	Daniel went to the office.
+20 Where is Daniel? 	Daniel travelled to the office.
 1 Mary went to the bathroom.
 2 John travelled to the hallway.
-3 Where is Mary? 	Mary travelled to the bathroom.
+3 Where is Mary? 	Mary went to the bathroom.
 4 Mary went to the bathroom.
 5 John travelled to the hallway.
 6 John moved to the kitchen.
 7 Mary went back to the hallway.
-8 Where is John? 	John moved to the kitchen.
+8 Where is John? 	John went to the kitchen.
 9 Mary went to the bathroom.
 10 John travelled to the hallway.
 11 John moved to the kitchen.
 12 Mary went back to the hallway.
 13 Daniel went back to the bedroom.
 14 Mary journeyed to the garden.
-15 Where is John? 	John travelled to the kitchen.
+15 Where is John? 	John went to the kitchen.
 1 Mary went to the bathroom.
 2 John travelled to the hallway.
 3 John moved to the kitchen.
@@ -1106,7 +1106,7 @@
 6 Mary journeyed to the garden.
 7 Mary went back to the office.
 8 Daniel went back to the bathroom.
-9 Where is Daniel? 	Daniel travelled to the bathroom.
+9 Where is Daniel? 	Daniel moved to the bathroom.
 10 Mary went to the bathroom.
 11 John travelled to the hallway.
 12 John moved to the kitchen.
@@ -1117,22 +1117,22 @@
 17 Daniel went back to the bathroom.
 18 Sandra moved to the hallway.
 19 John went back to the bedroom.
-20 Where is Mary? 	Mary travelled to the office.
+20 Where is Mary? 	Mary went to the office.
 1 Daniel journeyed to the bedroom.
 2 John went to the kitchen.
-3 Where is Daniel? 	Daniel journeyed to the bedroom.
+3 Where is Daniel? 	Daniel went to the bedroom.
 4 Daniel journeyed to the bedroom.
 5 John went to the kitchen.
 6 Mary moved to the office.
 7 Sandra travelled to the bathroom.
-8 Where is Sandra? 	Sandra moved to the bathroom.
+8 Where is Sandra? 	Sandra went to the bathroom.
 9 Daniel journeyed to the bedroom.
 10 John went to the kitchen.
 11 Mary moved to the office.
 12 Sandra travelled to the bathroom.
 13 Mary went to the kitchen.
 14 Sandra journeyed to the bedroom.
-15 Where is Mary? 	Mary went to the kitchen.
+15 Where is Mary? 	Mary journeyed to the kitchen.
 1 Daniel journeyed to the bedroom.
 2 John went to the kitchen.
 3 Mary moved to the office.
@@ -1155,7 +1155,7 @@
 20 Where is Sandra? 	Sandra travelled to the office.
 1 Mary moved to the garden.
 2 John went to the bedroom.
-3 Where is John? 	John moved to the bedroom.
+3 Where is John? 	John went to the bedroom.
 4 Mary moved to the garden.
 5 John went to the bedroom.
 6 Daniel journeyed to the kitchen.
@@ -1176,7 +1176,7 @@
 6 Daniel moved to the garden.
 7 Daniel went to the kitchen.
 8 Mary journeyed to the bathroom.
-9 Where is Daniel? 	Daniel went to the kitchen.
+9 Where is Daniel? 	Daniel journeyed to the kitchen.
 10 Mary moved to the garden.
 11 John went to the bedroom.
 12 Daniel journeyed to the kitchen.
@@ -1187,7 +1187,7 @@
 17 Mary journeyed to the bathroom.
 18 Sandra travelled to the garden.
 19 Sandra went to the hallway.
-20 Where is Mary? 	Mary travelled to the bathroom.
+20 Where is Mary? 	Mary journeyed to the bathroom.
 1 Sandra travelled to the office.
 2 Sandra travelled to the bathroom.
 3 Where is Sandra? 	Sandra travelled to the bathroom.
@@ -1211,7 +1211,7 @@
 6 Mary went to the office.
 7 Mary travelled to the hallway.
 8 John moved to the garden.
-9 Where is Mary? 	Mary moved to the hallway.
+9 Where is Mary? 	Mary travelled to the hallway.
 10 Sandra travelled to the office.
 11 Sandra travelled to the bathroom.
 12 Mary went back to the hallway.
@@ -1225,7 +1225,7 @@
 20 Where is John? 	John journeyed to the garden.
 1 Sandra journeyed to the garden.
 2 Mary travelled to the hallway.
-3 Where is Mary? 	Mary travelled to the hallway.
+3 Where is Mary? 	Mary journeyed to the hallway.
 4 Sandra journeyed to the garden.
 5 Mary travelled to the hallway.
 6 John travelled to the bathroom.
@@ -1237,7 +1237,7 @@
 12 Sandra went back to the kitchen.
 13 Daniel travelled to the bathroom.
 14 Daniel travelled to the kitchen.
-15 Where is John? 	John journeyed to the bathroom.
+15 Where is John? 	John went to the bathroom.
 1 Sandra journeyed to the garden.
 2 Mary travelled to the hallway.
 3 John travelled to the bathroom.
@@ -1246,7 +1246,7 @@
 6 Daniel travelled to the kitchen.
 7 John went back to the hallway.
 8 John travelled to the bathroom.
-9 Where is John? 	John went to the bathroom.
+9 Where is John? 	John journeyed to the bathroom.
 10 Sandra journeyed to the garden.
 11 Mary travelled to the hallway.
 12 John travelled to the bathroom.
@@ -1257,22 +1257,22 @@
 17 John travelled to the bathroom.
 18 Mary journeyed to the bathroom.
 19 Mary travelled to the bedroom.
-20 Where is Mary? 	Mary journeyed to the bedroom.
+20 Where is Mary? 	Mary went to the bedroom.
 1 John went to the office.
 2 Daniel journeyed to the kitchen.
-3 Where is Daniel? 	Daniel went to the kitchen.
+3 Where is Daniel? 	Daniel journeyed to the kitchen.
 4 John went to the office.
 5 Daniel journeyed to the kitchen.
 6 John travelled to the bedroom.
 7 John moved to the garden.
-8 Where is Daniel? 	Daniel went to the kitchen.
+8 Where is Daniel? 	Daniel journeyed to the kitchen.
 9 John went to the office.
 10 Daniel journeyed to the kitchen.
 11 John travelled to the bedroom.
 12 John moved to the garden.
 13 Daniel journeyed to the bathroom.
 14 John journeyed to the bedroom.
-15 Where is John? 	John moved to the bedroom.
+15 Where is John? 	John journeyed to the bedroom.
 1 John went to the office.
 2 Daniel journeyed to the kitchen.
 3 John travelled to the bedroom.
@@ -1281,7 +1281,7 @@
 6 John journeyed to the bedroom.
 7 Sandra journeyed to the kitchen.
 8 Mary moved to the garden.
-9 Where is John? 	John moved to the bedroom.
+9 Where is John? 	John went to the bedroom.
 10 John went to the office.
 11 Daniel journeyed to the kitchen.
 12 John travelled to the bedroom.
@@ -1292,22 +1292,22 @@
 17 Mary moved to the garden.
 18 Sandra journeyed to the bathroom.
 19 Sandra went back to the bedroom.
-20 Where is Sandra? 	Sandra moved to the bedroom.
+20 Where is Sandra? 	Sandra journeyed to the bedroom.
 1 Daniel went back to the bedroom.
 2 Sandra travelled to the bedroom.
-3 Where is Sandra? 	Sandra went to the bedroom.
+3 Where is Sandra? 	Sandra travelled to the bedroom.
 4 Daniel went back to the bedroom.
 5 Sandra travelled to the bedroom.
 6 Sandra went to the office.
 7 Mary went to the office.
-8 Where is Mary? 	Mary went to the office.
+8 Where is Mary? 	Mary travelled to the office.
 9 Daniel went back to the bedroom.
 10 Sandra travelled to the bedroom.
 11 Sandra went to the office.
 12 Mary went to the office.
 13 John journeyed to the garden.
 14 Mary journeyed to the garden.
-15 Where is Mary? 	Mary went to the garden.
+15 Where is Mary? 	Mary journeyed to the garden.
 1 Daniel went back to the bedroom.
 2 Sandra travelled to the bedroom.
 3 Sandra went to the office.
@@ -1316,7 +1316,7 @@
 6 Mary journeyed to the garden.
 7 Daniel travelled to the bathroom.
 8 John moved to the kitchen.
-9 Where is John? 	John travelled to the kitchen.
+9 Where is John? 	John journeyed to the kitchen.
 10 Daniel went back to the bedroom.
 11 Sandra travelled to the bedroom.
 12 Sandra went to the office.
@@ -1327,7 +1327,7 @@
 17 John moved to the kitchen.
 18 Sandra went back to the kitchen.
 19 Daniel journeyed to the hallway.
-20 Where is Mary? 	Mary went to the garden.
+20 Where is Mary? 	Mary travelled to the garden.
 1 Daniel moved to the bathroom.
 2 John moved to the office.
 3 Where is Daniel? 	Daniel moved to the bathroom.
@@ -1342,7 +1342,7 @@
 12 John went back to the hallway.
 13 Mary moved to the hallway.
 14 Mary journeyed to the kitchen.
-15 Where is Mary? 	Mary went to the kitchen.
+15 Where is Mary? 	Mary moved to the kitchen.
 1 Daniel moved to the bathroom.
 2 John moved to the office.
 3 Mary went back to the office.
@@ -1351,7 +1351,7 @@
 6 Mary journeyed to the kitchen.
 7 Daniel went to the office.
 8 Daniel moved to the bedroom.
-9 Where is Daniel? 	Daniel moved to the bedroom.
+9 Where is Daniel? 	Daniel went to the bedroom.
 10 Daniel moved to the bathroom.
 11 John moved to the office.
 12 Mary went back to the office.
@@ -1362,7 +1362,7 @@
 17 Daniel moved to the bedroom.
 18 Sandra journeyed to the hallway.
 19 Daniel travelled to the garden.
-20 Where is Daniel? 	Daniel journeyed to the garden.
+20 Where is Daniel? 	Daniel travelled to the garden.
 1 Mary travelled to the hallway.
 2 Sandra went to the garden.
 3 Where is Sandra? 	Sandra travelled to the garden.
@@ -1370,14 +1370,14 @@
 5 Sandra went to the garden.
 6 Daniel travelled to the bedroom.
 7 Mary went to the bedroom.
-8 Where is Daniel? 	Daniel went to the bedroom.
+8 Where is Daniel? 	Daniel travelled to the bedroom.
 9 Mary travelled to the hallway.
 10 Sandra went to the garden.
 11 Daniel travelled to the bedroom.
 12 Mary went to the bedroom.
 13 Daniel moved to the hallway.
 14 John travelled to the bathroom.
-15 Where is Sandra? 	Sandra travelled to the garden.
+15 Where is Sandra? 	Sandra went to the garden.
 1 Mary travelled to the hallway.
 2 Sandra went to the garden.
 3 Daniel travelled to the bedroom.
@@ -1386,7 +1386,7 @@
 6 John travelled to the bathroom.
 7 Daniel journeyed to the bathroom.
 8 John journeyed to the office.
-9 Where is Daniel? 	Daniel travelled to the bathroom.
+9 Where is Daniel? 	Daniel moved to the bathroom.
 10 Mary travelled to the hallway.
 11 Sandra went to the garden.
 12 Daniel travelled to the bedroom.
@@ -1397,15 +1397,15 @@
 17 John journeyed to the office.
 18 Mary went back to the garden.
 19 John went to the kitchen.
-20 Where is John? 	John moved to the kitchen.
+20 Where is John? 	John travelled to the kitchen.
 1 Daniel travelled to the kitchen.
 2 Daniel journeyed to the garden.
-3 Where is Daniel? 	Daniel journeyed to the garden.
+3 Where is Daniel? 	Daniel travelled to the garden.
 4 Daniel travelled to the kitchen.
 5 Daniel journeyed to the garden.
 6 John journeyed to the office.
 7 John travelled to the garden.
-8 Where is Daniel? 	Daniel travelled to the garden.
+8 Where is Daniel? 	Daniel journeyed to the garden.
 9 Daniel travelled to the kitchen.
 10 Daniel journeyed to the garden.
 11 John journeyed to the office.
@@ -1421,7 +1421,7 @@
 6 John went to the hallway.
 7 John moved to the office.
 8 Daniel journeyed to the kitchen.
-9 Where is John? 	John went to the office.
+9 Where is John? 	John travelled to the office.
 10 Daniel travelled to the kitchen.
 11 Daniel journeyed to the garden.
 12 John journeyed to the office.
@@ -1432,7 +1432,7 @@
 17 Daniel journeyed to the kitchen.
 18 Daniel went to the garden.
 19 John went back to the bathroom.
-20 Where is Daniel? 	Daniel went to the garden.
+20 Where is Daniel? 	Daniel moved to the garden.
 1 Mary went to the bathroom.
 2 John went to the kitchen.
 3 Where is John? 	John went to the kitchen.
@@ -1456,7 +1456,7 @@
 6 Mary travelled to the kitchen.
 7 Mary went to the garden.
 8 Sandra moved to the bedroom.
-9 Where is Mary? 	Mary moved to the garden.
+9 Where is Mary? 	Mary went to the garden.
 10 Mary went to the bathroom.
 11 John went to the kitchen.
 12 Daniel moved to the office.
@@ -1467,7 +1467,7 @@
 17 Sandra moved to the bedroom.
 18 Sandra journeyed to the kitchen.
 19 Daniel travelled to the garden.
-20 Where is Sandra? 	Sandra travelled to the kitchen.
+20 Where is Sandra? 	Sandra journeyed to the kitchen.
 1 Daniel moved to the garden.
 2 John went to the kitchen.
 3 Where is Daniel? 	Daniel moved to the garden.
@@ -1482,7 +1482,7 @@
 12 Sandra travelled to the bedroom.
 13 Mary went to the bathroom.
 14 John journeyed to the bathroom.
-15 Where is John? 	John moved to the bathroom.
+15 Where is John? 	John travelled to the bathroom.
 1 Daniel moved to the garden.
 2 John went to the kitchen.
 3 Mary went to the office.
@@ -1491,7 +1491,7 @@
 6 John journeyed to the bathroom.
 7 Mary went back to the office.
 8 John went back to the kitchen.
-9 Where is Mary? 	Mary journeyed to the office.
+9 Where is Mary? 	Mary went to the office.
 10 Daniel moved to the garden.
 11 John went to the kitchen.
 12 Mary went to the office.
@@ -1510,14 +1510,14 @@
 5 Mary moved to the bedroom.
 6 Mary went to the hallway.
 7 Sandra went back to the bathroom.
-8 Where is Sandra? 	Sandra went to the bathroom.
+8 Where is Sandra? 	Sandra travelled to the bathroom.
 9 Mary travelled to the kitchen.
 10 Mary moved to the bedroom.
 11 Mary went to the hallway.
 12 Sandra went back to the bathroom.
 13 John went to the bedroom.
 14 Daniel travelled to the garden.
-15 Where is John? 	John travelled to the bedroom.
+15 Where is John? 	John moved to the bedroom.
 1 Mary travelled to the kitchen.
 2 Mary moved to the bedroom.
 3 Mary went to the hallway.
@@ -1545,14 +1545,14 @@
 5 John journeyed to the garden.
 6 Mary went back to the bathroom.
 7 Mary moved to the garden.
-8 Where is Mary? 	Mary moved to the garden.
+8 Where is Mary? 	Mary journeyed to the garden.
 9 John journeyed to the kitchen.
 10 John journeyed to the garden.
 11 Mary went back to the bathroom.
 12 Mary moved to the garden.
 13 Daniel travelled to the bedroom.
 14 John moved to the kitchen.
-15 Where is Mary? 	Mary moved to the garden.
+15 Where is Mary? 	Mary journeyed to the garden.
 1 John journeyed to the kitchen.
 2 John journeyed to the garden.
 3 Mary went back to the bathroom.
@@ -1561,7 +1561,7 @@
 6 John moved to the kitchen.
 7 John journeyed to the hallway.
 8 Mary went back to the bathroom.
-9 Where is Mary? 	Mary journeyed to the bathroom.
+9 Where is Mary? 	Mary travelled to the bathroom.
 10 John journeyed to the kitchen.
 11 John journeyed to the garden.
 12 Mary went back to the bathroom.
@@ -1572,7 +1572,7 @@
 17 Mary went back to the bathroom.
 18 John journeyed to the bathroom.
 19 Sandra moved to the kitchen.
-20 Where is Mary? 	Mary journeyed to the bathroom.
+20 Where is Mary? 	Mary moved to the bathroom.
 1 Mary journeyed to the office.
 2 Daniel journeyed to the bedroom.
 3 Where is Daniel? 	Daniel journeyed to the bedroom.
@@ -1587,7 +1587,7 @@
 12 Sandra went to the bedroom.
 13 John went back to the hallway.
 14 Daniel went back to the bathroom.
-15 Where is Daniel? 	Daniel went to the bathroom.
+15 Where is Daniel? 	Daniel journeyed to the bathroom.
 1 Mary journeyed to the office.
 2 Daniel journeyed to the bedroom.
 3 Mary went to the bedroom.
@@ -1596,7 +1596,7 @@
 6 Daniel went back to the bathroom.
 7 Mary travelled to the garden.
 8 Daniel moved to the hallway.
-9 Where is John? 	John journeyed to the hallway.
+9 Where is John? 	John moved to the hallway.
 10 Mary journeyed to the office.
 11 Daniel journeyed to the bedroom.
 12 Mary went to the bedroom.
@@ -1607,7 +1607,7 @@
 17 Daniel moved to the hallway.
 18 Sandra travelled to the office.
 19 Daniel moved to the bathroom.
-20 Where is Sandra? 	Sandra went to the office.
+20 Where is Sandra? 	Sandra moved to the office.
 1 Mary moved to the kitchen.
 2 Sandra moved to the kitchen.
 3 Where is Mary? 	Mary moved to the kitchen.
@@ -1622,7 +1622,7 @@
 12 John moved to the bedroom.
 13 Mary journeyed to the office.
 14 Mary went to the bathroom.
-15 Where is John? 	John moved to the bedroom.
+15 Where is John? 	John journeyed to the bedroom.
 1 Mary moved to the kitchen.
 2 Sandra moved to the kitchen.
 3 Mary went to the garden.
@@ -1666,7 +1666,7 @@
 6 Sandra went back to the bedroom.
 7 Mary moved to the hallway.
 8 Mary went to the bedroom.
-9 Where is Sandra? 	Sandra travelled to the bedroom.
+9 Where is Sandra? 	Sandra journeyed to the bedroom.
 10 John went to the kitchen.
 11 John went to the hallway.
 12 John travelled to the bathroom.
@@ -1685,7 +1685,7 @@
 5 Mary journeyed to the office.
 6 Sandra went back to the garden.
 7 Daniel moved to the garden.
-8 Where is Daniel? 	Daniel went to the garden.
+8 Where is Daniel? 	Daniel moved to the garden.
 9 Daniel went back to the bathroom.
 10 Mary journeyed to the office.
 11 Sandra went back to the garden.
@@ -1712,22 +1712,22 @@
 17 Mary went back to the bedroom.
 18 John journeyed to the office.
 19 John went to the bathroom.
-20 Where is John? 	John went to the bathroom.
+20 Where is John? 	John moved to the bathroom.
 1 Sandra moved to the bathroom.
 2 Daniel journeyed to the garden.
-3 Where is Daniel? 	Daniel moved to the garden.
+3 Where is Daniel? 	Daniel journeyed to the garden.
 4 Sandra moved to the bathroom.
 5 Daniel journeyed to the garden.
 6 Mary journeyed to the bathroom.
 7 Sandra moved to the hallway.
-8 Where is Sandra? 	Sandra moved to the hallway.
+8 Where is Sandra? 	Sandra journeyed to the hallway.
 9 Sandra moved to the bathroom.
 10 Daniel journeyed to the garden.
 11 Mary journeyed to the bathroom.
 12 Sandra moved to the hallway.
 13 Daniel moved to the office.
 14 Daniel went to the garden.
-15 Where is Daniel? 	Daniel went to the garden.
+15 Where is Daniel? 	Daniel moved to the garden.
 1 Sandra moved to the bathroom.
 2 Daniel journeyed to the garden.
 3 Mary journeyed to the bathroom.
@@ -1747,7 +1747,7 @@
 17 Mary moved to the bedroom.
 18 Sandra went back to the bathroom.
 19 Sandra went to the garden.
-20 Where is Mary? 	Mary went to the bedroom.
+20 Where is Mary? 	Mary travelled to the bedroom.
 1 John journeyed to the hallway.
 2 Daniel journeyed to the hallway.
 3 Where is John? 	John journeyed to the hallway.
@@ -1755,14 +1755,14 @@
 5 Daniel journeyed to the hallway.
 6 Daniel went to the office.
 7 Sandra moved to the bedroom.
-8 Where is Sandra? 	Sandra moved to the bedroom.
+8 Where is Sandra? 	Sandra went to the bedroom.
 9 John journeyed to the hallway.
 10 Daniel journeyed to the hallway.
 11 Daniel went to the office.
 12 Sandra moved to the bedroom.
 13 John went to the bedroom.
 14 Daniel went back to the kitchen.
-15 Where is Sandra? 	Sandra journeyed to the bedroom.
+15 Where is Sandra? 	Sandra went to the bedroom.
 1 John journeyed to the hallway.
 2 Daniel journeyed to the hallway.
 3 Daniel went to the office.
@@ -1771,7 +1771,7 @@
 6 Daniel went back to the kitchen.
 7 John journeyed to the kitchen.
 8 Mary went to the hallway.
-9 Where is John? 	John went to the kitchen.
+9 Where is John? 	John moved to the kitchen.
 10 John journeyed to the hallway.
 11 Daniel journeyed to the hallway.
 12 Daniel went to the office.
@@ -1782,22 +1782,22 @@
 17 Mary went to the hallway.
 18 Sandra went back to the bathroom.
 19 Mary went to the office.
-20 Where is Daniel? 	Daniel moved to the kitchen.
+20 Where is Daniel? 	Daniel journeyed to the kitchen.
 1 Daniel journeyed to the office.
 2 Mary went back to the garden.
-3 Where is Daniel? 	Daniel went to the office.
+3 Where is Daniel? 	Daniel journeyed to the office.
 4 Daniel journeyed to the office.
 5 Mary went back to the garden.
 6 Daniel went back to the garden.
 7 John moved to the hallway.
-8 Where is Daniel? 	Daniel went to the garden.
+8 Where is Daniel? 	Daniel journeyed to the garden.
 9 Daniel journeyed to the office.
 10 Mary went back to the garden.
 11 Daniel went back to the garden.
 12 John moved to the hallway.
 13 John travelled to the bathroom.
 14 Mary moved to the kitchen.
-15 Where is Daniel? 	Daniel journeyed to the garden.
+15 Where is Daniel? 	Daniel travelled to the garden.
 1 Daniel journeyed to the office.
 2 Mary went back to the garden.
 3 Daniel went back to the garden.
@@ -1806,7 +1806,7 @@
 6 Mary moved to the kitchen.
 7 Daniel travelled to the bathroom.
 8 Sandra journeyed to the bedroom.
-9 Where is Sandra? 	Sandra travelled to the bedroom.
+9 Where is Sandra? 	Sandra went to the bedroom.
 10 Daniel journeyed to the office.
 11 Mary went back to the garden.
 12 Daniel went back to the garden.
@@ -1817,10 +1817,10 @@
 17 Sandra journeyed to the bedroom.
 18 Daniel journeyed to the garden.
 19 Sandra travelled to the office.
-20 Where is Sandra? 	Sandra journeyed to the office.
+20 Where is Sandra? 	Sandra went to the office.
 1 Daniel went back to the bathroom.
 2 John moved to the bathroom.
-3 Where is John? 	John went to the bathroom.
+3 Where is John? 	John moved to the bathroom.
 4 Daniel went back to the bathroom.
 5 John moved to the bathroom.
 6 Mary journeyed to the bathroom.
@@ -1832,7 +1832,7 @@
 12 Sandra went to the kitchen.
 13 Mary went back to the kitchen.
 14 Daniel travelled to the office.
-15 Where is John? 	John went to the bathroom.
+15 Where is John? 	John travelled to the bathroom.
 1 Daniel went back to the bathroom.
 2 John moved to the bathroom.
 3 Mary journeyed to the bathroom.
@@ -1841,7 +1841,7 @@
 6 Daniel travelled to the office.
 7 Sandra went back to the office.
 8 Mary went back to the garden.
-9 Where is Sandra? 	Sandra went to the office.
+9 Where is Sandra? 	Sandra travelled to the office.
 10 Daniel went back to the bathroom.
 11 John moved to the bathroom.
 12 Mary journeyed to the bathroom.
@@ -1852,7 +1852,7 @@
 17 Mary went back to the garden.
 18 Mary moved to the bedroom.
 19 Daniel moved to the hallway.
-20 Where is Daniel? 	Daniel travelled to the hallway.
+20 Where is Daniel? 	Daniel journeyed to the hallway.
 1 Sandra went to the hallway.
 2 Sandra journeyed to the kitchen.
 3 Where is Sandra? 	Sandra journeyed to the kitchen.
@@ -1860,14 +1860,14 @@
 5 Sandra journeyed to the kitchen.
 6 Sandra travelled to the garden.
 7 Mary journeyed to the garden.
-8 Where is Mary? 	Mary went to the garden.
+8 Where is Mary? 	Mary journeyed to the garden.
 9 Sandra went to the hallway.
 10 Sandra journeyed to the kitchen.
 11 Sandra travelled to the garden.
 12 Mary journeyed to the garden.
 13 Daniel went back to the bathroom.
 14 Daniel went to the garden.
-15 Where is Sandra? 	Sandra journeyed to the garden.
+15 Where is Sandra? 	Sandra travelled to the garden.
 1 Sandra went to the hallway.
 2 Sandra journeyed to the kitchen.
 3 Sandra travelled to the garden.
@@ -1887,7 +1887,7 @@
 17 John travelled to the bedroom.
 18 Mary went to the kitchen.
 19 Sandra moved to the hallway.
-20 Where is Daniel? 	Daniel went to the garden.
+20 Where is Daniel? 	Daniel travelled to the garden.
 1 John went back to the garden.
 2 Sandra went back to the bedroom.
 3 Where is John? 	John went to the garden.
@@ -1902,7 +1902,7 @@
 12 John went back to the kitchen.
 13 Mary went back to the hallway.
 14 Daniel travelled to the kitchen.
-15 Where is Daniel? 	Daniel travelled to the kitchen.
+15 Where is Daniel? 	Daniel went to the kitchen.
 1 John went back to the garden.
 2 Sandra went back to the bedroom.
 3 Sandra went to the bathroom.
@@ -1911,7 +1911,7 @@
 6 Daniel travelled to the kitchen.
 7 Sandra went back to the bedroom.
 8 Sandra went to the office.
-9 Where is Sandra? 	Sandra went to the office.
+9 Where is Sandra? 	Sandra travelled to the office.
 10 John went back to the garden.
 11 Sandra went back to the bedroom.
 12 Sandra went to the bathroom.
@@ -1922,7 +1922,7 @@
 17 Sandra went to the office.
 18 Sandra went to the kitchen.
 19 Daniel travelled to the hallway.
-20 Where is Sandra? 	Sandra travelled to the kitchen.
+20 Where is Sandra? 	Sandra went to the kitchen.
 1 Sandra journeyed to the office.
 2 John moved to the bathroom.
 3 Where is John? 	John journeyed to the bathroom.
@@ -1937,7 +1937,7 @@
 12 John moved to the hallway.
 13 John travelled to the kitchen.
 14 John went to the bedroom.
-15 Where is John? 	John journeyed to the bedroom.
+15 Where is John? 	John travelled to the bedroom.
 1 Sandra journeyed to the office.
 2 John moved to the bathroom.
 3 Daniel moved to the hallway.
@@ -1957,22 +1957,22 @@
 17 John journeyed to the kitchen.
 18 John travelled to the bathroom.
 19 John travelled to the kitchen.
-20 Where is John? 	John journeyed to the kitchen.
+20 Where is John? 	John moved to the kitchen.
 1 Mary moved to the hallway.
 2 John travelled to the hallway.
-3 Where is John? 	John moved to the hallway.
+3 Where is John? 	John travelled to the hallway.
 4 Mary moved to the hallway.
 5 John travelled to the hallway.
 6 Daniel travelled to the bedroom.
 7 Daniel went to the garden.
-8 Where is Mary? 	Mary travelled to the hallway.
+8 Where is Mary? 	Mary moved to the hallway.
 9 Mary moved to the hallway.
 10 John travelled to the hallway.
 11 Daniel travelled to the bedroom.
 12 Daniel went to the garden.
 13 John went back to the bathroom.
 14 Sandra moved to the hallway.
-15 Where is Sandra? 	Sandra moved to the hallway.
+15 Where is Sandra? 	Sandra travelled to the hallway.
 1 Mary moved to the hallway.
 2 John travelled to the hallway.
 3 Daniel travelled to the bedroom.
@@ -1981,7 +1981,7 @@
 6 Sandra moved to the hallway.
 7 Daniel moved to the hallway.
 8 Mary went to the office.
-9 Where is Daniel? 	Daniel went to the hallway.
+9 Where is Daniel? 	Daniel travelled to the hallway.
 10 Mary moved to the hallway.
 11 John travelled to the hallway.
 12 Daniel travelled to the bedroom.
@@ -2000,7 +2000,7 @@
 5 Daniel went back to the kitchen.
 6 John journeyed to the office.
 7 Sandra travelled to the bedroom.
-8 Where is Daniel? 	Daniel travelled to the kitchen.
+8 Where is Daniel? 	Daniel journeyed to the kitchen.
 9 John journeyed to the bathroom.
 10 Daniel went back to the kitchen.
 11 John journeyed to the office.
@@ -2016,7 +2016,7 @@
 6 Daniel went to the hallway.
 7 Mary went back to the office.
 8 Mary went to the bathroom.
-9 Where is Mary? 	Mary went to the bathroom.
+9 Where is Mary? 	Mary journeyed to the bathroom.
 10 John journeyed to the bathroom.
 11 Daniel went back to the kitchen.
 12 John journeyed to the office.
@@ -2030,12 +2030,12 @@
 20 Where is Mary? 	Mary journeyed to the bedroom.
 1 Mary journeyed to the bathroom.
 2 Mary moved to the hallway.
-3 Where is Mary? 	Mary journeyed to the hallway.
+3 Where is Mary? 	Mary moved to the hallway.
 4 Mary journeyed to the bathroom.
 5 Mary moved to the hallway.
 6 Daniel moved to the bathroom.
 7 Sandra went back to the bathroom.
-8 Where is Mary? 	Mary moved to the hallway.
+8 Where is Mary? 	Mary journeyed to the hallway.
 9 Mary journeyed to the bathroom.
 10 Mary moved to the hallway.
 11 Daniel moved to the bathroom.
@@ -2051,7 +2051,7 @@
 6 Mary travelled to the kitchen.
 7 Daniel journeyed to the kitchen.
 8 Sandra went to the garden.
-9 Where is Sandra? 	Sandra went to the garden.
+9 Where is Sandra? 	Sandra journeyed to the garden.
 10 Mary journeyed to the bathroom.
 11 Mary moved to the hallway.
 12 Daniel moved to the bathroom.
@@ -2065,19 +2065,19 @@
 20 Where is Daniel? 	Daniel travelled to the bedroom.
 1 Mary travelled to the garden.
 2 John journeyed to the bathroom.
-3 Where is Mary? 	Mary journeyed to the garden.
+3 Where is Mary? 	Mary travelled to the garden.
 4 Mary travelled to the garden.
 5 John journeyed to the bathroom.
 6 Mary journeyed to the kitchen.
 7 John travelled to the kitchen.
-8 Where is John? 	John travelled to the kitchen.
+8 Where is John? 	John journeyed to the kitchen.
 9 Mary travelled to the garden.
 10 John journeyed to the bathroom.
 11 Mary journeyed to the kitchen.
 12 John travelled to the kitchen.
 13 Mary moved to the bedroom.
 14 Mary travelled to the garden.
-15 Where is John? 	John journeyed to the kitchen.
+15 Where is John? 	John travelled to the kitchen.
 1 Mary travelled to the garden.
 2 John journeyed to the bathroom.
 3 Mary journeyed to the kitchen.
@@ -2086,7 +2086,7 @@
 6 Mary travelled to the garden.
 7 John went back to the bedroom.
 8 Daniel went back to the bedroom.
-9 Where is Mary? 	Mary travelled to the garden.
+9 Where is Mary? 	Mary went to the garden.
 10 Mary travelled to the garden.
 11 John journeyed to the bathroom.
 12 Mary journeyed to the kitchen.
@@ -2105,14 +2105,14 @@
 5 Daniel travelled to the office.
 6 Mary journeyed to the hallway.
 7 Sandra went back to the garden.
-8 Where is Daniel? 	Daniel journeyed to the office.
+8 Where is Daniel? 	Daniel travelled to the office.
 9 Mary went back to the bedroom.
 10 Daniel travelled to the office.
 11 Mary journeyed to the hallway.
 12 Sandra went back to the garden.
 13 Mary moved to the garden.
 14 Daniel moved to the kitchen.
-15 Where is Daniel? 	Daniel journeyed to the kitchen.
+15 Where is Daniel? 	Daniel travelled to the kitchen.
 1 Mary went back to the bedroom.
 2 Daniel travelled to the office.
 3 Mary journeyed to the hallway.
@@ -2121,7 +2121,7 @@
 6 Daniel moved to the kitchen.
 7 John went to the office.
 8 Sandra journeyed to the office.
-9 Where is Sandra? 	Sandra moved to the office.
+9 Where is Sandra? 	Sandra went to the office.
 10 Mary went back to the bedroom.
 11 Daniel travelled to the office.
 12 Mary journeyed to the hallway.
@@ -2132,22 +2132,22 @@
 17 Sandra journeyed to the office.
 18 John travelled to the hallway.
 19 Sandra travelled to the bathroom.
-20 Where is Daniel? 	Daniel moved to the kitchen.
+20 Where is Daniel? 	Daniel travelled to the kitchen.
 1 Sandra journeyed to the bathroom.
 2 John went to the hallway.
-3 Where is John? 	John journeyed to the hallway.
+3 Where is John? 	John went to the hallway.
 4 Sandra journeyed to the bathroom.
 5 John went to the hallway.
 6 Mary travelled to the garden.
 7 Mary went back to the kitchen.
-8 Where is Mary? 	Mary travelled to the kitchen.
+8 Where is Mary? 	Mary went to the kitchen.
 9 Sandra journeyed to the bathroom.
 10 John went to the hallway.
 11 Mary travelled to the garden.
 12 Mary went back to the kitchen.
 13 Daniel travelled to the bathroom.
 14 John moved to the garden.
-15 Where is Mary? 	Mary went to the kitchen.
+15 Where is Mary? 	Mary moved to the kitchen.
 1 Sandra journeyed to the bathroom.
 2 John went to the hallway.
 3 Mary travelled to the garden.
@@ -2156,7 +2156,7 @@
 6 John moved to the garden.
 7 Daniel moved to the kitchen.
 8 Sandra journeyed to the hallway.
-9 Where is Daniel? 	Daniel moved to the kitchen.
+9 Where is Daniel? 	Daniel travelled to the kitchen.
 10 Sandra journeyed to the bathroom.
 11 John went to the hallway.
 12 Mary travelled to the garden.
@@ -2167,7 +2167,7 @@
 17 Sandra journeyed to the hallway.
 18 Daniel moved to the bedroom.
 19 John went back to the office.
-20 Where is Daniel? 	Daniel travelled to the bedroom.
+20 Where is Daniel? 	Daniel moved to the bedroom.
 1 John went back to the kitchen.
 2 John moved to the office.
 3 Where is John? 	John went to the office.
@@ -2191,7 +2191,7 @@
 6 John journeyed to the bedroom.
 7 John went to the hallway.
 8 Sandra went back to the hallway.
-9 Where is Sandra? 	Sandra journeyed to the hallway.
+9 Where is Sandra? 	Sandra moved to the hallway.
 10 John went back to the kitchen.
 11 John moved to the office.
 12 John journeyed to the garden.
@@ -2202,7 +2202,7 @@
 17 Sandra went back to the hallway.
 18 John journeyed to the bathroom.
 19 Mary went to the hallway.
-20 Where is John? 	John journeyed to the bathroom.
+20 Where is John? 	John moved to the bathroom.
 1 John went back to the bedroom.
 2 John moved to the kitchen.
 3 Where is John? 	John moved to the kitchen.
@@ -2210,14 +2210,14 @@
 5 John moved to the kitchen.
 6 John journeyed to the garden.
 7 Mary went back to the hallway.
-8 Where is John? 	John went to the garden.
+8 Where is John? 	John moved to the garden.
 9 John went back to the bedroom.
 10 John moved to the kitchen.
 11 John journeyed to the garden.
 12 Mary went back to the hallway.
 13 Daniel went back to the bedroom.
 14 John went to the bedroom.
-15 Where is John? 	John moved to the bedroom.
+15 Where is John? 	John journeyed to the bedroom.
 1 John went back to the bedroom.
 2 John moved to the kitchen.
 3 John journeyed to the garden.
@@ -2226,7 +2226,7 @@
 6 John went to the bedroom.
 7 Sandra travelled to the garden.
 8 Daniel went back to the office.
-9 Where is John? 	John journeyed to the bedroom.
+9 Where is John? 	John travelled to the bedroom.
 10 John went back to the bedroom.
 11 John moved to the kitchen.
 12 John journeyed to the garden.
@@ -2237,22 +2237,22 @@
 17 Daniel went back to the office.
 18 Mary went back to the bedroom.
 19 Daniel journeyed to the kitchen.
-20 Where is Daniel? 	Daniel moved to the kitchen.
+20 Where is Daniel? 	Daniel went to the kitchen.
 1 Mary went to the garden.
 2 Daniel journeyed to the bathroom.
-3 Where is Mary? 	Mary went to the garden.
+3 Where is Mary? 	Mary journeyed to the garden.
 4 Mary went to the garden.
 5 Daniel journeyed to the bathroom.
 6 John went to the office.
 7 Mary moved to the hallway.
-8 Where is Daniel? 	Daniel moved to the bathroom.
+8 Where is Daniel? 	Daniel went to the bathroom.
 9 Mary went to the garden.
 10 Daniel journeyed to the bathroom.
 11 John went to the office.
 12 Mary moved to the hallway.
 13 John went to the bathroom.
 14 Daniel moved to the kitchen.
-15 Where is John? 	John journeyed to the bathroom.
+15 Where is John? 	John moved to the bathroom.
 1 Mary went to the garden.
 2 Daniel journeyed to the bathroom.
 3 John went to the office.
@@ -2280,7 +2280,7 @@
 5 Daniel moved to the garden.
 6 Sandra journeyed to the bedroom.
 7 Mary moved to the bathroom.
-8 Where is Sandra? 	Sandra journeyed to the bedroom.
+8 Where is Sandra? 	Sandra moved to the bedroom.
 9 Daniel went back to the kitchen.
 10 Daniel moved to the garden.
 11 Sandra journeyed to the bedroom.
@@ -2296,7 +2296,7 @@
 6 Daniel went back to the bathroom.
 7 Daniel travelled to the bedroom.
 8 Sandra went to the bathroom.
-9 Where is Mary? 	Mary went to the bathroom.
+9 Where is Mary? 	Mary journeyed to the bathroom.
 10 Daniel went back to the kitchen.
 11 Daniel moved to the garden.
 12 Sandra journeyed to the bedroom.
@@ -2307,22 +2307,22 @@
 17 Sandra went to the bathroom.
 18 Daniel went back to the hallway.
 19 Sandra travelled to the kitchen.
-20 Where is Sandra? 	Sandra went to the kitchen.
+20 Where is Sandra? 	Sandra travelled to the kitchen.
 1 Sandra moved to the bedroom.
 2 Mary journeyed to the bedroom.
-3 Where is Mary? 	Mary journeyed to the bedroom.
+3 Where is Mary? 	Mary moved to the bedroom.
 4 Sandra moved to the bedroom.
 5 Mary journeyed to the bedroom.
 6 Mary moved to the bathroom.
 7 Daniel travelled to the bedroom.
-8 Where is Sandra? 	Sandra moved to the bedroom.
+8 Where is Sandra? 	Sandra journeyed to the bedroom.
 9 Sandra moved to the bedroom.
 10 Mary journeyed to the bedroom.
 11 Mary moved to the bathroom.
 12 Daniel travelled to the bedroom.
 13 Mary moved to the bedroom.
 14 Sandra went to the kitchen.
-15 Where is Mary? 	Mary moved to the bedroom.
+15 Where is Mary? 	Mary journeyed to the bedroom.
 1 Sandra moved to the bedroom.
 2 Mary journeyed to the bedroom.
 3 Mary moved to the bathroom.
@@ -2331,7 +2331,7 @@
 6 Sandra went to the kitchen.
 7 Sandra went to the garden.
 8 Daniel moved to the kitchen.
-9 Where is Sandra? 	Sandra travelled to the garden.
+9 Where is Sandra? 	Sandra went to the garden.
 10 Sandra moved to the bedroom.
 11 Mary journeyed to the bedroom.
 12 Mary moved to the bathroom.
@@ -2342,7 +2342,7 @@
 17 Daniel moved to the kitchen.
 18 Sandra went back to the bedroom.
 19 Sandra went to the hallway.
-20 Where is Sandra? 	Sandra journeyed to the hallway.
+20 Where is Sandra? 	Sandra went to the hallway.
 1 John journeyed to the bedroom.
 2 Daniel moved to the office.
 3 Where is Daniel? 	Daniel journeyed to the office.
@@ -2350,14 +2350,14 @@
 5 Daniel moved to the office.
 6 John went to the hallway.
 7 John journeyed to the kitchen.
-8 Where is John? 	John moved to the kitchen.
+8 Where is John? 	John journeyed to the kitchen.
 9 John journeyed to the bedroom.
 10 Daniel moved to the office.
 11 John went to the hallway.
 12 John journeyed to the kitchen.
 13 Mary went to the office.
 14 Daniel went back to the bedroom.
-15 Where is Mary? 	Mary journeyed to the office.
+15 Where is Mary? 	Mary moved to the office.
 1 John journeyed to the bedroom.
 2 Daniel moved to the office.
 3 John went to the hallway.
@@ -2366,7 +2366,7 @@
 6 Daniel went back to the bedroom.
 7 Daniel moved to the hallway.
 8 John went to the bedroom.
-9 Where is Daniel? 	Daniel moved to the hallway.
+9 Where is Daniel? 	Daniel went to the hallway.
 10 John journeyed to the bedroom.
 11 Daniel moved to the office.
 12 John went to the hallway.
@@ -2380,12 +2380,12 @@
 20 Where is Daniel? 	Daniel journeyed to the office.
 1 Mary journeyed to the office.
 2 Daniel went to the bedroom.
-3 Where is Mary? 	Mary went to the office.
+3 Where is Mary? 	Mary journeyed to the office.
 4 Mary journeyed to the office.
 5 Daniel went to the bedroom.
 6 Daniel journeyed to the bathroom.
 7 Sandra went to the bedroom.
-8 Where is Daniel? 	Daniel went to the bathroom.
+8 Where is Daniel? 	Daniel journeyed to the bathroom.
 9 Mary journeyed to the office.
 10 Daniel went to the bedroom.
 11 Daniel journeyed to the bathroom.
@@ -2401,7 +2401,7 @@
 6 Daniel travelled to the kitchen.
 7 Sandra journeyed to the bathroom.
 8 Sandra moved to the bedroom.
-9 Where is Mary? 	Mary moved to the hallway.
+9 Where is Mary? 	Mary journeyed to the hallway.
 10 Mary journeyed to the office.
 11 Daniel went to the bedroom.
 12 Daniel journeyed to the bathroom.
@@ -2415,7 +2415,7 @@
 20 Where is Sandra? 	Sandra moved to the bedroom.
 1 John journeyed to the garden.
 2 John travelled to the office.
-3 Where is John? 	John journeyed to the office.
+3 Where is John? 	John travelled to the office.
 4 John journeyed to the garden.
 5 John travelled to the office.
 6 Mary travelled to the hallway.
@@ -2427,7 +2427,7 @@
 12 John journeyed to the bedroom.
 13 Daniel moved to the garden.
 14 Mary journeyed to the bedroom.
-15 Where is John? 	John travelled to the bedroom.
+15 Where is John? 	John moved to the bedroom.
 1 John journeyed to the garden.
 2 John travelled to the office.
 3 Mary travelled to the hallway.
@@ -2462,7 +2462,7 @@
 12 Sandra went back to the garden.
 13 Daniel went back to the office.
 14 Mary journeyed to the bedroom.
-15 Where is Sandra? 	Sandra went to the garden.
+15 Where is Sandra? 	Sandra moved to the garden.
 1 Daniel journeyed to the garden.
 2 John moved to the garden.
 3 Daniel travelled to the bathroom.
@@ -2485,19 +2485,19 @@
 20 Where is Sandra? 	Sandra travelled to the office.
 1 Sandra moved to the bathroom.
 2 John journeyed to the office.
-3 Where is Sandra? 	Sandra journeyed to the bathroom.
+3 Where is Sandra? 	Sandra moved to the bathroom.
 4 Sandra moved to the bathroom.
 5 John journeyed to the office.
 6 Sandra went back to the hallway.
 7 John moved to the bedroom.
-8 Where is John? 	John went to the bedroom.
+8 Where is John? 	John journeyed to the bedroom.
 9 Sandra moved to the bathroom.
 10 John journeyed to the office.
 11 Sandra went back to the hallway.
 12 John moved to the bedroom.
 13 Daniel moved to the garden.
 14 Daniel went back to the kitchen.
-15 Where is Daniel? 	Daniel moved to the kitchen.
+15 Where is Daniel? 	Daniel went to the kitchen.
 1 Sandra moved to the bathroom.
 2 John journeyed to the office.
 3 Sandra went back to the hallway.
@@ -2517,7 +2517,7 @@
 17 John went back to the office.
 18 Mary travelled to the office.
 19 Sandra went back to the bedroom.
-20 Where is John? 	John went to the office.
+20 Where is John? 	John journeyed to the office.
 1 Sandra journeyed to the bathroom.
 2 Mary travelled to the hallway.
 3 Where is Mary? 	Mary travelled to the hallway.
@@ -2525,14 +2525,14 @@
 5 Mary travelled to the hallway.
 6 Sandra moved to the kitchen.
 7 Mary journeyed to the garden.
-8 Where is Mary? 	Mary journeyed to the garden.
+8 Where is Mary? 	Mary travelled to the garden.
 9 Sandra journeyed to the bathroom.
 10 Mary travelled to the hallway.
 11 Sandra moved to the kitchen.
 12 Mary journeyed to the garden.
 13 John travelled to the office.
 14 John went to the hallway.
-15 Where is John? 	John journeyed to the hallway.
+15 Where is John? 	John went to the hallway.
 1 Sandra journeyed to the bathroom.
 2 Mary travelled to the hallway.
 3 Sandra moved to the kitchen.
@@ -2541,7 +2541,7 @@
 6 John went to the hallway.
 7 Daniel travelled to the bedroom.
 8 John went back to the office.
-9 Where is Mary? 	Mary moved to the garden.
+9 Where is Mary? 	Mary went to the garden.
 10 Sandra journeyed to the bathroom.
 11 Mary travelled to the hallway.
 12 Sandra moved to the kitchen.
@@ -2552,7 +2552,7 @@
 17 John went back to the office.
 18 Sandra went back to the bedroom.
 19 John went to the bedroom.
-20 Where is Sandra? 	Sandra travelled to the bedroom.
+20 Where is Sandra? 	Sandra journeyed to the bedroom.
 1 Mary went to the hallway.
 2 Daniel went to the bathroom.
 3 Where is Daniel? 	Daniel went to the bathroom.
@@ -2567,7 +2567,7 @@
 12 Mary went to the kitchen.
 13 Daniel moved to the garden.
 14 Daniel went to the office.
-15 Where is Daniel? 	Daniel moved to the office.
+15 Where is Daniel? 	Daniel went to the office.
 1 Mary went to the hallway.
 2 Daniel went to the bathroom.
 3 Mary went to the bedroom.
@@ -2587,10 +2587,10 @@
 17 Sandra travelled to the garden.
 18 Mary journeyed to the hallway.
 19 Sandra went back to the hallway.
-20 Where is Sandra? 	Sandra moved to the hallway.
+20 Where is Sandra? 	Sandra travelled to the hallway.
 1 Mary went back to the hallway.
 2 Sandra journeyed to the bedroom.
-3 Where is Sandra? 	Sandra journeyed to the bedroom.
+3 Where is Sandra? 	Sandra went to the bedroom.
 4 Mary went back to the hallway.
 5 Sandra journeyed to the bedroom.
 6 Sandra travelled to the kitchen.
@@ -2602,7 +2602,7 @@
 12 John went back to the hallway.
 13 Daniel went back to the office.
 14 Mary moved to the kitchen.
-15 Where is Sandra? 	Sandra travelled to the kitchen.
+15 Where is Sandra? 	Sandra journeyed to the kitchen.
 1 Mary went back to the hallway.
 2 Sandra journeyed to the bedroom.
 3 Sandra travelled to the kitchen.
@@ -2611,7 +2611,7 @@
 6 Mary moved to the kitchen.
 7 Daniel went back to the bathroom.
 8 Daniel travelled to the office.
-9 Where is Daniel? 	Daniel went to the office.
+9 Where is Daniel? 	Daniel journeyed to the office.
 10 Mary went back to the hallway.
 11 Sandra journeyed to the bedroom.
 12 Sandra travelled to the kitchen.
@@ -2622,7 +2622,7 @@
 17 Daniel travelled to the office.
 18 Daniel went to the hallway.
 19 Daniel went to the bathroom.
-20 Where is Daniel? 	Daniel travelled to the bathroom.
+20 Where is Daniel? 	Daniel journeyed to the bathroom.
 1 Daniel went to the office.
 2 Mary went back to the office.
 3 Where is Mary? 	Mary went to the office.
@@ -2630,14 +2630,14 @@
 5 Mary went back to the office.
 6 Sandra travelled to the bedroom.
 7 John journeyed to the bedroom.
-8 Where is John? 	John journeyed to the bedroom.
+8 Where is John? 	John travelled to the bedroom.
 9 Daniel went to the office.
 10 Mary went back to the office.
 11 Sandra travelled to the bedroom.
 12 John journeyed to the bedroom.
 13 Mary moved to the bedroom.
 14 Daniel travelled to the kitchen.
-15 Where is Mary? 	Mary travelled to the bedroom.
+15 Where is Mary? 	Mary went to the bedroom.
 1 Daniel went to the office.
 2 Mary went back to the office.
 3 Sandra travelled to the bedroom.
@@ -2646,7 +2646,7 @@
 6 Daniel travelled to the kitchen.
 7 Sandra journeyed to the garden.
 8 Sandra journeyed to the office.
-9 Where is Sandra? 	Sandra journeyed to the office.
+9 Where is Sandra? 	Sandra went to the office.
 10 Daniel went to the office.
 11 Mary went back to the office.
 12 Sandra travelled to the bedroom.
@@ -2657,7 +2657,7 @@
 17 Sandra journeyed to the office.
 18 Sandra journeyed to the garden.
 19 Sandra travelled to the hallway.
-20 Where is Daniel? 	Daniel went to the kitchen.
+20 Where is Daniel? 	Daniel journeyed to the kitchen.
 1 John travelled to the bedroom.
 2 Mary moved to the bedroom.
 3 Where is John? 	John moved to the bedroom.
@@ -2672,7 +2672,7 @@
 12 Sandra moved to the bathroom.
 13 John journeyed to the office.
 14 Daniel journeyed to the office.
-15 Where is Sandra? 	Sandra went to the bathroom.
+15 Where is Sandra? 	Sandra travelled to the bathroom.
 1 John travelled to the bedroom.
 2 Mary moved to the bedroom.
 3 John went back to the bathroom.
@@ -2692,7 +2692,7 @@
 17 John journeyed to the bedroom.
 18 John went to the bathroom.
 19 Mary moved to the office.
-20 Where is John? 	John journeyed to the bathroom.
+20 Where is John? 	John moved to the bathroom.
 1 John went to the bathroom.
 2 John moved to the office.
 3 Where is John? 	John moved to the office.
@@ -2700,14 +2700,14 @@
 5 John moved to the office.
 6 John went to the hallway.
 7 Sandra journeyed to the hallway.
-8 Where is John? 	John journeyed to the hallway.
+8 Where is John? 	John went to the hallway.
 9 John went to the bathroom.
 10 John moved to the office.
 11 John went to the hallway.
 12 Sandra journeyed to the hallway.
 13 John journeyed to the bathroom.
 14 Daniel went to the bathroom.
-15 Where is John? 	John moved to the bathroom.
+15 Where is John? 	John journeyed to the bathroom.
 1 John went to the bathroom.
 2 John moved to the office.
 3 John went to the hallway.
@@ -2716,7 +2716,7 @@
 6 Daniel went to the bathroom.
 7 Sandra moved to the garden.
 8 John moved to the office.
-9 Where is John? 	John journeyed to the office.
+9 Where is John? 	John moved to the office.
 10 John went to the bathroom.
 11 John moved to the office.
 12 John went to the hallway.
@@ -2727,15 +2727,15 @@
 17 John moved to the office.
 18 Sandra moved to the hallway.
 19 Daniel went to the kitchen.
-20 Where is Daniel? 	Daniel journeyed to the kitchen.
+20 Where is Daniel? 	Daniel went to the kitchen.
 1 Mary travelled to the garden.
 2 Daniel moved to the bathroom.
-3 Where is Mary? 	Mary moved to the garden.
+3 Where is Mary? 	Mary travelled to the garden.
 4 Mary travelled to the garden.
 5 Daniel moved to the bathroom.
 6 John went to the hallway.
 7 Sandra went back to the kitchen.
-8 Where is John? 	John moved to the hallway.
+8 Where is John? 	John travelled to the hallway.
 9 Mary travelled to the garden.
 10 Daniel moved to the bathroom.
 11 John went to the hallway.
@@ -2751,7 +2751,7 @@
 6 John travelled to the garden.
 7 Mary went to the bathroom.
 8 Sandra went back to the hallway.
-9 Where is Mary? 	Mary travelled to the bathroom.
+9 Where is Mary? 	Mary moved to the bathroom.
 10 Mary travelled to the garden.
 11 Daniel moved to the bathroom.
 12 John went to the hallway.
@@ -2765,7 +2765,7 @@
 20 Where is Daniel? 	Daniel went to the bathroom.
 1 John moved to the hallway.
 2 Mary travelled to the hallway.
-3 Where is John? 	John travelled to the hallway.
+3 Where is John? 	John moved to the hallway.
 4 John moved to the hallway.
 5 Mary travelled to the hallway.
 6 Sandra went to the bedroom.
@@ -2777,7 +2777,7 @@
 12 Sandra went back to the hallway.
 13 John went back to the office.
 14 Daniel travelled to the kitchen.
-15 Where is John? 	John went to the office.
+15 Where is John? 	John moved to the office.
 1 John moved to the hallway.
 2 Mary travelled to the hallway.
 3 Sandra went to the bedroom.
@@ -2786,7 +2786,7 @@
 6 Daniel travelled to the kitchen.
 7 John travelled to the hallway.
 8 Mary journeyed to the kitchen.
-9 Where is John? 	John travelled to the hallway.
+9 Where is John? 	John went to the hallway.
 10 John moved to the hallway.
 11 Mary travelled to the hallway.
 12 Sandra went to the bedroom.
@@ -2797,7 +2797,7 @@
 17 Mary journeyed to the kitchen.
 18 John travelled to the office.
 19 John travelled to the kitchen.
-20 Where is John? 	John travelled to the kitchen.
+20 Where is John? 	John journeyed to the kitchen.
 1 Mary moved to the bedroom.
 2 Sandra went back to the garden.
 3 Where is Sandra? 	Sandra went to the garden.
@@ -2805,7 +2805,7 @@
 5 Sandra went back to the garden.
 6 Daniel went to the bedroom.
 7 Mary journeyed to the hallway.
-8 Where is Mary? 	Mary journeyed to the hallway.
+8 Where is Mary? 	Mary went to the hallway.
 9 Mary moved to the bedroom.
 10 Sandra went back to the garden.
 11 Daniel went to the bedroom.
@@ -2821,7 +2821,7 @@
 6 Daniel journeyed to the office.
 7 Daniel went back to the bedroom.
 8 Mary went back to the office.
-9 Where is Mary? 	Mary went to the office.
+9 Where is Mary? 	Mary journeyed to the office.
 10 Mary moved to the bedroom.
 11 Sandra went back to the garden.
 12 Daniel went to the bedroom.
@@ -2847,7 +2847,7 @@
 12 Daniel travelled to the hallway.
 13 John moved to the hallway.
 14 Mary went to the hallway.
-15 Where is Daniel? 	Daniel moved to the hallway.
+15 Where is Daniel? 	Daniel travelled to the hallway.
 1 John travelled to the bathroom.
 2 Sandra moved to the hallway.
 3 Daniel travelled to the kitchen.
@@ -2856,7 +2856,7 @@
 6 Mary went to the hallway.
 7 Daniel journeyed to the office.
 8 Daniel journeyed to the kitchen.
-9 Where is Daniel? 	Daniel moved to the kitchen.
+9 Where is Daniel? 	Daniel journeyed to the kitchen.
 10 John travelled to the bathroom.
 11 Sandra moved to the hallway.
 12 Daniel travelled to the kitchen.
@@ -2867,10 +2867,10 @@
 17 Daniel journeyed to the kitchen.
 18 Mary moved to the office.
 19 Mary went to the bedroom.
-20 Where is Daniel? 	Daniel moved to the kitchen.
+20 Where is Daniel? 	Daniel travelled to the kitchen.
 1 Daniel journeyed to the hallway.
 2 Sandra travelled to the kitchen.
-3 Where is Sandra? 	Sandra journeyed to the kitchen.
+3 Where is Sandra? 	Sandra travelled to the kitchen.
 4 Daniel journeyed to the hallway.
 5 Sandra travelled to the kitchen.
 6 John journeyed to the hallway.
@@ -2882,7 +2882,7 @@
 12 Sandra travelled to the office.
 13 Sandra went to the hallway.
 14 Daniel journeyed to the office.
-15 Where is Sandra? 	Sandra journeyed to the hallway.
+15 Where is Sandra? 	Sandra travelled to the hallway.
 1 Daniel journeyed to the hallway.
 2 Sandra travelled to the kitchen.
 3 John journeyed to the hallway.
@@ -2891,7 +2891,7 @@
 6 Daniel journeyed to the office.
 7 Daniel went back to the bedroom.
 8 Sandra moved to the bedroom.
-9 Where is Sandra? 	Sandra journeyed to the bedroom.
+9 Where is Sandra? 	Sandra travelled to the bedroom.
 10 Daniel journeyed to the hallway.
 11 Sandra travelled to the kitchen.
 12 John journeyed to the hallway.
@@ -2910,14 +2910,14 @@
 5 Mary went to the hallway.
 6 Sandra went to the office.
 7 Sandra journeyed to the kitchen.
-8 Where is Mary? 	Mary travelled to the hallway.
+8 Where is Mary? 	Mary journeyed to the hallway.
 9 Sandra travelled to the bedroom.
 10 Mary went to the hallway.
 11 Sandra went to the office.
 12 Sandra journeyed to the kitchen.
 13 Sandra travelled to the bathroom.
 14 Daniel journeyed to the office.
-15 Where is Daniel? 	Daniel journeyed to the office.
+15 Where is Daniel? 	Daniel went to the office.
 1 Sandra travelled to the bedroom.
 2 Mary went to the hallway.
 3 Sandra went to the office.
@@ -2926,7 +2926,7 @@
 6 Daniel journeyed to the office.
 7 John went back to the hallway.
 8 Daniel journeyed to the bedroom.
-9 Where is Daniel? 	Daniel went to the bedroom.
+9 Where is Daniel? 	Daniel journeyed to the bedroom.
 10 Sandra travelled to the bedroom.
 11 Mary went to the hallway.
 12 Sandra went to the office.
@@ -2937,10 +2937,10 @@
 17 Daniel journeyed to the bedroom.
 18 Sandra moved to the garden.
 19 Mary went back to the bathroom.
-20 Where is Mary? 	Mary journeyed to the bathroom.
+20 Where is Mary? 	Mary went to the bathroom.
 1 Daniel journeyed to the bathroom.
 2 Daniel travelled to the hallway.
-3 Where is Daniel? 	Daniel journeyed to the hallway.
+3 Where is Daniel? 	Daniel travelled to the hallway.
 4 Daniel journeyed to the bathroom.
 5 Daniel travelled to the hallway.
 6 Sandra went back to the bedroom.
@@ -2952,7 +2952,7 @@
 12 Sandra travelled to the bathroom.
 13 John went to the bathroom.
 14 Sandra went to the garden.
-15 Where is John? 	John went to the bathroom.
+15 Where is John? 	John journeyed to the bathroom.
 1 Daniel journeyed to the bathroom.
 2 Daniel travelled to the hallway.
 3 Sandra went back to the bedroom.
@@ -2961,7 +2961,7 @@
 6 Sandra went to the garden.
 7 Mary journeyed to the hallway.
 8 Mary travelled to the garden.
-9 Where is Mary? 	Mary journeyed to the garden.
+9 Where is Mary? 	Mary travelled to the garden.
 10 Daniel journeyed to the bathroom.
 11 Daniel travelled to the hallway.
 12 Sandra went back to the bedroom.
@@ -2972,7 +2972,7 @@
 17 Mary travelled to the garden.
 18 Mary went back to the bedroom.
 19 John went back to the bedroom.
-20 Where is Mary? 	Mary journeyed to the bedroom.
+20 Where is Mary? 	Mary travelled to the bedroom.
 1 John moved to the bedroom.
 2 Mary went back to the bedroom.
 3 Where is Mary? 	Mary went to the bedroom.
@@ -2980,7 +2980,7 @@
 5 Mary went back to the bedroom.
 6 Daniel moved to the bathroom.
 7 Daniel moved to the office.
-8 Where is John? 	John moved to the bedroom.
+8 Where is John? 	John went to the bedroom.
 9 John moved to the bedroom.
 10 Mary went back to the bedroom.
 11 Daniel moved to the bathroom.
@@ -3007,7 +3007,7 @@
 17 Sandra went to the bathroom.
 18 John travelled to the bedroom.
 19 Sandra travelled to the kitchen.
-20 Where is Mary? 	Mary journeyed to the garden.
+20 Where is Mary? 	Mary moved to the garden.
 1 Daniel moved to the garden.
 2 Sandra moved to the bedroom.
 3 Where is Daniel? 	Daniel moved to the garden.
@@ -3015,14 +3015,14 @@
 5 Sandra moved to the bedroom.
 6 Daniel journeyed to the hallway.
 7 Sandra went to the office.
-8 Where is Sandra? 	Sandra moved to the office.
+8 Where is Sandra? 	Sandra went to the office.
 9 Daniel moved to the garden.
 10 Sandra moved to the bedroom.
 11 Daniel journeyed to the hallway.
 12 Sandra went to the office.
 13 Daniel moved to the bedroom.
 14 John went back to the bathroom.
-15 Where is Daniel? 	Daniel journeyed to the bedroom.
+15 Where is Daniel? 	Daniel moved to the bedroom.
 1 Daniel moved to the garden.
 2 Sandra moved to the bedroom.
 3 Daniel journeyed to the hallway.
@@ -3031,7 +3031,7 @@
 6 John went back to the bathroom.
 7 Sandra travelled to the kitchen.
 8 Sandra went back to the bedroom.
-9 Where is Sandra? 	Sandra travelled to the bedroom.
+9 Where is Sandra? 	Sandra journeyed to the bedroom.
 10 Daniel moved to the garden.
 11 Sandra moved to the bedroom.
 12 Daniel journeyed to the hallway.
@@ -3042,7 +3042,7 @@
 17 Sandra went back to the bedroom.
 18 John journeyed to the garden.
 19 Daniel went back to the garden.
-20 Where is Sandra? 	Sandra journeyed to the bedroom.
+20 Where is Sandra? 	Sandra moved to the bedroom.
 1 Daniel went back to the office.
 2 Mary went back to the hallway.
 3 Where is Mary? 	Mary went to the hallway.
@@ -3057,7 +3057,7 @@
 12 Sandra travelled to the hallway.
 13 Mary went back to the office.
 14 Daniel went to the bathroom.
-15 Where is Daniel? 	Daniel travelled to the bathroom.
+15 Where is Daniel? 	Daniel went to the bathroom.
 1 Daniel went back to the office.
 2 Mary went back to the hallway.
 3 Sandra journeyed to the bathroom.
@@ -3066,7 +3066,7 @@
 6 Daniel went to the bathroom.
 7 Mary moved to the bathroom.
 8 John went to the bedroom.
-9 Where is Mary? 	Mary journeyed to the bathroom.
+9 Where is Mary? 	Mary went to the bathroom.
 10 Daniel went back to the office.
 11 Mary went back to the hallway.
 12 Sandra journeyed to the bathroom.
@@ -3077,15 +3077,15 @@
 17 John went to the bedroom.
 18 Daniel went back to the bedroom.
 19 Sandra travelled to the office.
-20 Where is Mary? 	Mary went to the bathroom.
+20 Where is Mary? 	Mary travelled to the bathroom.
 1 John went to the office.
 2 Mary journeyed to the garden.
-3 Where is Mary? 	Mary journeyed to the garden.
+3 Where is Mary? 	Mary went to the garden.
 4 John went to the office.
 5 Mary journeyed to the garden.
 6 John went to the garden.
 7 John journeyed to the hallway.
-8 Where is John? 	John journeyed to the hallway.
+8 Where is John? 	John went to the hallway.
 9 John went to the office.
 10 Mary journeyed to the garden.
 11 John went to the garden.
@@ -3112,7 +3112,7 @@
 17 Mary travelled to the hallway.
 18 John travelled to the garden.
 19 Daniel went back to the bedroom.
-20 Where is Sandra? 	Sandra went to the bedroom.
+20 Where is Sandra? 	Sandra moved to the bedroom.
 1 Sandra travelled to the bathroom.
 2 Mary travelled to the office.
 3 Where is Mary? 	Mary travelled to the office.
@@ -3120,14 +3120,14 @@
 5 Mary travelled to the office.
 6 Sandra travelled to the hallway.
 7 Mary moved to the bathroom.
-8 Where is Sandra? 	Sandra travelled to the hallway.
+8 Where is Sandra? 	Sandra moved to the hallway.
 9 Sandra travelled to the bathroom.
 10 Mary travelled to the office.
 11 Sandra travelled to the hallway.
 12 Mary moved to the bathroom.
 13 John went to the office.
 14 Sandra journeyed to the office.
-15 Where is Sandra? 	Sandra moved to the office.
+15 Where is Sandra? 	Sandra journeyed to the office.
 1 Sandra travelled to the bathroom.
 2 Mary travelled to the office.
 3 Sandra travelled to the hallway.
@@ -3136,7 +3136,7 @@
 6 Sandra journeyed to the office.
 7 John went back to the bathroom.
 8 John travelled to the kitchen.
-9 Where is John? 	John went to the kitchen.
+9 Where is John? 	John moved to the kitchen.
 10 Sandra travelled to the bathroom.
 11 Mary travelled to the office.
 12 Sandra travelled to the hallway.
@@ -3147,7 +3147,7 @@
 17 John travelled to the kitchen.
 18 John moved to the office.
 19 Daniel went back to the kitchen.
-20 Where is Sandra? 	Sandra journeyed to the office.
+20 Where is Sandra? 	Sandra went to the office.
 1 Mary went back to the bedroom.
 2 Mary moved to the bathroom.
 3 Where is Mary? 	Mary moved to the bathroom.
@@ -3155,14 +3155,14 @@
 5 Mary moved to the bathroom.
 6 Sandra travelled to the bedroom.
 7 Sandra went to the office.
-8 Where is Sandra? 	Sandra moved to the office.
+8 Where is Sandra? 	Sandra travelled to the office.
 9 Mary went back to the bedroom.
 10 Mary moved to the bathroom.
 11 Sandra travelled to the bedroom.
 12 Sandra went to the office.
 13 Daniel went to the garden.
 14 Daniel journeyed to the bathroom.
-15 Where is Daniel? 	Daniel journeyed to the bathroom.
+15 Where is Daniel? 	Daniel moved to the bathroom.
 1 Mary went back to the bedroom.
 2 Mary moved to the bathroom.
 3 Sandra travelled to the bedroom.
@@ -3182,7 +3182,7 @@
 17 John journeyed to the kitchen.
 18 Sandra went to the office.
 19 John moved to the bathroom.
-20 Where is Daniel? 	Daniel travelled to the bathroom.
+20 Where is Daniel? 	Daniel moved to the bathroom.
 1 Daniel went to the kitchen.
 2 Sandra went to the kitchen.
 3 Where is Sandra? 	Sandra went to the kitchen.
@@ -3197,7 +3197,7 @@
 12 Mary went to the hallway.
 13 Mary travelled to the kitchen.
 14 Sandra journeyed to the hallway.
-15 Where is Sandra? 	Sandra journeyed to the hallway.
+15 Where is Sandra? 	Sandra moved to the hallway.
 1 Daniel went to the kitchen.
 2 Sandra went to the kitchen.
 3 John moved to the bedroom.
@@ -3217,7 +3217,7 @@
 17 Daniel journeyed to the garden.
 18 Sandra journeyed to the office.
 19 Sandra journeyed to the kitchen.
-20 Where is Daniel? 	Daniel journeyed to the garden.
+20 Where is Daniel? 	Daniel travelled to the garden.
 1 Daniel travelled to the kitchen.
 2 Daniel went to the hallway.
 3 Where is Daniel? 	Daniel went to the hallway.
@@ -3225,14 +3225,14 @@
 5 Daniel went to the hallway.
 6 Mary travelled to the hallway.
 7 John went to the hallway.
-8 Where is Mary? 	Mary went to the hallway.
+8 Where is Mary? 	Mary travelled to the hallway.
 9 Daniel travelled to the kitchen.
 10 Daniel went to the hallway.
 11 Mary travelled to the hallway.
 12 John went to the hallway.
 13 Sandra moved to the garden.
 14 Mary went to the kitchen.
-15 Where is John? 	John went to the hallway.
+15 Where is John? 	John travelled to the hallway.
 1 Daniel travelled to the kitchen.
 2 Daniel went to the hallway.
 3 Mary travelled to the hallway.
@@ -3241,7 +3241,7 @@
 6 Mary went to the kitchen.
 7 John moved to the garden.
 8 John went back to the bathroom.
-9 Where is John? 	John travelled to the bathroom.
+9 Where is John? 	John moved to the bathroom.
 10 Daniel travelled to the kitchen.
 11 Daniel went to the hallway.
 12 Mary travelled to the hallway.
@@ -3252,7 +3252,7 @@
 17 John went back to the bathroom.
 18 Mary went to the hallway.
 19 Daniel moved to the kitchen.
-20 Where is Mary? 	Mary travelled to the hallway.
+20 Where is Mary? 	Mary went to the hallway.
 1 John went back to the hallway.
 2 Daniel journeyed to the bedroom.
 3 Where is John? 	John went to the hallway.
@@ -3260,7 +3260,7 @@
 5 Daniel journeyed to the bedroom.
 6 Sandra went back to the bedroom.
 7 Sandra moved to the bathroom.
-8 Where is Daniel? 	Daniel moved to the bedroom.
+8 Where is Daniel? 	Daniel went to the bedroom.
 9 John went back to the hallway.
 10 Daniel journeyed to the bedroom.
 11 Sandra went back to the bedroom.
@@ -3276,7 +3276,7 @@
 6 John travelled to the garden.
 7 John went to the bedroom.
 8 Mary went back to the kitchen.
-9 Where is Sandra? 	Sandra went to the bathroom.
+9 Where is Sandra? 	Sandra travelled to the bathroom.
 10 John went back to the hallway.
 11 Daniel journeyed to the bedroom.
 12 Sandra went back to the bedroom.
@@ -3302,7 +3302,7 @@
 12 Sandra moved to the kitchen.
 13 Sandra journeyed to the bedroom.
 14 Mary went to the kitchen.
-15 Where is Sandra? 	Sandra travelled to the bedroom.
+15 Where is Sandra? 	Sandra journeyed to the bedroom.
 1 Daniel journeyed to the kitchen.
 2 Daniel went back to the bedroom.
 3 Sandra travelled to the bathroom.
@@ -3311,7 +3311,7 @@
 6 Mary went to the kitchen.
 7 Daniel moved to the bathroom.
 8 Sandra moved to the office.
-9 Where is Daniel? 	Daniel travelled to the bathroom.
+9 Where is Daniel? 	Daniel moved to the bathroom.
 10 Daniel journeyed to the kitchen.
 11 Daniel went back to the bedroom.
 12 Sandra travelled to the bathroom.
@@ -3337,7 +3337,7 @@
 12 Mary journeyed to the garden.
 13 Sandra went back to the kitchen.
 14 Daniel went to the hallway.
-15 Where is Sandra? 	Sandra went to the kitchen.
+15 Where is Sandra? 	Sandra journeyed to the kitchen.
 1 John went to the hallway.
 2 Daniel moved to the garden.
 3 John went back to the bedroom.
@@ -3346,7 +3346,7 @@
 6 Daniel went to the hallway.
 7 John went back to the bathroom.
 8 Daniel went back to the kitchen.
-9 Where is John? 	John moved to the bathroom.
+9 Where is John? 	John went to the bathroom.
 10 John went to the hallway.
 11 Daniel moved to the garden.
 12 John went back to the bedroom.
@@ -3357,7 +3357,7 @@
 17 Daniel went back to the kitchen.
 18 Daniel went to the bedroom.
 19 John travelled to the hallway.
-20 Where is Daniel? 	Daniel went to the bedroom.
+20 Where is Daniel? 	Daniel moved to the bedroom.
 1 Daniel travelled to the bathroom.
 2 Sandra moved to the kitchen.
 3 Where is Sandra? 	Sandra moved to the kitchen.
@@ -3365,14 +3365,14 @@
 5 Sandra moved to the kitchen.
 6 Mary moved to the bedroom.
 7 Mary journeyed to the garden.
-8 Where is Daniel? 	Daniel journeyed to the bathroom.
+8 Where is Daniel? 	Daniel moved to the bathroom.
 9 Daniel travelled to the bathroom.
 10 Sandra moved to the kitchen.
 11 Mary moved to the bedroom.
 12 Mary journeyed to the garden.
 13 Mary moved to the hallway.
 14 Sandra went back to the hallway.
-15 Where is Sandra? 	Sandra went to the hallway.
+15 Where is Sandra? 	Sandra moved to the hallway.
 1 Daniel travelled to the bathroom.
 2 Sandra moved to the kitchen.
 3 Mary moved to the bedroom.
@@ -3381,7 +3381,7 @@
 6 Sandra went back to the hallway.
 7 Mary went to the kitchen.
 8 John went to the garden.
-9 Where is Mary? 	Mary journeyed to the kitchen.
+9 Where is Mary? 	Mary moved to the kitchen.
 10 Daniel travelled to the bathroom.
 11 Sandra moved to the kitchen.
 12 Mary moved to the bedroom.
@@ -3392,10 +3392,10 @@
 17 John went to the garden.
 18 John moved to the office.
 19 Daniel went back to the bedroom.
-20 Where is John? 	John moved to the office.
+20 Where is John? 	John travelled to the office.
 1 Sandra moved to the office.
 2 John went back to the garden.
-3 Where is John? 	John went to the garden.
+3 Where is John? 	John moved to the garden.
 4 Sandra moved to the office.
 5 John went back to the garden.
 6 Daniel travelled to the office.
@@ -3407,7 +3407,7 @@
 12 Sandra journeyed to the bathroom.
 13 John moved to the kitchen.
 14 John moved to the bathroom.
-15 Where is Sandra? 	Sandra journeyed to the bathroom.
+15 Where is Sandra? 	Sandra went to the bathroom.
 1 Sandra moved to the office.
 2 John went back to the garden.
 3 Daniel travelled to the office.
@@ -3416,7 +3416,7 @@
 6 John moved to the bathroom.
 7 Sandra journeyed to the hallway.
 8 Daniel went to the bathroom.
-9 Where is Daniel? 	Daniel journeyed to the bathroom.
+9 Where is Daniel? 	Daniel moved to the bathroom.
 10 Sandra moved to the office.
 11 John went back to the garden.
 12 Daniel travelled to the office.
@@ -3427,15 +3427,15 @@
 17 Daniel went to the bathroom.
 18 Sandra went to the bathroom.
 19 Sandra journeyed to the hallway.
-20 Where is Sandra? 	Sandra went to the hallway.
+20 Where is Sandra? 	Sandra moved to the hallway.
 1 John travelled to the kitchen.
 2 John went to the bathroom.
-3 Where is John? 	John went to the bathroom.
+3 Where is John? 	John travelled to the bathroom.
 4 John travelled to the kitchen.
 5 John went to the bathroom.
 6 Sandra travelled to the bedroom.
 7 Sandra journeyed to the garden.
-8 Where is John? 	John travelled to the bathroom.
+8 Where is John? 	John journeyed to the bathroom.
 9 John travelled to the kitchen.
 10 John went to the bathroom.
 11 Sandra travelled to the bedroom.
@@ -3451,7 +3451,7 @@
 6 John journeyed to the bathroom.
 7 Mary travelled to the kitchen.
 8 Mary journeyed to the garden.
-9 Where is John? 	John went to the bathroom.
+9 Where is John? 	John journeyed to the bathroom.
 10 John travelled to the kitchen.
 11 John went to the bathroom.
 12 Sandra travelled to the bedroom.
@@ -3470,14 +3470,14 @@
 5 Sandra travelled to the garden.
 6 Sandra journeyed to the kitchen.
 7 Sandra moved to the garden.
-8 Where is Sandra? 	Sandra moved to the garden.
+8 Where is Sandra? 	Sandra journeyed to the garden.
 9 Mary moved to the bedroom.
 10 Sandra travelled to the garden.
 11 Sandra journeyed to the kitchen.
 12 Sandra moved to the garden.
 13 Sandra travelled to the kitchen.
 14 Daniel went to the garden.
-15 Where is Daniel? 	Daniel travelled to the garden.
+15 Where is Daniel? 	Daniel moved to the garden.
 1 Mary moved to the bedroom.
 2 Sandra travelled to the garden.
 3 Sandra journeyed to the kitchen.
@@ -3486,7 +3486,7 @@
 6 Daniel went to the garden.
 7 John went to the hallway.
 8 Mary travelled to the hallway.
-9 Where is John? 	John went to the hallway.
+9 Where is John? 	John travelled to the hallway.
 10 Mary moved to the bedroom.
 11 Sandra travelled to the garden.
 12 Sandra journeyed to the kitchen.
@@ -3497,7 +3497,7 @@
 17 Mary travelled to the hallway.
 18 Daniel went back to the hallway.
 19 Daniel moved to the bathroom.
-20 Where is Mary? 	Mary moved to the hallway.
+20 Where is Mary? 	Mary journeyed to the hallway.
 1 Daniel went to the bedroom.
 2 Mary went to the kitchen.
 3 Where is Mary? 	Mary went to the kitchen.
@@ -3505,14 +3505,14 @@
 5 Mary went to the kitchen.
 6 Mary travelled to the bedroom.
 7 John journeyed to the bathroom.
-8 Where is Mary? 	Mary travelled to the bedroom.
+8 Where is Mary? 	Mary journeyed to the bedroom.
 9 Daniel went to the bedroom.
 10 Mary went to the kitchen.
 11 Mary travelled to the bedroom.
 12 John journeyed to the bathroom.
 13 Sandra moved to the garden.
 14 Sandra went to the office.
-15 Where is Mary? 	Mary journeyed to the bedroom.
+15 Where is Mary? 	Mary moved to the bedroom.
 1 Daniel went to the bedroom.
 2 Mary went to the kitchen.
 3 Mary travelled to the bedroom.
@@ -3521,7 +3521,7 @@
 6 Sandra went to the office.
 7 Daniel went back to the hallway.
 8 Sandra moved to the kitchen.
-9 Where is Sandra? 	Sandra moved to the kitchen.
+9 Where is Sandra? 	Sandra journeyed to the kitchen.
 10 Daniel went to the bedroom.
 11 Mary went to the kitchen.
 12 Mary travelled to the bedroom.
@@ -3532,7 +3532,7 @@
 17 Sandra moved to the kitchen.
 18 Mary travelled to the bathroom.
 19 Sandra journeyed to the bedroom.
-20 Where is Sandra? 	Sandra travelled to the bedroom.
+20 Where is Sandra? 	Sandra moved to the bedroom.
 1 Daniel went to the kitchen.
 2 Daniel went back to the garden.
 3 Where is Daniel? 	Daniel went to the garden.
@@ -3547,7 +3547,7 @@
 12 John travelled to the kitchen.
 13 Sandra moved to the bedroom.
 14 John went to the office.
-15 Where is Daniel? 	Daniel moved to the office.
+15 Where is Daniel? 	Daniel travelled to the office.
 1 Daniel went to the kitchen.
 2 Daniel went back to the garden.
 3 Daniel went back to the office.
@@ -3575,14 +3575,14 @@
 5 Mary travelled to the bathroom.
 6 John moved to the office.
 7 Mary moved to the bedroom.
-8 Where is Mary? 	Mary travelled to the bedroom.
+8 Where is Mary? 	Mary moved to the bedroom.
 9 Sandra journeyed to the hallway.
 10 Mary travelled to the bathroom.
 11 John moved to the office.
 12 Mary moved to the bedroom.
 13 Mary journeyed to the kitchen.
 14 Mary went back to the bathroom.
-15 Where is John? 	John moved to the office.
+15 Where is John? 	John journeyed to the office.
 1 Sandra journeyed to the hallway.
 2 Mary travelled to the bathroom.
 3 John moved to the office.
@@ -3591,7 +3591,7 @@
 6 Mary went back to the bathroom.
 7 John moved to the bathroom.
 8 Mary went back to the kitchen.
-9 Where is Mary? 	Mary went to the kitchen.
+9 Where is Mary? 	Mary journeyed to the kitchen.
 10 Sandra journeyed to the hallway.
 11 Mary travelled to the bathroom.
 12 John moved to the office.
@@ -3602,15 +3602,15 @@
 17 Mary went back to the kitchen.
 18 Sandra journeyed to the bedroom.
 19 Daniel went back to the kitchen.
-20 Where is John? 	John moved to the bathroom.
+20 Where is John? 	John went to the bathroom.
 1 Sandra moved to the hallway.
 2 John went back to the hallway.
-3 Where is Sandra? 	Sandra went to the hallway.
+3 Where is Sandra? 	Sandra moved to the hallway.
 4 Sandra moved to the hallway.
 5 John went back to the hallway.
 6 Daniel moved to the garden.
 7 Daniel went to the bathroom.
-8 Where is Sandra? 	Sandra moved to the hallway.
+8 Where is Sandra? 	Sandra went to the hallway.
 9 Sandra moved to the hallway.
 10 John went back to the hallway.
 11 Daniel moved to the garden.
@@ -3637,10 +3637,10 @@
 17 Daniel went to the garden.
 18 Daniel moved to the bathroom.
 19 Mary went to the office.
-20 Where is Daniel? 	Daniel journeyed to the bathroom.
+20 Where is Daniel? 	Daniel moved to the bathroom.
 1 Sandra travelled to the office.
 2 Sandra went to the garden.
-3 Where is Sandra? 	Sandra went to the garden.
+3 Where is Sandra? 	Sandra travelled to the garden.
 4 Sandra travelled to the office.
 5 Sandra went to the garden.
 6 Mary went back to the garden.
@@ -3652,7 +3652,7 @@
 12 Daniel went to the kitchen.
 13 Sandra moved to the bathroom.
 14 Sandra travelled to the garden.
-15 Where is Daniel? 	Daniel travelled to the kitchen.
+15 Where is Daniel? 	Daniel went to the kitchen.
 1 Sandra travelled to the office.
 2 Sandra went to the garden.
 3 Mary went back to the garden.
@@ -3680,14 +3680,14 @@
 5 John went back to the kitchen.
 6 Mary went to the hallway.
 7 John moved to the office.
-8 Where is John? 	John journeyed to the office.
+8 Where is John? 	John moved to the office.
 9 Daniel journeyed to the kitchen.
 10 John went back to the kitchen.
 11 Mary went to the hallway.
 12 John moved to the office.
 13 Daniel travelled to the hallway.
 14 Mary went to the garden.
-15 Where is John? 	John went to the office.
+15 Where is John? 	John moved to the office.
 1 Daniel journeyed to the kitchen.
 2 John went back to the kitchen.
 3 Mary went to the hallway.
@@ -3696,7 +3696,7 @@
 6 Mary went to the garden.
 7 Mary went back to the office.
 8 Mary went to the garden.
-9 Where is Mary? 	Mary went to the garden.
+9 Where is Mary? 	Mary travelled to the garden.
 10 Daniel journeyed to the kitchen.
 11 John went back to the kitchen.
 12 Mary went to the hallway.
@@ -3707,7 +3707,7 @@
 17 Mary went to the garden.
 18 Sandra moved to the bathroom.
 19 Daniel moved to the office.
-20 Where is Mary? 	Mary went to the garden.
+20 Where is Mary? 	Mary journeyed to the garden.
 1 John went to the kitchen.
 2 John moved to the garden.
 3 Where is John? 	John moved to the garden.
@@ -3742,7 +3742,7 @@
 17 John travelled to the garden.
 18 Mary went back to the bathroom.
 19 Sandra travelled to the hallway.
-20 Where is John? 	John went to the garden.
+20 Where is John? 	John travelled to the garden.
 1 Sandra went to the garden.
 2 Mary travelled to the garden.
 3 Where is Sandra? 	Sandra travelled to the garden.
@@ -3766,7 +3766,7 @@
 6 Sandra travelled to the garden.
 7 Mary went back to the bedroom.
 8 Mary travelled to the kitchen.
-9 Where is Daniel? 	Daniel travelled to the kitchen.
+9 Where is Daniel? 	Daniel went to the kitchen.
 10 Sandra went to the garden.
 11 Mary travelled to the garden.
 12 Sandra travelled to the kitchen.
@@ -3777,22 +3777,22 @@
 17 Mary travelled to the kitchen.
 18 John travelled to the bathroom.
 19 Mary travelled to the hallway.
-20 Where is Sandra? 	Sandra travelled to the garden.
+20 Where is Sandra? 	Sandra went to the garden.
 1 Daniel travelled to the bathroom.
 2 Sandra moved to the hallway.
-3 Where is Sandra? 	Sandra moved to the hallway.
+3 Where is Sandra? 	Sandra travelled to the hallway.
 4 Daniel travelled to the bathroom.
 5 Sandra moved to the hallway.
 6 Sandra went to the office.
 7 Mary journeyed to the kitchen.
-8 Where is Mary? 	Mary travelled to the kitchen.
+8 Where is Mary? 	Mary moved to the kitchen.
 9 Daniel travelled to the bathroom.
 10 Sandra moved to the hallway.
 11 Sandra went to the office.
 12 Mary journeyed to the kitchen.
 13 Daniel went to the kitchen.
 14 Mary went back to the garden.
-15 Where is Mary? 	Mary went to the garden.
+15 Where is Mary? 	Mary travelled to the garden.
 1 Daniel travelled to the bathroom.
 2 Sandra moved to the hallway.
 3 Sandra went to the office.
@@ -3812,7 +3812,7 @@
 17 Sandra travelled to the garden.
 18 Daniel went back to the hallway.
 19 John moved to the bedroom.
-20 Where is Sandra? 	Sandra journeyed to the garden.
+20 Where is Sandra? 	Sandra went to the garden.
 1 Mary travelled to the bedroom.
 2 Daniel travelled to the office.
 3 Where is Mary? 	Mary travelled to the bedroom.
@@ -3827,7 +3827,7 @@
 12 Mary travelled to the hallway.
 13 Sandra travelled to the kitchen.
 14 Mary travelled to the kitchen.
-15 Where is Daniel? 	Daniel travelled to the hallway.
+15 Where is Daniel? 	Daniel journeyed to the hallway.
 1 Mary travelled to the bedroom.
 2 Daniel travelled to the office.
 3 Daniel journeyed to the hallway.
@@ -3847,10 +3847,10 @@
 17 Daniel went to the bathroom.
 18 Daniel moved to the garden.
 19 John went to the kitchen.
-20 Where is Daniel? 	Daniel journeyed to the garden.
+20 Where is Daniel? 	Daniel went to the garden.
 1 Sandra went back to the office.
 2 Sandra moved to the bathroom.
-3 Where is Sandra? 	Sandra moved to the bathroom.
+3 Where is Sandra? 	Sandra went to the bathroom.
 4 Sandra went back to the office.
 5 Sandra moved to the bathroom.
 6 Mary travelled to the office.
@@ -3871,7 +3871,7 @@
 6 Mary journeyed to the office.
 7 Mary journeyed to the bathroom.
 8 Sandra travelled to the garden.
-9 Where is Sandra? 	Sandra journeyed to the garden.
+9 Where is Sandra? 	Sandra moved to the garden.
 10 Sandra went back to the office.
 11 Sandra moved to the bathroom.
 12 Mary travelled to the office.
@@ -3882,7 +3882,7 @@
 17 Sandra travelled to the garden.
 18 Mary went to the kitchen.
 19 John travelled to the hallway.
-20 Where is Mary? 	Mary travelled to the kitchen.
+20 Where is Mary? 	Mary journeyed to the kitchen.
 1 Sandra went to the kitchen.
 2 Daniel went back to the bathroom.
 3 Where is Sandra? 	Sandra went to the kitchen.
@@ -3890,7 +3890,7 @@
 5 Daniel went back to the bathroom.
 6 Daniel journeyed to the hallway.
 7 Mary journeyed to the kitchen.
-8 Where is Mary? 	Mary went to the kitchen.
+8 Where is Mary? 	Mary journeyed to the kitchen.
 9 Sandra went to the kitchen.
 10 Daniel went back to the bathroom.
 11 Daniel journeyed to the hallway.
@@ -3925,14 +3925,14 @@
 5 Mary travelled to the bathroom.
 6 Sandra went to the bedroom.
 7 Daniel moved to the office.
-8 Where is Daniel? 	Daniel went to the office.
+8 Where is Daniel? 	Daniel moved to the office.
 9 John travelled to the hallway.
 10 Mary travelled to the bathroom.
 11 Sandra went to the bedroom.
 12 Daniel moved to the office.
 13 Daniel travelled to the hallway.
 14 Daniel journeyed to the bathroom.
-15 Where is Sandra? 	Sandra moved to the bedroom.
+15 Where is Sandra? 	Sandra went to the bedroom.
 1 John travelled to the hallway.
 2 Mary travelled to the bathroom.
 3 Sandra went to the bedroom.
@@ -3941,7 +3941,7 @@
 6 Daniel journeyed to the bathroom.
 7 Daniel went to the hallway.
 8 Mary journeyed to the office.
-9 Where is Daniel? 	Daniel moved to the hallway.
+9 Where is Daniel? 	Daniel travelled to the hallway.
 10 John travelled to the hallway.
 11 Mary travelled to the bathroom.
 12 Sandra went to the bedroom.
@@ -3952,7 +3952,7 @@
 17 Mary journeyed to the office.
 18 Mary travelled to the bathroom.
 19 Sandra journeyed to the garden.
-20 Where is Mary? 	Mary travelled to the bathroom.
+20 Where is Mary? 	Mary journeyed to the bathroom.
 1 Daniel journeyed to the bedroom.
 2 Daniel moved to the kitchen.
 3 Where is Daniel? 	Daniel moved to the kitchen.
@@ -3960,14 +3960,14 @@
 5 Daniel moved to the kitchen.
 6 Mary travelled to the kitchen.
 7 Mary moved to the bathroom.
-8 Where is Daniel? 	Daniel moved to the kitchen.
+8 Where is Daniel? 	Daniel travelled to the kitchen.
 9 Daniel journeyed to the bedroom.
 10 Daniel moved to the kitchen.
 11 Mary travelled to the kitchen.
 12 Mary moved to the bathroom.
 13 John travelled to the office.
 14 Daniel went to the hallway.
-15 Where is John? 	John journeyed to the office.
+15 Where is John? 	John moved to the office.
 1 Daniel journeyed to the bedroom.
 2 Daniel moved to the kitchen.
 3 Mary travelled to the kitchen.
@@ -3976,7 +3976,7 @@
 6 Daniel went to the hallway.
 7 John went back to the garden.
 8 Sandra travelled to the bathroom.
-9 Where is Mary? 	Mary moved to the bathroom.
+9 Where is Mary? 	Mary went to the bathroom.
 10 Daniel journeyed to the bedroom.
 11 Daniel moved to the kitchen.
 12 Mary travelled to the kitchen.
@@ -3987,7 +3987,7 @@
 17 Sandra travelled to the bathroom.
 18 Sandra journeyed to the office.
 19 John went to the bathroom.
-20 Where is John? 	John journeyed to the bathroom.
+20 Where is John? 	John travelled to the bathroom.
 1 Sandra travelled to the bathroom.
 2 Sandra moved to the kitchen.
 3 Where is Sandra? 	Sandra moved to the kitchen.
@@ -3995,7 +3995,7 @@
 5 Sandra moved to the kitchen.
 6 Sandra journeyed to the bathroom.
 7 Sandra journeyed to the bedroom.
-8 Where is Sandra? 	Sandra journeyed to the bedroom.
+8 Where is Sandra? 	Sandra travelled to the bedroom.
 9 Sandra travelled to the bathroom.
 10 Sandra moved to the kitchen.
 11 Sandra journeyed to the bathroom.
@@ -4022,10 +4022,10 @@
 17 Mary went to the office.
 18 Daniel journeyed to the office.
 19 Mary went back to the bedroom.
-20 Where is John? 	John travelled to the garden.
+20 Where is John? 	John went to the garden.
 1 John travelled to the office.
 2 Daniel went back to the bedroom.
-3 Where is John? 	John travelled to the office.
+3 Where is John? 	John went to the office.
 4 John travelled to the office.
 5 Daniel went back to the bedroom.
 6 Sandra travelled to the hallway.
@@ -4046,7 +4046,7 @@
 6 Mary travelled to the garden.
 7 Mary went to the bedroom.
 8 Sandra moved to the office.
-9 Where is Daniel? 	Daniel went to the bathroom.
+9 Where is Daniel? 	Daniel journeyed to the bathroom.
 10 John travelled to the office.
 11 Daniel went back to the bedroom.
 12 Sandra travelled to the hallway.
@@ -4065,7 +4065,7 @@
 5 Sandra moved to the bedroom.
 6 Sandra went to the bathroom.
 7 Daniel went back to the office.
-8 Where is Daniel? 	Daniel went to the office.
+8 Where is Daniel? 	Daniel moved to the office.
 9 John went back to the hallway.
 10 Sandra moved to the bedroom.
 11 Sandra went to the bathroom.
@@ -4081,7 +4081,7 @@
 6 Sandra moved to the bedroom.
 7 John journeyed to the garden.
 8 Mary travelled to the hallway.
-9 Where is Mary? 	Mary moved to the hallway.
+9 Where is Mary? 	Mary travelled to the hallway.
 10 John went back to the hallway.
 11 Sandra moved to the bedroom.
 12 Sandra went to the bathroom.
@@ -4092,7 +4092,7 @@
 17 Mary travelled to the hallway.
 18 Mary went to the office.
 19 Daniel travelled to the bedroom.
-20 Where is Sandra? 	Sandra travelled to the bedroom.
+20 Where is Sandra? 	Sandra went to the bedroom.
 1 Mary travelled to the kitchen.
 2 Mary moved to the hallway.
 3 Where is Mary? 	Mary travelled to the hallway.
@@ -4107,7 +4107,7 @@
 12 John went back to the garden.
 13 John moved to the hallway.
 14 Sandra travelled to the hallway.
-15 Where is John? 	John went to the hallway.
+15 Where is John? 	John moved to the hallway.
 1 Mary travelled to the kitchen.
 2 Mary moved to the hallway.
 3 John went to the office.
@@ -4116,7 +4116,7 @@
 6 Sandra travelled to the hallway.
 7 Mary moved to the garden.
 8 Daniel journeyed to the hallway.
-9 Where is Mary? 	Mary journeyed to the garden.
+9 Where is Mary? 	Mary travelled to the garden.
 10 Mary travelled to the kitchen.
 11 Mary moved to the hallway.
 12 John went to the office.
@@ -4127,22 +4127,22 @@
 17 Daniel journeyed to the hallway.
 18 Daniel went to the bedroom.
 19 Mary travelled to the bedroom.
-20 Where is Sandra? 	Sandra moved to the hallway.
+20 Where is Sandra? 	Sandra travelled to the hallway.
 1 Mary journeyed to the office.
 2 Sandra travelled to the bathroom.
-3 Where is Mary? 	Mary journeyed to the office.
+3 Where is Mary? 	Mary travelled to the office.
 4 Mary journeyed to the office.
 5 Sandra travelled to the bathroom.
 6 Sandra travelled to the office.
 7 Mary went back to the hallway.
-8 Where is Mary? 	Mary went to the hallway.
+8 Where is Mary? 	Mary journeyed to the hallway.
 9 Mary journeyed to the office.
 10 Sandra travelled to the bathroom.
 11 Sandra travelled to the office.
 12 Mary went back to the hallway.
 13 Daniel went back to the office.
 14 Sandra went to the bathroom.
-15 Where is Sandra? 	Sandra went to the bathroom.
+15 Where is Sandra? 	Sandra journeyed to the bathroom.
 1 Mary journeyed to the office.
 2 Sandra travelled to the bathroom.
 3 Sandra travelled to the office.
@@ -4162,10 +4162,10 @@
 17 Sandra went back to the office.
 18 Daniel went to the bedroom.
 19 Sandra travelled to the garden.
-20 Where is Sandra? 	Sandra went to the garden.
+20 Where is Sandra? 	Sandra journeyed to the garden.
 1 Mary journeyed to the hallway.
 2 Sandra went to the garden.
-3 Where is Mary? 	Mary journeyed to the hallway.
+3 Where is Mary? 	Mary went to the hallway.
 4 Mary journeyed to the hallway.
 5 Sandra went to the garden.
 6 Sandra journeyed to the hallway.
@@ -4186,7 +4186,7 @@
 6 Mary went back to the kitchen.
 7 Daniel went back to the bedroom.
 8 Sandra travelled to the bathroom.
-9 Where is Sandra? 	Sandra went to the bathroom.
+9 Where is Sandra? 	Sandra journeyed to the bathroom.
 10 Mary journeyed to the hallway.
 11 Sandra went to the garden.
 12 Sandra journeyed to the hallway.
@@ -4200,19 +4200,19 @@
 20 Where is Sandra? 	Sandra went to the office.
 1 Mary went back to the bedroom.
 2 Mary travelled to the garden.
-3 Where is Mary? 	Mary travelled to the garden.
+3 Where is Mary? 	Mary went to the garden.
 4 Mary went back to the bedroom.
 5 Mary travelled to the garden.
 6 John journeyed to the kitchen.
 7 Sandra went back to the office.
-8 Where is Mary? 	Mary went to the garden.
+8 Where is Mary? 	Mary travelled to the garden.
 9 Mary went back to the bedroom.
 10 Mary travelled to the garden.
 11 John journeyed to the kitchen.
 12 Sandra went back to the office.
 13 Mary journeyed to the bedroom.
 14 Sandra travelled to the bathroom.
-15 Where is John? 	John journeyed to the kitchen.
+15 Where is John? 	John travelled to the kitchen.
 1 Mary went back to the bedroom.
 2 Mary travelled to the garden.
 3 John journeyed to the kitchen.
@@ -4221,7 +4221,7 @@
 6 Sandra travelled to the bathroom.
 7 Daniel journeyed to the garden.
 8 Mary went back to the hallway.
-9 Where is Mary? 	Mary travelled to the hallway.
+9 Where is Mary? 	Mary journeyed to the hallway.
 10 Mary went back to the bedroom.
 11 Mary travelled to the garden.
 12 John journeyed to the kitchen.
@@ -4232,7 +4232,7 @@
 17 Mary went back to the hallway.
 18 John moved to the bedroom.
 19 Mary travelled to the kitchen.
-20 Where is Daniel? 	Daniel moved to the garden.
+20 Where is Daniel? 	Daniel journeyed to the garden.
 1 Sandra went back to the garden.
 2 Sandra went to the hallway.
 3 Where is Sandra? 	Sandra went to the hallway.
@@ -4240,14 +4240,14 @@
 5 Sandra went to the hallway.
 6 Mary went back to the garden.
 7 Sandra journeyed to the office.
-8 Where is Sandra? 	Sandra journeyed to the office.
+8 Where is Sandra? 	Sandra went to the office.
 9 Sandra went back to the garden.
 10 Sandra went to the hallway.
 11 Mary went back to the garden.
 12 Sandra journeyed to the office.
 13 Sandra travelled to the hallway.
 14 Sandra moved to the bedroom.
-15 Where is Mary? 	Mary travelled to the garden.
+15 Where is Mary? 	Mary went to the garden.
 1 Sandra went back to the garden.
 2 Sandra went to the hallway.
 3 Mary went back to the garden.
@@ -4256,7 +4256,7 @@
 6 Sandra moved to the bedroom.
 7 Daniel moved to the office.
 8 Mary journeyed to the hallway.
-9 Where is Daniel? 	Daniel moved to the office.
+9 Where is Daniel? 	Daniel travelled to the office.
 10 Sandra went back to the garden.
 11 Sandra went to the hallway.
 12 Mary went back to the garden.
@@ -4267,7 +4267,7 @@
 17 Mary journeyed to the hallway.
 18 Mary journeyed to the bedroom.
 19 Daniel went back to the kitchen.
-20 Where is Mary? 	Mary went to the bedroom.
+20 Where is Mary? 	Mary moved to the bedroom.
 1 Sandra journeyed to the garden.
 2 Sandra journeyed to the kitchen.
 3 Where is Sandra? 	Sandra journeyed to the kitchen.
@@ -4291,7 +4291,7 @@
 6 Mary journeyed to the bathroom.
 7 Daniel journeyed to the garden.
 8 Mary went back to the bedroom.
-9 Where is Daniel? 	Daniel went to the garden.
+9 Where is Daniel? 	Daniel moved to the garden.
 10 Sandra journeyed to the garden.
 11 Sandra journeyed to the kitchen.
 12 Daniel journeyed to the bedroom.
@@ -4302,7 +4302,7 @@
 17 Mary went back to the bedroom.
 18 Sandra went back to the kitchen.
 19 Sandra travelled to the bedroom.
-20 Where is Sandra? 	Sandra moved to the bedroom.
+20 Where is Sandra? 	Sandra travelled to the bedroom.
 1 Daniel went to the hallway.
 2 Daniel moved to the bedroom.
 3 Where is Daniel? 	Daniel went to the bedroom.
@@ -4317,7 +4317,7 @@
 12 Daniel journeyed to the hallway.
 13 John journeyed to the bathroom.
 14 Sandra went to the garden.
-15 Where is Daniel? 	Daniel moved to the hallway.
+15 Where is Daniel? 	Daniel journeyed to the hallway.
 1 Daniel went to the hallway.
 2 Daniel moved to the bedroom.
 3 Sandra moved to the office.
@@ -4326,7 +4326,7 @@
 6 Sandra went to the garden.
 7 John moved to the garden.
 8 Mary journeyed to the garden.
-9 Where is John? 	John journeyed to the garden.
+9 Where is John? 	John moved to the garden.
 10 Daniel went to the hallway.
 11 Daniel moved to the bedroom.
 12 Sandra moved to the office.
@@ -4337,22 +4337,22 @@
 17 Mary journeyed to the garden.
 18 Mary went to the office.
 19 Sandra journeyed to the hallway.
-20 Where is John? 	John journeyed to the garden.
+20 Where is John? 	John went to the garden.
 1 John travelled to the garden.
 2 Daniel journeyed to the bedroom.
-3 Where is John? 	John journeyed to the garden.
+3 Where is John? 	John travelled to the garden.
 4 John travelled to the garden.
 5 Daniel journeyed to the bedroom.
 6 Sandra went back to the garden.
 7 Mary went to the kitchen.
-8 Where is John? 	John travelled to the garden.
+8 Where is John? 	John went to the garden.
 9 John travelled to the garden.
 10 Daniel journeyed to the bedroom.
 11 Sandra went back to the garden.
 12 Mary went to the kitchen.
 13 John travelled to the kitchen.
 14 Sandra moved to the bedroom.
-15 Where is Sandra? 	Sandra went to the bedroom.
+15 Where is Sandra? 	Sandra travelled to the bedroom.
 1 John travelled to the garden.
 2 Daniel journeyed to the bedroom.
 3 Sandra went back to the garden.
@@ -4361,7 +4361,7 @@
 6 Sandra moved to the bedroom.
 7 Daniel moved to the garden.
 8 Daniel travelled to the bedroom.
-9 Where is Daniel? 	Daniel travelled to the bedroom.
+9 Where is Daniel? 	Daniel moved to the bedroom.
 10 John travelled to the garden.
 11 Daniel journeyed to the bedroom.
 12 Sandra went back to the garden.
@@ -4372,10 +4372,10 @@
 17 Daniel travelled to the bedroom.
 18 Mary journeyed to the office.
 19 Sandra moved to the bathroom.
-20 Where is Daniel? 	Daniel moved to the bedroom.
+20 Where is Daniel? 	Daniel travelled to the bedroom.
 1 John travelled to the bathroom.
 2 Sandra went to the kitchen.
-3 Where is Sandra? 	Sandra went to the kitchen.
+3 Where is Sandra? 	Sandra travelled to the kitchen.
 4 John travelled to the bathroom.
 5 Sandra went to the kitchen.
 6 Daniel went to the garden.
@@ -4387,7 +4387,7 @@
 12 Mary moved to the bedroom.
 13 Sandra moved to the bathroom.
 14 John moved to the hallway.
-15 Where is Sandra? 	Sandra moved to the bathroom.
+15 Where is Sandra? 	Sandra travelled to the bathroom.
 1 John travelled to the bathroom.
 2 Sandra went to the kitchen.
 3 Daniel went to the garden.
@@ -4407,10 +4407,10 @@
 17 Daniel journeyed to the hallway.
 18 Daniel went back to the office.
 19 Sandra went back to the hallway.
-20 Where is John? 	John went to the kitchen.
+20 Where is John? 	John moved to the kitchen.
 1 Sandra moved to the office.
 2 Mary went back to the bathroom.
-3 Where is Sandra? 	Sandra moved to the office.
+3 Where is Sandra? 	Sandra went to the office.
 4 Sandra moved to the office.
 5 Mary went back to the bathroom.
 6 Mary travelled to the office.
@@ -4422,7 +4422,7 @@
 12 Sandra moved to the kitchen.
 13 Sandra moved to the bedroom.
 14 Mary went back to the garden.
-15 Where is Mary? 	Mary went to the garden.
+15 Where is Mary? 	Mary travelled to the garden.
 1 Sandra moved to the office.
 2 Mary went back to the bathroom.
 3 Mary travelled to the office.
@@ -4431,7 +4431,7 @@
 6 Mary went back to the garden.
 7 John went to the hallway.
 8 Daniel went back to the bathroom.
-9 Where is Daniel? 	Daniel went to the bathroom.
+9 Where is Daniel? 	Daniel travelled to the bathroom.
 10 Sandra moved to the office.
 11 Mary went back to the bathroom.
 12 Mary travelled to the office.
@@ -4450,14 +4450,14 @@
 5 Daniel went to the garden.
 6 Mary journeyed to the kitchen.
 7 Mary went back to the hallway.
-8 Where is Mary? 	Mary went to the hallway.
+8 Where is Mary? 	Mary journeyed to the hallway.
 9 Mary travelled to the garden.
 10 Daniel went to the garden.
 11 Mary journeyed to the kitchen.
 12 Mary went back to the hallway.
 13 Daniel travelled to the office.
 14 Daniel moved to the garden.
-15 Where is Mary? 	Mary journeyed to the hallway.
+15 Where is Mary? 	Mary went to the hallway.
 1 Mary travelled to the garden.
 2 Daniel went to the garden.
 3 Mary journeyed to the kitchen.
@@ -4466,7 +4466,7 @@
 6 Daniel moved to the garden.
 7 Sandra went back to the kitchen.
 8 John travelled to the bathroom.
-9 Where is Mary? 	Mary moved to the hallway.
+9 Where is Mary? 	Mary went to the hallway.
 10 Mary travelled to the garden.
 11 Daniel went to the garden.
 12 Mary journeyed to the kitchen.
@@ -4477,22 +4477,22 @@
 17 John travelled to the bathroom.
 18 Daniel went to the kitchen.
 19 Mary moved to the office.
-20 Where is Sandra? 	Sandra went to the kitchen.
+20 Where is Sandra? 	Sandra moved to the kitchen.
 1 Mary went to the office.
 2 Sandra travelled to the bathroom.
-3 Where is Mary? 	Mary went to the office.
+3 Where is Mary? 	Mary travelled to the office.
 4 Mary went to the office.
 5 Sandra travelled to the bathroom.
 6 Sandra went to the hallway.
 7 Daniel journeyed to the kitchen.
-8 Where is Sandra? 	Sandra went to the hallway.
+8 Where is Sandra? 	Sandra journeyed to the hallway.
 9 Mary went to the office.
 10 Sandra travelled to the bathroom.
 11 Sandra went to the hallway.
 12 Daniel journeyed to the kitchen.
 13 Sandra travelled to the office.
 14 John journeyed to the bedroom.
-15 Where is Sandra? 	Sandra travelled to the office.
+15 Where is Sandra? 	Sandra journeyed to the office.
 1 Mary went to the office.
 2 Sandra travelled to the bathroom.
 3 Sandra went to the hallway.
@@ -4501,7 +4501,7 @@
 6 John journeyed to the bedroom.
 7 Daniel moved to the hallway.
 8 Sandra went to the hallway.
-9 Where is Daniel? 	Daniel travelled to the hallway.
+9 Where is Daniel? 	Daniel moved to the hallway.
 10 Mary went to the office.
 11 Sandra travelled to the bathroom.
 12 Sandra went to the hallway.
@@ -4512,22 +4512,22 @@
 17 Sandra went to the hallway.
 18 John journeyed to the garden.
 19 Sandra went back to the garden.
-20 Where is Daniel? 	Daniel went to the hallway.
+20 Where is Daniel? 	Daniel travelled to the hallway.
 1 Sandra journeyed to the garden.
 2 Daniel travelled to the bathroom.
-3 Where is Sandra? 	Sandra journeyed to the garden.
+3 Where is Sandra? 	Sandra travelled to the garden.
 4 Sandra journeyed to the garden.
 5 Daniel travelled to the bathroom.
 6 Sandra went to the bedroom.
 7 Sandra travelled to the hallway.
-8 Where is Sandra? 	Sandra went to the hallway.
+8 Where is Sandra? 	Sandra journeyed to the hallway.
 9 Sandra journeyed to the garden.
 10 Daniel travelled to the bathroom.
 11 Sandra went to the bedroom.
 12 Sandra travelled to the hallway.
 13 Sandra travelled to the office.
 14 Sandra went back to the garden.
-15 Where is Sandra? 	Sandra journeyed to the garden.
+15 Where is Sandra? 	Sandra went to the garden.
 1 Sandra journeyed to the garden.
 2 Daniel travelled to the bathroom.
 3 Sandra went to the bedroom.
@@ -4547,15 +4547,15 @@
 17 John moved to the bedroom.
 18 Sandra moved to the kitchen.
 19 John journeyed to the kitchen.
-20 Where is John? 	John moved to the kitchen.
+20 Where is John? 	John journeyed to the kitchen.
 1 Sandra went to the bedroom.
 2 Mary moved to the bedroom.
-3 Where is Mary? 	Mary went to the bedroom.
+3 Where is Mary? 	Mary moved to the bedroom.
 4 Sandra went to the bedroom.
 5 Mary moved to the bedroom.
 6 John went to the office.
 7 Daniel journeyed to the garden.
-8 Where is John? 	John journeyed to the office.
+8 Where is John? 	John went to the office.
 9 Sandra went to the bedroom.
 10 Mary moved to the bedroom.
 11 John went to the office.
@@ -4582,10 +4582,10 @@
 17 John moved to the garden.
 18 Mary went to the garden.
 19 Mary went to the bedroom.
-20 Where is Mary? 	Mary journeyed to the bedroom.
+20 Where is Mary? 	Mary travelled to the bedroom.
 1 Mary moved to the kitchen.
 2 John travelled to the office.
-3 Where is John? 	John moved to the office.
+3 Where is John? 	John travelled to the office.
 4 Mary moved to the kitchen.
 5 John travelled to the office.
 6 Daniel went to the hallway.
@@ -4597,7 +4597,7 @@
 12 Daniel went back to the kitchen.
 13 Sandra went back to the hallway.
 14 John travelled to the bedroom.
-15 Where is John? 	John travelled to the bedroom.
+15 Where is John? 	John moved to the bedroom.
 1 Mary moved to the kitchen.
 2 John travelled to the office.
 3 Daniel went to the hallway.
@@ -4606,7 +4606,7 @@
 6 John travelled to the bedroom.
 7 Daniel travelled to the garden.
 8 Mary moved to the office.
-9 Where is Daniel? 	Daniel moved to the garden.
+9 Where is Daniel? 	Daniel went to the garden.
 10 Mary moved to the kitchen.
 11 John travelled to the office.
 12 Daniel went to the hallway.
@@ -4660,14 +4660,14 @@
 5 Mary moved to the garden.
 6 Daniel travelled to the garden.
 7 Mary went to the bathroom.
-8 Where is John? 	John moved to the hallway.
+8 Where is John? 	John travelled to the hallway.
 9 John moved to the hallway.
 10 Mary moved to the garden.
 11 Daniel travelled to the garden.
 12 Mary went to the bathroom.
 13 Mary went back to the bedroom.
 14 John went to the kitchen.
-15 Where is Mary? 	Mary went to the bedroom.
+15 Where is Mary? 	Mary travelled to the bedroom.
 1 John moved to the hallway.
 2 Mary moved to the garden.
 3 Daniel travelled to the garden.
@@ -4676,7 +4676,7 @@
 6 John went to the kitchen.
 7 Sandra went back to the hallway.
 8 John went to the bathroom.
-9 Where is Mary? 	Mary moved to the bedroom.
+9 Where is Mary? 	Mary went to the bedroom.
 10 John moved to the hallway.
 11 Mary moved to the garden.
 12 Daniel travelled to the garden.
@@ -4687,10 +4687,10 @@
 17 John went to the bathroom.
 18 Mary went back to the office.
 19 John travelled to the bedroom.
-20 Where is Sandra? 	Sandra travelled to the hallway.
+20 Where is Sandra? 	Sandra moved to the hallway.
 1 John went to the bedroom.
 2 Daniel journeyed to the bedroom.
-3 Where is John? 	John journeyed to the bedroom.
+3 Where is John? 	John went to the bedroom.
 4 John went to the bedroom.
 5 Daniel journeyed to the bedroom.
 6 Daniel journeyed to the kitchen.
@@ -4725,19 +4725,19 @@
 20 Where is John? 	John moved to the hallway.
 1 John went back to the hallway.
 2 Daniel moved to the garden.
-3 Where is John? 	John went to the hallway.
+3 Where is John? 	John moved to the hallway.
 4 John went back to the hallway.
 5 Daniel moved to the garden.
 6 Sandra travelled to the bathroom.
 7 Mary went back to the office.
-8 Where is Daniel? 	Daniel went to the garden.
+8 Where is Daniel? 	Daniel moved to the garden.
 9 John went back to the hallway.
 10 Daniel moved to the garden.
 11 Sandra travelled to the bathroom.
 12 Mary went back to the office.
 13 Sandra travelled to the hallway.
 14 Sandra went back to the bedroom.
-15 Where is Daniel? 	Daniel travelled to the garden.
+15 Where is Daniel? 	Daniel moved to the garden.
 1 John went back to the hallway.
 2 Daniel moved to the garden.
 3 Sandra travelled to the bathroom.
@@ -4746,7 +4746,7 @@
 6 Sandra went back to the bedroom.
 7 Daniel moved to the bedroom.
 8 Daniel travelled to the hallway.
-9 Where is Daniel? 	Daniel went to the hallway.
+9 Where is Daniel? 	Daniel moved to the hallway.
 10 John went back to the hallway.
 11 Daniel moved to the garden.
 12 Sandra travelled to the bathroom.
@@ -4772,7 +4772,7 @@
 12 Sandra travelled to the bedroom.
 13 John went to the hallway.
 14 Daniel went to the hallway.
-15 Where is John? 	John went to the hallway.
+15 Where is John? 	John moved to the hallway.
 1 Mary went back to the kitchen.
 2 Sandra travelled to the kitchen.
 3 John moved to the bathroom.
@@ -4781,7 +4781,7 @@
 6 Daniel went to the hallway.
 7 John went to the kitchen.
 8 Sandra moved to the kitchen.
-9 Where is John? 	John went to the kitchen.
+9 Where is John? 	John travelled to the kitchen.
 10 Mary went back to the kitchen.
 11 Sandra travelled to the kitchen.
 12 John moved to the bathroom.
@@ -4792,22 +4792,22 @@
 17 Sandra moved to the kitchen.
 18 Daniel travelled to the kitchen.
 19 Daniel moved to the office.
-20 Where is Sandra? 	Sandra moved to the kitchen.
+20 Where is Sandra? 	Sandra travelled to the kitchen.
 1 Sandra went to the kitchen.
 2 Mary moved to the kitchen.
-3 Where is Sandra? 	Sandra moved to the kitchen.
+3 Where is Sandra? 	Sandra went to the kitchen.
 4 Sandra went to the kitchen.
 5 Mary moved to the kitchen.
 6 Sandra moved to the hallway.
 7 Mary went to the office.
-8 Where is Mary? 	Mary moved to the office.
+8 Where is Mary? 	Mary went to the office.
 9 Sandra went to the kitchen.
 10 Mary moved to the kitchen.
 11 Sandra moved to the hallway.
 12 Mary went to the office.
 13 Daniel journeyed to the garden.
 14 Sandra journeyed to the garden.
-15 Where is Mary? 	Mary journeyed to the office.
+15 Where is Mary? 	Mary moved to the office.
 1 Sandra went to the kitchen.
 2 Mary moved to the kitchen.
 3 Sandra moved to the hallway.
@@ -4842,7 +4842,7 @@
 12 John journeyed to the bathroom.
 13 John travelled to the kitchen.
 14 John went to the bedroom.
-15 Where is John? 	John journeyed to the bedroom.
+15 Where is John? 	John went to the bedroom.
 1 Daniel went back to the hallway.
 2 Mary travelled to the kitchen.
 3 John went back to the office.
@@ -4851,7 +4851,7 @@
 6 John went to the bedroom.
 7 Mary moved to the bathroom.
 8 John journeyed to the garden.
-9 Where is John? 	John travelled to the garden.
+9 Where is John? 	John journeyed to the garden.
 10 Daniel went back to the hallway.
 11 Mary travelled to the kitchen.
 12 John went back to the office.
@@ -4862,10 +4862,10 @@
 17 John journeyed to the garden.
 18 Daniel journeyed to the kitchen.
 19 Daniel travelled to the bathroom.
-20 Where is Daniel? 	Daniel moved to the bathroom.
+20 Where is Daniel? 	Daniel travelled to the bathroom.
 1 Daniel travelled to the hallway.
 2 John journeyed to the hallway.
-3 Where is John? 	John journeyed to the hallway.
+3 Where is John? 	John travelled to the hallway.
 4 Daniel travelled to the hallway.
 5 John journeyed to the hallway.
 6 John journeyed to the office.
@@ -4886,7 +4886,7 @@
 6 John journeyed to the hallway.
 7 Daniel travelled to the kitchen.
 8 Daniel went back to the hallway.
-9 Where is Daniel? 	Daniel went to the hallway.
+9 Where is Daniel? 	Daniel journeyed to the hallway.
 10 Daniel travelled to the hallway.
 11 John journeyed to the hallway.
 12 John journeyed to the office.
@@ -4897,7 +4897,7 @@
 17 Daniel went back to the hallway.
 18 John went to the office.
 19 John went to the bathroom.
-20 Where is John? 	John went to the bathroom.
+20 Where is John? 	John journeyed to the bathroom.
 1 John went to the bedroom.
 2 John went back to the office.
 3 Where is John? 	John went to the office.
@@ -4905,7 +4905,7 @@
 5 John went back to the office.
 6 Daniel moved to the bathroom.
 7 Mary journeyed to the garden.
-8 Where is Daniel? 	Daniel journeyed to the bathroom.
+8 Where is Daniel? 	Daniel went to the bathroom.
 9 John went to the bedroom.
 10 John went back to the office.
 11 Daniel moved to the bathroom.
@@ -4932,7 +4932,7 @@
 17 Sandra went to the hallway.
 18 John went back to the bedroom.
 19 Mary moved to the kitchen.
-20 Where is John? 	John journeyed to the bedroom.
+20 Where is John? 	John went to the bedroom.
 1 Mary went back to the kitchen.
 2 John went back to the office.
 3 Where is John? 	John went to the office.
@@ -4940,7 +4940,7 @@
 5 John went back to the office.
 6 Daniel journeyed to the bedroom.
 7 Mary travelled to the bathroom.
-8 Where is Daniel? 	Daniel travelled to the bedroom.
+8 Where is Daniel? 	Daniel went to the bedroom.
 9 Mary went back to the kitchen.
 10 John went back to the office.
 11 Daniel journeyed to the bedroom.
@@ -4967,7 +4967,7 @@
 17 Daniel journeyed to the bathroom.
 18 John travelled to the office.
 19 Daniel went back to the kitchen.
-20 Where is Daniel? 	Daniel went to the kitchen.
+20 Where is Daniel? 	Daniel travelled to the kitchen.
 1 Mary moved to the bedroom.
 2 Sandra moved to the garden.
 3 Where is Sandra? 	Sandra moved to the garden.
@@ -4975,14 +4975,14 @@
 5 Sandra moved to the garden.
 6 John travelled to the office.
 7 Sandra journeyed to the office.
-8 Where is John? 	John journeyed to the office.
+8 Where is John? 	John moved to the office.
 9 Mary moved to the bedroom.
 10 Sandra moved to the garden.
 11 John travelled to the office.
 12 Sandra journeyed to the office.
 13 Mary journeyed to the garden.
 14 Sandra journeyed to the hallway.
-15 Where is Sandra? 	Sandra moved to the hallway.
+15 Where is Sandra? 	Sandra travelled to the hallway.
 1 Mary moved to the bedroom.
 2 Sandra moved to the garden.
 3 John travelled to the office.
@@ -4991,7 +4991,7 @@
 6 Sandra journeyed to the hallway.
 7 Daniel went back to the kitchen.
 8 Sandra went back to the garden.
-9 Where is Mary? 	Mary went to the garden.
+9 Where is Mary? 	Mary journeyed to the garden.
 10 Mary moved to the bedroom.
 11 Sandra moved to the garden.
 12 John travelled to the office.
@@ -5002,10 +5002,10 @@
 17 Sandra went back to the garden.
 18 Sandra moved to the kitchen.
 19 John went back to the bathroom.
-20 Where is Daniel? 	Daniel moved to the kitchen.
+20 Where is Daniel? 	Daniel travelled to the kitchen.
 1 Sandra went to the garden.
 2 Mary journeyed to the office.
-3 Where is Sandra? 	Sandra went to the garden.
+3 Where is Sandra? 	Sandra journeyed to the garden.
 4 Sandra went to the garden.
 5 Mary journeyed to the office.
 6 John went to the hallway.
@@ -5017,7 +5017,7 @@
 12 Sandra journeyed to the bathroom.
 13 Daniel went to the hallway.
 14 Daniel went to the office.
-15 Where is Daniel? 	Daniel journeyed to the office.
+15 Where is Daniel? 	Daniel went to the office.
 1 Sandra went to the garden.
 2 Mary journeyed to the office.
 3 John went to the hallway.
@@ -5026,7 +5026,7 @@
 6 Daniel went to the office.
 7 Mary moved to the garden.
 8 Mary moved to the office.
-9 Where is Daniel? 	Daniel went to the office.
+9 Where is Daniel? 	Daniel journeyed to the office.
 10 Sandra went to the garden.
 11 Mary journeyed to the office.
 12 John went to the hallway.
@@ -5040,19 +5040,19 @@
 20 Where is Mary? 	Mary went to the office.
 1 Sandra travelled to the hallway.
 2 Mary moved to the office.
-3 Where is Sandra? 	Sandra moved to the hallway.
+3 Where is Sandra? 	Sandra travelled to the hallway.
 4 Sandra travelled to the hallway.
 5 Mary moved to the office.
 6 John went back to the kitchen.
 7 John went to the office.
-8 Where is Mary? 	Mary moved to the office.
+8 Where is Mary? 	Mary travelled to the office.
 9 Sandra travelled to the hallway.
 10 Mary moved to the office.
 11 John went back to the kitchen.
 12 John went to the office.
 13 Mary went back to the kitchen.
 14 John journeyed to the hallway.
-15 Where is Mary? 	Mary journeyed to the kitchen.
+15 Where is Mary? 	Mary moved to the kitchen.
 1 Sandra travelled to the hallway.
 2 Mary moved to the office.
 3 John went back to the kitchen.
@@ -5061,7 +5061,7 @@
 6 John journeyed to the hallway.
 7 Daniel moved to the office.
 8 John journeyed to the bathroom.
-9 Where is Daniel? 	Daniel journeyed to the office.
+9 Where is Daniel? 	Daniel travelled to the office.
 10 Sandra travelled to the hallway.
 11 Mary moved to the office.
 12 John went back to the kitchen.
@@ -5072,7 +5072,7 @@
 17 John journeyed to the bathroom.
 18 Daniel journeyed to the bedroom.
 19 Sandra travelled to the garden.
-20 Where is Daniel? 	Daniel journeyed to the bedroom.
+20 Where is Daniel? 	Daniel went to the bedroom.
 1 Daniel went to the bedroom.
 2 John went back to the kitchen.
 3 Where is Daniel? 	Daniel went to the bedroom.
@@ -5087,7 +5087,7 @@
 12 Mary travelled to the office.
 13 Sandra went to the office.
 14 Sandra went back to the hallway.
-15 Where is Mary? 	Mary moved to the office.
+15 Where is Mary? 	Mary travelled to the office.
 1 Daniel went to the bedroom.
 2 John went back to the kitchen.
 3 John moved to the bedroom.
@@ -5096,7 +5096,7 @@
 6 Sandra went back to the hallway.
 7 John went back to the kitchen.
 8 Mary went back to the garden.
-9 Where is Mary? 	Mary travelled to the garden.
+9 Where is Mary? 	Mary went to the garden.
 10 Daniel went to the bedroom.
 11 John went back to the kitchen.
 12 John moved to the bedroom.
@@ -5107,7 +5107,7 @@
 17 Mary went back to the garden.
 18 Mary journeyed to the bathroom.
 19 Daniel travelled to the hallway.
-20 Where is Mary? 	Mary journeyed to the bathroom.
+20 Where is Mary? 	Mary travelled to the bathroom.
 1 John went to the bathroom.
 2 John went back to the hallway.
 3 Where is John? 	John went to the hallway.
@@ -5122,7 +5122,7 @@
 12 Daniel went back to the office.
 13 Daniel went back to the bathroom.
 14 Daniel moved to the bedroom.
-15 Where is John? 	John went to the hallway.
+15 Where is John? 	John moved to the hallway.
 1 John went to the bathroom.
 2 John went back to the hallway.
 3 Sandra went back to the kitchen.
@@ -5150,7 +5150,7 @@
 5 John journeyed to the kitchen.
 6 John went back to the office.
 7 Daniel moved to the garden.
-8 Where is John? 	John journeyed to the office.
+8 Where is John? 	John moved to the office.
 9 Sandra went to the garden.
 10 John journeyed to the kitchen.
 11 John went back to the office.
@@ -5166,7 +5166,7 @@
 6 Sandra moved to the bedroom.
 7 Daniel journeyed to the hallway.
 8 Sandra travelled to the bathroom.
-9 Where is Daniel? 	Daniel moved to the hallway.
+9 Where is Daniel? 	Daniel journeyed to the hallway.
 10 Sandra went to the garden.
 11 John journeyed to the kitchen.
 12 John went back to the office.
@@ -5177,7 +5177,7 @@
 17 Sandra travelled to the bathroom.
 18 Daniel moved to the kitchen.
 19 Sandra went to the garden.
-20 Where is Sandra? 	Sandra travelled to the garden.
+20 Where is Sandra? 	Sandra moved to the garden.
 1 Daniel travelled to the hallway.
 2 John travelled to the office.
 3 Where is John? 	John travelled to the office.
@@ -5185,14 +5185,14 @@
 5 John travelled to the office.
 6 Daniel went to the bedroom.
 7 Daniel went back to the office.
-8 Where is Daniel? 	Daniel travelled to the office.
+8 Where is Daniel? 	Daniel went to the office.
 9 Daniel travelled to the hallway.
 10 John travelled to the office.
 11 Daniel went to the bedroom.
 12 Daniel went back to the office.
 13 Mary went to the bedroom.
 14 Mary went to the hallway.
-15 Where is Daniel? 	Daniel went to the office.
+15 Where is Daniel? 	Daniel travelled to the office.
 1 Daniel travelled to the hallway.
 2 John travelled to the office.
 3 Daniel went to the bedroom.
@@ -5212,10 +5212,10 @@
 17 Sandra went to the garden.
 18 Daniel journeyed to the bedroom.
 19 John journeyed to the bedroom.
-20 Where is Mary? 	Mary journeyed to the office.
+20 Where is Mary? 	Mary travelled to the office.
 1 Daniel journeyed to the hallway.
 2 Sandra went back to the bathroom.
-3 Where is Sandra? 	Sandra went to the bathroom.
+3 Where is Sandra? 	Sandra journeyed to the bathroom.
 4 Daniel journeyed to the hallway.
 5 Sandra went back to the bathroom.
 6 John went to the bedroom.
@@ -5227,7 +5227,7 @@
 12 Sandra moved to the office.
 13 Daniel went to the bathroom.
 14 Mary travelled to the bathroom.
-15 Where is Mary? 	Mary moved to the bathroom.
+15 Where is Mary? 	Mary went to the bathroom.
 1 Daniel journeyed to the hallway.
 2 Sandra went back to the bathroom.
 3 John went to the bedroom.
@@ -5236,7 +5236,7 @@
 6 Mary travelled to the bathroom.
 7 Sandra went back to the hallway.
 8 John went to the office.
-9 Where is Sandra? 	Sandra moved to the hallway.
+9 Where is Sandra? 	Sandra travelled to the hallway.
 10 Daniel journeyed to the hallway.
 11 Sandra went back to the bathroom.
 12 John went to the bedroom.
@@ -5247,7 +5247,7 @@
 17 John went to the office.
 18 John moved to the kitchen.
 19 John went back to the hallway.
-20 Where is John? 	John moved to the hallway.
+20 Where is John? 	John went to the hallway.
 1 Daniel went to the bathroom.
 2 Sandra went to the hallway.
 3 Where is Sandra? 	Sandra went to the hallway.
@@ -5262,7 +5262,7 @@
 12 Sandra journeyed to the garden.
 13 Mary went back to the garden.
 14 Mary went to the bedroom.
-15 Where is Sandra? 	Sandra went to the garden.
+15 Where is Sandra? 	Sandra journeyed to the garden.
 1 Daniel went to the bathroom.
 2 Sandra went to the hallway.
 3 John went to the office.
@@ -5271,7 +5271,7 @@
 6 Mary went to the bedroom.
 7 Daniel went to the bedroom.
 8 Sandra journeyed to the hallway.
-9 Where is Sandra? 	Sandra went to the hallway.
+9 Where is Sandra? 	Sandra journeyed to the hallway.
 10 Daniel went to the bathroom.
 11 Sandra went to the hallway.
 12 John went to the office.
@@ -5285,12 +5285,12 @@
 20 Where is Mary? 	Mary went to the bedroom.
 1 Mary moved to the bathroom.
 2 Sandra went to the hallway.
-3 Where is Mary? 	Mary moved to the bathroom.
+3 Where is Mary? 	Mary went to the bathroom.
 4 Mary moved to the bathroom.
 5 Sandra went to the hallway.
 6 Mary went back to the kitchen.
 7 Daniel went back to the kitchen.
-8 Where is Daniel? 	Daniel moved to the kitchen.
+8 Where is Daniel? 	Daniel went to the kitchen.
 9 Mary moved to the bathroom.
 10 Sandra went to the hallway.
 11 Mary went back to the kitchen.
@@ -5325,14 +5325,14 @@
 5 Mary went back to the bedroom.
 6 Mary journeyed to the garden.
 7 John moved to the kitchen.
-8 Where is John? 	John went to the kitchen.
+8 Where is John? 	John moved to the kitchen.
 9 Daniel went to the office.
 10 Mary went back to the bedroom.
 11 Mary journeyed to the garden.
 12 John moved to the kitchen.
 13 Sandra moved to the garden.
 14 Sandra journeyed to the hallway.
-15 Where is Sandra? 	Sandra moved to the hallway.
+15 Where is Sandra? 	Sandra journeyed to the hallway.
 1 Daniel went to the office.
 2 Mary went back to the bedroom.
 3 Mary journeyed to the garden.
@@ -5341,7 +5341,7 @@
 6 Sandra journeyed to the hallway.
 7 Sandra went back to the bathroom.
 8 Mary went to the bathroom.
-9 Where is Sandra? 	Sandra went to the bathroom.
+9 Where is Sandra? 	Sandra journeyed to the bathroom.
 10 Daniel went to the office.
 11 Mary went back to the bedroom.
 12 Mary journeyed to the garden.
@@ -5360,14 +5360,14 @@
 5 Mary went to the bathroom.
 6 Mary went back to the hallway.
 7 John journeyed to the hallway.
-8 Where is Mary? 	Mary journeyed to the hallway.
+8 Where is Mary? 	Mary went to the hallway.
 9 Mary went back to the office.
 10 Mary went to the bathroom.
 11 Mary went back to the hallway.
 12 John journeyed to the hallway.
 13 John travelled to the garden.
 14 Sandra went back to the office.
-15 Where is Mary? 	Mary went to the hallway.
+15 Where is Mary? 	Mary travelled to the hallway.
 1 Mary went back to the office.
 2 Mary went to the bathroom.
 3 Mary went back to the hallway.
@@ -5376,7 +5376,7 @@
 6 Sandra went back to the office.
 7 Daniel went back to the garden.
 8 Mary journeyed to the garden.
-9 Where is John? 	John journeyed to the garden.
+9 Where is John? 	John went to the garden.
 10 Mary went back to the office.
 11 Mary went to the bathroom.
 12 Mary went back to the hallway.
@@ -5422,7 +5422,7 @@
 17 Mary went to the garden.
 18 Sandra journeyed to the office.
 19 Mary moved to the bedroom.
-20 Where is Mary? 	Mary journeyed to the bedroom.
+20 Where is Mary? 	Mary travelled to the bedroom.
 1 Sandra went to the garden.
 2 Daniel journeyed to the office.
 3 Where is Daniel? 	Daniel journeyed to the office.
@@ -5430,14 +5430,14 @@
 5 Daniel journeyed to the office.
 6 Sandra travelled to the bathroom.
 7 Sandra travelled to the kitchen.
-8 Where is Sandra? 	Sandra travelled to the kitchen.
+8 Where is Sandra? 	Sandra journeyed to the kitchen.
 9 Sandra went to the garden.
 10 Daniel journeyed to the office.
 11 Sandra travelled to the bathroom.
 12 Sandra travelled to the kitchen.
 13 John travelled to the bedroom.
 14 Sandra went to the hallway.
-15 Where is Sandra? 	Sandra went to the hallway.
+15 Where is Sandra? 	Sandra journeyed to the hallway.
 1 Sandra went to the garden.
 2 Daniel journeyed to the office.
 3 Sandra travelled to the bathroom.
@@ -5446,7 +5446,7 @@
 6 Sandra went to the hallway.
 7 John went back to the office.
 8 Mary travelled to the hallway.
-9 Where is Mary? 	Mary journeyed to the hallway.
+9 Where is Mary? 	Mary went to the hallway.
 10 Sandra went to the garden.
 11 Daniel journeyed to the office.
 12 Sandra travelled to the bathroom.
@@ -5457,7 +5457,7 @@
 17 Mary travelled to the hallway.
 18 John went to the bedroom.
 19 Sandra journeyed to the bathroom.
-20 Where is Sandra? 	Sandra journeyed to the bathroom.
+20 Where is Sandra? 	Sandra travelled to the bathroom.
 1 John journeyed to the hallway.
 2 Daniel travelled to the office.
 3 Where is Daniel? 	Daniel journeyed to the office.
@@ -5472,7 +5472,7 @@
 12 Mary moved to the bedroom.
 13 Mary went back to the hallway.
 14 John journeyed to the bathroom.
-15 Where is John? 	John went to the bathroom.
+15 Where is John? 	John journeyed to the bathroom.
 1 John journeyed to the hallway.
 2 Daniel travelled to the office.
 3 Mary moved to the garden.
@@ -5492,7 +5492,7 @@
 17 John went to the office.
 18 Daniel moved to the garden.
 19 Sandra went back to the office.
-20 Where is John? 	John moved to the office.
+20 Where is John? 	John went to the office.
 1 Sandra journeyed to the bathroom.
 2 Daniel moved to the garden.
 3 Where is Daniel? 	Daniel journeyed to the garden.
@@ -5500,7 +5500,7 @@
 5 Daniel moved to the garden.
 6 John travelled to the garden.
 7 Daniel went to the office.
-8 Where is John? 	John went to the garden.
+8 Where is John? 	John travelled to the garden.
 9 Sandra journeyed to the bathroom.
 10 Daniel moved to the garden.
 11 John travelled to the garden.
@@ -5516,7 +5516,7 @@
 6 Mary went back to the hallway.
 7 Mary went back to the kitchen.
 8 John went to the bedroom.
-9 Where is John? 	John went to the bedroom.
+9 Where is John? 	John moved to the bedroom.
 10 Sandra journeyed to the bathroom.
 11 Daniel moved to the garden.
 12 John travelled to the garden.
@@ -5527,22 +5527,22 @@
 17 John went to the bedroom.
 18 Mary journeyed to the garden.
 19 John travelled to the hallway.
-20 Where is Mary? 	Mary moved to the garden.
+20 Where is Mary? 	Mary journeyed to the garden.
 1 Sandra travelled to the kitchen.
 2 John journeyed to the bedroom.
-3 Where is Sandra? 	Sandra travelled to the kitchen.
+3 Where is Sandra? 	Sandra journeyed to the kitchen.
 4 Sandra travelled to the kitchen.
 5 John journeyed to the bedroom.
 6 Sandra journeyed to the office.
 7 John journeyed to the hallway.
-8 Where is Sandra? 	Sandra travelled to the office.
+8 Where is Sandra? 	Sandra journeyed to the office.
 9 Sandra travelled to the kitchen.
 10 John journeyed to the bedroom.
 11 Sandra journeyed to the office.
 12 John journeyed to the hallway.
 13 Daniel journeyed to the office.
 14 Mary moved to the office.
-15 Where is Sandra? 	Sandra travelled to the office.
+15 Where is Sandra? 	Sandra journeyed to the office.
 1 Sandra travelled to the kitchen.
 2 John journeyed to the bedroom.
 3 Sandra journeyed to the office.
@@ -5551,7 +5551,7 @@
 6 Mary moved to the office.
 7 Sandra went to the kitchen.
 8 John went back to the kitchen.
-9 Where is Mary? 	Mary moved to the office.
+9 Where is Mary? 	Mary went to the office.
 10 Sandra travelled to the kitchen.
 11 John journeyed to the bedroom.
 12 Sandra journeyed to the office.
@@ -5562,15 +5562,15 @@
 17 John went back to the kitchen.
 18 Sandra went back to the hallway.
 19 Mary travelled to the bathroom.
-20 Where is Sandra? 	Sandra went to the hallway.
+20 Where is Sandra? 	Sandra moved to the hallway.
 1 Sandra travelled to the hallway.
 2 John journeyed to the bathroom.
-3 Where is Sandra? 	Sandra journeyed to the hallway.
+3 Where is Sandra? 	Sandra travelled to the hallway.
 4 Sandra travelled to the hallway.
 5 John journeyed to the bathroom.
 6 John went to the garden.
 7 John went to the kitchen.
-8 Where is John? 	John journeyed to the kitchen.
+8 Where is John? 	John travelled to the kitchen.
 9 Sandra travelled to the hallway.
 10 John journeyed to the bathroom.
 11 John went to the garden.
@@ -5597,7 +5597,7 @@
 17 Sandra moved to the kitchen.
 18 Daniel travelled to the office.
 19 Daniel journeyed to the garden.
-20 Where is Daniel? 	Daniel went to the garden.
+20 Where is Daniel? 	Daniel journeyed to the garden.
 1 Sandra went to the bedroom.
 2 John went to the hallway.
 3 Where is Sandra? 	Sandra went to the bedroom.
@@ -5612,7 +5612,7 @@
 12 Sandra journeyed to the office.
 13 Mary went to the garden.
 14 John journeyed to the bathroom.
-15 Where is Sandra? 	Sandra went to the office.
+15 Where is Sandra? 	Sandra journeyed to the office.
 1 Sandra went to the bedroom.
 2 John went to the hallway.
 3 John moved to the garden.
@@ -5621,7 +5621,7 @@
 6 John journeyed to the bathroom.
 7 Mary travelled to the bathroom.
 8 Mary moved to the office.
-9 Where is Mary? 	Mary went to the office.
+9 Where is Mary? 	Mary journeyed to the office.
 10 Sandra went to the bedroom.
 11 John went to the hallway.
 12 John moved to the garden.
@@ -5635,19 +5635,19 @@
 20 Where is Sandra? 	Sandra journeyed to the garden.
 1 Mary moved to the bedroom.
 2 John journeyed to the hallway.
-3 Where is John? 	John journeyed to the hallway.
+3 Where is John? 	John moved to the hallway.
 4 Mary moved to the bedroom.
 5 John journeyed to the hallway.
 6 Sandra went to the garden.
 7 John went back to the bathroom.
-8 Where is Sandra? 	Sandra went to the garden.
+8 Where is Sandra? 	Sandra journeyed to the garden.
 9 Mary moved to the bedroom.
 10 John journeyed to the hallway.
 11 Sandra went to the garden.
 12 John went back to the bathroom.
 13 Sandra travelled to the office.
 14 Daniel journeyed to the bathroom.
-15 Where is Sandra? 	Sandra travelled to the office.
+15 Where is Sandra? 	Sandra moved to the office.
 1 Mary moved to the bedroom.
 2 John journeyed to the hallway.
 3 Sandra went to the garden.
@@ -5667,7 +5667,7 @@
 17 Mary travelled to the bathroom.
 18 Sandra went to the bathroom.
 19 Mary went to the hallway.
-20 Where is Mary? 	Mary moved to the hallway.
+20 Where is Mary? 	Mary journeyed to the hallway.
 1 Daniel went to the kitchen.
 2 Mary went back to the bedroom.
 3 Where is Mary? 	Mary went to the bedroom.
@@ -5675,14 +5675,14 @@
 5 Mary went back to the bedroom.
 6 Sandra travelled to the kitchen.
 7 Daniel moved to the garden.
-8 Where is Sandra? 	Sandra moved to the kitchen.
+8 Where is Sandra? 	Sandra travelled to the kitchen.
 9 Daniel went to the kitchen.
 10 Mary went back to the bedroom.
 11 Sandra travelled to the kitchen.
 12 Daniel moved to the garden.
 13 Sandra moved to the hallway.
 14 Mary moved to the kitchen.
-15 Where is Daniel? 	Daniel went to the garden.
+15 Where is Daniel? 	Daniel travelled to the garden.
 1 Daniel went to the kitchen.
 2 Mary went back to the bedroom.
 3 Sandra travelled to the kitchen.
@@ -5691,7 +5691,7 @@
 6 Mary moved to the kitchen.
 7 Mary went back to the hallway.
 8 Mary moved to the office.
-9 Where is Mary? 	Mary moved to the office.
+9 Where is Mary? 	Mary went to the office.
 10 Daniel went to the kitchen.
 11 Mary went back to the bedroom.
 12 Sandra travelled to the kitchen.
@@ -5705,19 +5705,19 @@
 20 Where is Daniel? 	Daniel travelled to the kitchen.
 1 Mary went back to the kitchen.
 2 Sandra travelled to the bathroom.
-3 Where is Mary? 	Mary travelled to the kitchen.
+3 Where is Mary? 	Mary went to the kitchen.
 4 Mary went back to the kitchen.
 5 Sandra travelled to the bathroom.
 6 Mary moved to the garden.
 7 John journeyed to the office.
-8 Where is Mary? 	Mary moved to the garden.
+8 Where is Mary? 	Mary went to the garden.
 9 Mary went back to the kitchen.
 10 Sandra travelled to the bathroom.
 11 Mary moved to the garden.
 12 John journeyed to the office.
 13 Sandra travelled to the bedroom.
 14 Sandra journeyed to the bathroom.
-15 Where is Sandra? 	Sandra journeyed to the bathroom.
+15 Where is Sandra? 	Sandra went to the bathroom.
 1 Mary went back to the kitchen.
 2 Sandra travelled to the bathroom.
 3 Mary moved to the garden.
@@ -5726,7 +5726,7 @@
 6 Sandra journeyed to the bathroom.
 7 John moved to the garden.
 8 Daniel went back to the hallway.
-9 Where is John? 	John went to the garden.
+9 Where is John? 	John travelled to the garden.
 10 Mary went back to the kitchen.
 11 Sandra travelled to the bathroom.
 12 Mary moved to the garden.
@@ -5745,14 +5745,14 @@
 5 Daniel moved to the office.
 6 Sandra went to the hallway.
 7 John went back to the bathroom.
-8 Where is John? 	John moved to the bathroom.
+8 Where is John? 	John went to the bathroom.
 9 John went back to the garden.
 10 Daniel moved to the office.
 11 Sandra went to the hallway.
 12 John went back to the bathroom.
 13 Mary moved to the kitchen.
 14 Mary travelled to the garden.
-15 Where is Mary? 	Mary went to the garden.
+15 Where is Mary? 	Mary moved to the garden.
 1 John went back to the garden.
 2 Daniel moved to the office.
 3 Sandra went to the hallway.
@@ -5761,7 +5761,7 @@
 6 Mary travelled to the garden.
 7 Sandra went back to the bathroom.
 8 John went back to the office.
-9 Where is Mary? 	Mary travelled to the garden.
+9 Where is Mary? 	Mary went to the garden.
 10 John went back to the garden.
 11 Daniel moved to the office.
 12 Sandra went to the hallway.
@@ -5772,7 +5772,7 @@
 17 John went back to the office.
 18 Daniel went to the bathroom.
 19 Sandra went to the office.
-20 Where is John? 	John travelled to the office.
+20 Where is John? 	John went to the office.
 1 Daniel travelled to the garden.
 2 Mary went back to the kitchen.
 3 Where is Mary? 	Mary went to the kitchen.
@@ -5796,7 +5796,7 @@
 6 John went back to the bedroom.
 7 Daniel moved to the bedroom.
 8 Sandra travelled to the kitchen.
-9 Where is John? 	John went to the bedroom.
+9 Where is John? 	John journeyed to the bedroom.
 10 Daniel travelled to the garden.
 11 Mary went back to the kitchen.
 12 Mary went to the office.
@@ -5807,7 +5807,7 @@
 17 Sandra travelled to the kitchen.
 18 John went to the garden.
 19 John moved to the hallway.
-20 Where is Daniel? 	Daniel went to the bedroom.
+20 Where is Daniel? 	Daniel travelled to the bedroom.
 1 John journeyed to the bedroom.
 2 Mary went to the office.
 3 Where is Mary? 	Mary went to the office.
@@ -5822,7 +5822,7 @@
 12 Mary went to the hallway.
 13 Sandra travelled to the office.
 14 John travelled to the bedroom.
-15 Where is Sandra? 	Sandra went to the office.
+15 Where is Sandra? 	Sandra journeyed to the office.
 1 John journeyed to the bedroom.
 2 Mary went to the office.
 3 John moved to the office.
@@ -5831,7 +5831,7 @@
 6 John travelled to the bedroom.
 7 Daniel travelled to the kitchen.
 8 Mary went to the kitchen.
-9 Where is Daniel? 	Daniel travelled to the kitchen.
+9 Where is Daniel? 	Daniel journeyed to the kitchen.
 10 John journeyed to the bedroom.
 11 Mary went to the office.
 12 John moved to the office.
@@ -5842,7 +5842,7 @@
 17 Mary went to the kitchen.
 18 John travelled to the kitchen.
 19 Sandra journeyed to the bedroom.
-20 Where is John? 	John moved to the kitchen.
+20 Where is John? 	John travelled to the kitchen.
 1 Daniel moved to the kitchen.
 2 Sandra went to the kitchen.
 3 Where is Daniel? 	Daniel moved to the kitchen.
@@ -5850,7 +5850,7 @@
 5 Sandra went to the kitchen.
 6 John went back to the bedroom.
 7 Daniel went to the bathroom.
-8 Where is John? 	John went to the bedroom.
+8 Where is John? 	John moved to the bedroom.
 9 Daniel moved to the kitchen.
 10 Sandra went to the kitchen.
 11 John went back to the bedroom.
@@ -5866,7 +5866,7 @@
 6 Daniel went back to the office.
 7 Mary went to the kitchen.
 8 Daniel went to the hallway.
-9 Where is Daniel? 	Daniel went to the hallway.
+9 Where is Daniel? 	Daniel moved to the hallway.
 10 Daniel moved to the kitchen.
 11 Sandra went to the kitchen.
 12 John went back to the bedroom.
@@ -5880,12 +5880,12 @@
 20 Where is Sandra? 	Sandra went to the office.
 1 Mary journeyed to the hallway.
 2 John went back to the bathroom.
-3 Where is Mary? 	Mary journeyed to the hallway.
+3 Where is Mary? 	Mary went to the hallway.
 4 Mary journeyed to the hallway.
 5 John went back to the bathroom.
 6 John went back to the bedroom.
 7 Daniel travelled to the bedroom.
-8 Where is John? 	John went to the bedroom.
+8 Where is John? 	John journeyed to the bedroom.
 9 Mary journeyed to the hallway.
 10 John went back to the bathroom.
 11 John went back to the bedroom.
@@ -5901,7 +5901,7 @@
 6 Daniel moved to the kitchen.
 7 Daniel went to the hallway.
 8 Mary journeyed to the kitchen.
-9 Where is Mary? 	Mary went to the kitchen.
+9 Where is Mary? 	Mary moved to the kitchen.
 10 Mary journeyed to the hallway.
 11 John went back to the bathroom.
 12 John went back to the bedroom.
@@ -5915,12 +5915,12 @@
 20 Where is Mary? 	Mary travelled to the hallway.
 1 John went back to the garden.
 2 John travelled to the hallway.
-3 Where is John? 	John travelled to the hallway.
+3 Where is John? 	John went to the hallway.
 4 John went back to the garden.
 5 John travelled to the hallway.
 6 John journeyed to the office.
 7 John journeyed to the kitchen.
-8 Where is John? 	John journeyed to the kitchen.
+8 Where is John? 	John travelled to the kitchen.
 9 John went back to the garden.
 10 John travelled to the hallway.
 11 John journeyed to the office.
@@ -5947,7 +5947,7 @@
 17 Daniel went back to the kitchen.
 18 Daniel moved to the bathroom.
 19 Mary went back to the bathroom.
-20 Where is Sandra? 	Sandra moved to the hallway.
+20 Where is Sandra? 	Sandra travelled to the hallway.
 1 John travelled to the bathroom.
 2 Daniel went to the hallway.
 3 Where is John? 	John travelled to the bathroom.
@@ -5955,7 +5955,7 @@
 5 Daniel went to the hallway.
 6 John moved to the kitchen.
 7 Mary journeyed to the kitchen.
-8 Where is John? 	John travelled to the kitchen.
+8 Where is John? 	John went to the kitchen.
 9 John travelled to the bathroom.
 10 Daniel went to the hallway.
 11 John moved to the kitchen.
@@ -5971,7 +5971,7 @@
 6 John travelled to the bathroom.
 7 Daniel went to the garden.
 8 Sandra travelled to the hallway.
-9 Where is Sandra? 	Sandra travelled to the hallway.
+9 Where is Sandra? 	Sandra went to the hallway.
 10 John travelled to the bathroom.
 11 Daniel went to the hallway.
 12 John moved to the kitchen.
@@ -5997,7 +5997,7 @@
 12 John went back to the bedroom.
 13 Mary went to the bedroom.
 14 John went to the garden.
-15 Where is Daniel? 	Daniel went to the bedroom.
+15 Where is Daniel? 	Daniel travelled to the bedroom.
 1 John went to the bedroom.
 2 Daniel went to the bedroom.
 3 John travelled to the office.
@@ -6006,7 +6006,7 @@
 6 John went to the garden.
 7 Daniel went back to the garden.
 8 Daniel went to the office.
-9 Where is Daniel? 	Daniel went to the office.
+9 Where is Daniel? 	Daniel travelled to the office.
 10 John went to the bedroom.
 11 Daniel went to the bedroom.
 12 John travelled to the office.
@@ -6017,7 +6017,7 @@
 17 Daniel went to the office.
 18 John moved to the hallway.
 19 John moved to the office.
-20 Where is John? 	John travelled to the office.
+20 Where is John? 	John moved to the office.
 1 Daniel moved to the garden.
 2 Sandra moved to the hallway.
 3 Where is Sandra? 	Sandra moved to the hallway.
@@ -6041,7 +6041,7 @@
 6 John went back to the hallway.
 7 Sandra journeyed to the office.
 8 Mary journeyed to the bedroom.
-9 Where is Mary? 	Mary moved to the bedroom.
+9 Where is Mary? 	Mary journeyed to the bedroom.
 10 Daniel moved to the garden.
 11 Sandra moved to the hallway.
 12 John went to the hallway.
@@ -6052,10 +6052,10 @@
 17 Mary journeyed to the bedroom.
 18 Sandra travelled to the hallway.
 19 Mary went back to the bathroom.
-20 Where is Mary? 	Mary travelled to the bathroom.
+20 Where is Mary? 	Mary moved to the bathroom.
 1 Mary journeyed to the bedroom.
 2 Sandra moved to the kitchen.
-3 Where is Mary? 	Mary moved to the bedroom.
+3 Where is Mary? 	Mary journeyed to the bedroom.
 4 Mary journeyed to the bedroom.
 5 Sandra moved to the kitchen.
 6 Mary journeyed to the garden.
@@ -6067,7 +6067,7 @@
 12 Sandra moved to the garden.
 13 John moved to the office.
 14 Sandra moved to the bedroom.
-15 Where is John? 	John moved to the office.
+15 Where is John? 	John journeyed to the office.
 1 Mary journeyed to the bedroom.
 2 Sandra moved to the kitchen.
 3 Mary journeyed to the garden.
@@ -6076,7 +6076,7 @@
 6 Sandra moved to the bedroom.
 7 Daniel moved to the bedroom.
 8 Sandra moved to the bathroom.
-9 Where is Sandra? 	Sandra journeyed to the bathroom.
+9 Where is Sandra? 	Sandra moved to the bathroom.
 10 Mary journeyed to the bedroom.
 11 Sandra moved to the kitchen.
 12 Mary journeyed to the garden.
@@ -6087,10 +6087,10 @@
 17 Sandra moved to the bathroom.
 18 Daniel travelled to the office.
 19 John went to the garden.
-20 Where is Sandra? 	Sandra travelled to the bathroom.
+20 Where is Sandra? 	Sandra journeyed to the bathroom.
 1 John moved to the hallway.
 2 Sandra went to the hallway.
-3 Where is Sandra? 	Sandra went to the hallway.
+3 Where is Sandra? 	Sandra moved to the hallway.
 4 John moved to the hallway.
 5 Sandra went to the hallway.
 6 John went back to the garden.
@@ -6102,7 +6102,7 @@
 12 Daniel journeyed to the office.
 13 Daniel moved to the bedroom.
 14 Mary journeyed to the bathroom.
-15 Where is Mary? 	Mary moved to the bathroom.
+15 Where is Mary? 	Mary went to the bathroom.
 1 John moved to the hallway.
 2 Sandra went to the hallway.
 3 John went back to the garden.
@@ -6122,7 +6122,7 @@
 17 Daniel went back to the office.
 18 Sandra moved to the kitchen.
 19 Daniel went to the kitchen.
-20 Where is Daniel? 	Daniel moved to the kitchen.
+20 Where is Daniel? 	Daniel journeyed to the kitchen.
 1 Mary travelled to the bedroom.
 2 Daniel moved to the hallway.
 3 Where is Mary? 	Mary moved to the bedroom.
@@ -6130,7 +6130,7 @@
 5 Daniel moved to the hallway.
 6 Daniel journeyed to the garden.
 7 Daniel journeyed to the hallway.
-8 Where is Daniel? 	Daniel journeyed to the hallway.
+8 Where is Daniel? 	Daniel travelled to the hallway.
 9 Mary travelled to the bedroom.
 10 Daniel moved to the hallway.
 11 Daniel journeyed to the garden.
@@ -6146,7 +6146,7 @@
 6 John went to the garden.
 7 John moved to the hallway.
 8 Daniel journeyed to the bathroom.
-9 Where is Daniel? 	Daniel moved to the bathroom.
+9 Where is Daniel? 	Daniel travelled to the bathroom.
 10 Mary travelled to the bedroom.
 11 Daniel moved to the hallway.
 12 Daniel journeyed to the garden.
@@ -6157,7 +6157,7 @@
 17 Daniel journeyed to the bathroom.
 18 Daniel moved to the hallway.
 19 John travelled to the kitchen.
-20 Where is John? 	John moved to the kitchen.
+20 Where is John? 	John journeyed to the kitchen.
 1 Sandra went to the bathroom.
 2 Daniel went to the bedroom.
 3 Where is Sandra? 	Sandra went to the bathroom.
@@ -6165,14 +6165,14 @@
 5 Daniel went to the bedroom.
 6 Mary went to the garden.
 7 Sandra moved to the hallway.
-8 Where is Sandra? 	Sandra went to the hallway.
+8 Where is Sandra? 	Sandra moved to the hallway.
 9 Sandra went to the bathroom.
 10 Daniel went to the bedroom.
 11 Mary went to the garden.
 12 Sandra moved to the hallway.
 13 Daniel journeyed to the bathroom.
 14 Mary journeyed to the kitchen.
-15 Where is Sandra? 	Sandra moved to the hallway.
+15 Where is Sandra? 	Sandra went to the hallway.
 1 Sandra went to the bathroom.
 2 Daniel went to the bedroom.
 3 Mary went to the garden.
@@ -6181,7 +6181,7 @@
 6 Mary journeyed to the kitchen.
 7 Sandra went to the bathroom.
 8 John went to the kitchen.
-9 Where is Sandra? 	Sandra went to the bathroom.
+9 Where is Sandra? 	Sandra moved to the bathroom.
 10 Sandra went to the bathroom.
 11 Daniel went to the bedroom.
 12 Mary went to the garden.
@@ -6192,10 +6192,10 @@
 17 John went to the kitchen.
 18 Sandra went back to the kitchen.
 19 Sandra went to the office.
-20 Where is Sandra? 	Sandra journeyed to the office.
+20 Where is Sandra? 	Sandra moved to the office.
 1 Mary went to the hallway.
 2 Daniel travelled to the bathroom.
-3 Where is Mary? 	Mary went to the hallway.
+3 Where is Mary? 	Mary travelled to the hallway.
 4 Mary went to the hallway.
 5 Daniel travelled to the bathroom.
 6 Mary journeyed to the bathroom.
@@ -6207,7 +6207,7 @@
 12 Daniel journeyed to the hallway.
 13 Daniel went back to the garden.
 14 Daniel travelled to the office.
-15 Where is Daniel? 	Daniel travelled to the office.
+15 Where is Daniel? 	Daniel journeyed to the office.
 1 Mary went to the hallway.
 2 Daniel travelled to the bathroom.
 3 Mary journeyed to the bathroom.
@@ -6216,7 +6216,7 @@
 6 Daniel travelled to the office.
 7 Mary went to the office.
 8 Mary went back to the bathroom.
-9 Where is Mary? 	Mary went to the bathroom.
+9 Where is Mary? 	Mary journeyed to the bathroom.
 10 Mary went to the hallway.
 11 Daniel travelled to the bathroom.
 12 Mary journeyed to the bathroom.
@@ -6235,7 +6235,7 @@
 5 Daniel went to the kitchen.
 6 John went back to the hallway.
 7 John moved to the office.
-8 Where is John? 	John travelled to the office.
+8 Where is John? 	John moved to the office.
 9 John travelled to the kitchen.
 10 Daniel went to the kitchen.
 11 John went back to the hallway.
@@ -6262,22 +6262,22 @@
 17 Sandra moved to the kitchen.
 18 John journeyed to the garden.
 19 Sandra went to the office.
-20 Where is John? 	John journeyed to the garden.
+20 Where is John? 	John travelled to the garden.
 1 Mary travelled to the garden.
 2 Daniel went to the office.
-3 Where is Daniel? 	Daniel travelled to the office.
+3 Where is Daniel? 	Daniel went to the office.
 4 Mary travelled to the garden.
 5 Daniel went to the office.
 6 Daniel travelled to the kitchen.
 7 Sandra journeyed to the kitchen.
-8 Where is Daniel? 	Daniel went to the kitchen.
+8 Where is Daniel? 	Daniel travelled to the kitchen.
 9 Mary travelled to the garden.
 10 Daniel went to the office.
 11 Daniel travelled to the kitchen.
 12 Sandra journeyed to the kitchen.
 13 Mary went back to the hallway.
 14 Daniel went to the bedroom.
-15 Where is Daniel? 	Daniel went to the bedroom.
+15 Where is Daniel? 	Daniel journeyed to the bedroom.
 1 Mary travelled to the garden.
 2 Daniel went to the office.
 3 Daniel travelled to the kitchen.
@@ -6297,7 +6297,7 @@
 17 Sandra journeyed to the bathroom.
 18 John journeyed to the garden.
 19 Sandra went to the garden.
-20 Where is Sandra? 	Sandra went to the garden.
+20 Where is Sandra? 	Sandra travelled to the garden.
 1 Mary went back to the hallway.
 2 John went to the garden.
 3 Where is Mary? 	Mary went to the hallway.
@@ -6305,14 +6305,14 @@
 5 John went to the garden.
 6 Sandra travelled to the bedroom.
 7 Mary travelled to the bedroom.
-8 Where is Mary? 	Mary went to the bedroom.
+8 Where is Mary? 	Mary travelled to the bedroom.
 9 Mary went back to the hallway.
 10 John went to the garden.
 11 Sandra travelled to the bedroom.
 12 Mary travelled to the bedroom.
 13 Sandra moved to the kitchen.
 14 Daniel went back to the bedroom.
-15 Where is Daniel? 	Daniel went to the bedroom.
+15 Where is Daniel? 	Daniel travelled to the bedroom.
 1 Mary went back to the hallway.
 2 John went to the garden.
 3 Sandra travelled to the bedroom.
@@ -6321,7 +6321,7 @@
 6 Daniel went back to the bedroom.
 7 Mary went back to the garden.
 8 Daniel went to the office.
-9 Where is Mary? 	Mary travelled to the garden.
+9 Where is Mary? 	Mary went to the garden.
 10 Mary went back to the hallway.
 11 John went to the garden.
 12 Sandra travelled to the bedroom.
@@ -6332,7 +6332,7 @@
 17 Daniel went to the office.
 18 Daniel moved to the garden.
 19 Sandra travelled to the hallway.
-20 Where is Daniel? 	Daniel moved to the garden.
+20 Where is Daniel? 	Daniel went to the garden.
 1 Sandra went back to the office.
 2 Daniel moved to the hallway.
 3 Where is Sandra? 	Sandra went to the office.
@@ -6340,14 +6340,14 @@
 5 Daniel moved to the hallway.
 6 Daniel travelled to the garden.
 7 Mary moved to the bathroom.
-8 Where is Daniel? 	Daniel travelled to the garden.
+8 Where is Daniel? 	Daniel moved to the garden.
 9 Sandra went back to the office.
 10 Daniel moved to the hallway.
 11 Daniel travelled to the garden.
 12 Mary moved to the bathroom.
 13 Sandra went back to the kitchen.
 14 Sandra moved to the garden.
-15 Where is Sandra? 	Sandra moved to the garden.
+15 Where is Sandra? 	Sandra travelled to the garden.
 1 Sandra went back to the office.
 2 Daniel moved to the hallway.
 3 Daniel travelled to the garden.
@@ -6356,7 +6356,7 @@
 6 Sandra moved to the garden.
 7 Sandra went to the kitchen.
 8 Daniel went to the bathroom.
-9 Where is Sandra? 	Sandra went to the kitchen.
+9 Where is Sandra? 	Sandra moved to the kitchen.
 10 Sandra went back to the office.
 11 Daniel moved to the hallway.
 12 Daniel travelled to the garden.
@@ -6367,7 +6367,7 @@
 17 Daniel went to the bathroom.
 18 John journeyed to the bathroom.
 19 John went back to the garden.
-20 Where is John? 	John journeyed to the garden.
+20 Where is John? 	John travelled to the garden.
 1 Sandra went back to the bedroom.
 2 Mary went back to the hallway.
 3 Where is Mary? 	Mary went to the hallway.
@@ -6382,7 +6382,7 @@
 12 Mary went to the hallway.
 13 Daniel travelled to the bathroom.
 14 Sandra went back to the office.
-15 Where is Daniel? 	Daniel moved to the bathroom.
+15 Where is Daniel? 	Daniel went to the bathroom.
 1 Sandra went back to the bedroom.
 2 Mary went back to the hallway.
 3 Mary moved to the bathroom.
@@ -6391,7 +6391,7 @@
 6 Sandra went back to the office.
 7 Mary moved to the kitchen.
 8 John journeyed to the bathroom.
-9 Where is Sandra? 	Sandra journeyed to the office.
+9 Where is Sandra? 	Sandra moved to the office.
 10 Sandra went back to the bedroom.
 11 Mary went back to the hallway.
 12 Mary moved to the bathroom.
@@ -6402,7 +6402,7 @@
 17 John journeyed to the bathroom.
 18 Mary moved to the bathroom.
 19 Sandra went back to the kitchen.
-20 Where is Mary? 	Mary travelled to the bathroom.
+20 Where is Mary? 	Mary went to the bathroom.
 1 John went to the kitchen.
 2 John went to the hallway.
 3 Where is John? 	John went to the hallway.
@@ -6426,7 +6426,7 @@
 6 Sandra went back to the bathroom.
 7 Sandra went to the hallway.
 8 Daniel journeyed to the office.
-9 Where is Sandra? 	Sandra journeyed to the hallway.
+9 Where is Sandra? 	Sandra went to the hallway.
 10 John went to the kitchen.
 11 John went to the hallway.
 12 Sandra moved to the garden.
@@ -6437,22 +6437,22 @@
 17 Daniel journeyed to the office.
 18 Daniel travelled to the bedroom.
 19 Daniel travelled to the garden.
-20 Where is Daniel? 	Daniel journeyed to the garden.
+20 Where is Daniel? 	Daniel went to the garden.
 1 Sandra journeyed to the bathroom.
 2 Daniel moved to the garden.
-3 Where is Daniel? 	Daniel moved to the garden.
+3 Where is Daniel? 	Daniel journeyed to the garden.
 4 Sandra journeyed to the bathroom.
 5 Daniel moved to the garden.
 6 Mary went back to the garden.
 7 Daniel went back to the kitchen.
-8 Where is Daniel? 	Daniel moved to the kitchen.
+8 Where is Daniel? 	Daniel journeyed to the kitchen.
 9 Sandra journeyed to the bathroom.
 10 Daniel moved to the garden.
 11 Mary went back to the garden.
 12 Daniel went back to the kitchen.
 13 Mary went back to the bedroom.
 14 Mary went back to the bathroom.
-15 Where is Daniel? 	Daniel journeyed to the kitchen.
+15 Where is Daniel? 	Daniel went to the kitchen.
 1 Sandra journeyed to the bathroom.
 2 Daniel moved to the garden.
 3 Mary went back to the garden.
@@ -6472,22 +6472,22 @@
 17 John went back to the bedroom.
 18 Daniel journeyed to the bathroom.
 19 John went back to the office.
-20 Where is John? 	John moved to the office.
+20 Where is John? 	John journeyed to the office.
 1 John went to the kitchen.
 2 John journeyed to the office.
-3 Where is John? 	John went to the office.
+3 Where is John? 	John journeyed to the office.
 4 John went to the kitchen.
 5 John journeyed to the office.
 6 Daniel travelled to the bedroom.
 7 John journeyed to the kitchen.
-8 Where is John? 	John travelled to the kitchen.
+8 Where is John? 	John went to the kitchen.
 9 John went to the kitchen.
 10 John journeyed to the office.
 11 Daniel travelled to the bedroom.
 12 John journeyed to the kitchen.
 13 John journeyed to the office.
 14 Mary went back to the bathroom.
-15 Where is Mary? 	Mary went to the bathroom.
+15 Where is Mary? 	Mary travelled to the bathroom.
 1 John went to the kitchen.
 2 John journeyed to the office.
 3 Daniel travelled to the bedroom.
@@ -6496,7 +6496,7 @@
 6 Mary went back to the bathroom.
 7 John journeyed to the garden.
 8 Sandra went to the bathroom.
-9 Where is John? 	John travelled to the garden.
+9 Where is John? 	John journeyed to the garden.
 10 John went to the kitchen.
 11 John journeyed to the office.
 12 Daniel travelled to the bedroom.
@@ -6507,7 +6507,7 @@
 17 Sandra went to the bathroom.
 18 Sandra journeyed to the office.
 19 John went back to the bathroom.
-20 Where is Sandra? 	Sandra journeyed to the office.
+20 Where is Sandra? 	Sandra travelled to the office.
 1 Mary journeyed to the bedroom.
 2 Mary journeyed to the garden.
 3 Where is Mary? 	Mary journeyed to the garden.
@@ -6515,14 +6515,14 @@
 5 Mary journeyed to the garden.
 6 Daniel went back to the garden.
 7 Mary went back to the hallway.
-8 Where is Daniel? 	Daniel went to the garden.
+8 Where is Daniel? 	Daniel journeyed to the garden.
 9 Mary journeyed to the bedroom.
 10 Mary journeyed to the garden.
 11 Daniel went back to the garden.
 12 Mary went back to the hallway.
 13 Daniel went to the hallway.
 14 John travelled to the bedroom.
-15 Where is Mary? 	Mary travelled to the hallway.
+15 Where is Mary? 	Mary went to the hallway.
 1 Mary journeyed to the bedroom.
 2 Mary journeyed to the garden.
 3 Daniel went back to the garden.
@@ -6550,14 +6550,14 @@
 5 Mary moved to the garden.
 6 Mary journeyed to the bathroom.
 7 Mary travelled to the garden.
-8 Where is John? 	John moved to the bedroom.
+8 Where is John? 	John travelled to the bedroom.
 9 John journeyed to the bedroom.
 10 Mary moved to the garden.
 11 Mary journeyed to the bathroom.
 12 Mary travelled to the garden.
 13 Mary went back to the bedroom.
 14 Sandra went back to the office.
-15 Where is Mary? 	Mary journeyed to the bedroom.
+15 Where is Mary? 	Mary moved to the bedroom.
 1 John journeyed to the bedroom.
 2 Mary moved to the garden.
 3 Mary journeyed to the bathroom.
@@ -6566,7 +6566,7 @@
 6 Sandra went back to the office.
 7 Sandra travelled to the bathroom.
 8 Sandra travelled to the kitchen.
-9 Where is Sandra? 	Sandra journeyed to the kitchen.
+9 Where is Sandra? 	Sandra went to the kitchen.
 10 John journeyed to the bedroom.
 11 Mary moved to the garden.
 12 Mary journeyed to the bathroom.
@@ -6577,10 +6577,10 @@
 17 Sandra travelled to the kitchen.
 18 Sandra moved to the hallway.
 19 Mary went to the bathroom.
-20 Where is Sandra? 	Sandra moved to the hallway.
+20 Where is Sandra? 	Sandra went to the hallway.
 1 Mary travelled to the kitchen.
 2 Sandra moved to the office.
-3 Where is Sandra? 	Sandra moved to the office.
+3 Where is Sandra? 	Sandra travelled to the office.
 4 Mary travelled to the kitchen.
 5 Sandra moved to the office.
 6 Mary went back to the bedroom.
@@ -6601,7 +6601,7 @@
 6 Daniel went to the bedroom.
 7 Sandra journeyed to the garden.
 8 Sandra travelled to the office.
-9 Where is Sandra? 	Sandra journeyed to the office.
+9 Where is Sandra? 	Sandra moved to the office.
 10 Mary travelled to the kitchen.
 11 Sandra moved to the office.
 12 Mary went back to the bedroom.
@@ -6636,7 +6636,7 @@
 6 John travelled to the kitchen.
 7 Mary went back to the garden.
 8 Sandra went back to the bedroom.
-9 Where is Sandra? 	Sandra travelled to the bedroom.
+9 Where is Sandra? 	Sandra went to the bedroom.
 10 Daniel journeyed to the kitchen.
 11 John journeyed to the office.
 12 Daniel travelled to the bedroom.
@@ -6650,7 +6650,7 @@
 20 Where is Sandra? 	Sandra went to the bathroom.
 1 Sandra journeyed to the hallway.
 2 Mary moved to the bedroom.
-3 Where is Mary? 	Mary journeyed to the bedroom.
+3 Where is Mary? 	Mary moved to the bedroom.
 4 Sandra journeyed to the hallway.
 5 Mary moved to the bedroom.
 6 Mary went back to the office.
@@ -6682,7 +6682,7 @@
 17 Mary journeyed to the bathroom.
 18 John went back to the bathroom.
 19 John travelled to the hallway.
-20 Where is Daniel? 	Daniel journeyed to the bedroom.
+20 Where is Daniel? 	Daniel went to the bedroom.
 1 Sandra moved to the office.
 2 John went to the kitchen.
 3 Where is John? 	John went to the kitchen.
@@ -6690,14 +6690,14 @@
 5 John went to the kitchen.
 6 John travelled to the garden.
 7 Mary moved to the office.
-8 Where is Mary? 	Mary moved to the office.
+8 Where is Mary? 	Mary travelled to the office.
 9 Sandra moved to the office.
 10 John went to the kitchen.
 11 John travelled to the garden.
 12 Mary moved to the office.
 13 John went to the bedroom.
 14 John went back to the kitchen.
-15 Where is John? 	John moved to the kitchen.
+15 Where is John? 	John went to the kitchen.
 1 Sandra moved to the office.
 2 John went to the kitchen.
 3 John travelled to the garden.
@@ -6706,7 +6706,7 @@
 6 John went back to the kitchen.
 7 Daniel went to the garden.
 8 John went to the office.
-9 Where is Daniel? 	Daniel went to the garden.
+9 Where is Daniel? 	Daniel travelled to the garden.
 10 Sandra moved to the office.
 11 John went to the kitchen.
 12 John travelled to the garden.
@@ -6717,7 +6717,7 @@
 17 John went to the office.
 18 Mary went back to the bathroom.
 19 Sandra journeyed to the garden.
-20 Where is Daniel? 	Daniel travelled to the garden.
+20 Where is Daniel? 	Daniel journeyed to the garden.
 1 Mary went back to the bedroom.
 2 Daniel travelled to the office.
 3 Where is Mary? 	Mary travelled to the bedroom.
@@ -6732,7 +6732,7 @@
 12 John journeyed to the office.
 13 Daniel moved to the kitchen.
 14 Mary journeyed to the garden.
-15 Where is Daniel? 	Daniel travelled to the kitchen.
+15 Where is Daniel? 	Daniel went to the kitchen.
 1 Mary went back to the bedroom.
 2 Daniel travelled to the office.
 3 Daniel went back to the garden.
@@ -6741,7 +6741,7 @@
 6 Mary journeyed to the garden.
 7 Sandra went back to the bedroom.
 8 John went to the garden.
-9 Where is John? 	John moved to the garden.
+9 Where is John? 	John travelled to the garden.
 10 Mary went back to the bedroom.
 11 Daniel travelled to the office.
 12 Daniel went back to the garden.
@@ -6752,22 +6752,22 @@
 17 John went to the garden.
 18 John journeyed to the bathroom.
 19 Sandra journeyed to the office.
-20 Where is Mary? 	Mary went to the garden.
+20 Where is Mary? 	Mary travelled to the garden.
 1 John moved to the garden.
 2 Daniel went back to the office.
-3 Where is John? 	John moved to the garden.
+3 Where is John? 	John went to the garden.
 4 John moved to the garden.
 5 Daniel went back to the office.
 6 Sandra travelled to the office.
 7 Mary went back to the garden.
-8 Where is John? 	John moved to the garden.
+8 Where is John? 	John travelled to the garden.
 9 John moved to the garden.
 10 Daniel went back to the office.
 11 Sandra travelled to the office.
 12 Mary went back to the garden.
 13 Daniel went back to the hallway.
 14 Sandra travelled to the kitchen.
-15 Where is Mary? 	Mary travelled to the garden.
+15 Where is Mary? 	Mary moved to the garden.
 1 John moved to the garden.
 2 Daniel went back to the office.
 3 Sandra travelled to the office.
@@ -6776,7 +6776,7 @@
 6 Sandra travelled to the kitchen.
 7 Sandra journeyed to the bathroom.
 8 Sandra went to the kitchen.
-9 Where is Sandra? 	Sandra travelled to the kitchen.
+9 Where is Sandra? 	Sandra journeyed to the kitchen.
 10 John moved to the garden.
 11 Daniel went back to the office.
 12 Sandra travelled to the office.
@@ -6787,7 +6787,7 @@
 17 Sandra went to the kitchen.
 18 Sandra went to the bathroom.
 19 Mary moved to the bathroom.
-20 Where is Sandra? 	Sandra journeyed to the bathroom.
+20 Where is Sandra? 	Sandra travelled to the bathroom.
 1 Sandra went to the bathroom.
 2 John journeyed to the hallway.
 3 Where is John? 	John went to the hallway.
@@ -6795,7 +6795,7 @@
 5 John journeyed to the hallway.
 6 Daniel went to the office.
 7 John went to the kitchen.
-8 Where is John? 	John journeyed to the kitchen.
+8 Where is John? 	John went to the kitchen.
 9 Sandra went to the bathroom.
 10 John journeyed to the hallway.
 11 Daniel went to the office.
@@ -6822,7 +6822,7 @@
 17 Mary travelled to the garden.
 18 John journeyed to the hallway.
 19 John travelled to the office.
-20 Where is Mary? 	Mary went to the garden.
+20 Where is Mary? 	Mary travelled to the garden.
 1 Sandra went to the kitchen.
 2 John journeyed to the kitchen.
 3 Where is Sandra? 	Sandra went to the kitchen.
@@ -6830,7 +6830,7 @@
 5 John journeyed to the kitchen.
 6 Sandra went back to the garden.
 7 Mary travelled to the hallway.
-8 Where is John? 	John journeyed to the kitchen.
+8 Where is John? 	John went to the kitchen.
 9 Sandra went to the kitchen.
 10 John journeyed to the kitchen.
 11 Sandra went back to the garden.
@@ -6846,7 +6846,7 @@
 6 Daniel journeyed to the garden.
 7 John moved to the hallway.
 8 Mary moved to the bathroom.
-9 Where is Sandra? 	Sandra moved to the bathroom.
+9 Where is Sandra? 	Sandra went to the bathroom.
 10 Sandra went to the kitchen.
 11 John journeyed to the kitchen.
 12 Sandra went back to the garden.
@@ -6865,7 +6865,7 @@
 5 John travelled to the office.
 6 Daniel travelled to the hallway.
 7 Mary went to the hallway.
-8 Where is Daniel? 	Daniel travelled to the hallway.
+8 Where is Daniel? 	Daniel went to the hallway.
 9 Sandra moved to the bedroom.
 10 John travelled to the office.
 11 Daniel travelled to the hallway.
@@ -6895,12 +6895,12 @@
 20 Where is Daniel? 	Daniel went to the bedroom.
 1 Mary went to the kitchen.
 2 John travelled to the hallway.
-3 Where is John? 	John went to the hallway.
+3 Where is John? 	John travelled to the hallway.
 4 Mary went to the kitchen.
 5 John travelled to the hallway.
 6 Sandra went back to the bedroom.
 7 John travelled to the kitchen.
-8 Where is Mary? 	Mary went to the kitchen.
+8 Where is Mary? 	Mary travelled to the kitchen.
 9 Mary went to the kitchen.
 10 John travelled to the hallway.
 11 Sandra went back to the bedroom.
@@ -6935,14 +6935,14 @@
 5 Sandra went to the garden.
 6 John journeyed to the bedroom.
 7 Mary went back to the bathroom.
-8 Where is Daniel? 	Daniel journeyed to the office.
+8 Where is Daniel? 	Daniel went to the office.
 9 Daniel went back to the office.
 10 Sandra went to the garden.
 11 John journeyed to the bedroom.
 12 Mary went back to the bathroom.
 13 Daniel went back to the kitchen.
 14 Mary travelled to the bedroom.
-15 Where is Mary? 	Mary journeyed to the bedroom.
+15 Where is Mary? 	Mary travelled to the bedroom.
 1 Daniel went back to the office.
 2 Sandra went to the garden.
 3 John journeyed to the bedroom.
@@ -6965,12 +6965,12 @@
 20 Where is John? 	John went to the garden.
 1 Sandra travelled to the hallway.
 2 Sandra went to the bedroom.
-3 Where is Sandra? 	Sandra travelled to the bedroom.
+3 Where is Sandra? 	Sandra went to the bedroom.
 4 Sandra travelled to the hallway.
 5 Sandra went to the bedroom.
 6 Daniel moved to the office.
 7 Mary went to the hallway.
-8 Where is Sandra? 	Sandra went to the bedroom.
+8 Where is Sandra? 	Sandra moved to the bedroom.
 9 Sandra travelled to the hallway.
 10 Sandra went to the bedroom.
 11 Daniel moved to the office.
@@ -6986,7 +6986,7 @@
 6 John went back to the bedroom.
 7 Daniel travelled to the kitchen.
 8 Sandra travelled to the kitchen.
-9 Where is John? 	John journeyed to the bedroom.
+9 Where is John? 	John travelled to the bedroom.
 10 Sandra travelled to the hallway.
 11 Sandra went to the bedroom.
 12 Daniel moved to the office.
@@ -6997,4 +6997,4 @@
 17 Sandra travelled to the kitchen.
 18 Sandra travelled to the hallway.
 19 Daniel went to the garden.
-20 Where is Daniel? 	Daniel went to the garden.
+20 Where is Daniel? 	Daniel travelled to the garden.

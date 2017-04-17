@@ -77,9 +77,13 @@ def write_babi(fname,data):
     print("writing finished.")
     
     
-def init_write_babi(id,data):
+def init_write_babi(id,data, mode):
     babi_name = babi_map[id]
-    write_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/en/%s_train.txt' % babi_name), data)
+    if(mode == "train"):
+        write_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/en/%s_train.txt' % babi_name), data)
+    else:
+        write_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/en/%s_test.txt' % babi_name), data)
+        
 
 def init_babi(fname):
     tasks = []

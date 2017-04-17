@@ -28,6 +28,8 @@ class DMN_batch:
         self.vocab = {}
         self.ivocab = {}
         
+        self.type = "batch"
+        
         self.word2vec = word2vec
         self.word_vector_size = word_vector_size
         self.dim = dim

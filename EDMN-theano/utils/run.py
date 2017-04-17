@@ -110,10 +110,17 @@ def do_epoch(args, dmn, mode, epoch, skipped=0):
             avg_loss += current_loss
             
             for x in answers:
-                y_true.append(x)
+                if(dmn.type == "multiple"):
+                    y_true.append(sum(x))
+                else:
+                    y_true.append(x)
             
-            for x in prediction.argmax(axis=1):
-                y_pred.append(x)
+            if(dmn.type == "multiple"):
+                for x in prediction.argmax(axis=2):
+                    y_pred.append(sum(x))
+            else:
+                for x in prediction.argmax(axis=1):
+                    y_pred.append(x)
             
             # TODO: save the state sometimes
             if (i % args.log_every == 0):
