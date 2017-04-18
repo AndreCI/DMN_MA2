@@ -209,20 +209,22 @@ class DMN_multiple:
         if self.mode == 'train':
             print("==> compiling train_fn")
             #TODO check if train funtcion is ok
-            self.train_fn = theano.function(inputs=[self.input_var, self.q_var, self.answer_var, self.input_mask_var], 
+            self.train_fn = theano.function(inputs=[self.input_var, self.q_var, T.cast(self.answer_var, 'int32'), self.input_mask_var], 
                                        outputs=[self.multiple_predictions,
                                                 self.loss], 
                                        updates=updates,
                                        allow_input_downcast = True)
+        if self.mode != 'minitest':
+            print("==> compiling test_fn")
+            self.test_fn = theano.function(inputs=[self.input_var, self.q_var, T.cast(self.answer_var, 'int32'), self.input_mask_var],
+                                                   outputs=[self.multiple_predictions, self.loss, self.inp_c, self.q_q, last_mem],
+                                      allow_input_downcast = True)
         
-        print("==> compiling test_fn")
-        self.test_fn = theano.function(inputs=[self.input_var, self.q_var, self.answer_var, self.input_mask_var],
-                                  outputs=[self.prediction, self.loss, self.inp_c, self.q_q, last_mem])
-                                  
-        print("==> compiling minitest_fn")
-        self.minitest_fn = theano.function(inputs=[self.input_var, self.q_var,
-                                                   self.input_mask_var],
-                                                   outputs=[self.multiple_predictions])
+        if self.mode == 'minitest':                          
+            print("==> compiling minitest_fn")
+            self.minitest_fn = theano.function(inputs=[self.input_var, self.q_var,
+                                                       self.input_mask_var],
+                                                       outputs=[self.multiple_predictions])
                                   
         
         
@@ -455,8 +457,7 @@ class DMN_multiple:
             answers = self.test_answer
             input_masks = self.test_input_mask
         elif mode == "minitest":    
-            theano_fn = self.test_fn 
-            theano_fn2 = self.minitest_fn
+            theano_fn = self.minitest_fn
             inputs = self.test_input
             qs = self.test_q
             answers = self.test_answer
@@ -488,28 +489,12 @@ class DMN_multiple:
             #Answer MUST(?) be a vector containing number corresponding to the words in ivocab. i.e. [1, 8, 3, 9, 14] (=[5])
             #MulPread must be a vector containing probabilities for each words in vocab, i.e. [5*dic_size] (=[5*20] usually)
             
-            ret = theano_fn(inp, q, ans, input_mask)
             
-#            print(ret)
-#            print(np.shape(ret))
-#            print(type(ret))
-#            
-#            ans = ret[0]
-#            print(ans)
-#            print(np.shape(ans))
-#            print(type(ans))
-#            
-#            ans = np.array([ans])
-#            print(np.shape(ans))
-#            print(ans)
-#            print(type(ans))
-#            
-#            exit()
 #            
             if(mode == "minitest"):
-                ret_multiple = theano_fn2(inp, q, input_mask)
+                ret_multiple = theano_fn(inp, q, input_mask)
             else:
-                ret_multiple = ret
+                ret = theano_fn(inp, q, ans, input_mask)
 #            print(ret)
 #            
 #            
@@ -539,13 +524,22 @@ class DMN_multiple:
             ret = [-1, -1]
         param_norm = np.max([utils.get_norm(x.get_value()) for x in self.params])
         
-        return {"inputs":inp,
-                "question":q,
-                "prediction": np.array([ret[0]]),
-                "multiple_prediction": np.array(ret_multiple),
-                "answers": np.array([ans]),
-                "current_loss": ret[1],
-                "skipped": skipped,
-                "log": "pn: %.3f \t gn: %.3f" % (param_norm, grad_norm)
-                }
+        if mode != 'minitest':
+            return {"inputs":inp,
+                    "question":q,
+                    "prediction": np.array([ret[0]]),
+                    "multiple_prediction": np.array(ret_multiple),
+                    "answers": np.array([ans]),
+                    "current_loss": ret[1],
+                    "skipped": skipped,
+                    "log": "pn: %.3f \t gn: %.3f" % (param_norm, grad_norm)
+                    }
+        else:
+            return {"inputs":inp,
+                    "question":q,
+                    "multiple_prediction": np.array(ret_multiple),
+                    "answers": np.array([ans]),
+                    "skipped": skipped,
+                    "log": "pn: %.3f \t gn: %.3f" % (param_norm, grad_norm)
+                    }
         

@@ -13,35 +13,14 @@ def do_minitest(dmn, vocab, multiple_ans=False,nbr_test=0):
     
     for j in range(0, nbr_test):
         step_data = dmn.step(j,'minitest')
-        prediction = step_data["prediction"]
         answers = step_data["answers"]
         inputs = step_data["inputs"]
         question = step_data["question"]
         if(multiple_ans):
             ret_multiple = step_data["multiple_prediction"]
+        else:
+            prediction = step_data["prediction"]
             
-            
-        print(np.shape(ret_multiple))
-        print(np.shape(answers))
-        
-        printer = answers[0]
-        print(printer)
-        print("here",np.shape(printer))
-        
-               
-               
-        
-#        if(multiple_ans==True):
-#            print("==>Right answer is:")
-#            answers = ret_multiple[0]
-#            print(np.shape(answers))
-#            print(answers)
-#            for i in range(0,np.shape(answers)[0]):
-#                ans = (utils.get_word(dmn.word2vec, answers[i]))
-#                y_true.append(ans)
-#            print(' '.join(y_true) + "?")
-#        print("CUTTING NOW--------------")
-#        assert 1==0
         
         w_input = []
         w_q = []
@@ -52,7 +31,7 @@ def do_minitest(dmn, vocab, multiple_ans=False,nbr_test=0):
             w_q.append(utils.get_word(dmn.word2vec, question[i]))           
         print("Facts:")
         print( ' '.join(w_input))
-        print( ' '.join(w_q) + ".")
+        print( ' '.join(w_q) + "?")
         
         if(multiple_ans==False):
             print("==>Right answer is:")
@@ -67,7 +46,7 @@ def do_minitest(dmn, vocab, multiple_ans=False,nbr_test=0):
             print("==>Right answer is:")
             answers = answers[0]
             for i in range(0,np.shape(answers)[0]):
-                ans = (utils.get_word(dmn.word2vec, answers[i]))
+                ans = (ivocab[answers[i]])
                 y_true.append(ans)
             print(' '.join(y_true) + ".")
             
@@ -77,7 +56,7 @@ def do_minitest(dmn, vocab, multiple_ans=False,nbr_test=0):
                 pred_temp = ret_multiple[:,i,:]
                 for x in pred_temp.argmax(axis=1):
                     list_pred.append(ivocab[x])
-            print(', '.join(list_pred) + ' :('+str(np.shape(ret_multiple)[1])+' answers)')
+            print(' '.join(list_pred) + '. :('+str(np.shape(ret_multiple)[1])+' answers)')
 
     
 
