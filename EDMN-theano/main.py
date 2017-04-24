@@ -42,6 +42,7 @@ args = parser.parse_args()
 
 print(args)
 
+
 #Checking if the vector size is valid (using GloVe here, so no fancy size allowed)
 assert args.word_vector_size in [50, 100, 200, 300]
 
@@ -59,7 +60,6 @@ network_name = args.prefix + '%s.mh%d.n%d.bs%d%s%s%s.babi%s' % (
 
 #Getting dataset(train & test)
 if args.network == 'dmn_multiple':
-    print("using multiple")
     babi_train_raw, babi_test_raw = utils.get_babi_raw(args.babi_id, args.babi_test_id, multiple=True)
 else:
     babi_train_raw, babi_test_raw = utils.get_babi_raw(args.babi_id, args.babi_test_id)
@@ -155,7 +155,8 @@ elif args.mode == 'minitest':
     data["vocab"] = dmn.vocab.keys()
     #json.dump(data, file, indent=2)
     multiple_ans = args.network == 'dmn_multiple'
-    run.do_minitest(dmn, data["vocab"], multiple_ans=multiple_ans, nbr_test=1)
+    run.get_stat(dmn, data["vocab"], nbr_stat=50)
+    #run.do_minitest(dmn, data["vocab"], multiple_ans=multiple_ans, nbr_test=4)#, log_it=True, state_name=args.load_state)
     
 else:
     raise Exception("unknown mode")

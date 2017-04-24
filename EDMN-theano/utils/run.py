@@ -1,21 +1,60 @@
+import os
 import numpy as np
 import utils
 import time
 import sklearn.metrics as metrics
 
 
-def do_minitest(dmn, vocab, multiple_ans=False,nbr_test=0):
+def is_the_verb_only_different(answer, pred):    
+    for i in range(1, np.shape(answer)[0]+1):
+        a = answer.pop(0)
+        p = pred.pop(0)
+        if(a!=p):
+            if(i !=2):
+                return 1
+    return 0
+
+def get_stat(dmn, vocab, nbr_stat):
+    error = 0
+    for j in range(0, nbr_stat):
+        step_data = dmn.step(j, 'minitest')
+        answers = step_data["answers"]
+        pred = step_data["multiple_prediction"]
+        
+        val_ans = []
+        val_pred = []        
+        
+        for i in range(0,np.shape(pred)[1]):
+                pred_temp = pred[:,i,:]
+                for x in pred_temp.argmax(axis=1):
+                    val_pred.append(x)
+        answers = answers[0]
+        for i in range(0,np.shape(answers)[0]):
+            val_ans.append(answers[i])
+        error = error + is_the_verb_only_different(val_ans, val_pred)
+    acc = error*100/nbr_stat
+    print("Accuracy is",acc)
+        
+
+def do_minitest(dmn, vocab, multiple_ans=False,nbr_test=0, log_it = False, state_name = ""):
     #data = load_minitest(fname)
     
-    y_true = []
-    y_pred = []
+    
     ivocab = dmn.ivocab
+    total_facts = []
+    total_q = []
+    total_ans = []
+    total_pred = []  
+    total_error = 0
     
     for j in range(0, nbr_test):
+        y_true = []
+        y_pred = []
         step_data = dmn.step(j,'minitest')
         answers = step_data["answers"]
         inputs = step_data["inputs"]
         question = step_data["question"]
+        
         if(multiple_ans):
             ret_multiple = step_data["multiple_prediction"]
         else:
@@ -32,6 +71,8 @@ def do_minitest(dmn, vocab, multiple_ans=False,nbr_test=0):
         print("Facts:")
         print( ' '.join(w_input))
         print( ' '.join(w_q) + "?")
+        total_facts.append(w_input)
+        total_q.append(w_q)
         
         if(multiple_ans==False):
             print("==>Right answer is:")
@@ -49,6 +90,7 @@ def do_minitest(dmn, vocab, multiple_ans=False,nbr_test=0):
                 ans = (ivocab[answers[i]])
                 y_true.append(ans)
             print(' '.join(y_true) + ".")
+            total_ans.append(y_true)
             
             print("==>Multiple answer found are:")
             list_pred = []
@@ -56,7 +98,52 @@ def do_minitest(dmn, vocab, multiple_ans=False,nbr_test=0):
                 pred_temp = ret_multiple[:,i,:]
                 for x in pred_temp.argmax(axis=1):
                     list_pred.append(ivocab[x])
-            print(' '.join(list_pred) + '. :('+str(np.shape(ret_multiple)[1])+' answers)')
+            print(' '.join(list_pred) + '. ('+str(np.shape(ret_multiple)[1])+' answers)')
+            total_pred.append(list_pred)
+            total_error = total_error + is_the_verb_only_different(y_true, list_pred)
+            
+            if(log_it):
+                if(state_name == ""):
+                    raise Exception("Wrong or state_name. You must give the babi_id in order to log the results of the minitest")
+                    
+                infos = state_name.split(".")
+               # info = states/dmn_multiple.h5.bs10.babi1.epoch5.test3.24979.state
+                babi_temp = infos[4]
+                epoch_temp = infos[5]
+                id = babi_temp[4:]
+                epoch_nbr = epoch_temp[5:]
+                episode = {'C':total_facts, 'Q':total_q, 'A':total_ans,'AF':total_pred}
+                babi_id = utils.babi_map[id]
+                fname = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/minitest_log/en/%s_log_%s.txt' % (babi_id, epoch_nbr))
+                write_log_results(fname,episode)
+    print("Error is",(total_error))
+                
+
+def write_log_results(fname, data):
+    file_obj = open(fname, "w")
+    total_f = data['C']
+    total_q = data['Q']
+    total_a = data['A']
+    total_p = data['AF']
+    for i in range(np.shape(total_f)[0]):
+        facts = (' '.join(total_f[i]))
+        question = (' '.join(total_q[i])) + "?"    
+        RAnswer = (' '.join(total_a[i]))
+        FAnswer = (' '.join(total_p[i]))
+    
+        file_obj.write("F:")
+        file_obj.write(facts)
+        file_obj.write("\nQ:")
+        file_obj.write(question)
+        file_obj.write("\nA:")
+        file_obj.write(RAnswer)
+        file_obj.write("\nAF:")
+        file_obj.write(FAnswer)
+        file_obj.write("\n")
+    
+    
+   
+    
 
     
 

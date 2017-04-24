@@ -3,11 +3,8 @@ import numpy as np
 
 import theano
 import theano.tensor as T
-from theano.compile.nanguardmode import NanGuardMode
 
 import lasagne
-from lasagne import layers
-from lasagne import nonlinearities
 import cPickle as pickle
 
 from utils import utils
@@ -159,9 +156,7 @@ class DMN_multiple:
                 outputs_info=[last_mem, T.zeros_like(dummy_)],
                 n_steps=self.answer_step_nbr)
                 
-            self.prediction = results[1][-1]
             self.multiple_predictions = results[1] #don't get the memory (i.e. a)
-            #self.multiple_predictions = self.multiple_predictions[0] #from (1, 5, 20) to (5, 20)?
             
         
         else:
@@ -184,7 +179,6 @@ class DMN_multiple:
         
         
         print("==> building loss layer and computing updates")
-        #TODO: modify the loss
         def temp_loss(curr_pred, curr_ans, loss):
             temp = T.nnet.categorical_crossentropy(curr_pred.dimshuffle("x",0),T.stack([curr_ans]))[0]
             return loss + temp
@@ -194,8 +188,6 @@ class DMN_multiple:
                                             outputs_info = [np.float64(0.0)],
                                             n_steps=self.answer_step_nbr)        
         
-        #self.multiple_predictions = self.multiple_predictions.dimshuffle(1, 0)
-        #self.loss_ce = T.nnet.categorical_crossentropy(self.multiple_predictions, self.answer_var).mean()
         self.loss_ce = outputs[-1]
         if self.l2 > 0:
             self.loss_l2 = self.l2 * nn_utils.l2_reg(self.params)
@@ -208,7 +200,6 @@ class DMN_multiple:
         
         if self.mode == 'train':
             print("==> compiling train_fn")
-            #TODO check if train funtcion is ok
             self.train_fn = theano.function(inputs=[self.input_var, self.q_var, T.cast(self.answer_var, 'int32'), self.input_mask_var], 
                                        outputs=[self.multiple_predictions,
                                                 self.loss], 
@@ -226,15 +217,6 @@ class DMN_multiple:
                                                        self.input_mask_var],
                                                        outputs=[self.multiple_predictions])
                                   
-        
-        
-       # if self.mode == 'train':
-        #    print("==> computing gradients (for debugging)")
-         #   gradient = T.grad(self.loss, self.params)
-          #  self.get_gradient_fn = theano.function(inputs=[self.input_var, self.q_var, self.answer_var, self.input_mask_var], outputs=gradient)
-
-    
-
     
     
     #This is some twisted implementations. I don't like it AT ALL.
@@ -395,13 +377,6 @@ class DMN_multiple:
             ans_vector = ans_vector[0:len(ans_vector)-1]
             answers.append(np.vstack(ans_vector).astype(floatX))                                 
                                              
-#            answers.append(utils.process_word(word = x["A"], 
-#                                            word2vec = self.word2vec, 
-#                                            vocab = self.vocab, 
-#                                            ivocab = self.ivocab, 
-#                                            word_vector_size = self.word_vector_size, 
-#                                            to_return = "index"))
-            # NOTE: here we assume the answer is one word!
             #TODO check what the heck input_masks is made of.                      
             if self.input_mask_mode == 'word':
                 input_masks.append(np.array([index for index, w in enumerate(inp)], dtype=np.int32)) 
@@ -441,6 +416,7 @@ class DMN_multiple:
             :skipped:
             :log:
         '''
+        
         if mode == "train" and self.mode == "test":
             raise Exception("Cannot train during test mode")
         
@@ -475,62 +451,27 @@ class DMN_multiple:
         skipped = 0
         grad_norm = float('NaN')
         
-      #  if mode == 'train':
-       #     gradient_value = self.get_gradient_fn(inp, q, ans, input_mask)
-        #    grad_norm = np.max([utils.get_norm(x) for x in gradient_value])
-            
-          #   if (np.isnan(grad_norm)):
-           #     print("==> gradient is nan at index %d." % batch_index)
-            #    print("==> skipping")
-             #   skipped = 1
         
         if skipped == 0:      
             
             #Answer MUST(?) be a vector containing number corresponding to the words in ivocab. i.e. [1, 8, 3, 9, 14] (=[5])
             #MulPread must be a vector containing probabilities for each words in vocab, i.e. [5*dic_size] (=[5*20] usually)
-            
-            
-#            
+                       
             if(mode == "minitest"):
                 ret_multiple = theano_fn(inp, q, input_mask)
             else:
-                ret = theano_fn(inp, q, ans, input_mask)
-#            print(ret)
-#            
-#            
-#            
-#                        
-#            
-#            
-#            print("ans", np.shape(ans))
-#            print("ret, i.e. predictions", np.shape(ret))
-#            print(type(ans))
-#            print(type(ret))
-#            print("--------------------")
-#            print("Testing new stuff")
-#            ret_new= ret[0]
-#            print(np.shape(ret_new))            
-#            
-#            
-#           
-#            ret_multiple = theano_fn2(inp,q,input_mask)
-#            print(ret_multiple)
-#            print(np.shape(ret_multiple))
-#            print("------------------------")
-#            print("COMPILATION SUCCESSFUL")
-#            print("Stopping now to gain computation time.")
-#            return exit()
+                ret_multiple = theano_fn(inp, q, ans, input_mask)
+            
         else:
-            ret = [-1, -1]
+            ret_multiple = [-1, -1]
         param_norm = np.max([utils.get_norm(x.get_value()) for x in self.params])
         
         if mode != 'minitest':
             return {"inputs":inp,
                     "question":q,
-                    "prediction": np.array([ret[0]]),
-                    "multiple_prediction": np.array(ret_multiple),
+                    "prediction": np.array([ret_multiple[0]]),
                     "answers": np.array([ans]),
-                    "current_loss": ret[1],
+                    "current_loss": ret_multiple[1],
                     "skipped": skipped,
                     "log": "pn: %.3f \t gn: %.3f" % (param_norm, grad_norm)
                     }

@@ -17,7 +17,7 @@ We will cover the process in a series of blog posts.
 | `dmn_basic.py` | our baseline implementation. It is as close to the original as we could understand the paper, except the number of steps in the main memory GRU is fixed. Attention module uses `T.abs_` function as a distance between two vectors which causes gradients to become `NaN` randomly.  The results reported in [this blog post](http://yerevann.github.io/2016/02/05/implementing-dynamic-memory-networks/) are based on this network |
 | `dmn_smooth.py` | uses the square of the Euclidean distance instead of `abs` in the attention module. Training is very stable. Performance on bAbI is slightly better |
 | `dmn_batch.py` | `dmn_smooth` with minibatch training support. The batch size cannot be set to `1` because of the [Theano bug](https://github.com/Theano/Theano/issues/1772) | 
-| `dmn_qa_draft.py` | draft version of a DMN designed for answering multiple choice questions | 
+| `dmn_multiple.py` | A DMN designed for answering questions with a sentence | 
 | `utils.py` | tools for working with bAbI tasks and GloVe vectors |
 | `nn_utils.py` | helper functions on top of Theano and Lasagne |
 | `fetch_babi_data.sh` | shell script to fetch bAbI tasks (adapted from [MemN2N](https://github.com/npow/MemN2N)) |

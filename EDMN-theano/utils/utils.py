@@ -1,43 +1,8 @@
 import os as os
 import numpy as np
 
-def init_babi(fname):
-    '''
-    Load data from fname
-    :param fname: the path where the data are
-    :return tasks: raw data from fname.
-    '''
-    print("==> Loading data from %s" % fname)
-    tasks = []
-    task = None
-    for i, line in enumerate(open(fname)):
-        id = int(line[0:line.find(' ')])
-        if id == 1:
-            task = {"C": "", "Q": "", "A": ""} 
-            
-        line = line.strip()
-        line = line.replace('.', ' . ')
-        line = line[line.find(' ')+1:]
-        if line.find('?') == -1:
-            task["C"] += line
-        else:
-            idx = line.find('?')
-            tmp = line[idx+1:].split('\t')
-            task["Q"] = line[:idx]
-            task["A"] = tmp[1].strip()
-            tasks.append(task.copy())
 
-    return tasks
-
-
-def get_babi_raw(id, test_id, multiple=False):
-    '''
-    Basic getter function to load the data set.
-    :param id: the number the task to train or test
-    :param test_id: Not sure why it is useful. If test_id="", takes the value id
-    :return babi_train_raw, babi_test_raw: the data loaded
-    '''
-    babi_map = {
+babi_map = {
         "1": "qa1_single-supporting-fact",
         "2": "qa2_two-supporting-facts",
         "3": "qa3_three-supporting-facts",
@@ -82,6 +47,45 @@ def get_babi_raw(id, test_id, multiple=False):
         "sh19": "../shuffled/qa19_path-finding",
         "sh20": "../shuffled/qa20_agents-motivations",
     }
+
+
+def init_babi(fname):
+    '''
+    Load data from fname
+    :param fname: the path where the data are
+    :return tasks: raw data from fname.
+    '''
+    print("==> Loading data from %s" % fname)
+    tasks = []
+    task = None
+    for i, line in enumerate(open(fname)):
+        id = int(line[0:line.find(' ')])
+        if id == 1:
+            task = {"C": "", "Q": "", "A": ""} 
+            
+        line = line.strip()
+        line = line.replace('.', ' . ')
+        line = line[line.find(' ')+1:]
+        if line.find('?') == -1:
+            task["C"] += line
+        else:
+            idx = line.find('?')
+            tmp = line[idx+1:].split('\t')
+            task["Q"] = line[:idx]
+            task["A"] = tmp[1].strip()
+            tasks.append(task.copy())
+
+    return tasks
+
+
+def get_babi_raw(id, test_id, multiple=False):
+    '''
+    Basic getter function to load the data set.
+    :param id: the number the task to train or test
+    :param test_id: Not sure why it is useful. If test_id="", takes the value id
+    :return babi_train_raw, babi_test_raw: the data loaded
+    '''
+
     if (test_id == ""):
         test_id = id 
     babi_name = babi_map[id]
