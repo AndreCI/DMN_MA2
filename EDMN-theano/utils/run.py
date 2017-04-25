@@ -63,14 +63,14 @@ def do_minitest(dmn, vocab, multiple_ans=False,nbr_test=0, log_it = False, state
         
         w_input = []
         w_q = []
-        print("==> reconstruction of input and question")
-        for i in range(0, np.shape(inputs)[0]):
-            w_input.append(utils.get_word(dmn.word2vec, inputs[i]))
-        for i in range(0, np.shape(question)[0]):
-            w_q.append(utils.get_word(dmn.word2vec, question[i]))           
-        print("Facts:")
-        print( ' '.join(w_input))
-        print( ' '.join(w_q) + "?")
+      #  print("==> reconstruction of input and question")
+     #   for i in range(0, np.shape(inputs)[0]):
+     #       w_input.append(utils.get_word(dmn.word2vec, inputs[i]))
+    #    for i in range(0, np.shape(question)[0]):
+     #       w_q.append(utils.get_word(dmn.word2vec, question[i]))           
+     #   print("Facts:")
+     #   print( ' '.join(w_input))
+     #   print( ' '.join(w_q) + "?")
         total_facts.append(w_input)
         total_q.append(w_q)
         
