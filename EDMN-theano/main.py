@@ -163,8 +163,8 @@ elif args.mode == 'minitest':
     data["vocab"] = dmn.vocab.keys()
     #json.dump(data, file, indent=2)
     multiple_ans = args.network == 'dmn_multiple'
-    run.get_stat(dmn, data["vocab"], nbr_stat=200)
-    run.do_minitest(dmn, data["vocab"], multiple_ans=multiple_ans, nbr_test=5)#, log_it=True, state_name=args.load_state)
+    #run.get_stat(dmn, data["vocab"], nbr_stat=200)
+    run.do_minitest(dmn, data["vocab"], multiple_ans=multiple_ans, nbr_test=5, log_it=True, state_name=args.load_state)
     
 else:
     raise Exception("unknown mode")
