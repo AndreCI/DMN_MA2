@@ -77,12 +77,18 @@ def write_babi(fname,data):
     print("writing finished.")
     
     
-def init_write_babi(id,data, mode):
+def init_write_babi(id,data, mode, use_10k):
     babi_name = babi_map[id]
-    if(mode == "train"):
-        write_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/en/%s_train.txt' % babi_name), data)
+    if(use_10k):
+        if(mode == "train"):
+            write_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/en-10k/%s_train.txt' % babi_name), data)
+        else:
+            write_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/en-10k/%s_test.txt' % babi_name), data)
     else:
-        write_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/en/%s_test.txt' % babi_name), data)
+        if(mode == "train"):
+            write_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/en/%s_train.txt' % babi_name), data)
+        else:
+            write_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/en/%s_test.txt' % babi_name), data)
         
 
 def init_babi(fname):
@@ -107,11 +113,31 @@ def init_babi(fname):
     return tasks
 
 
-def get_babi_raw_qa(id, test_id):
+def get_babi_raw_qa(id, test_id, use_10k):
     if (test_id == ""):
         test_id = id 
     babi_name = babi_map[id]
     babi_test_name = babi_map[test_id]
-    babi_train_raw = init_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'original_data/en/%s_train.txt' % babi_name))
-    babi_test_raw = init_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'original_data/en/%s_test.txt' % babi_test_name))
+    if(use_10k):
+        babi_train_raw = init_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'original_data/en-10k/%s_train.txt' % babi_name))
+        babi_test_raw = init_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'original_data/en-10k/%s_test.txt' % babi_test_name))
+    else:
+        babi_train_raw = init_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'original_data/en/%s_train.txt' % babi_name))
+        babi_test_raw = init_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'original_data/en/%s_test.txt' % babi_test_name))
+
     return babi_train_raw, babi_test_raw
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

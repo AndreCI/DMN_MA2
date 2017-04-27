@@ -452,21 +452,6 @@ class DMN_basic:
         
         if skipped == 0:
             ret = theano_fn(inp, q, ans, input_mask)
-            
-            
-            print("--------------")
-            print(np.shape(ret))
-            print(ret)
-            print(type(ret))
-            pred = ret[0]
-            print(np.shape(pred))
-            print(pred)
-            print(type(pred[0]))
-            
-            
-            print(np.shape(ans))
-            print(ans)
-            print("--------------")
         else:
             ret = [-1, -1]
             

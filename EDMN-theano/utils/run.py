@@ -5,17 +5,30 @@ import time
 import sklearn.metrics as metrics
 
 
-def is_the_verb_only_different(answer, pred):    
+def is_the_verb_only_different(answer, pred, ivocab):    
     for i in range(1, np.shape(answer)[0]+1):
         a = answer.pop(0)
         p = pred.pop(0)
         if(a!=p):
             if(i !=2):
+                print(ivocab[a])
+                print(ivocab[p])
                 return 1
     return 0
 
+def get_number_difference(answer, pred):
+    dif = 0
+    for i in range(1, np.shape(answer)[0]+1):
+        a = answer.pop()
+        p = pred.pop()
+        if(a!=p):
+            dif = dif + 1
+    return dif
+    
+
 def get_stat(dmn, vocab, nbr_stat):
     error = 0
+    ivocab = dmn.ivocab
     for j in range(0, nbr_stat):
         step_data = dmn.step(j, 'minitest')
         answers = step_data["answers"]
@@ -31,9 +44,12 @@ def get_stat(dmn, vocab, nbr_stat):
         answers = answers[0]
         for i in range(0,np.shape(answers)[0]):
             val_ans.append(answers[i])
-        error = error + is_the_verb_only_different(val_ans, val_pred)
-    acc = error*100/nbr_stat
+        temp = get_number_difference(val_ans, val_pred)
+        if(temp>0):
+            error = error + 1
+    acc = (nbr_stat-error)*100/nbr_stat
     print("Accuracy is",acc)
+
         
 
 def do_minitest(dmn, vocab, multiple_ans=False,nbr_test=0, log_it = False, state_name = ""):
@@ -59,6 +75,7 @@ def do_minitest(dmn, vocab, multiple_ans=False,nbr_test=0, log_it = False, state
             ret_multiple = step_data["multiple_prediction"]
         else:
             prediction = step_data["prediction"]
+        print("-------")
             
         
         w_input = []
@@ -100,7 +117,7 @@ def do_minitest(dmn, vocab, multiple_ans=False,nbr_test=0, log_it = False, state
                     list_pred.append(ivocab[x])
             print(' '.join(list_pred) + '. ('+str(np.shape(ret_multiple)[1])+' answers)')
             total_pred.append(list_pred)
-            total_error = total_error + is_the_verb_only_different(y_true, list_pred)
+            total_error = total_error + get_number_difference(y_true, list_pred)
             
             if(log_it):
                 if(state_name == ""):
@@ -137,7 +154,7 @@ def write_log_results(fname, data):
         file_obj.write(question)
         file_obj.write("\nA:")
         file_obj.write(RAnswer)
-        file_obj.write("\nAF:")
+        file_obj.write("\nP:")
         file_obj.write(FAnswer)
         file_obj.write("\n")
     
@@ -148,16 +165,21 @@ def write_log_results(fname, data):
     
 
 
-def do_epoch(args, dmn, mode, epoch, skipped=0):
+def do_epoch(args, dmn, mode, epoch, skipped=0, fname=""):
     '''
     :param mode: train or test mode are available
     :param epoch: number of epoch. Useful only for display and metadata purposes
     :param skipped: number of skipped epochs. Useful only for display and metadata purposes
     :Return avg_loss, skipped: Average loss for the epochs, and current number of skipped epochs
     '''
+    data_writer = []
+    if(fname!=""):
+        data_writer = open(fname, "w")
+    
     y_true = []
     y_pred = []
     avg_loss = 0.0
+    avg_acc = 0.0
     prev_time = time.time() 
     
     batches_per_epoch = dmn.get_batches_per_epoch(mode)
@@ -172,12 +194,34 @@ def do_epoch(args, dmn, mode, epoch, skipped=0):
         
         skipped += current_skip
         
+        
+        if(dmn.type == "multiple"):
+            val_ans = []
+            val_pred = []        
+            
+            for j in range(0,np.shape(prediction)[1]):
+                pred_temp = prediction[:,j,:]
+                for x in pred_temp.argmax(axis=1):
+                    val_pred.append(x)
+            answers = answers[0]
+            for j in range(0,np.shape(answers)[0]):
+                val_ans.append(answers[j])
+            
+            error = get_number_difference(val_ans, val_pred)
+        
+            nbr_words = dmn.answer_step_nbr
+            current_acc = (nbr_words - error)/nbr_words
+            avg_acc += current_acc
+        else:
+            current_acc = np.nan
+        
         if current_skip == 0:
             avg_loss += current_loss
             
             for x in answers:
                 if(dmn.type == "multiple"):
-                    y_true.append(sum(x))
+                    pass
+                    #y_true.append(sum(x))
                 else:
                     y_true.append(x)
             
@@ -191,11 +235,13 @@ def do_epoch(args, dmn, mode, epoch, skipped=0):
             # TODO: save the state sometimes
             if (i % args.log_every == 0):
                 cur_time = time.time()
-                print ("  %sing: %d.%d / %d \t loss: %.3f \t avg_loss: %.3f \t skipped: %d \t %s \t time: %.2fs" % 
+                print ("  %sing: %d.%d / %d \t loss: %.3f, avg_loss: %.3f \t accuracy: %.3f, avg_acc: %.3f \t skipped: %d, %s \t time: %.2fs" % 
                     (mode, epoch, i * args.batch_size, batches_per_epoch * args.batch_size, 
-                     current_loss, avg_loss / (i + 1), skipped, log, cur_time - prev_time))
+                     current_loss, avg_loss / (i + 1), current_acc, avg_acc / (i + 1), skipped, log, cur_time - prev_time))
                 prev_time = cur_time
-        
+                if(fname!=""):
+                    line = str(str(epoch)+","+str(current_loss)+","+str(avg_loss/(i + 1))+","+str(current_acc)+","+str(avg_acc/i + 1))
+                    data_writer.write(line)
         if np.isnan(current_loss):
             print("==> current loss IS NaN. This should never happen :) ")
             exit()
@@ -203,9 +249,11 @@ def do_epoch(args, dmn, mode, epoch, skipped=0):
     avg_loss /= batches_per_epoch
     print("\n  %s loss = %.5f" % (mode, avg_loss))
     print("confusion matrix:")
-    print(metrics.confusion_matrix(y_true, y_pred))
-    
-    accuracy = sum([1 if t == p else 0 for t, p in zip(y_true, y_pred)])
+    #print(metrics.confusion_matrix(y_true, y_pred))
+    accuracy = 0
+
+    #accuracy = sum([1 if t == p else 0 for t, p in zip(y_true, y_pred)])
+    accuracy = 0
     print("accuracy: %.2f percent" % (accuracy * 100.0 / batches_per_epoch / args.batch_size))
     
     return avg_loss, skipped

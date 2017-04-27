@@ -4,10 +4,12 @@ import sklearn.metrics as metrics
 import argparse
 import time
 import json
+import os
 
 from utils import utils
 from utils import run
 from utils import nn_utils
+
 
 
 
@@ -35,12 +37,15 @@ parser.add_argument('--save_every', type=int, default=1, help='save state every 
 parser.add_argument('--prefix', type=str, default="", help='optional prefix of network name')
 parser.add_argument('--no-shuffle', dest='shuffle', action='store_false')
 parser.add_argument('--babi_test_id', type=str, default="", help='babi_id of test set (leave empty to use --babi_id)')
+parser.add_argument('--use_10k', type=bool, default=False, help='default training and test set are small, use true to use the 10k exemple version')
 parser.add_argument('--dropout', type=float, default=0.0, help='dropout rate (between 0 and 1)')
 parser.add_argument('--batch_norm', type=bool, default=False, help='batch normalization')
 parser.set_defaults(shuffle=True)
 args = parser.parse_args()
 
 print(args)
+
+write_place = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/%s_babi%s_metadata' %(args.mode,args.babi_id))
 
 
 #Checking if the vector size is valid (using GloVe here, so no fancy size allowed)
@@ -60,9 +65,9 @@ network_name = args.prefix + '%s.mh%d.n%d.bs%d%s%s%s.babi%s' % (
 
 #Getting dataset(train & test)
 if args.network == 'dmn_multiple':
-    babi_train_raw, babi_test_raw = utils.get_babi_raw(args.babi_id, args.babi_test_id, multiple=True)
+    babi_train_raw, babi_test_raw = utils.get_babi_raw(args.babi_id, args.babi_test_id, args.use_10k, multiple=True)
 else:
-    babi_train_raw, babi_test_raw = utils.get_babi_raw(args.babi_id, args.babi_test_id)
+    babi_train_raw, babi_test_raw = utils.get_babi_raw(args.babi_id, args.babi_test_id, args.use_10k)
 
 #Getting GloVe, i.e. embedding matrix
 word2vec = utils.load_glove(args.word_vector_size)
@@ -125,9 +130,9 @@ if args.mode == 'train':
         if args.shuffle:
             dmn.shuffle_train_set()
         
-        _, skipped = run.do_epoch(args, dmn,'train', epoch, skipped)
+        _, skipped = run.do_epoch(args, dmn,'train', epoch, skipped, write_place)
         
-        epoch_loss, skipped = run.do_epoch(args, dmn, 'test', epoch, skipped)
+        epoch_loss, skipped = run.do_epoch(args, dmn, 'test', epoch, skipped, write_place)
         
         state_name = 'states/%s.epoch%d.test%.5f.state' % (network_name, epoch, epoch_loss)
 
@@ -144,7 +149,7 @@ elif args.mode == 'test':
     data["description"] = ""
     data["vocab"] = dmn.vocab.keys()
     json.dump(data, file, indent=2)
-    run.do_epoch('test', 0)
+    run.do_epoch(args, dmn, 'test', 0)
 
 elif args.mode == 'minitest':
     file = open('last_tested_model.json','w+')
@@ -156,7 +161,7 @@ elif args.mode == 'minitest':
     #json.dump(data, file, indent=2)
     multiple_ans = args.network == 'dmn_multiple'
     run.get_stat(dmn, data["vocab"], nbr_stat=200)
-    #run.do_minitest(dmn, data["vocab"], multiple_ans=multiple_ans, nbr_test=5)#, log_it=True, state_name=args.load_state)
+    run.do_minitest(dmn, data["vocab"], multiple_ans=multiple_ans, nbr_test=5)#, log_it=True, state_name=args.load_state)
     
 else:
     raise Exception("unknown mode")
