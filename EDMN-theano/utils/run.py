@@ -165,16 +165,13 @@ def write_log_results(fname, data):
     
 
 
-def do_epoch(args, dmn, mode, epoch, skipped=0, fname=""):
+def do_epoch(args, dmn, mode, epoch, skipped=0, data_writer =""):
     '''
     :param mode: train or test mode are available
     :param epoch: number of epoch. Useful only for display and metadata purposes
     :param skipped: number of skipped epochs. Useful only for display and metadata purposes
     :Return avg_loss, skipped: Average loss for the epochs, and current number of skipped epochs
     '''
-    data_writer = []
-    if(fname!=""):
-        data_writer = open(fname, "w")
     
     y_true = []
     y_pred = []
@@ -235,12 +232,15 @@ def do_epoch(args, dmn, mode, epoch, skipped=0, fname=""):
             # TODO: save the state sometimes
             if (i % args.log_every == 0):
                 cur_time = time.time()
-                print ("  %sing: %d.%d / %d \t loss: %.3f, avg_loss: %.3f \t accuracy: %.3f, avg_acc: %.3f \t skipped: %d, %s \t time: %.2fs" % 
+                #print ("  %sing: %d.%d / %d \t loss: %.3f, avg_loss: %.3f \t accuracy: %.3f, avg_acc: %.3f \t skipped: %d, %s \t time: %.2fs" % 
+                print ("  %sing: %d.%d / %d \t loss: %.3f, avg_loss: %.3f \t accuracy: %.3f, avg_acc: %.3f \t skipped: %d \t time: %.2fs" % 
                     (mode, epoch, i * args.batch_size, batches_per_epoch * args.batch_size, 
-                     current_loss, avg_loss / (i + 1), current_acc, avg_acc / (i + 1), skipped, log, cur_time - prev_time))
+                     #current_loss, avg_loss / (i + 1), current_acc, avg_acc / (i + 1), skipped, log, cur_time - prev_time))
+                     current_loss, avg_loss / (i + 1), current_acc, avg_acc / (i + 1), skipped, cur_time - prev_time))
+
                 prev_time = cur_time
-                if(fname!=""):
-                    line = str(str(epoch)+","+str(current_loss)+","+str(avg_loss/(i + 1))+","+str(current_acc)+","+str(avg_acc/i + 1))
+                if(data_writer!=""):
+                    line = str(str(epoch) + ", "+str(i*args.batch_size)+", "+str(current_loss)+", "+str(avg_loss/(i + 1))+", "+str(current_acc)+", "+str(avg_acc/(i + 1))+"\n")
                     data_writer.write(line)
         if np.isnan(current_loss):
             print("==> current loss IS NaN. This should never happen :) ")

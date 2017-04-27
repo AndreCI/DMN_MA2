@@ -45,7 +45,6 @@ args = parser.parse_args()
 
 print(args)
 
-write_place = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/%s_babi%s_metadata' %(args.mode,args.babi_id))
 
 
 #Checking if the vector size is valid (using GloVe here, so no fancy size allowed)
@@ -124,15 +123,19 @@ if args.load_state != "":
 if args.mode == 'train':
     print("==> training")
     skipped = 0
+    train_f_name =  os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/train_babi%s_metadata' %(args.babi_id))
+    test_f_name =  os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/test_babi%s_metadata' %(args.babi_id))
+    data_writer_train = open(train_f_name, "w")
+    data_writer_test = open(test_f_name, "w")
     for epoch in range(args.epochs):
         start_time = time.time()
         
         if args.shuffle:
             dmn.shuffle_train_set()
         
-        _, skipped = run.do_epoch(args, dmn,'train', epoch, skipped, write_place)
+        _, skipped = run.do_epoch(args, dmn,'train', epoch, skipped, data_writer=data_writer_train)
         
-        epoch_loss, skipped = run.do_epoch(args, dmn, 'test', epoch, skipped, write_place)
+        epoch_loss, skipped = run.do_epoch(args, dmn, 'test', epoch, skipped, data_writer=data_writer_test)
         
         state_name = 'states/%s.epoch%d.test%.5f.state' % (network_name, epoch, epoch_loss)
 
