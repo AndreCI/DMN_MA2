@@ -22,7 +22,8 @@ def get_number_difference(answer, pred):
         a = answer.pop()
         p = pred.pop()
         if(a!=p):
-            dif = dif + 1
+            if(i!=2):
+                dif = dif + 1
     return dif
     
 
