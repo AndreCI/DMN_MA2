@@ -5,15 +5,12 @@ import task_3
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--babi_id', type=str, default="1", help='babi task ID')
-parser.add_argument('--use_10k', type=bool, default=False, help='use 10k?')
+parser.add_argument('--nbr_ex', type=int, default=1, help='use how many example to use (ink)? base is 1k')
 args = parser.parse_args()
 
 
 
-babi_train_raw, babi_test_raw = las.get_babi_raw_qa(args.babi_id, args.babi_id, args.use_10k)
-
-print(type(babi_train_raw))
-
+babi_train_raw, babi_test_raw = las.get_babi_raw_qa(args.babi_id, args.babi_id, args.nbr_ex)
 
 
     
@@ -44,5 +41,5 @@ while len(babi_test_raw)!=0:
     episode["A"] = generate_sentence(episode, args.babi_id)
     babi_test_raw_new.append(episode)
     
-las.init_write_babi(args.babi_id,babi_train_raw_new, "train", args.use_10k)
-las.init_write_babi(args.babi_id, babi_test_raw_new, "test", args.use_10k)
+las.init_write_babi(args.babi_id,babi_train_raw_new, "train", args.nbr_ex)
+las.init_write_babi(args.babi_id, babi_test_raw_new, "test", args.nbr_ex)

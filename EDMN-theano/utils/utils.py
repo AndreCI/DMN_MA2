@@ -78,7 +78,7 @@ def init_babi(fname):
     return tasks
 
 
-def get_babi_raw(id, test_id, use_10k, multiple=False):
+def get_babi_raw(id, test_id, nbr_k, multiple=False):
     '''
     Basic getter function to load the data set.
     :param id: the number the task to train or test
@@ -91,14 +91,20 @@ def get_babi_raw(id, test_id, use_10k, multiple=False):
     babi_name = babi_map[id]
     babi_test_name = babi_map[test_id]
     if(multiple):
-        if(use_10k):
+        if(nbr_k==100):
+            babi_train_raw = init_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/en-100k-m/%s_train.txt' % babi_name))
+            babi_test_raw = init_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/en-100k-m/%s_test.txt' % babi_test_name))
+        elif(nbr_k==10):
             babi_train_raw = init_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/en-10k-m/%s_train.txt' % babi_name))
             babi_test_raw = init_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/en-10k-m/%s_test.txt' % babi_test_name))
         else:
             babi_train_raw = init_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/en-m/%s_train.txt' % babi_name))
             babi_test_raw = init_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/en-m/%s_test.txt' % babi_test_name))
     else:
-        if(use_10k):
+        if(nbr_k==100):
+            babi_train_raw = init_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/en-100k/%s_train.txt' % babi_name))
+            babi_test_raw = init_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/en-100k/%s_test.txt' % babi_test_name))
+        elif(nbr_k==10):
             babi_train_raw = init_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/en-10k/%s_train.txt' % babi_name))
             babi_test_raw = init_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/en-10k/%s_test.txt' % babi_test_name))
         else:

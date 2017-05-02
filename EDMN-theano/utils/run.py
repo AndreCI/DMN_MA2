@@ -132,7 +132,7 @@ def do_minitest(dmn, vocab, multiple_ans=False,nbr_test=0, log_it = False, state
                 epoch_nbr = epoch_temp[5:]
                 episode = {'C':total_facts, 'Q':total_q, 'A':total_ans,'AF':total_pred}
                 babi_id = utils.babi_map[id]
-                fname = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/minitest_log/en/%s_log_%s.txt' % (babi_id, epoch_nbr))
+                fname = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/minitest_log/en/%s_100k_log_%s.txt' % (babi_id, epoch_nbr))
                 write_log_results(fname,episode)
     print("Error is",(total_error))
                 

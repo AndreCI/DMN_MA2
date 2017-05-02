@@ -77,9 +77,14 @@ def write_babi(fname,data):
     print("writing finished.")
     
     
-def init_write_babi(id,data, mode, use_10k):
+def init_write_babi(id,data, mode, k_nbr):
     babi_name = babi_map[id]
-    if(use_10k):
+    if(k_nbr==100):
+        if(mode == "train"):
+            write_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/en-100k/%s_train.txt' % babi_name), data)
+        else:
+            write_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/en-100k/%s_test.txt' % babi_name), data)
+    elif(k_nbr==10):
         if(mode == "train"):
             write_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/en-10k/%s_train.txt' % babi_name), data)
         else:
@@ -113,12 +118,15 @@ def init_babi(fname):
     return tasks
 
 
-def get_babi_raw_qa(id, test_id, use_10k):
+def get_babi_raw_qa(id, test_id, nbr_k):
     if (test_id == ""):
         test_id = id 
     babi_name = babi_map[id]
     babi_test_name = babi_map[test_id]
-    if(use_10k):
+    if(nbr_k==100):
+        babi_train_raw = init_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'original_data/en-100k/%s_train.txt' % babi_name))
+        babi_test_raw = init_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'original_data/en-100k/%s_test.txt' % babi_test_name))
+    elif(nbr_k==10):
         babi_train_raw = init_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'original_data/en-10k/%s_train.txt' % babi_name))
         babi_test_raw = init_babi(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'original_data/en-10k/%s_test.txt' % babi_test_name))
     else:
