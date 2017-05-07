@@ -123,8 +123,8 @@ if args.load_state != "":
 if args.mode == 'train':
     print("==> training")
     skipped = 0
-    train_f_name =  os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/train_babi%s_metadata_withMem' %(args.babi_id))
-    test_f_name =  os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/test_babi%s_metadata_withMem' %(args.babi_id))
+    train_f_name =  os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/train_babi%s_metadata_withMem.csv' %(args.babi_id))
+    test_f_name =  os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/test_babi%s_metadata_withMem.csv' %(args.babi_id))
     data_writer_train = open(train_f_name, "w")
     data_writer_test = open(test_f_name, "w")
     for epoch in range(args.epochs):
