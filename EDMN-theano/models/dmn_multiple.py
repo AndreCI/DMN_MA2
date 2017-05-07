@@ -123,26 +123,26 @@ class DMN_multiple:
                                           self.W_mem_upd_in, self.W_mem_upd_hid, self.b_mem_upd,
                                           self.W_mem_hid_in, self.W_mem_hid_hid, self.b_mem_hid))
         
-        last_mem = memory[-1]
+        self.last_mem = memory[-1]
         
         print("==> building answer module")
         self.W_a = nn_utils.normal_param(std=0.1, shape=(self.vocab_size, self.dim))
                 
         if self.answer_module == 'recurrent':
-            self.W_ans_res_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim + self.vocab_size))
+            self.W_ans_res_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim + self.dim + self.vocab_size))
             self.W_ans_res_hid = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim))
             self.b_ans_res = nn_utils.constant_param(value=0.0, shape=(self.dim,))
             
-            self.W_ans_upd_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim + self.vocab_size))
+            self.W_ans_upd_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim + self.dim + self.vocab_size))
             self.W_ans_upd_hid = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim))
             self.b_ans_upd = nn_utils.constant_param(value=0.0, shape=(self.dim,))
             
-            self.W_ans_hid_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim + self.vocab_size))
+            self.W_ans_hid_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim + self.dim + self.vocab_size))
             self.W_ans_hid_hid = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim))
             self.b_ans_hid = nn_utils.constant_param(value=0.0, shape=(self.dim,))
         
             def answer_step(prev_a, prev_y):
-                a = nn_utils.GRU_update(prev_a, T.concatenate([prev_y, self.q_q]),
+                a = nn_utils.GRU_update(prev_a, T.concatenate([prev_y, self.q_q, self.last_mem]),
                                   self.W_ans_res_in, self.W_ans_res_hid, self.b_ans_res, 
                                   self.W_ans_upd_in, self.W_ans_upd_hid, self.b_ans_upd,
                                   self.W_ans_hid_in, self.W_ans_hid_hid, self.b_ans_hid)
@@ -153,7 +153,7 @@ class DMN_multiple:
             # TODO: add conditional ending
             dummy_ = theano.shared(np.zeros((self.vocab_size, ), dtype=floatX))
             results, updates = theano.scan(fn=answer_step,
-                outputs_info=[last_mem, T.zeros_like(dummy_)],
+                outputs_info=[self.last_mem, T.zeros_like(dummy_)],
                 n_steps=self.answer_step_nbr)
                 
             self.multiple_predictions = results[1] #don't get the memory (i.e. a)
@@ -208,7 +208,7 @@ class DMN_multiple:
         if self.mode != 'minitest':
             print("==> compiling test_fn")
             self.test_fn = theano.function(inputs=[self.input_var, self.q_var, T.cast(self.answer_var, 'int32'), self.input_mask_var],
-                                                   outputs=[self.multiple_predictions, self.loss, self.inp_c, self.q_q, last_mem],
+                                                   outputs=[self.multiple_predictions, self.loss, self.inp_c, self.q_q, self.last_mem],
                                       allow_input_downcast = True)
         
         if self.mode == 'minitest':                          

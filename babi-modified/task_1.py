@@ -4,7 +4,7 @@ from random import randint
 def generate_pronoun(question):
     return question[9:len(question)]
 
-def generate_verb(facts):
+def generate_verb_random(facts):
     facts = facts[0:len(facts)-2]
     sentences = facts.split('. ')
     verbs =[]
@@ -14,7 +14,10 @@ def generate_verb(facts):
             verbs.append(words[1])
     random = randint(0,len(verbs)-1)
     return verbs[random]
-    
+
+def generate_verb(facts):
+    return "went"
+
 def generate_proposition():
     return "to"
 
