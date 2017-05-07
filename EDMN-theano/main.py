@@ -18,26 +18,26 @@ from utils import nn_utils
 print("==> parsing input arguments")
 parser = argparse.ArgumentParser(prog="ExtDMN",description="Andre s code ExtDMN. Use for Q&A, master semester project @EPFL-LIA, 2017")
 
-parser.add_argument('--network', type=str, default="dmn_batch", choices=['dmn_basic', 'dmn_multiple','dmn_smooth','dmn_batch'], help='network type: dmn_basic, dmn_multiple, dmn_smooth, or dmn_batch')
+parser.add_argument('--network', type=str, default="dmn_multiple", choices=['dmn_basic', 'dmn_multiple','dmn_smooth','dmn_batch'], help='network type: dmn_basic, dmn_multiple, dmn_smooth, or dmn_batch')
 parser.add_argument('--word_vector_size', type=int, default=50, choices=['50','100','200','300'], help='embeding size (50, 100, 200, 300 only)')
 parser.add_argument('--dim', type=int, default=40, help='number of hidden units in input module GRU')
 parser.add_argument('--epochs', type=int, default=500, help='number of epochs')
 parser.add_argument('--load_state', type=str, default="", help='state file path')
-parser.add_argument('--answer_module', type=str, default="feedforward", help='answer module type: feedforward or recurrent')
-parser.add_argument('--answer_step_nbr',type=int,default=1, help='Number of step done by the answer module (>0)')
+parser.add_argument('--answer_module', type=str, default="recurrent", help='answer module type: feedforward or recurrent')
+parser.add_argument('--answer_step_nbr',type=int,default=5, help='Number of step done by the answer module (>0)')
 parser.add_argument('--mode', type=str, default="train", help='mode: train, test or minitest. Test and minitest mode required load_state')
 parser.add_argument('--input_mask_mode', type=str, default="sentence", help='input_mask_mode: word or sentence')
 parser.add_argument('--memory_hops', type=int, default=5, help='memory GRU steps')
 parser.add_argument('--batch_size', type=int, default=10, help='no commment')
 parser.add_argument('--babi_id', type=str, default="1", help='babi task ID')
 parser.add_argument('--l2', type=float, default=0, help='L2 regularization')
+parser.add_argument('--nbr_ex', type=int, default=1, help='default training and test set are small, exprim in k the size of the exemple to use')
 parser.add_argument('--normalize_attention', type=bool, default=False, help='flag for enabling softmax on attention vector')
 parser.add_argument('--log_every', type=int, default=1, help='print information every x iteration')
 parser.add_argument('--save_every', type=int, default=1, help='save state every x epoch')
 parser.add_argument('--prefix', type=str, default="", help='optional prefix of network name')
 parser.add_argument('--no-shuffle', dest='shuffle', action='store_false')
 parser.add_argument('--babi_test_id', type=str, default="", help='babi_id of test set (leave empty to use --babi_id)')
-parser.add_argument('--use_10k', type=bool, default=False, help='default training and test set are small, use true to use the 10k exemple version')
 parser.add_argument('--dropout', type=float, default=0.0, help='dropout rate (between 0 and 1)')
 parser.add_argument('--batch_norm', type=bool, default=False, help='batch normalization')
 parser.set_defaults(shuffle=True)
@@ -64,9 +64,9 @@ network_name = args.prefix + '%s.mh%d.n%d.bs%d%s%s%s.babi%s' % (
 
 #Getting dataset(train & test)
 if args.network == 'dmn_multiple':
-    babi_train_raw, babi_test_raw = utils.get_babi_raw(args.babi_id, args.babi_test_id, args.use_10k, multiple=True)
+    babi_train_raw, babi_test_raw = utils.get_babi_raw(args.babi_id, args.babi_test_id, args.nbr_ex, multiple=True)
 else:
-    babi_train_raw, babi_test_raw = utils.get_babi_raw(args.babi_id, args.babi_test_id, args.use_10k)
+    babi_train_raw, babi_test_raw = utils.get_babi_raw(args.babi_id, args.babi_test_id, args.nbr_ex)
 
 #Getting GloVe, i.e. embedding matrix
 word2vec = utils.load_glove(args.word_vector_size)
@@ -123,8 +123,8 @@ if args.load_state != "":
 if args.mode == 'train':
     print("==> training")
     skipped = 0
-    train_f_name =  os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/train_babi%s_metadata' %(args.babi_id))
-    test_f_name =  os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/test_babi%s_metadata' %(args.babi_id))
+    train_f_name =  os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/train_babi%s_metadata_withMem' %(args.babi_id))
+    test_f_name =  os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/test_babi%s_metadata_withMem' %(args.babi_id))
     data_writer_train = open(train_f_name, "w")
     data_writer_test = open(test_f_name, "w")
     for epoch in range(args.epochs):
