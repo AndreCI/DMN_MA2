@@ -355,35 +355,41 @@ class DMN_multiple:
                                         vocab = self.vocab, 
                                         ivocab = self.ivocab, 
                                         word_vector_size = self.word_vector_size, 
-                                        to_return = "word2vec") for w in inp] #for each word, get the word vec rpz
+                                        to_return = "word2vec",
+                                        silent=True) for w in inp] #for each word, get the word vec rpz
                                         
             q_vector = [utils.process_word(word = w, 
                                         word2vec = self.word2vec, 
                                         vocab = self.vocab, 
                                         ivocab = self.ivocab, 
                                         word_vector_size = self.word_vector_size, 
-                                        to_return = "word2vec") for w in q]
+                                        to_return = "word2vec",
+                                        silent=True) for w in q]
             
-            inputs.append(np.vstack(inp_vector).astype(floatX))
-            questions.append(np.vstack(q_vector).astype(floatX))
+           
             
             ans_vector = [utils.process_word(word = w,
                                              word2vec = self.word2vec,
                                              vocab = self.vocab,
                                              ivocab = self.ivocab,
                                              word_vector_size = self.word_vector_size,
-                                             to_return = "index") for w in ans]
-                                   
-            ans_vector = ans_vector[0:len(ans_vector)-1]
-            answers.append(np.vstack(ans_vector).astype(floatX))                                 
-                                             
-            #TODO check what the heck input_masks is made of.                      
-            if self.input_mask_mode == 'word':
-                input_masks.append(np.array([index for index, w in enumerate(inp)], dtype=np.int32)) 
-            elif self.input_mask_mode == 'sentence': 
-                input_masks.append(np.array([index for index, w in enumerate(inp) if w == '.'], dtype=np.int32)) 
-            else:
-                raise Exception("invalid input_mask_mode") #TODO this should probably not be raised here... 
+                                             to_return = "index",
+                                             silent=True) for w in ans]
+
+            ans_vector = ans_vector[0:len(ans_vector)]
+            
+            if(len(ans_vector)==self.answer_step_nbr):            
+                inputs.append(np.vstack(inp_vector).astype(floatX))
+                questions.append(np.vstack(q_vector).astype(floatX))                            
+                answers.append(np.vstack(ans_vector).astype(floatX))                                 
+                                                 
+                #TODO check what the heck input_masks is made of.                      
+                if self.input_mask_mode == 'word':
+                    input_masks.append(np.array([index for index, w in enumerate(inp)], dtype=np.int32)) 
+                elif self.input_mask_mode == 'sentence': 
+                    input_masks.append(np.array([index for index, w in enumerate(inp) if w == '.'], dtype=np.int32)) 
+                else:
+                    raise Exception("invalid input_mask_mode") #TODO this should probably not be raised here... 
         
         return inputs, questions, answers, input_masks
 

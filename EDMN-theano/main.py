@@ -24,7 +24,7 @@ parser.add_argument('--dim', type=int, default=40, help='number of hidden units 
 parser.add_argument('--epochs', type=int, default=500, help='number of epochs')
 parser.add_argument('--load_state', type=str, default="", help='state file path')
 parser.add_argument('--answer_module', type=str, default="recurrent", help='answer module type: feedforward or recurrent')
-parser.add_argument('--answer_step_nbr',type=int,default=5, help='Number of step done by the answer module (>0)')
+parser.add_argument('--answer_step_nbr',type=int,default=6, help='Number of step done by the answer module (>0)')
 parser.add_argument('--mode', type=str, default="train", help='mode: train, test or minitest. Test and minitest mode required load_state')
 parser.add_argument('--input_mask_mode', type=str, default="sentence", help='input_mask_mode: word or sentence')
 parser.add_argument('--memory_hops', type=int, default=5, help='memory GRU steps')
@@ -40,6 +40,7 @@ parser.add_argument('--no-shuffle', dest='shuffle', action='store_false')
 parser.add_argument('--babi_test_id', type=str, default="", help='babi_id of test set (leave empty to use --babi_id)')
 parser.add_argument('--dropout', type=float, default=0.0, help='dropout rate (between 0 and 1)')
 parser.add_argument('--batch_norm', type=bool, default=False, help='batch normalization')
+parser.add_argument('--modification_name', type=str, default="default_mod_name",help='the name of the current modification for the log')
 parser.set_defaults(shuffle=True)
 args = parser.parse_args()
 
@@ -63,10 +64,13 @@ network_name = args.prefix + '%s.mh%d.n%d.bs%d%s%s%s.babi%s' % (
     args.babi_id)
 
 #Getting dataset(train & test)
-if args.network == 'dmn_multiple':
-    babi_train_raw, babi_test_raw = utils.get_babi_raw(args.babi_id, args.babi_test_id, args.nbr_ex, multiple=True)
+if(args.babi_id == 'squad'):
+    babi_train_raw, babi_test_raw = utils.get_squad_raw(len_padding=args.answer_step_nbr, max_epoch_size=2000)
 else:
-    babi_train_raw, babi_test_raw = utils.get_babi_raw(args.babi_id, args.babi_test_id, args.nbr_ex)
+    if args.network == 'dmn_multiple':
+        babi_train_raw, babi_test_raw = utils.get_babi_raw(args.babi_id, args.babi_test_id, args.nbr_ex, multiple=True)
+    else:
+        babi_train_raw, babi_test_raw = utils.get_babi_raw(args.babi_id, args.babi_test_id, args.nbr_ex)
 
 #Getting GloVe, i.e. embedding matrix
 word2vec = utils.load_glove(args.word_vector_size)
@@ -123,8 +127,13 @@ if args.load_state != "":
 if args.mode == 'train':
     print("==> training")
     skipped = 0
-    train_f_name =  os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/train_babi%s_metadata_withMem10.csv' %(args.babi_id))
-    test_f_name =  os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/test_babi%s_metadata_withMem10.csv' %(args.babi_id))
+    file_nbr = 1
+    train_f_name =  os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/train_babi%s_metadata_%s_%d.csv' %(args.babi_id, args.modification_name, file_nbr))
+    test_f_name =  os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/test_babi%s_metadata_%s_%d.csv' %(args.babi_id, args.modification_name,file_nbr))
+    while(os.path.isfile(train_f_name)):
+        file_nbr= file_nbr + 1    
+        train_f_name =  os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/train_babi%s_metadata_%s_%d.csv' %(args.babi_id, args.modification_name, file_nbr))
+        test_f_name =  os.path.join(os.path.dirname(os.path.realpath(__file__)), 'output_data/test_babi%s_metadata_%s_%d.csv' %(args.babi_id, args.modification_name, file_nbr))
     data_writer_train = open(train_f_name, "w")
     data_writer_test = open(test_f_name, "w")
     for epoch in range(args.epochs):

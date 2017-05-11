@@ -1,6 +1,8 @@
 import os as os
 import numpy as np
-
+import json
+import math
+import re
 
 babi_map = {
         "1": "qa1_single-supporting-fact",
@@ -48,7 +50,82 @@ babi_map = {
         "sh20": "../shuffled/qa20_agents-motivations",
     }
 
+def remove_bad_char(string, is_answer=False):
+    if(is_answer==False):
+        string = string.replace('.', ' . ')
+        string = string.replace('(', '( ')
+        string = string.replace(')', ' )')
+        string = string.replace(',', '')
+        string = string.replace('-',' ')
+        string = string.replace('\'', ' ')
+        string = string.replace('\"',' ')
+        string = string.replace('!',' . ')
+        string = string.replace('\[',' ')
+        string = string.replace('\]',' ')
+    else:
+        string = string.replace('.', '')
+        string = string.replace('(', '')
+        string = string.replace(')', '')
+        string = string.replace(',', '')
+        string = string.replace('-','')
+        string = string.replace('\'', '')
+        string = string.replace('\"','')
+        string = string.replace('!','')
+        string = string.replace('\[','')
+        string = string.replace('\]','')
+    
+    
+    return string
 
+def init_squad(fname, test_pourcentage, len_padding = 16, max_epoch_size=0):
+    '''
+    Load data from fname
+    '''
+    print("==> Loading data from %s (SQUAD)" %fname)
+    tasks_train = []
+    tasks_test = []
+    task = None
+    with open(fname) as data_json:
+        data = json.load(data_json)
+        data = data['data']
+        for i in range(0, np.shape(data)[0]):
+            paragraph = data[i]['paragraphs']
+            size = np.shape(paragraph)[0]
+            test_br = math.floor(size*test_pourcentage)         
+            
+            for j in range(0, np.shape(paragraph)[0]):
+                current = paragraph[j]
+                context = current['context']
+                
+                qas = current['qas']
+                for k in range(0, np.shape(qas)[0]):
+                    task = {"C": "", "Q": "", "A":""}
+                    
+                    current_qas = qas[k]
+                    question = current_qas['question']
+                    answer = remove_bad_char(current_qas['answers'][0]['text'].encode("utf-8"), is_answer=True)
+                    question = question.replace('?', '')
+                    if(max_epoch_size!=0 and len(tasks_train)<max_epoch_size):
+                        if(not re.match(r'(\d)', answer)):
+                            if(len(answer.split(' '))<len_padding):
+                                while(len(answer.split(' '))<len_padding):
+                                    answer = answer + " <eos>"
+                                if(not len(answer.split(' '))==len_padding):
+                                    print("here",answer)
+                                    exit()
+                                task["A"] = (answer)
+                                task["C"] = remove_bad_char(context).encode("utf-8")
+                                task["Q"] = remove_bad_char(question).encode("utf-8")
+                                if(j<test_br):
+                                    tasks_test.append(task.copy())
+                                else:
+                                    tasks_train.append(task.copy())
+    print("epoch size for training is:",len(tasks_train))
+    return tasks_train, tasks_test
+
+def get_squad_raw(len_padding, test_pourcentage=0.2, max_epoch_size=0):
+    return init_squad(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/squad/train-v1.1.json'), test_pourcentage, len_padding,max_epoch_size)
+    
 def init_babi(fname):
     '''
     Load data from fname
@@ -74,6 +151,7 @@ def init_babi(fname):
             task["Q"] = line[:idx]
             task["A"] = tmp[1].strip()
             tasks.append(task.copy())
+        
 
     return tasks
 
