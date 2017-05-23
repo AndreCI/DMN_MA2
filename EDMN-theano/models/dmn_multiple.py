@@ -453,6 +453,9 @@ class DMN_multiple:
         ans = answers[batch_index]
         ans = ans[:,0] #reshape from (5,1) to (5,)
         input_mask = input_masks[batch_index]
+        
+        print(ans)
+        print(np.shape(ans))
 
         skipped = 0
         grad_norm = float('NaN')
