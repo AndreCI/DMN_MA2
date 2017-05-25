@@ -13,7 +13,7 @@ from utils import nn_utils
 floatX = theano.config.floatX
 
 
-class DMN_multiple:
+class DMN_pointer:
     
     def __init__(self, babi_train_raw, babi_test_raw, word2vec, word_vector_size, 
                 dim, mode, answer_module, answer_step_nbr, input_mask_mode, memory_hops, l2, 
@@ -35,14 +35,14 @@ class DMN_multiple:
         '''
 
         print("==> not used params in DMN class:", kwargs.keys())
-        self.type = "multiple"
+        self.type = "pointer"
         self.vocab = {}
         self.ivocab = {}
         
         #save params
         self.word2vec = word2vec
         self.word_vector_size = word_vector_size
-        self.dim = dim
+        self.dim = dim #number of hidden units in input layer GRU
         self.mode = mode
         self.answer_module = answer_module
         #TODO: add check of inputs
@@ -54,14 +54,16 @@ class DMN_multiple:
         self.l2 = l2
         self.normalize_attention = normalize_attention
         
-        self.train_input, self.train_q, self.train_answer, self.train_input_mask = self._process_input(babi_train_raw)
-        self.test_input, self.test_q, self.test_answer, self.test_input_mask = self._process_input(babi_test_raw)
+        self.train_input, self.train_q, self.train_answer, self.train_input_mask, self.train_pointers_s, self.train_pointers_e = self._process_input(babi_train_raw)
+        self.test_input, self.test_q, self.test_answer, self.test_input_mask, self.test_pointers_s, self.test_pointers_e = self._process_input(babi_test_raw)
         self.vocab_size = len(self.vocab)
 
         self.input_var = T.matrix('input_var')
         self.q_var = T.matrix('question_var')
         self.answer_var = T.ivector('answer_var')
         self.input_mask_var = T.ivector('input_mask_var')
+        self.pointers_s_var = T.scalar('pointers_s_var')
+        self.pointers_e_var = T.scalar('pointer_e_var')
         
             
         print("==> building input module")
@@ -117,7 +119,12 @@ class DMN_multiple:
         print("==> building episodic memory module (fixed number of steps: %d)" % self.memory_hops)
         memory = [self.q_q.copy()] #So q_q is memory initialization
         for iter in range(1, self.memory_hops + 1):
-            current_episode = self.new_episode(memory[iter - 1])
+            if(iter==self.memory_hops):
+                print("iter==self.memory_hops! This means everything works fine?")
+                all_h = self.new_episode(memory[iter - 1], all_h=True)
+                current_episode = all_h[-1]
+            else:
+                current_episode = self.new_episode(memory[iter - 1])
             memory.append(nn_utils.GRU_update(memory[iter - 1], current_episode,
                                           self.W_mem_res_in, self.W_mem_res_hid, self.b_mem_res, 
                                           self.W_mem_upd_in, self.W_mem_upd_hid, self.b_mem_upd,
@@ -125,42 +132,61 @@ class DMN_multiple:
         
         self.last_mem = memory[-1]
         
+                
+        
         print("==> building answer module")
-        self.W_a = nn_utils.normal_param(std=0.1, shape=(self.vocab_size, self.dim))
-                
-        if self.answer_module == 'recurrent':
-            self.W_ans_res_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim + self.dim + self.vocab_size))
-            self.W_ans_res_hid = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim))
-            self.b_ans_res = nn_utils.constant_param(value=0.0, shape=(self.dim,))
-            
-            self.W_ans_upd_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim + self.dim + self.vocab_size))
-            self.W_ans_upd_hid = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim))
-            self.b_ans_upd = nn_utils.constant_param(value=0.0, shape=(self.dim,))
-            
-            self.W_ans_hid_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim + self.dim + self.vocab_size))
-            self.W_ans_hid_hid = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim))
-            self.b_ans_hid = nn_utils.constant_param(value=0.0, shape=(self.dim,))
+        self.Ws_p = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim)) #shape must be size_input * mem_size = self.dim
+        self.We_p = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim))
+        self.Wh_p = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim))
         
-            def answer_step(prev_a, prev_y):
-                a = nn_utils.GRU_update(prev_a, T.concatenate([prev_y, self.q_q, self.last_mem]),
-                                  self.W_ans_res_in, self.W_ans_res_hid, self.b_ans_res, 
-                                  self.W_ans_upd_in, self.W_ans_upd_hid, self.b_ans_upd,
-                                  self.W_ans_hid_in, self.W_ans_hid_hid, self.b_ans_hid)
-                
-                y = nn_utils.softmax(T.dot(self.W_a, a))
-                return [a, y]
-            
-            # TODO: add conditional ending
-            dummy_ = theano.shared(np.zeros((self.vocab_size, ), dtype=floatX))
-            results, updates = theano.scan(fn=answer_step,
-                outputs_info=[self.last_mem, T.zeros_like(dummy_)],
-                n_steps=self.answer_step_nbr)
-                
-            self.multiple_predictions = results[1] #don't get the memory (i.e. a)
-            
+        self.Psp = nn_utils.softmax(T.dot(self.Ws_p, self.last_mem)) #size must be == size_input
         
-        else:
-            raise Exception("invalid answer_module")
+        #TODO:
+        self.start_idx = T.argmax(self.Psp)
+        
+        self.start_idx_state = self.last_mem#all_h[self.start_idx] #must be hidden state idx idx_max_val(Psp)
+        temp1 = T.dot(self.We_p, self.last_mem)
+        temp2 = T.dot(self.Wh_p, self.start_idx_state)
+        temp3 = temp1 + temp2
+        self.Pep = nn_utils.softmax(temp3) #size must be == size_input
+        self.end_idx = T.argmax(self.Pep)        
+        
+        
+#        self.W_a = nn_utils.normal_param(std=0.1, shape=(self.vocab_size, self.dim))
+#                
+#        if self.answer_module == 'recurrent':
+#            self.W_ans_res_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim + self.dim + self.vocab_size))
+#            self.W_ans_res_hid = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim))
+#            self.b_ans_res = nn_utils.constant_param(value=0.0, shape=(self.dim,))
+#            
+#            self.W_ans_upd_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim + self.dim + self.vocab_size))
+#            self.W_ans_upd_hid = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim))
+#            self.b_ans_upd = nn_utils.constant_param(value=0.0, shape=(self.dim,))
+#            
+#            self.W_ans_hid_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim + self.dim + self.vocab_size))
+#            self.W_ans_hid_hid = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim))
+#            self.b_ans_hid = nn_utils.constant_param(value=0.0, shape=(self.dim,))
+#        
+#            def answer_step(prev_a, prev_y):
+#                a = nn_utils.GRU_update(prev_a, T.concatenate([prev_y, self.q_q, self.last_mem]),
+#                                  self.W_ans_res_in, self.W_ans_res_hid, self.b_ans_res, 
+#                                  self.W_ans_upd_in, self.W_ans_upd_hid, self.b_ans_upd,
+#                                  self.W_ans_hid_in, self.W_ans_hid_hid, self.b_ans_hid)
+#                
+#                y = nn_utils.softmax(T.dot(self.W_a, a))
+#                return [a, y]
+#            
+#            # TODO: add conditional ending
+#            dummy_ = theano.shared(np.zeros((self.vocab_size, ), dtype=floatX))
+#            results, updates = theano.scan(fn=answer_step,
+#                outputs_info=[self.last_mem, T.zeros_like(dummy_)],
+#                n_steps=self.answer_step_nbr)
+#                
+#            self.multiple_predictions = results[1] #don't get the memory (i.e. a)
+#            
+#        
+#        else:
+#            raise Exception("invalid answer_module")
         
         
         print("==> collecting all parameters")
@@ -170,25 +196,30 @@ class DMN_multiple:
                   self.W_mem_res_in, self.W_mem_res_hid, self.b_mem_res, 
                   self.W_mem_upd_in, self.W_mem_upd_hid, self.b_mem_upd,
                   self.W_mem_hid_in, self.W_mem_hid_hid, self.b_mem_hid,
-                  self.W_b, self.W_1, self.W_2, self.b_1, self.b_2, self.W_a]
+                  self.W_b, self.W_1, self.W_2, self.b_1, self.b_2, self.Ws_p, self.We_p, self.Wh_p]
         
-        if self.answer_module == 'recurrent':
-            self.params = self.params + [self.W_ans_res_in, self.W_ans_res_hid, self.b_ans_res, 
-                              self.W_ans_upd_in, self.W_ans_upd_hid, self.b_ans_upd,
-                              self.W_ans_hid_in, self.W_ans_hid_hid, self.b_ans_hid]
-        
-        
+#        if self.answer_module == 'recurrent':
+#            self.params = self.params + [self.W_ans_res_in, self.W_ans_res_hid, self.b_ans_res, 
+#                              self.W_ans_upd_in, self.W_ans_upd_hid, self.b_ans_upd,
+#                              self.W_ans_hid_in, self.W_ans_hid_hid, self.b_ans_hid]
+#        
+#        
         print("==> building loss layer and computing updates")
-        def temp_loss(curr_pred, curr_ans, loss):
-            temp = T.nnet.categorical_crossentropy(curr_pred.dimshuffle("x",0),T.stack([curr_ans]))[0]
-            return loss + temp
-            
-        outputs, updates = theano.scan(fn=temp_loss,
-                                            sequences=[self.multiple_predictions, self.answer_var],
-                                            outputs_info = [np.float64(0.0)],
-                                            n_steps=self.answer_step_nbr)        
+#        def temp_loss(curr_pred, curr_ans, loss):
+#            temp = T.nnet.categorical_crossentropy(curr_pred.dimshuffle("x",0),T.stack([curr_ans]))[0]
+#            return loss + temp
+#            
+#        outputs, updates = theano.scan(fn=temp_loss,
+#                                            sequences=[self.multiple_predictions, self.answer_var],
+#                                            outputs_info = [np.float64(0.0)],
+#                                            n_steps=self.answer_step_nbr)        
         
-        self.loss_ce = outputs[-1]
+#        self.loss_ce = outputs[-1]
+        temp1 = (self.end_idx + self.pointers_e_var)
+        temp2 = T.abs_(temp1)
+        temp3 = (self.start_idx + self.pointers_s_var)
+        temp4 = T.abs_(temp3)
+        self.loss_ce = (temp2 + temp4)
         if self.l2 > 0:
             self.loss_l2 = self.l2 * nn_utils.l2_reg(self.params)
         else:
@@ -200,22 +231,24 @@ class DMN_multiple:
         
         if self.mode == 'train':
             print("==> compiling train_fn")
-            self.train_fn = theano.function(inputs=[self.input_var, self.q_var, T.cast(self.answer_var, 'int32'), self.input_mask_var], 
-                                       outputs=[self.multiple_predictions,
-                                                self.loss], 
+            self.train_fn = theano.function(inputs=[self.input_var, self.q_var, self.input_mask_var],# self.pointers_s_var, self.pointers_e_var], 
+                                       outputs=[self.start_idx, 
+                                                self.end_idx],
+                                                #,self.loss], 
                                        updates=updates,
-                                       allow_input_downcast = True)
+                                       allow_input_downcast = True,
+                                       on_unused_input = 'warn')
         if self.mode != 'minitest':
             print("==> compiling test_fn")
-            self.test_fn = theano.function(inputs=[self.input_var, self.q_var, T.cast(self.answer_var, 'int32'), self.input_mask_var],
-                                                   outputs=[self.multiple_predictions, self.loss, self.inp_c, self.q_q, self.last_mem],
+            self.test_fn = theano.function(inputs=[self.input_var, self.q_var, self.input_mask_var, self.pointers_s_var, self.pointers_e_var],
+                                                   outputs=[self.start_idx, self.end_idx, self.loss, self.inp_c, self.q_q, self.last_mem],
                                       allow_input_downcast = True)
         
         if self.mode == 'minitest':                          
             print("==> compiling minitest_fn")
             self.minitest_fn = theano.function(inputs=[self.input_var, self.q_var,
-                                                       self.input_mask_var],
-                                                       outputs=[self.multiple_predictions])
+                                                       self.input_mask_var, self.pointers_s_var, self.pointers_e_var],
+                                                       outputs=[self.start_idx, self.end_idx])
                                   
     
     
@@ -274,7 +307,7 @@ class DMN_multiple:
         return h
        
     
-    def new_episode(self, mem):
+    def new_episode(self, mem, all_h=False):
         '''
         Create a new episode
         Compute the g using the attention mechanism
@@ -298,7 +331,10 @@ class DMN_multiple:
             sequences=[self.inp_c, g],
             outputs_info=T.zeros_like(self.inp_c[0]))
         
-        return e[-1]
+        if(all_h):
+            return e
+        else:
+            return e[-1]
 
 
     #TODO add documentation (later because it isn't really useful)    
@@ -342,6 +378,8 @@ class DMN_multiple:
         inputs = []
         answers = []
         input_masks = []
+        pointers_s = []
+        pointers_e = []
         for x in data_raw:
             inp = x["C"].lower().split(' ') 
             inp = [w for w in inp if len(w) > 0]
@@ -350,48 +388,45 @@ class DMN_multiple:
             ans = x["A"].lower().split(' ')
             ans = [w for w in ans if len(w) > 0]
             
+            pointers_s.append(x["Ps"])
+            pointers_e.append(x["Pe"])
+            
             inp_vector = [utils.process_word(word = w, 
                                         word2vec = self.word2vec, 
                                         vocab = self.vocab, 
                                         ivocab = self.ivocab, 
                                         word_vector_size = self.word_vector_size, 
-                                        to_return = "word2vec",
-                                        silent=True) for w in inp] #for each word, get the word vec rpz
+                                        to_return = "word2vec") for w in inp] #for each word, get the word vec rpz
                                         
             q_vector = [utils.process_word(word = w, 
                                         word2vec = self.word2vec, 
                                         vocab = self.vocab, 
                                         ivocab = self.ivocab, 
                                         word_vector_size = self.word_vector_size, 
-                                        to_return = "word2vec",
-                                        silent=True) for w in q]
+                                        to_return = "word2vec") for w in q]
             
-           
+            inputs.append(np.vstack(inp_vector).astype(floatX))
+            questions.append(np.vstack(q_vector).astype(floatX))
             
             ans_vector = [utils.process_word(word = w,
                                              word2vec = self.word2vec,
                                              vocab = self.vocab,
                                              ivocab = self.ivocab,
                                              word_vector_size = self.word_vector_size,
-                                             to_return = "index",
-                                             silent=True) for w in ans]
-
-            ans_vector = ans_vector[0:len(ans_vector)]
-            
-            if(len(ans_vector)==self.answer_step_nbr):            
-                inputs.append(np.vstack(inp_vector).astype(floatX))
-                questions.append(np.vstack(q_vector).astype(floatX))                            
-                answers.append(np.vstack(ans_vector).astype(floatX))                                 
-                                                 
-                #TODO check what the heck input_masks is made of.                      
-                if self.input_mask_mode == 'word':
-                    input_masks.append(np.array([index for index, w in enumerate(inp)], dtype=np.int32)) 
-                elif self.input_mask_mode == 'sentence': 
-                    input_masks.append(np.array([index for index, w in enumerate(inp) if w == '.'], dtype=np.int32)) 
-                else:
-                    raise Exception("invalid input_mask_mode") #TODO this should probably not be raised here... 
+                                             to_return = "index") for w in ans]
+                                   
+            ans_vector = ans_vector[0:len(ans_vector)-1]
+            answers.append(np.vstack(ans_vector).astype(floatX))                                 
+                                             
+            #TODO check what the heck input_masks is made of.                      
+            if self.input_mask_mode == 'word':
+                input_masks.append(np.array([index for index, w in enumerate(inp)], dtype=np.int32)) 
+            elif self.input_mask_mode == 'sentence': 
+                input_masks.append(np.array([index for index, w in enumerate(inp) if w == '.'], dtype=np.int32)) 
+            else:
+                raise Exception("invalid input_mask_mode") #TODO this should probably not be raised here... 
         
-        return inputs, questions, answers, input_masks
+        return inputs, questions, answers, input_masks, pointers_s, pointers_e
 
     
     def get_batches_per_epoch(self, mode):
@@ -405,9 +440,9 @@ class DMN_multiple:
     
     def shuffle_train_set(self):
         print("==> Shuffling the train set")
-        combined = zip(self.train_input, self.train_q, self.train_answer, self.train_input_mask)
+        combined = zip(self.train_input, self.train_q, self.train_answer, self.train_input_mask, self.train_pointers_s, self.train_pointers_e)
         random.shuffle(combined)
-        self.train_input, self.train_q, self.train_answer, self.train_input_mask = zip(*combined)
+        self.train_input, self.train_q, self.train_answer, self.train_input_mask, self.train_pointers_s, self.train_pointers_e = zip(*combined)
         
     
     def step(self, batch_index, mode):
@@ -432,18 +467,24 @@ class DMN_multiple:
             qs = self.train_q
             answers = self.train_answer
             input_masks = self.train_input_mask
+            pointers_s = self.train_pointers_s
+            pointers_e = self.train_pointers_e
         elif mode == "test":    
             theano_fn = self.test_fn 
             inputs = self.test_input
             qs = self.test_q
             answers = self.test_answer
             input_masks = self.test_input_mask
+            pointers_s = self.train_pointers_s
+            pointers_e = self.train_pointers_e
         elif mode == "minitest":    
             theano_fn = self.minitest_fn
             inputs = self.test_input
             qs = self.test_q
             answers = self.test_answer
             input_masks = self.test_input_mask
+            pointers_s = self.train_pointers_s
+            pointers_e = self.train_pointers_e
         else:
             raise Exception("Invalid mode")
             
@@ -453,9 +494,6 @@ class DMN_multiple:
         ans = answers[batch_index]
         ans = ans[:,0] #reshape from (5,1) to (5,)
         input_mask = input_masks[batch_index]
-        
-        print(ans)
-        print(np.shape(ans))
 
         skipped = 0
         grad_norm = float('NaN')
@@ -464,12 +502,12 @@ class DMN_multiple:
         if skipped == 0:      
             
             #Answer MUST(?) be a vector containing number corresponding to the words in ivocab. i.e. [1, 8, 3, 9, 14] (=[5])
-            #MulPread must be a vector containing probabilities for each words in vocab, i.e. [5*dic_size] (=[5*20] usually)
-            print(np.shape(qs))
+            #MulPread must be a vector containing probabilities for each words in vocab, i.e. [5*dic_size] (=[5*20] usually)          
+            
             if(mode == "minitest"):
-                ret_multiple = theano_fn(inp, q, input_mask)
+                ret_multiple = theano_fn(inp, q, input_mask, pointers_s, pointers_e)
             else:
-                ret_multiple = theano_fn(inp, q, ans, input_mask)
+                ret_multiple = theano_fn(inp, q, input_mask)#, pointers_s, pointers_e)
             
         else:
             ret_multiple = [-1, -1]
@@ -478,8 +516,9 @@ class DMN_multiple:
         if mode != 'minitest':
             return {"inputs":inp,
                     "question":q,
-                    "prediction": np.array([ret_multiple[0]]),
+                    "prediction": np.array([ret_multiple[0], ret_multiple[1]]),
                     "answers": np.array([ans]),
+                    "pointers":np.array([pointers_s, pointers_e]),
                     "current_loss": ret_multiple[1],
                     "skipped": skipped,
                     "log": "pn: %.3f \t gn: %.3f" % (param_norm, grad_norm)

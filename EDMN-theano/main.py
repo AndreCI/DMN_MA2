@@ -18,7 +18,7 @@ from utils import nn_utils
 print("==> parsing input arguments")
 parser = argparse.ArgumentParser(prog="ExtDMN",description="Andre s code ExtDMN. Use for Q&A, master semester project @EPFL-LIA, 2017")
 
-parser.add_argument('--network', type=str, default="dmn_multiple", choices=['dmn_basic', 'dmn_multiple','dmn_smooth','dmn_batch'], help='network type: dmn_basic, dmn_multiple, dmn_smooth, or dmn_batch')
+parser.add_argument('--network', type=str, default="dmn_pointer", choices=['dmn_basic', 'dmn_multiple', 'dmn_pointer','dmn_smooth','dmn_batch'], help='network type: dmn_basic, dmn_multiple, dmn_pointer, dmn_smooth, or dmn_batch')
 parser.add_argument('--word_vector_size', type=int, default=50, choices=['50','100','200','300'], help='embeding size (50, 100, 200, 300 only)')
 parser.add_argument('--dim', type=int, default=40, help='number of hidden units in input module GRU')
 parser.add_argument('--epochs', type=int, default=500, help='number of epochs')
@@ -93,6 +93,12 @@ elif args.network == 'dmn_multiple':
         print("==> no minibatch training, argument batch_size is useless")
         args.batch_size = 1
     dmn = dmn_multiple.DMN_multiple(**args_dict)
+elif args.network == 'dmn_pointer':
+    from models import dmn_pointer
+    if (args.batch_size != 1):
+        print("==> no minibatch training, argument batch_size is useless")
+        args.batch_size = 1
+    dmn = dmn_pointer.DMN_pointer(**args_dict)
 
 elif args.network == 'dmn_basic':
     from models import dmn_basic

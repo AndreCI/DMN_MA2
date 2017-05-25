@@ -185,6 +185,8 @@ def do_epoch(args, dmn, mode, epoch, skipped=0, data_writer =""):
     for i in range(0, batches_per_epoch):
         step_data = dmn.step(i, mode)
         prediction = step_data["prediction"]
+        if(dmn.type=="pointer"):
+            pointers = step_data["pointers"]
         answers = step_data["answers"]
         current_loss = step_data["current_loss"]
         current_skip = (step_data["skipped"] if "skipped" in step_data else 0)
@@ -194,6 +196,8 @@ def do_epoch(args, dmn, mode, epoch, skipped=0, data_writer =""):
         
         
         if(dmn.type == "multiple"):
+            print(np.shape(answers))
+            print(np.shape(prediction))
             val_ans = []
             val_pred = []        
             
@@ -210,6 +214,18 @@ def do_epoch(args, dmn, mode, epoch, skipped=0, data_writer =""):
             nbr_words = dmn.answer_step_nbr
             current_acc = (nbr_words - error)/nbr_words
             avg_acc += current_acc
+        elif(dmn.type == "pointer"):
+            print("pointers & predictions:")
+            print(pointers)
+            print(np.shape(pointers))
+            print(np.shape(prediction))
+            print(prediction)
+            acc_1 = 1/(1 - abs(pointers[0] - prediction[0]))
+            acc_2 = 1/1(1 - abs(pointers[1] - prediction[1]))
+            current_acc = 1/2 * acc_1 + 1/2 * acc_2
+            print(acc_1)
+            print(acc_2)
+            avg_acc += current_acc
         else:
             current_acc = np.nan
         
@@ -220,12 +236,16 @@ def do_epoch(args, dmn, mode, epoch, skipped=0, data_writer =""):
                 if(dmn.type == "multiple"):
                     pass
                     #y_true.append(sum(x))
+                elif(dmn.type == "pointer"):
+                    y_true.append(pointers)
                 else:
                     y_true.append(x)
             
             if(dmn.type == "multiple"):
                 for x in prediction.argmax(axis=2):
                     y_pred.append(sum(x))
+            elif(dmn.type == "pointer"):
+                y_pred.append(prediction)
             else:
                 for x in prediction.argmax(axis=1):
                     y_pred.append(x)

@@ -77,6 +77,30 @@ def remove_bad_char(string, is_answer=False):
     
     return string
 
+def extract_pointer(context, answer):
+    context = np.array(context.split(' '))
+    answer = np.array(answer.split(' '))
+    find = True
+    already_find = False
+    start = -1
+    end = -1
+    for i in range(0, np.shape(context)[0] - 1):
+        if(answer[0] == context[i]):
+            potential = True
+            for a in range(0, np.shape(answer)[0] - 1):            
+                if potential and answer[a]!=context[i + a]:
+                    potential = False
+            if potential and already_find==False:
+                start = i
+                already_find = True
+                end = i + np.shape(answer)[0] - 1
+        #if answer[np.shape(answer)[0] - 1] == context[i]:
+         #   end = i        
+            
+    if(start == -1 or end ==-1):
+        find = False
+    return start, end, find
+
 def init_squad(fname, test_pourcentage, len_padding = 16, max_epoch_size=0):
     '''
     Load data from fname
@@ -107,19 +131,20 @@ def init_squad(fname, test_pourcentage, len_padding = 16, max_epoch_size=0):
                     question = question.replace('?', '')
                     if(max_epoch_size!=0 and len(tasks_train)<max_epoch_size):
                         if(not re.match(r'(\d)', answer)):
-                            if(len(answer.split(' '))<len_padding):
-                                while(len(answer.split(' '))<len_padding):
-                                    answer = answer + " <eos>"
-                                if(not len(answer.split(' '))==len_padding):
-                                    print("here",answer)
-                                    exit()
-                                task["A"] = (answer)
-                                task["C"] = remove_bad_char(context).encode("utf-8")
-                                task["Q"] = remove_bad_char(question).encode("utf-8")
-                                if(j<test_br):
-                                    tasks_test.append(task.copy())
-                                else:
-                                    tasks_train.append(task.copy())
+                            start, end, find = extract_pointer(context, answer)
+                            if(find):
+                                if(len(answer.split(' '))<len_padding):
+                                    while(len(answer.split(' '))<len_padding):
+                                        answer = answer + " <eos>"
+                                    task["A"] = (answer)
+                                    task["Ps"] = start
+                                    task["Pe"] = end
+                                    task["C"] = remove_bad_char(context).encode("utf-8")
+                                    task["Q"] = remove_bad_char(question).encode("utf-8")
+                                    if(j<test_br):
+                                        tasks_test.append(task.copy())
+                                    else:
+                                        tasks_train.append(task.copy())
     print("epoch size for training is:",len(tasks_train))
     return tasks_train, tasks_test
 
