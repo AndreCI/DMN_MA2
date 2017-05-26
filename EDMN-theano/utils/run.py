@@ -196,8 +196,6 @@ def do_epoch(args, dmn, mode, epoch, skipped=0, data_writer =""):
         
         
         if(dmn.type == "multiple"):
-            print(np.shape(answers))
-            print(np.shape(prediction))
             val_ans = []
             val_pred = []        
             
@@ -215,16 +213,9 @@ def do_epoch(args, dmn, mode, epoch, skipped=0, data_writer =""):
             current_acc = (nbr_words - error)/nbr_words
             avg_acc += current_acc
         elif(dmn.type == "pointer"):
-            print("pointers & predictions:")
-            print(pointers)
-            print(np.shape(pointers))
-            print(np.shape(prediction))
-            print(prediction)
-            acc_1 = 1/(1 - abs(pointers[0] - prediction[0]))
-            acc_2 = 1/1(1 - abs(pointers[1] - prediction[1]))
-            current_acc = 1/2 * acc_1 + 1/2 * acc_2
-            print(acc_1)
-            print(acc_2)
+            acc_1 = float(1/(float(1 + abs(pointers[0] - prediction[0]))))
+            acc_2 = float(1/(float(1 + abs(pointers[1] - prediction[1]))))
+            current_acc = 0.5 * acc_1 + 0.5 * acc_2
             avg_acc += current_acc
         else:
             current_acc = np.nan

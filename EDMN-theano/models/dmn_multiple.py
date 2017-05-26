@@ -454,8 +454,8 @@ class DMN_multiple:
         ans = ans[:,0] #reshape from (5,1) to (5,)
         input_mask = input_masks[batch_index]
         
-        print(ans)
-        print(np.shape(ans))
+        print("ans",ans)
+        print("shape of ans", np.shape(ans))
 
         skipped = 0
         grad_norm = float('NaN')
@@ -465,7 +465,7 @@ class DMN_multiple:
             
             #Answer MUST(?) be a vector containing number corresponding to the words in ivocab. i.e. [1, 8, 3, 9, 14] (=[5])
             #MulPread must be a vector containing probabilities for each words in vocab, i.e. [5*dic_size] (=[5*20] usually)
-            print(np.shape(qs))
+            print("shape of qs", np.shape(qs))
             if(mode == "minitest"):
                 ret_multiple = theano_fn(inp, q, input_mask)
             else:

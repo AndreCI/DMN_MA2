@@ -43,6 +43,7 @@ class DMN_pointer:
         self.word2vec = word2vec
         self.word_vector_size = word_vector_size
         self.dim = dim #number of hidden units in input layer GRU
+        self.pointer_dim = 40 #maximal size for the input, used as hyperparameter
         self.mode = mode
         self.answer_module = answer_module
         #TODO: add check of inputs
@@ -121,7 +122,7 @@ class DMN_pointer:
         for iter in range(1, self.memory_hops + 1):
             if(iter==self.memory_hops):
                 print("iter==self.memory_hops! This means everything works fine?")
-                all_h = self.new_episode(memory[iter - 1], all_h=True)
+                all_h, this_g = self.new_episode(memory[iter - 1], all_h=True)
                 current_episode = all_h[-1]
             else:
                 current_episode = self.new_episode(memory[iter - 1])
@@ -135,16 +136,16 @@ class DMN_pointer:
                 
         
         print("==> building answer module")
-        self.Ws_p = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim)) #shape must be size_input * mem_size = self.dim
-        self.We_p = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim))
-        self.Wh_p = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim))
+        self.Ws_p = nn_utils.normal_param(std=0.1, shape=(self.pointer_dim, self.dim)) #shape must be size_input * mem_size = self.dim
+        self.We_p = nn_utils.normal_param(std=0.1, shape=(self.pointer_dim, self.dim))
+        self.Wh_p = nn_utils.normal_param(std=0.1, shape=(self.pointer_dim, self.dim))
         
         self.Psp = nn_utils.softmax(T.dot(self.Ws_p, self.last_mem)) #size must be == size_input
         
         #TODO:
         self.start_idx = T.argmax(self.Psp)
         
-        self.start_idx_state = self.last_mem#all_h[self.start_idx] #must be hidden state idx idx_max_val(Psp)
+        self.start_idx_state = all_h[0]#self.start_idx] #must be hidden state idx idx_max_val(Psp)  self.last_mem#
         temp1 = T.dot(self.We_p, self.last_mem)
         temp2 = T.dot(self.Wh_p, self.start_idx_state)
         temp3 = temp1 + temp2
@@ -215,9 +216,9 @@ class DMN_pointer:
 #                                            n_steps=self.answer_step_nbr)        
         
 #        self.loss_ce = outputs[-1]
-        temp1 = (self.end_idx + self.pointers_e_var)
+        temp1 = (self.end_idx - self.pointers_e_var)
         temp2 = T.abs_(temp1)
-        temp3 = (self.start_idx + self.pointers_s_var)
+        temp3 = (self.start_idx - self.pointers_s_var)
         temp4 = T.abs_(temp3)
         self.loss_ce = (temp2 + temp4)
         if self.l2 > 0:
@@ -231,10 +232,15 @@ class DMN_pointer:
         
         if self.mode == 'train':
             print("==> compiling train_fn")
-            self.train_fn = theano.function(inputs=[self.input_var, self.q_var, self.input_mask_var],# self.pointers_s_var, self.pointers_e_var], 
+            self.train_fn = theano.function(inputs=[self.input_var, self.q_var, self.input_mask_var, self.pointers_s_var, self.pointers_e_var], 
                                        outputs=[self.start_idx, 
-                                                self.end_idx],
-                                                #,self.loss], 
+                                                self.end_idx,
+                                                self.loss,
+                                                all_h,
+                                                current_episode,
+                                                this_g,
+                                                self.inp_c,
+                                                inp_c_history], 
                                        updates=updates,
                                        allow_input_downcast = True,
                                        on_unused_input = 'warn')
@@ -332,7 +338,7 @@ class DMN_pointer:
             outputs_info=T.zeros_like(self.inp_c[0]))
         
         if(all_h):
-            return e
+            return e, g
         else:
             return e[-1]
 
@@ -417,11 +423,12 @@ class DMN_pointer:
                                    
             ans_vector = ans_vector[0:len(ans_vector)-1]
             answers.append(np.vstack(ans_vector).astype(floatX))                                 
+            
                                              
-            #TODO check what the heck input_masks is made of.                      
             if self.input_mask_mode == 'word':
                 input_masks.append(np.array([index for index, w in enumerate(inp)], dtype=np.int32)) 
             elif self.input_mask_mode == 'sentence': 
+                #Mask is here an array containing the index of '.'
                 input_masks.append(np.array([index for index, w in enumerate(inp) if w == '.'], dtype=np.int32)) 
             else:
                 raise Exception("invalid input_mask_mode") #TODO this should probably not be raised here... 
@@ -494,6 +501,8 @@ class DMN_pointer:
         ans = answers[batch_index]
         ans = ans[:,0] #reshape from (5,1) to (5,)
         input_mask = input_masks[batch_index]
+        pointer_s = pointers_s[batch_index]
+        pointer_e = pointers_e[batch_index]
 
         skipped = 0
         grad_norm = float('NaN')
@@ -505,9 +514,35 @@ class DMN_pointer:
             #MulPread must be a vector containing probabilities for each words in vocab, i.e. [5*dic_size] (=[5*20] usually)          
             
             if(mode == "minitest"):
-                ret_multiple = theano_fn(inp, q, input_mask, pointers_s, pointers_e)
+                ret_multiple = theano_fn(inp, q, input_mask, pointer_s, pointer_e)
             else:
-                ret_multiple = theano_fn(inp, q, input_mask)#, pointers_s, pointers_e)
+                ret_multiple = theano_fn(inp, q, input_mask, pointer_s, pointer_e)
+            all_h_b = ret_multiple[3]
+            print("------")
+            print("printing allh")
+            print(all_h_b)
+            print(np.shape(all_h_b))
+            print("----")
+            print("printing h")
+            h = ret_multiple[4]
+            print(h)
+            print(np.shape(h))
+            g = ret_multiple[5]
+            print("------")
+            print("printing g")
+            print(g)
+            print(np.shape(g))
+            inp_c = ret_multiple[6]
+            print("-------")
+            print("printing inp_c")
+            print(inp_c)
+            print(np.shape(inp_c))
+            inp_c_h = ret_multiple[7]
+            print("--------")
+            print("printing inp_c_h")
+            print(inp_c_h)
+            print("shape",np.shape(inp_c_h))
+            print("`````````````````````````````````````````")
             
         else:
             ret_multiple = [-1, -1]
@@ -518,8 +553,8 @@ class DMN_pointer:
                     "question":q,
                     "prediction": np.array([ret_multiple[0], ret_multiple[1]]),
                     "answers": np.array([ans]),
-                    "pointers":np.array([pointers_s, pointers_e]),
-                    "current_loss": ret_multiple[1],
+                    "pointers":np.array([pointer_s, pointer_e]),
+                    "current_loss": ret_multiple[2],
                     "skipped": skipped,
                     "log": "pn: %.3f \t gn: %.3f" % (param_norm, grad_norm)
                     }

@@ -50,6 +50,17 @@ babi_map = {
         "sh20": "../shuffled/qa20_agents-motivations",
     }
 
+def get_number_of_words_and_pad(context, max_input_size):
+    len_c = len(context.split(' '))
+    if((len_c)>max_input_size):
+        return "", False
+    else:
+        while((len_c)<max_input_size - 2):
+            len_c = len(context.split(' '))
+            context = context + " <eoc>"
+        return context, True
+
+
 def remove_bad_char(string, is_answer=False):
     if(is_answer==False):
         string = string.replace('.', ' . ')
@@ -101,7 +112,8 @@ def extract_pointer(context, answer):
         find = False
     return start, end, find
 
-def init_squad(fname, test_pourcentage, len_padding = 16, max_epoch_size=0):
+
+def init_squad(fname, test_pourcentage, len_padding = 16, max_epoch_size=2000, max_input_size=100):
     '''
     Load data from fname
     '''
@@ -132,7 +144,8 @@ def init_squad(fname, test_pourcentage, len_padding = 16, max_epoch_size=0):
                     if(max_epoch_size!=0 and len(tasks_train)<max_epoch_size):
                         if(not re.match(r'(\d)', answer)):
                             start, end, find = extract_pointer(context, answer)
-                            if(find):
+                            context, is_length_ok = get_number_of_words_and_pad(context, max_input_size)
+                            if(find and is_length_ok):
                                 if(len(answer.split(' '))<len_padding):
                                     while(len(answer.split(' '))<len_padding):
                                         answer = answer + " <eos>"
@@ -148,8 +161,8 @@ def init_squad(fname, test_pourcentage, len_padding = 16, max_epoch_size=0):
     print("epoch size for training is:",len(tasks_train))
     return tasks_train, tasks_test
 
-def get_squad_raw(len_padding, test_pourcentage=0.2, max_epoch_size=0):
-    return init_squad(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/squad/train-v1.1.json'), test_pourcentage, len_padding,max_epoch_size)
+def get_squad_raw(len_padding, test_pourcentage=0.2, max_epoch_size=0, max_input_size=40):
+    return init_squad(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/squad/train-v1.1.json'), test_pourcentage, len_padding,max_epoch_size, max_input_size)
     
 def init_babi(fname):
     '''
