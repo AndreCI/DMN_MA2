@@ -52,12 +52,12 @@ babi_map = {
 
 def get_number_of_words_and_pad(context, max_input_size):
     len_c = len(context.split(' '))
-    if((len_c)>max_input_size):
+    if((len_c) > max_input_size):
         return "", False
     else:
-        while((len_c)<max_input_size - 2):
-            len_c = len(context.split(' '))
+        while((len_c) < max_input_size):
             context = context + " <eoc>"
+            len_c = len(context.split(' '))
         return context, True
 
 
@@ -111,6 +111,21 @@ def extract_pointer(context, answer):
     if(start == -1 or end ==-1):
         find = False
     return start, end, find
+    
+def pad_answer(answer, answer_size):
+        
+    if(len(answer.split(' '))<answer_size):
+        while(len(answer.split(' '))<answer_size):
+            answer = answer + " <eos>"
+        return answer, True
+    else:
+        return "", False
+
+
+def analyse_context(context, lens):
+    if(len(context.split(' '))!=lens):
+        print(len(context.split(' ')))
+        raise Exception('context length is not normalized?')
 
 
 def init_squad(fname, test_pourcentage, len_padding = 16, max_epoch_size=2000, max_input_size=100):
@@ -118,6 +133,11 @@ def init_squad(fname, test_pourcentage, len_padding = 16, max_epoch_size=2000, m
     Load data from fname
     '''
     print("==> Loading data from %s (SQUAD)" %fname)
+    
+    find_stat = []
+    input_stat = []
+    answer_stat = []    
+    
     tasks_train = []
     tasks_test = []
     task = None
@@ -135,7 +155,8 @@ def init_squad(fname, test_pourcentage, len_padding = 16, max_epoch_size=2000, m
                 
                 qas = current['qas']
                 for k in range(0, np.shape(qas)[0]):
-                    task = {"C": "", "Q": "", "A":""}
+                    context = current['context']
+                    task = {"C": "", "Ps": "", "Pe": "", "Q": "", "A":""}
                     
                     current_qas = qas[k]
                     question = current_qas['question']
@@ -143,23 +164,26 @@ def init_squad(fname, test_pourcentage, len_padding = 16, max_epoch_size=2000, m
                     question = question.replace('?', '')
                     if(max_epoch_size!=0 and len(tasks_train)<max_epoch_size):
                         if(not re.match(r'(\d)', answer)):
+                            context = remove_bad_char(context)                            
                             start, end, find = extract_pointer(context, answer)
-                            context, is_length_ok = get_number_of_words_and_pad(context, max_input_size)
-                            if(find and is_length_ok):
-                                if(len(answer.split(' '))<len_padding):
-                                    while(len(answer.split(' '))<len_padding):
-                                        answer = answer + " <eos>"
-                                    task["A"] = (answer)
-                                    task["Ps"] = start
-                                    task["Pe"] = end
-                                    task["C"] = remove_bad_char(context).encode("utf-8")
-                                    task["Q"] = remove_bad_char(question).encode("utf-8")
-                                    if(j<test_br):
-                                        tasks_test.append(task.copy())
-                                    else:
-                                        tasks_train.append(task.copy())
+                            find_stat.append(find)
+                            context, is_length_input_ok = get_number_of_words_and_pad(context, max_input_size)
+                            input_stat.append(is_length_input_ok)
+                            answer, is_answer_len_ok = pad_answer(answer, len_padding)
+                            answer_stat.append(is_answer_len_ok)
+                            if(find and is_length_input_ok and is_answer_len_ok):
+                               task["A"] = (answer)
+                               task["Ps"] = start
+                               task["Pe"] = end
+                               task["C"] = context.encode("utf-8")
+                               task["Q"] = remove_bad_char(question).encode("utf-8")
+                               if(j<test_br):
+                                   tasks_test.append(task.copy())
+                               else:
+                                   tasks_train.append(task.copy())
+                                   
     print("epoch size for training is:",len(tasks_train))
-    return tasks_train, tasks_test
+    return tasks_train, tasks_test#, find_stat, input_stat, answer_stat
 
 def get_squad_raw(len_padding, test_pourcentage=0.2, max_epoch_size=0, max_input_size=40):
     return init_squad(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data/squad/train-v1.1.json'), test_pourcentage, len_padding,max_epoch_size, max_input_size)
