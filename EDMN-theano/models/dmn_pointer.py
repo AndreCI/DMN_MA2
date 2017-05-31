@@ -139,18 +139,32 @@ class DMN_pointer:
         self.Ws_p = nn_utils.normal_param(std=0.1, shape=(self.pointer_dim, self.dim)) #shape must be size_input * mem_size = self.dim
         self.We_p = nn_utils.normal_param(std=0.1, shape=(self.pointer_dim, self.dim))
         self.Wh_p = nn_utils.normal_param(std=0.1, shape=(self.pointer_dim, self.dim))
+        self.Ws_pr = nn_utils.normal_param(std=0.1, shape=(self.pointer_dim, self.dim)) #shape must be size_input * mem_size = self.dim
+        self.We_pr = nn_utils.normal_param(std=0.1, shape=(self.pointer_dim, self.dim))
+        self.Wh_pr = nn_utils.normal_param(std=0.1, shape=(self.pointer_dim, self.dim))
         
         self.Psp = nn_utils.softmax(T.dot(self.Ws_p, self.last_mem)) #size must be == size_input
+        self.Pepr = nn_utils.softmax(T.dot(self.We_pr, self.last_mem))
         
         #TODO:
         self.start_idx = T.argmax(self.Psp)
+        self.end_idxr = T.argmax(self.Pepr)
         
         self.start_idx_state = all_h[self.start_idx] #must be hidden state idx idx_max_val(Psp)  self.last_mem#
+        self.end_idx_state = all_h[self.end_idxr]
         #temp1 = T.dot(self.We_p, self.last_mem)
         #temp2 = T.dot(self.Wh_p, self.start_idx_state)
         #temp3 = temp1 + temp2
         self.Pep = nn_utils.softmax(T.dot(self.We_p, self.last_mem) + T.dot(self.Wh_p, self.start_idx_state)) #size must be == size_input
-        self.end_idx = T.argmax(self.Pep)        
+        self.Pspr = nn_utils.softmax(T.dot(self.Ws_pr, self.last_mem) + T.dot(self.Wh_pr, self.end_idx_state))
+        
+        Ps = (self.Psp + self.Pspr)/2
+        Pe = (self.Pep + self.Pepr)/2
+        self.start_idxr = T.argmax(self.Pspr)
+        self.end_idx = T.argmax(self.Pep)   
+        
+        self.start_idx_f = T.argmax(Ps)#(self.start_idx + self.start_idxr)/2
+        self.end_idx_f = T.argmax(Pe)#(self.end_idx + self.end_idxr)/2
         
         
 #        self.W_a = nn_utils.normal_param(std=0.1, shape=(self.vocab_size, self.dim))
@@ -197,7 +211,8 @@ class DMN_pointer:
                   self.W_mem_res_in, self.W_mem_res_hid, self.b_mem_res, 
                   self.W_mem_upd_in, self.W_mem_upd_hid, self.b_mem_upd,
                   self.W_mem_hid_in, self.W_mem_hid_hid, self.b_mem_hid,
-                  self.W_b, self.W_1, self.W_2, self.b_1, self.b_2, self.Ws_p, self.We_p, self.Wh_p]
+                  self.W_b, self.W_1, self.W_2, self.b_1, self.b_2, self.Ws_p, self.We_p, self.Wh_p,
+                  self.Ws_pr, self.We_pr, self.Wh_pr]
         
 #        if self.answer_module == 'recurrent':
 #            self.params = self.params + [self.W_ans_res_in, self.W_ans_res_hid, self.b_ans_res, 
@@ -216,10 +231,10 @@ class DMN_pointer:
 #                                            n_steps=self.answer_step_nbr)        
         
 #        self.loss_ce = outputs[-1]
-        temp1 = (self.end_idx - self.pointers_e_var)
-        temp2 = T.abs_(temp1)
-        temp3 = (self.start_idx - self.pointers_s_var)
-        temp4 = T.abs_(temp3)
+        temp1 = (self.end_idx_f - self.pointers_e_var)
+        temp2 = (temp1) * temp1
+        temp3 = (self.start_idx_f - self.pointers_s_var)
+        temp4 = (temp3) * temp3
         self.loss_ce = (temp2 + temp4)
         if self.l2 > 0:
             self.loss_l2 = self.l2 * nn_utils.l2_reg(self.params)
@@ -233,22 +248,22 @@ class DMN_pointer:
         if self.mode == 'train':
             print("==> compiling train_fn")
             self.train_fn = theano.function(inputs=[self.input_var, self.q_var, self.pointers_s_var, self.pointers_e_var], 
-                                       outputs=[self.start_idx, 
-                                                self.end_idx,
+                                       outputs=[self.start_idx_f, 
+                                                self.end_idx_f,
                                                 self.loss], 
                                        updates=updates,
                                        allow_input_downcast = True)
         if self.mode != 'minitest':
             print("==> compiling test_fn")
             self.test_fn = theano.function(inputs=[self.input_var, self.q_var, self.pointers_s_var, self.pointers_e_var],
-                                                   outputs=[self.start_idx, self.end_idx, self.loss, self.inp_c, self.q_q],
+                                                   outputs=[self.start_idx_f, self.end_idx_f, self.loss, self.inp_c, self.q_q],
                                       allow_input_downcast = True)
         
         if self.mode == 'minitest':                          
             print("==> compiling minitest_fn")
             self.minitest_fn = theano.function(inputs=[self.input_var, self.q_var,
                                                        self.input_mask_var, self.pointers_s_var, self.pointers_e_var],
-                                                       outputs=[self.start_idx, self.end_idx])
+                                                       outputs=[self.start_idx_f, self.end_idx_f])
                                   
     
     
