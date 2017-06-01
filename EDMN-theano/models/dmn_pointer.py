@@ -86,7 +86,7 @@ class DMN_pointer:
                     outputs_info=T.zeros_like(self.b_inp_hid))
         
         #in case of multiple sentences, only keep the hidden states which index match the <eos> char
-        self.inp_c = inp_c_history#.take(self.input_mask_var, axis=0) 
+        self.inp_c = inp_c_history.take(self.input_mask_var, axis=0) 
         
         #This seems to be the memory.
         self.q_q, _ = theano.scan(fn=self.input_gru_step, 
@@ -120,12 +120,7 @@ class DMN_pointer:
         print("==> building episodic memory module (fixed number of steps: %d)" % self.memory_hops)
         memory = [self.q_q.copy()] #So q_q is memory initialization
         for iter in range(1, self.memory_hops + 1):
-            if(iter==self.memory_hops):
-                print("iter==self.memory_hops! This means everything works fine?")
-                all_h, this_g = self.new_episode(memory[iter - 1], all_h=True)
-                current_episode = all_h[-1]
-            else:
-                current_episode = self.new_episode(memory[iter - 1])
+            current_episode = self.new_episode(memory[iter - 1])
             memory.append(nn_utils.GRU_update(memory[iter - 1], current_episode,
                                           self.W_mem_res_in, self.W_mem_res_hid, self.b_mem_res, 
                                           self.W_mem_upd_in, self.W_mem_upd_hid, self.b_mem_upd,
@@ -150,8 +145,8 @@ class DMN_pointer:
         self.start_idx = T.argmax(self.Psp)
         self.end_idxr = T.argmax(self.Pepr)
         
-        self.start_idx_state = all_h[self.start_idx] #must be hidden state idx idx_max_val(Psp)  self.last_mem#
-        self.end_idx_state = all_h[self.end_idxr]
+        self.start_idx_state = inp_c_history[self.start_idx] #must be hidden state idx idx_max_val(Psp)  self.last_mem#
+        self.end_idx_state = inp_c_history[self.end_idxr]
         #temp1 = T.dot(self.We_p, self.last_mem)
         #temp2 = T.dot(self.Wh_p, self.start_idx_state)
         #temp3 = temp1 + temp2
@@ -247,7 +242,7 @@ class DMN_pointer:
         
         if self.mode == 'train':
             print("==> compiling train_fn")
-            self.train_fn = theano.function(inputs=[self.input_var, self.q_var, self.pointers_s_var, self.pointers_e_var], 
+            self.train_fn = theano.function(inputs=[self.input_var, self.q_var, self.input_mask_var, self.pointers_s_var, self.pointers_e_var], 
                                        outputs=[self.start_idx_f, 
                                                 self.end_idx_f,
                                                 self.loss], 
@@ -255,7 +250,7 @@ class DMN_pointer:
                                        allow_input_downcast = True)
         if self.mode != 'minitest':
             print("==> compiling test_fn")
-            self.test_fn = theano.function(inputs=[self.input_var, self.q_var, self.pointers_s_var, self.pointers_e_var],
+            self.test_fn = theano.function(inputs=[self.input_var, self.q_var, self.input_mask_var, self.pointers_s_var, self.pointers_e_var],
                                                    outputs=[self.start_idx_f, self.end_idx_f, self.loss, self.inp_c, self.q_q],
                                       allow_input_downcast = True)
         
@@ -346,10 +341,7 @@ class DMN_pointer:
             sequences=[self.inp_c, g],
             outputs_info=T.zeros_like(self.inp_c[0]))
         
-        if(all_h):
-            return e, g
-        else:
-            return e[-1]
+        return e[-1]
 
 
     #TODO add documentation (later because it isn't really useful)    
@@ -447,6 +439,8 @@ class DMN_pointer:
                 input_masks.append(np.array([index for index, w in enumerate(inp) if w == '.'], dtype=np.int32)) 
             else:
                 raise Exception("invalid input_mask_mode") #TODO this should probably not be raised here... 
+        
+
         return inputs, questions, answers, input_masks, pointers_s, pointers_e
 
     
@@ -487,7 +481,7 @@ class DMN_pointer:
             inputs = self.train_input
             qs = self.train_q
             answers = self.train_answer
-            #input_masks = self.train_input_mask
+            input_masks = self.train_input_mask
             pointers_s = self.train_pointers_s
             pointers_e = self.train_pointers_e
         elif mode == "test":    
@@ -495,7 +489,7 @@ class DMN_pointer:
             inputs = self.test_input
             qs = self.test_q
             answers = self.test_answer
-            #input_masks = self.test_input_mask
+            input_masks = self.test_input_mask
             pointers_s = self.train_pointers_s
             pointers_e = self.train_pointers_e
         elif mode == "minitest":    
@@ -503,7 +497,7 @@ class DMN_pointer:
             inputs = self.test_input
             qs = self.test_q
             answers = self.test_answer
-            #input_masks = self.test_input_mask
+            input_masks = self.test_input_mask
             pointers_s = self.train_pointers_s
             pointers_e = self.train_pointers_e
         else:
@@ -514,7 +508,7 @@ class DMN_pointer:
         q = qs[batch_index]
         ans = answers[batch_index]
         ans = ans[:,0] #reshape from (5,1) to (5,)
-        #input_mask = input_masks[batch_index]
+        input_mask = input_masks[batch_index]
         pointer_s = pointers_s[batch_index]
         pointer_e = pointers_e[batch_index]
 
@@ -528,9 +522,9 @@ class DMN_pointer:
             #MulPread must be a vector containing probabilities for each words in vocab, i.e. [5*dic_size] (=[5*20] usually)          
             
             if(mode == "minitest"):
-                ret_multiple = theano_fn(inp, q, pointer_s, pointer_e)
+                ret_multiple = theano_fn(inp, q, input_mask, pointer_s, pointer_e)
             else:
-                ret_multiple = theano_fn(inp, q, pointer_s, pointer_e)
+                ret_multiple = theano_fn(inp, q, input_mask, pointer_s, pointer_e)
             
         else:
             ret_multiple = [-1, -1]

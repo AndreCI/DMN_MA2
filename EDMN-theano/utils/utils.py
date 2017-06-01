@@ -55,6 +55,10 @@ def get_number_of_words_and_pad(context, max_input_size):
     if((len_c) > max_input_size):
         return "", False
     else:
+        temp = context.split(' ')
+        if('.' not in temp):
+            return "", False
+            context = context + " ."
         while((len_c) < max_input_size):
             context = context + " <eoc>"
             len_c = len(context.split(' '))

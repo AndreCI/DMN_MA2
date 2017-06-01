@@ -178,6 +178,7 @@ def do_epoch(args, dmn, mode, epoch, skipped=0, data_writer =""):
     y_pred = []
     avg_loss = 0.0
     avg_acc = 0.0
+    avg_hardacc = 0.0
     prev_time = time.time() 
     
     batches_per_epoch = dmn.get_batches_per_epoch(mode)
@@ -213,10 +214,14 @@ def do_epoch(args, dmn, mode, epoch, skipped=0, data_writer =""):
             current_acc = (nbr_words - error)/nbr_words
             avg_acc += current_acc
         elif(dmn.type == "pointer"):
+            hard_acc = 0
+            if(pointers[0]==prediction[0] and pointers[1]==prediction[1]):
+                hard_acc = 1
             acc_1 = float(1/(float(1 + abs(pointers[0] - prediction[0]))))
             acc_2 = float(1/(float(1 + abs(pointers[1] - prediction[1]))))
             current_acc = 0.5 * acc_1 + 0.5 * acc_2
             avg_acc += current_acc
+            avg_hardacc += hard_acc
         else:
             current_acc = np.nan
         
@@ -245,14 +250,14 @@ def do_epoch(args, dmn, mode, epoch, skipped=0, data_writer =""):
             if (i % args.log_every == 0):
                 cur_time = time.time()
                 #print ("  %sing: %d.%d / %d \t loss: %.3f, avg_loss: %.3f \t accuracy: %.3f, avg_acc: %.3f \t skipped: %d, %s \t time: %.2fs" % 
-                print ("  %sing: %d.%d / %d \t loss: %.3f, avg_loss: %.3f \t accuracy: %.3f, avg_acc: %.3f \t skipped: %d \t time: %.2fs" % 
+                print ("  %sing: %d.%d / %d \t loss: %.3f, avg_loss: %.3f \t acc: %.3f, avg_acc: %.3f, avg_hardacc: %.3f \t skipped: %d \t time: %.2fs" % 
                     (mode, epoch, i * args.batch_size, batches_per_epoch * args.batch_size, 
                      #current_loss, avg_loss / (i + 1), current_acc, avg_acc / (i + 1), skipped, log, cur_time - prev_time))
-                     current_loss, avg_loss / (i + 1), current_acc, avg_acc / (i + 1), skipped, cur_time - prev_time))
+                     current_loss, avg_loss / (i + 1), current_acc, avg_acc / (i + 1), avg_hardacc/ (i + 1), skipped, cur_time - prev_time))
 
                 prev_time = cur_time
                 if(data_writer!=""):
-                    line = str(str(epoch) + ", "+str(i*args.batch_size)+", "+str(current_loss)+", "+str(avg_loss/(i + 1))+", "+str(current_acc)+", "+str(avg_acc/(i + 1))+"\n")
+                    line = str(str(epoch) + ", "+str(i*args.batch_size)+", "+str(current_loss)+", "+str(avg_loss/(i + 1))+", "+str(current_acc)+", "+str(avg_acc/(i + 1))+", " + str(avg_hardacc/(i + 1)) + "\n")
                     data_writer.write(line)
         if np.isnan(current_loss):
             print("==> current loss IS NaN. This should never happen :) ")
