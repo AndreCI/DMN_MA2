@@ -24,6 +24,12 @@ def generate_sentence(episode, id):
         sentence.append(task_1.generate_location(episode.get("A")))
     elif(id=="3"):
         sentence = task_3.generate_sentence(episode)
+    elif(id=="1b"):
+        sentence.append(task_1.generate_location(episode.get("A")))
+        sentence.append(task_1.generate_pronoun(episode.get("Q"))) #pronoun
+        sentence.append(task_1.generate_verb(episode.get("C")))
+        sentence.append(task_1.generate_proposition())
+        sentence.append(task_1.generate_determiner())
     else:
         raise Exception("Babi task not handled")
     return (' '.join(sentence)+'.')
