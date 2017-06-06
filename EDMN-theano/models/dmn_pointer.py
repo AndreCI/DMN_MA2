@@ -161,6 +161,12 @@ class DMN_pointer:
         self.start_idx_f = T.argmax(Ps)#(self.start_idx + self.start_idxr)/2
         self.end_idx_f = T.argmax(Pe)#(self.end_idx + self.end_idxr)/2
         
+        #multiple_answers = []
+        
+        trange = T.arange(self.start_idx_f, self.end_idx_f)
+        #for i in range(self.start_idx_f, self.end_idx_f):
+            #multiple_answers.append(self.input_var[i])
+        
         
 #        self.W_a = nn_utils.normal_param(std=0.1, shape=(self.vocab_size, self.dim))
 #                
@@ -227,9 +233,9 @@ class DMN_pointer:
         
 #        self.loss_ce = outputs[-1]
         temp1 = (self.end_idx_f - self.pointers_e_var)
-        temp2 = (temp1) * temp1
+        temp2 = T.abs_(temp1) #* temp1
         temp3 = (self.start_idx_f - self.pointers_s_var)
-        temp4 = (temp3) * temp3
+        temp4 = T.abs_(temp3) #* temp3
         self.loss_ce = (temp2 + temp4)
         if self.l2 > 0:
             self.loss_l2 = self.l2 * nn_utils.l2_reg(self.params)

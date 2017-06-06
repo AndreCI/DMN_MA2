@@ -129,20 +129,20 @@ class DMN_multiple:
         self.W_a = nn_utils.normal_param(std=0.1, shape=(self.vocab_size, self.dim))
                 
         if self.answer_module == 'recurrent':
-            self.W_ans_res_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim + self.dim + self.vocab_size))
+            self.W_ans_res_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim  + self.vocab_size)) #+ self.dim
             self.W_ans_res_hid = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim))
             self.b_ans_res = nn_utils.constant_param(value=0.0, shape=(self.dim,))
             
-            self.W_ans_upd_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim + self.dim + self.vocab_size))
+            self.W_ans_upd_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim + self.vocab_size))
             self.W_ans_upd_hid = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim))
             self.b_ans_upd = nn_utils.constant_param(value=0.0, shape=(self.dim,))
             
-            self.W_ans_hid_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim + self.dim + self.vocab_size))
+            self.W_ans_hid_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim + self.vocab_size))
             self.W_ans_hid_hid = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim))
             self.b_ans_hid = nn_utils.constant_param(value=0.0, shape=(self.dim,))
         
             def answer_step(prev_a, prev_y):
-                a = nn_utils.GRU_update(prev_a, T.concatenate([prev_y, self.q_q, self.last_mem]),
+                a = nn_utils.GRU_update(prev_a, T.concatenate([prev_y, self.q_q]), # self.last_mem
                                   self.W_ans_res_in, self.W_ans_res_hid, self.b_ans_res, 
                                   self.W_ans_upd_in, self.W_ans_upd_hid, self.b_ans_upd,
                                   self.W_ans_hid_in, self.W_ans_hid_hid, self.b_ans_hid)
@@ -378,6 +378,7 @@ class DMN_multiple:
 
             ans_vector = ans_vector[0:len(ans_vector)]
             
+            
             if(len(ans_vector)==self.answer_step_nbr):            
                 inputs.append(np.vstack(inp_vector).astype(floatX))
                 questions.append(np.vstack(q_vector).astype(floatX))                            
@@ -454,8 +455,6 @@ class DMN_multiple:
         ans = ans[:,0] #reshape from (5,1) to (5,)
         input_mask = input_masks[batch_index]
         
-        print("ans",ans)
-        print("shape of ans", np.shape(ans))
 
         skipped = 0
         grad_norm = float('NaN')
@@ -465,7 +464,6 @@ class DMN_multiple:
             
             #Answer MUST(?) be a vector containing number corresponding to the words in ivocab. i.e. [1, 8, 3, 9, 14] (=[5])
             #MulPread must be a vector containing probabilities for each words in vocab, i.e. [5*dic_size] (=[5*20] usually)
-            print("shape of qs", np.shape(qs))
             if(mode == "minitest"):
                 ret_multiple = theano_fn(inp, q, input_mask)
             else:

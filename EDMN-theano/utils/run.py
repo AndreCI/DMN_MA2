@@ -162,7 +162,20 @@ def write_log_results(fname, data):
     
    
     
-
+def extract_output_stats(prediction, answers):
+    hard_acc = 1.0
+    avg_acc = 0.0
+    individual_acc = []
+    for i in range(0, np.shape(prediction)[0]):
+        if(prediction[i]!=answers[i]):
+            hard_acc = 0
+            individual_acc.append(0)
+        else:
+            individual_acc.append(1)
+            avg_acc+=1.0
+    return hard_acc, avg_acc/np.shape(prediction)[0], individual_acc
+    
+    
     
 
 
@@ -179,6 +192,8 @@ def do_epoch(args, dmn, mode, epoch, skipped=0, data_writer =""):
     avg_loss = 0.0
     avg_acc = 0.0
     avg_hardacc = 0.0
+    avg_softacc = 0.0
+    avg_indiacc = np.zeros(dmn.answer_step_nbr)
     prev_time = time.time() 
     
     batches_per_epoch = dmn.get_batches_per_epoch(mode)
@@ -199,20 +214,28 @@ def do_epoch(args, dmn, mode, epoch, skipped=0, data_writer =""):
         if(dmn.type == "multiple"):
             val_ans = []
             val_pred = []        
-            
             for j in range(0,np.shape(prediction)[1]):
                 pred_temp = prediction[:,j,:]
                 for x in pred_temp.argmax(axis=1):
                     val_pred.append(x)
+                    
             answers = answers[0]
             for j in range(0,np.shape(answers)[0]):
                 val_ans.append(answers[j])
             
-            error = get_number_difference(val_ans, val_pred)
+            #error = get_number_difference(val_ans, val_pred)
+            #print(error)
+            
+            hard_acc, soft_acc, indi_acc = extract_output_stats(val_pred, val_ans)
         
-            nbr_words = dmn.answer_step_nbr
-            current_acc = (nbr_words - error)/nbr_words
-            avg_acc += current_acc
+            #nbr_words = dmn.answer_step_nbr
+            #current_acc = (nbr_words - error)/nbr_words
+            #avg_acc += soft_acc
+            avg_hardacc +=hard_acc
+            avg_softacc += soft_acc
+            avg_indiacc += indi_acc
+            current_acc = soft_acc
+            avg_acc = avg_softacc
         elif(dmn.type == "pointer"):
             hard_acc = 0
             if(pointers[0]==prediction[0] and pointers[1]==prediction[1]):
@@ -257,7 +280,8 @@ def do_epoch(args, dmn, mode, epoch, skipped=0, data_writer =""):
 
                 prev_time = cur_time
                 if(data_writer!=""):
-                    line = str(str(epoch) + ", "+str(i*args.batch_size)+", "+str(current_loss)+", "+str(avg_loss/(i + 1))+", "+str(current_acc)+", "+str(avg_acc/(i + 1))+", " + str(avg_hardacc/(i + 1)) + "\n")
+                    line = str(str(epoch) + ", "+str(i*args.batch_size)+", "+str(current_loss)+", "+str(avg_loss/(i + 1))+", "+str(current_acc)+", "+
+                    str(avg_acc/(i + 1))+", " + str(avg_hardacc/(i + 1)) + ", "+ str(avg_indiacc/(i + 1))+ "\n")
                     data_writer.write(line)
         if np.isnan(current_loss):
             print("==> current loss IS NaN. This should never happen :) ")

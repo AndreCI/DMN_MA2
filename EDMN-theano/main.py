@@ -66,7 +66,7 @@ network_name = args.prefix + '%s.mh%d.n%d.bs%d%s%s%s.babi%s' % (
 
 #Getting dataset(train & test)
 if(args.babi_id == 'squad'):
-    babi_train_raw, babi_test_raw = utils.get_squad_raw(len_padding=args.answer_step_nbr, max_epoch_size=2000, max_input_size=args.max_input_size)
+    babi_train_raw, babi_test_raw = utils.get_squad_raw(len_padding=args.answer_step_nbr, max_epoch_size=9000, max_input_size=args.max_input_size)
 else:
     if args.network == 'dmn_multiple':
         babi_train_raw, babi_test_raw = utils.get_babi_raw(args.babi_id, args.babi_test_id, args.nbr_ex, multiple=True)
