@@ -129,20 +129,20 @@ class DMN_multiple:
         self.W_a = nn_utils.normal_param(std=0.1, shape=(self.vocab_size, self.dim))
                 
         if self.answer_module == 'recurrent':
-            self.W_ans_res_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim + self.dim + self.vocab_size))
+            self.W_ans_res_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim  + self.vocab_size)) #+ self.dim
             self.W_ans_res_hid = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim))
             self.b_ans_res = nn_utils.constant_param(value=0.0, shape=(self.dim,))
             
-            self.W_ans_upd_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim + self.dim + self.vocab_size))
+            self.W_ans_upd_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim + self.vocab_size))
             self.W_ans_upd_hid = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim))
             self.b_ans_upd = nn_utils.constant_param(value=0.0, shape=(self.dim,))
             
-            self.W_ans_hid_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim + self.dim + self.vocab_size))
+            self.W_ans_hid_in = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim + self.vocab_size))
             self.W_ans_hid_hid = nn_utils.normal_param(std=0.1, shape=(self.dim, self.dim))
             self.b_ans_hid = nn_utils.constant_param(value=0.0, shape=(self.dim,))
         
             def answer_step(prev_a, prev_y):
-                a = nn_utils.GRU_update(prev_a, T.concatenate([prev_y, self.q_q, self.last_mem]),
+                a = nn_utils.GRU_update(prev_a, T.concatenate([prev_y, self.q_q]), # self.last_mem
                                   self.W_ans_res_in, self.W_ans_res_hid, self.b_ans_res, 
                                   self.W_ans_upd_in, self.W_ans_upd_hid, self.b_ans_upd,
                                   self.W_ans_hid_in, self.W_ans_hid_hid, self.b_ans_hid)
@@ -378,9 +378,6 @@ class DMN_multiple:
 
             ans_vector = ans_vector[0:len(ans_vector)]
             
-            
-            print(ans_vector)
-            print(ans)            
             
             if(len(ans_vector)==self.answer_step_nbr):            
                 inputs.append(np.vstack(inp_vector).astype(floatX))

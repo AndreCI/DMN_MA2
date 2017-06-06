@@ -163,7 +163,7 @@ def write_log_results(fname, data):
    
     
 def extract_output_stats(prediction, answers):
-    hard_acc = 0
+    hard_acc = 1.0
     avg_acc = 0.0
     individual_acc = []
     for i in range(0, np.shape(prediction)[0]):
