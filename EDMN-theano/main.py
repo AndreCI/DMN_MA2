@@ -41,7 +41,7 @@ parser.add_argument('--babi_test_id', type=str, default="", help='babi_id of tes
 parser.add_argument('--dropout', type=float, default=0.0, help='dropout rate (between 0 and 1)')
 parser.add_argument('--batch_norm', type=bool, default=False, help='batch normalization')
 parser.add_argument('--modification_name', type=str, default="default_mod_name",help='the name of the current modification for the log')
-parser.add_argument('--max_input_size', type=int, default=150, help='Maximum number of words in the input (dmn_pointer type only)')
+parser.add_argument('--max_input_size', type=int, default=30, help='Maximum number of words in the input (dmn_pointer type only)')
 parser.set_defaults(shuffle=True)
 args = parser.parse_args()
 

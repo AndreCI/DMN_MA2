@@ -180,7 +180,7 @@ class DMN_multiple:
         
         print("==> building loss layer and computing updates")
         def temp_loss(curr_pred, curr_ans, loss):
-            temp = T.nnet.categorical_crossentropy(curr_pred.dimshuffle("x",0),T.stack([curr_ans]))[0]
+            temp = T.nnet.categorical_crossentropy(curr_pred.dimshuffle("x",0),T.stack(curr_ans))[0]#T.stack([curr_ans]))[0]
             return loss + temp
             
         outputs, updates = theano.scan(fn=temp_loss,
@@ -469,6 +469,21 @@ class DMN_multiple:
                 ret_multiple = theano_fn(inp, q, input_mask)
             else:
                 ret_multiple = theano_fn(inp, q, ans, input_mask)
+                
+            
+            #            temp = T.nnet.categorical_crossentropy(curr_pred.dimshuffle("x",0),T.stack([curr_ans]))[0]
+            print(ans)
+            an_st = np.stack([ans[0]])
+            curr_pred = ret_multiple[0][0]
+            print(curr_pred)
+            jack = np.transpose(curr_pred)
+            
+            print(an_st)
+            print(jack)
+            print(np.shape(jack))
+            print(np.shape(an_st))
+            
+            exit()
             
         else:
             ret_multiple = [-1, -1]

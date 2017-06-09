@@ -2,6 +2,7 @@ import random
 import numpy as np
 
 import theano
+from theano.ifelse import ifelse
 import theano.tensor as T
 
 import lasagne
@@ -62,8 +63,8 @@ class DMN_pointer:
         self.q_var = T.matrix('question_var')
         self.answer_var = T.ivector('answer_var')
         self.input_mask_var = T.ivector('input_mask_var')
-        self.pointers_s_var = T.scalar('pointers_s_var')
-        self.pointers_e_var = T.scalar('pointer_e_var')
+        self.pointers_s_var = T.ivector('pointers_s_var')
+        self.pointers_e_var = T.ivector('pointer_e_var')
         
             
         print("==> building input module")
@@ -162,10 +163,10 @@ class DMN_pointer:
         self.end_idx_f = T.argmax(Pe)#(self.end_idx + self.end_idxr)/2
         
         #multiple_answers = []
+        #bboole = T.lt(self.start_idx_f, self.end_idx_f)
+                
         
-        trange = T.arange(self.start_idx_f, self.end_idx_f)
-        #for i in range(self.start_idx_f, self.end_idx_f):
-            #multiple_answers.append(self.input_var[i])
+        #trange = ifelse(bboole, T.arange(self.start_idx_f, self.end_idx_f), T.arange(self.start_idx_f - 1, self.start_idx_f))
         
         
 #        self.W_a = nn_utils.normal_param(std=0.1, shape=(self.vocab_size, self.dim))
@@ -231,12 +232,26 @@ class DMN_pointer:
 #                                            outputs_info = [np.float64(0.0)],
 #                                            n_steps=self.answer_step_nbr)        
         
+        
+        loss_start = T.nnet.categorical_crossentropy(Ps.dimshuffle("x",0), T.stack([self.pointers_s_var[0]]))[0]
+        loss_end = T.nnet.categorical_crossentropy(Pe.dimshuffle("x",0), T.stack([self.pointers_e_var[0]]))[0]
+        #loss_1 = Ps
+#        def temp_loss(curr_idx, curr_ans, loss):
+#            curr_pred = self.input_var[curr_idx]
+#            temp = T.nnet.catergorical_crossentropy(curr_pred, curr_ans)[0]
+#            return loss + temp
+#            
+#        outputs, udpates = theano.scan(fn=temp_loss,
+#                                       sequences = [answers_range, self.answer_var],
+#                                        outputs_info = [np.float64(0.0)],
+#                                        n_steps = ???)        
+       
 #        self.loss_ce = outputs[-1]
-        temp1 = (self.end_idx_f - self.pointers_e_var)
-        temp2 = T.abs_(temp1) #* temp1
-        temp3 = (self.start_idx_f - self.pointers_s_var)
-        temp4 = T.abs_(temp3) #* temp3
-        self.loss_ce = (temp2 + temp4)
+        #temp1 = (self.end_idx_f - self.pointers_e_var)
+        #temp2 = T.abs_(temp1) #* temp1
+        #temp3 = (self.start_idx_f)# - self.pointers_s_var)
+        #temp4 = T.abs_(temp3) #* temp3
+        self.loss_ce = loss_start + loss_end #(temp2 + temp4)
         if self.l2 > 0:
             self.loss_l2 = self.l2 * nn_utils.l2_reg(self.params)
         else:
@@ -264,8 +279,7 @@ class DMN_pointer:
             print("==> compiling minitest_fn")
             self.minitest_fn = theano.function(inputs=[self.input_var, self.q_var,
                                                        self.input_mask_var, self.pointers_s_var, self.pointers_e_var],
-                                                       outputs=[self.start_idx_f, self.end_idx_f])
-                                  
+                                                       outputs=[self.start_idx_f, self.end_idx_f])                                  
     
     
     #This is some twisted implementations. I don't like it AT ALL.
@@ -527,10 +541,13 @@ class DMN_pointer:
             #Answer MUST(?) be a vector containing number corresponding to the words in ivocab. i.e. [1, 8, 3, 9, 14] (=[5])
             #MulPread must be a vector containing probabilities for each words in vocab, i.e. [5*dic_size] (=[5*20] usually)          
             
+            pointer_s = np.stack([pointer_s])
+            pointer_e = np.stack([pointer_e])
+            
             if(mode == "minitest"):
                 ret_multiple = theano_fn(inp, q, input_mask, pointer_s, pointer_e)
             else:
-                ret_multiple = theano_fn(inp, q, input_mask, pointer_s, pointer_e)
+                ret_multiple = theano_fn(inp, q, input_mask, (pointer_s), pointer_e)
             
         else:
             ret_multiple = [-1, -1]
